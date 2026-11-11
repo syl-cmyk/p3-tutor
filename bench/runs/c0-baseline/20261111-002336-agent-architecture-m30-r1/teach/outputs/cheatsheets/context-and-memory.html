@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; color: #1f1d1a; background: #fffdf8; }
+    @media (prefers-color-scheme: dark) { body { color: #e9e5dc; background: #171614; } }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.6rem; }
+    table { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: 0.88rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.35rem 0.5rem; border-bottom: 1px solid #bbb8; }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+  <h2>Terms</h2>
+  <ul>
+    <li><strong>Context:</strong> the tokens given to the model for one call: system prompt, tool definitions, messages, tool results, plus its response.</li>
+    <li><strong>Context window:</strong> the most tokens one call can hold.</li>
+    <li><strong>Context rot:</strong> recall and accuracy get worse as the context grows.</li>
+    <li><strong>Compaction:</strong> summarize the history and continue from the summary.</li>
+    <li><strong>Retrieval:</strong> search a store, add only the best chunks to context.</li>
+    <li><strong>Notes:</strong> facts saved outside the context and loaded back later.</li>
+  </ul>
+  <h2>Rules to remember</h2>
+  <ul>
+    <li>The model keeps nothing between calls; your program resends the history, so every step costs more than the last.</li>
+    <li>Nothing survives between sessions unless your program saves it and loads it back.</li>
+    <li>A bigger window is room, not a reason to fill it.</li>
+    <li>Save facts, not transcripts. Gating facts (training status) come from a trusted record, looked up with a tool.</li>
+  </ul>
+  <h2>Where does it go?</h2>
+  <table>
+    <tr><th>Information</th><th>Put it in</th></tr>
+    <tr><td>This conversation's steps</td><td>Context (history list)</td></tr>
+    <tr><td>Facts that must outlive a session</td><td>Saved record or notes</td></tr>
+    <tr><td>Long stable documents (manuals)</td><td>Searchable store, retrieved as chunks</td></tr>
+    <tr><td>Fast-changing data (calendar)</td><td>Tool call, never saved</td></tr>
+    <tr><td>Old tool results no longer needed</td><td>Drop or summarize</td></tr>
+  </table>
+</body>
+</html>

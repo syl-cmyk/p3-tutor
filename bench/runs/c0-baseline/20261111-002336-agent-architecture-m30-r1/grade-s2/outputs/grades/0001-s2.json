@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop (the model picks an action, the program runs it, the result comes back) is what makes a system an agent. A longer prompt or a bigger model only changes what a single call can do."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a structured request: the tool's name plus the arguments (laser cutter, tomorrow's date). The program around it runs check_calendar. Keep this split in mind when you design the assistant's tools."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You chose to let it run longer and expect it to fix the bug eventually. That is tempting, but the agent is repeating the same edit and getting the same failure. More steps only repeat that and cost more money. The safeguard is a stopping condition, such as a step limit that ends the loop and reports what happened. With your small budget, a step limit is also what caps the cost of a stuck run."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "4 is the right count, and your split into three tool requests plus a final answer is correct. But you wrote that the model 'runs' check_calendar, search_manuals and check_training_record. It doesn't. Each call, it only outputs a request for one tool. The program runs the tool and sends the result back in the next call. Count model calls as one for the question plus one for each of the three tool results, and that gives 4."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right on both parts: the result goes back in as the model's next input, and the model uses it to decide what to do next. The group-chat comparison works: the tool's result is a new message the model reads before it takes its turn."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name does help, but it is only part of the answer. The model is given each tool's description: its name, what it does and the parameters it takes, and it picks the tool whose description fits the request. A name alone can mislead: with two tools called check_calendar and check_booking, only the descriptions tell them apart. This is why writing clear descriptions is one of your mission goals."
+    }
+  ],
+  "summary": "You have the loop down (q1, q5) and you know the model outputs a request rather than opening the booking system itself (q2). Two ideas need work. First, the program runs the tools and the model only requests them: your q4 answer had the right count but said the model runs them. Second, an agent needs a stopping condition such as a step limit, because running longer does not fix a stuck loop (q3). Next step: trace the laser cutter request once more, labelling each line as 'model outputs' or 'program does'. Then write a two-sentence description for check_calendar, since the model chooses tools from descriptions, not just names."
+}

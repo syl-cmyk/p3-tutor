@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; color: #1f1d1a; background: #fffdf8; }
+    h1 { font-size: 1.6rem; }
+    table { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: 0.9rem; margin: 1rem 0; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } a { color: #eaa77a; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">Lesson 1</a>.</p>
+  <ul>
+    <li><strong>Context window:</strong> everything the model is given in one call (system prompt, tool descriptions, messages, tool results) plus its reply. The model can use only this.</li>
+    <li><strong>Each step resends the window.</strong> Input tokens per call = everything so far; total cost = the sum over calls.</li>
+    <li><strong>Context rot:</strong> recall degrades as the window fills. A bigger window is headroom, not a design.</li>
+    <li><strong>Between sessions the model keeps nothing.</strong> Your program must save facts and load them back.</li>
+  </ul>
+  <table>
+    <thead><tr><th>Where</th><th>Use when</th><th>Makerspace example</th></tr></thead>
+    <tbody>
+      <tr><td>In the window</td><td>Needed for this step</td><td>The current question and tool results</td></tr>
+      <tr><td>Retrieval (chunks, keyword + embedding search)</td><td>Large, existing, rarely needed in full</td><td>Machine manuals</td></tr>
+      <tr><td>Notes file</td><td>Small, learned in use, useful next time</td><td>A student's slot preferences</td></tr>
+      <tr><td>Database via a tool</td><td>Must be exact and current</td><td>Training status, bookings</td></tr>
+      <tr><td>Compaction</td><td>One session outgrows its window</td><td>A very long troubleshooting chat</td></tr>
+    </tbody>
+  </table>
+  <p>Retrieval tip: keep the machine and section name with every chunk, so a chunk never loses what it is about.</p>
+  <p>Sources: <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering</a>; <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Claude docs: Context windows</a>; <a href="https://anthropic.com/research/contextual-retrieval">Anthropic: Contextual Retrieval</a>.</p>
+</body>
+</html>

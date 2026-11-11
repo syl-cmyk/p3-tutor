@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student tells your makerspace assistant that she prefers the resin printer. On Thursday she opens a new chat, and your program loads nothing about Monday into it. What does the model know about her preference?",
+      "options": [
+        {"id": "a", "text": "It recalls Monday's chat, because the model keeps every user's chats"},
+        {"id": "b", "text": "It recalls the preference, because the model learned from that chat"},
+        {"id": "c", "text": "Nothing, because the new window contains nothing about that chat"},
+        {"id": "d", "text": "Only a vague hint, because the model keeps a faded memory of it"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A request takes three model calls. Before any tool runs, the window holds 2,500 tokens (system prompt, tool descriptions and question). The first and second tool results each add 1,000 tokens, and each call is sent the whole window so far. Ignoring the model's own text, how many input tokens are processed across the three calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate suggests pasting all of the makerspace manuals, 400 pages, into the assistant's context on every request, because the model's window is big enough to hold them. In one or two sentences, give two reasons this is still a poor design."
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A two-hour troubleshooting chat with a student is close to filling the assistant's window. Which step best follows Anthropic's guidance on compaction?",
+      "options": [
+        {"id": "a", "text": "Replace the history with a summary of decisions and open problems"},
+        {"id": "b", "text": "Delete the oldest half of the chat and keep the newest half"},
+        {"id": "c", "text": "Keep every message and move to a bigger context window"},
+        {"id": "d", "text": "Replace the history with the student's last question alone"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student asks, \"How thick a sheet can the laser cutter cut?\" Search returns a chunk that reads only \"Maximum thickness: 6 mm.\" It came from the vinyl cutter manual, and the assistant gives 6 mm for the laser cutter. Which change most directly fixes the cause?",
+      "options": [
+        {"id": "a", "text": "Raise the number of chunks returned so more text arrives"},
+        {"id": "b", "text": "Switch to a model with a much larger context window"},
+        {"id": "c", "text": "Tell the model in its prompt to be more careful"},
+        {"id": "d", "text": "Store the machine and section name with every chunk"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow, predefined code decides the steps and their order; in an agent, the model decides its own next step and which tools to use. Both can use tools and models (a, c), and option d swaps the two definitions."
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The code fixes the path, including the branch on training status, and the model's only job is to write the text in step 4, so this is a workflow. Containing a model call (a) or using tools (b) does not make something an agent, and the number of steps (d) is irrelevant; a typical wrong answer of a or b shows the belief that any model or tool use means an agent."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "The booking path has the same known steps every time, so code can run them for a predictable, low cost with no model deciding what to do next. Options a, b and c all depend on what the model finds along the way, so the steps cannot be fixed in advance; those are the places where an agent may earn its extra cost."
+    },
+    {
+      "id": "q4",
+      "answer": 4,
+      "tolerance": 0.05,
+      "rationale": "The agent uses 5 - 3 = 2 extra calls per request, 2 x $0.01 = $0.02 per request, and 200 x $0.02 = $4. An answer of 10 or 6 is the cost of one side only, not the difference."
+    },
+    {
+      "id": "q5",
+      "answer": "The code already decides the steps, so no model calls are spent on choosing the next step or looping; the number of calls and the behavior are the same every time.",
+      "accepted": [
+        "The steps are fixed, so it needs fewer model calls and costs the same every time.",
+        "A workflow does not spend model calls deciding what to do next, so cost and behavior are predictable.",
+        "The path is set in code, so there are no extra decision calls and the number of steps is known in advance."
+      ],
+      "rationale": "Full credit needs the core idea: the code, not the model, chooses the steps, so there is no overhead of the model deciding or looping and the call count is known. Saying only that workflows are cheaper, with no reason, is partial. Saying that workflows use a smaller or better model is wrong, since the choice of model is separate from the control flow."
+    },
+    {
+      "id": "q6",
+      "answer": "The steps cannot be known in advance, because which step comes next depends on what earlier steps found.",
+      "accepted": [
+        "The number or order of steps depends on what comes back along the way, so it cannot be fixed in code.",
+        "The task is open-ended and the model must decide which tools to use and when to stop.",
+        "The path cannot be predicted ahead of time, so the model has to choose the steps itself."
+      ],
+      "rationale": "An agent earns its extra cost when the path is unpredictable: the number and order of steps depend on intermediate results, so code cannot lay them out beforehand. Answers that say 'the task is hard' or 'it needs a bigger model' miss the point, since difficulty alone does not mean the model must own the control flow."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 19511,
+  "stop_reason": "end_turn",
+  "session_id": "a84227e5-eeb9-46a4-aa4d-44fd9c90cf02",
+  "total_cost_usd": 0.12281149999999999,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22994,
+    "cache_read_input_tokens": 64335,
+    "output_tokens": 2439,
+    "output_tokens_details": {
+      "thinking_tokens": 635
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22994,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 873,
+        "cache_read_input_tokens": 32669,
+        "cache_creation_input_tokens": 899,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 899
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 2439,
+      "cacheReadInputTokens": 64335,
+      "cacheCreationInputTokens": 22994,
+      "webSearchRequests": 0,
+      "costUSD": 0.12281149999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 635,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22994,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Short version first, because the order matters for your project. Training is out of scope in your mission, and for your budget it should be your last resort, not your first move.\n\n**The idea, with your example.** Say a student asks \"book the laser cutter Friday at 2.\" The model calls `check_calendar`, then `book_slot`. If the booking succeeds, give a reward of 1. If it books the wrong machine, give 0. RL means: do many such attempts, then nudge the model to make the actions from high-reward attempts more likely.\n\n**The derivation, in three steps.**\n1. *Policy gradient.* Let π_θ be the model's probability of an action (a token) given the context. Raising the probability of good actions gives the gradient ∇J = E[∇log π_θ(a|s) · Â]. Â is the \"advantage\": how much better this action was than expected.\n2. *Reuse data.* Generating attempts is expensive, so you want several update steps on one batch. Define the ratio r = π_θ(a|s) / π_old(a|s), which corrects for the policy having changed since the data was collected. The objective becomes E[r · Â].\n3. *Clip it.* Nothing stops r from growing huge, which makes updates wreck the model. PPO's fix is\n   **L = E[ min( r·Â, clip(r, 1−ε, 1+ε)·Â ) ]**, with ε about 0.2. Once an action's probability has moved ε away from the old one, the gradient stops pushing it further.\n\nFull PPO also adds a value-function loss (which learns the baseline for Â) and an entropy bonus. For language models it usually adds a KL penalty that keeps the model close to its starting version. Many recent agent-training setups use a simpler variant, GRPO, which drops the value network. I'm giving you this from memory, not from a source I've checked. Verify it against the original PPO paper (Schulman et al., 2017) before you defend it at a design review.\n\n**Why not do this for your assistant.** You'd need an open-weights model, GPUs, hundreds or thousands of scripted episodes, and a trustworthy reward function. That's a lot for a team with a small model budget and five weeks. Most tool-calling failures at your scale are fixed more cheaply by clearer tool descriptions, a fixed workflow for the booking step, and a test set of 30 or so real questions that you re-run after every change. That test set is also exactly the reward signal RL would need, so nothing you build is wasted.\n\nIf you want RL as a side study, I can write a proper lesson, but first you'd need the basics of gradients and probability.\n\nQuick check: in the booking example, what would the ratio r tell you if it came out at 1.5?",
+  "ttft_ms": 1326,
+  "type": "result",
+  "duration_ms": 19631,
+  "uuid": "c9fb377a-0e6e-4a91-a9a6-dbfb9869fbaf",
+  "ttft_stream_ms": 587,
+  "time_to_request_ms": 75,
+  "first_content_frame_ms": 587,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 2439,
+      "cacheReadInputTokens": 64335,
+      "cacheCreationInputTokens": 22994,
+      "webSearchRequests": 0,
+      "costUSD": 0.12281149999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 635,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22994,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

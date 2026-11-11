@@ -1,0 +1,151 @@
+{
+  "duration_api_ms": 21451,
+  "stop_reason": "end_turn",
+  "session_id": "95a4306d-0f03-4a99-ab43-805ad03e545f",
+  "total_cost_usd": 0.1403344,
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 24192,
+    "cache_read_input_tokens": 131663,
+    "output_tokens": 1854,
+    "output_tokens_details": {
+      "thinking_tokens": 220
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 24192,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 630,
+        "cache_read_input_tokens": 34432,
+        "cache_creation_input_tokens": 334,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 334
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 1854,
+      "cacheReadInputTokens": 131663,
+      "cacheCreationInputTokens": 24192,
+      "webSearchRequests": 0,
+      "costUSD": 0.12849829999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 220,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 24192,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 13286,
+      "outputTokens": 1015,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 1,
+      "costUSD": 0.0118361,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 464,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 10,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The premise isn't right: more agents don't always give better results, so \"five or ten?\" is the wrong question. The better question is whether your assistant needs more than one agent at all.\n\n**Why more agents can hurt.** Each agent you add is another model running its own loop. Anthropic reports that agents use about 4× the tokens of a plain chat, and multi-agent systems about 15×. Your budget is small, so that cost matters. Agents also have to pass information to each other. Every handoff can drop detail or add a misunderstanding, and it gives you one more place to debug.\n\n**When splitting pays off.** Anthropic's engineering post says multi-agent designs suit valuable tasks that need heavy parallel work, that carry more information than one context window holds, or that use many complex tools. It also notes that tasks with shared context or many dependencies between steps are a poor fit.\n\n**Your assistant, by that test.**\n- A booking request is a sequence: check the calendar, then book. Each step depends on the last, and the request is small enough for one context. A single agent with two or three well-described tools (manual search, calendar check, book) fits this.\n- Answering from the manuals is one lookup followed by one answer. That looks more like a fixed workflow than a team of agents.\n- Splitting into five or ten agents would add handoffs and token cost, and you'd get nothing in return.\n\nAt your design review, start with one agent and add a second only when you can name the specific problem it solves. Examples are a context that overflows, or a task that really can run in parallel.\n\nQuick check: if a student asks \"Is the laser cutter free Friday afternoon, and if so book it,\" would a second agent help? Say why or why not in your own words.\n\nI can teach a lesson on workflows versus agents, and on when multi-agent pays off, if you'd like one.\n\nSource: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)",
+  "ttft_ms": 1219,
+  "type": "result",
+  "duration_ms": 21586,
+  "uuid": "65b8ba5c-7ece-479a-80be-2b4b65b09f74",
+  "ttft_stream_ms": 583,
+  "time_to_request_ms": 66,
+  "first_content_frame_ms": 583,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 1854,
+      "cacheReadInputTokens": 131663,
+      "cacheCreationInputTokens": 24192,
+      "webSearchRequests": 0,
+      "costUSD": 0.12849829999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 220,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 24192,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 13286,
+      "outputTokens": 1015,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 1,
+      "costUSD": 0.0118361,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 464,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

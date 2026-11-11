@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 15355,
+  "stop_reason": "end_turn",
+  "session_id": "73ae27e5-3cfa-4613-95eb-d48b53e7bed5",
+  "total_cost_usd": 0.1141047,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22545,
+    "cache_read_input_tokens": 64027,
+    "output_tokens": 1751,
+    "output_tokens_details": {
+      "thinking_tokens": 340
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22545,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 574,
+        "cache_read_input_tokens": 32421,
+        "cache_creation_input_tokens": 698,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 698
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1751,
+      "cacheReadInputTokens": 64027,
+      "cacheCreationInputTokens": 22545,
+      "webSearchRequests": 0,
+      "costUSD": 0.1141047,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 340,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22545,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Think of a restaurant.\n\nYou're the diner, and you are the language model. You can't go into the kitchen. All you can do is read the menu and write on an order slip.\n\nSay you want to know if the laser cutter is free on Friday. The menu lists a few dishes, each with a short description, such as \"Check calendar: tell us the machine and the day, and we'll tell you what's booked.\" You pick that dish and write a slip: \"Check calendar, laser cutter, Friday.\" Then you stop and wait.\n\nA waiter (the program around the model) takes the slip to the kitchen (your real calendar code). The kitchen does the work and the waiter brings the result back: \"Booked 2–4pm.\" You read it and decide what to do next. You might order again (\"Book laser cutter, Friday 4pm\") or you might answer the student.\n\nThree things to take from this:\n\n- **The model never does the action.** It only writes the slip. The program does the work, which is why the program can check a slip before acting on it.\n- **The menu is everything the model knows about its tools.** It picks a dish from the description alone. A vague description (\"calendar stuff\") gets wrong or missing orders, so writing good tool descriptions is a real design job for your team.\n- **Each trip is one round of the loop you already know.** Slip out, result back, decide again, until you're done.\n\nWhere the analogy breaks: a real diner can wander off and cook for themselves. A model can't. It has no way to act except through the slips. Also, every slip and every returned dish gets added to the conversation the model reads, and that is part of what costs money.\n\nQuick check: in the restaurant, who actually cooks the dish? And in the makerspace assistant, what does that correspond to?\n\nIf you'd like, I can turn this into a short lesson with a tool description for your calendar tool.",
+  "ttft_ms": 1660,
+  "type": "result",
+  "duration_ms": 15457,
+  "uuid": "0007c9b2-c620-40d5-a492-4608ae058746",
+  "ttft_stream_ms": 949,
+  "time_to_request_ms": 50,
+  "first_content_frame_ms": 949,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1751,
+      "cacheReadInputTokens": 64027,
+      "cacheCreationInputTokens": 22545,
+      "webSearchRequests": 0,
+      "costUSD": 0.1141047,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 340,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22545,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

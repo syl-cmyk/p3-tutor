@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 12138,
+  "stop_reason": "end_turn",
+  "session_id": "49d7c3e8-9ab1-44d5-b5d8-42ac16a190d7",
+  "total_cost_usd": 0.09773849999999999,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 18350,
+    "cache_read_input_tokens": 86825,
+    "output_tokens": 1564,
+    "output_tokens_details": {
+      "thinking_tokens": 135
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 18350,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 440,
+        "cache_read_input_tokens": 28530,
+        "cache_creation_input_tokens": 394,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 394
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1564,
+      "cacheReadInputTokens": 86825,
+      "cacheCreationInputTokens": 18350,
+      "webSearchRequests": 0,
+      "costUSD": 0.09773849999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 135,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18350,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. Language models don't remember earlier conversations on their own, so your assistant won't remember last week's chat unless you build that in.\n\nThe belief is tempting because a chat app feels continuous. What's actually happening is that the app re-sends the whole conversation so far to the model on every turn, and the model reads it fresh each time. This also fits what you already know about the agent loop: every step is a separate model call, and the model only knows what's in the text it receives in that call.\n\nFor the makerspace, say Priya tells the assistant on Monday that she finished the laser cutter training. If you do nothing, next Monday's session starts blank and the model has no idea who she is. To make it \"remember\", your program has to do two things:\n\n1. **Save** the fact outside the model, for example a line in a database or JSON file: `{\"priya\": [\"laser cutter training done\"]}`.\n2. **Load** it into the prompt at the start of the next session, so the model reads it like any other text.\n\nWhich facts to save and when to load them is a design choice. Every loaded fact also costs tokens, which matters for your budget. That's the context-and-memory topic that comes next in your mission.\n\nQuick check: if the assistant saves nothing between sessions, what does the model know about Priya at the start of next week's session, and what would you add to change that?\n\nI can write a lesson on context and memory for the makerspace assistant if you want one.",
+  "ttft_ms": 1197,
+  "type": "result",
+  "duration_ms": 12264,
+  "uuid": "f60f6b58-bbc1-482a-bcb1-9b984a5cc3fc",
+  "ttft_stream_ms": 636,
+  "time_to_request_ms": 61,
+  "first_content_frame_ms": 636,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1564,
+      "cacheReadInputTokens": 86825,
+      "cacheCreationInputTokens": 18350,
+      "webSearchRequests": 0,
+      "costUSD": 0.09773849999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 135,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18350,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

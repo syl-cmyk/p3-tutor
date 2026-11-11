@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #ccc; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.15rem; margin-top: 1.75rem; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+  <h2>Terms</h2>
+  <ul>
+    <li><strong>Context</strong>: the tokens the model sees on one call (system prompt, tool descriptions, history, tool results).</li>
+    <li><strong>Context window</strong>: the maximum size of that context.</li>
+    <li><strong>Compaction</strong>: summarize the history and restart from the summary (lossy).</li>
+    <li><strong>Retrieval</strong>: fetch only the relevant piece of a large store into the context.</li>
+  </ul>
+  <h2>Where does it go?</h2>
+  <table>
+    <thead><tr><th>Question</th><th>If yes</th></tr></thead>
+    <tbody>
+      <tr><td>Needed on every call, and short?</td><td>System prompt (context)</td></tr>
+      <tr><td>Must outlive the session and be exactly right?</td><td>Database, read by a tool</td></tr>
+      <tr><td>Must outlive the session, soft preference?</td><td>Notes the model writes and reads</td></tr>
+      <tr><td>Source too big to hold?</td><td>Retrieval (skip it if under about 200,000 tokens)</td></tr>
+      <tr><td>Only needed for a few steps?</td><td>Context, then clear it</td></tr>
+    </tbody>
+  </table>
+  <h2>Cost rule</h2>
+  <p>Input tokens of call <em>n</em> = everything before it + the new result. Total cost = the sum over all calls, so a big tool result is paid for again on every later call.</p>
+</body>
+</html>

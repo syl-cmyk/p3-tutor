@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program stores the history and sends all of it, including both earlier tool requests and results, each time. Choosing a or d shows the belief that the model itself remembers earlier steps.",
+      "distractors": {"a": "M7", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": 9000,
+      "tolerance": 0,
+      "rationale": "Call 1 sends 2,000, call 2 sends 3,000 and call 3 sends 4,000, because each call resends the earlier history plus 1,000 new tokens: 2,000 + 3,000 + 4,000 = 9,000. An answer of 4,000 counts only the last call and misses that history is sent and billed again each time."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "A new conversation starts with empty context, so the fact must be saved outside the context and loaded in at the start of the next session. A bigger window does not carry anything across conversations.",
+      "distractors": {"a": "M7", "c": "M8", "d": "M7"}
+    },
+    {
+      "id": "q4",
+      "answer": "a",
+      "rationale": "Everything in the context is sent and billed on every call, and recall and accuracy degrade as the context grows (context rot). Fitting in the window does not make filling it a good idea.",
+      "distractors": {"b": "M8", "c": "M8", "d": "M8"}
+    },
+    {
+      "id": "q5",
+      "answer": "Summarize the history (compaction) or clear old tool results, or save key facts to notes outside the context and reload them, or hand parts to a sub-agent with its own context.",
+      "accepted": ["compaction", "summarize the conversation", "summarize earlier history", "clear old tool results", "write notes to a file and read them back", "save notes outside the context", "use a sub-agent", "drop old tool results"],
+      "rationale": "Any of these keeps the context small and focused: compaction (summary), clearing old tool results, saving notes outside the context to reload later, or giving a sub-agent a fresh context. Answers that only say to use a bigger window, or to keep everything, do not meet the question."
+    }
+  ]
+}

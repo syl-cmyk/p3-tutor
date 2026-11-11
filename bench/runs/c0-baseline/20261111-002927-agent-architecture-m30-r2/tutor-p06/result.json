@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 14393,
+  "stop_reason": "end_turn",
+  "session_id": "b528ea11-944d-44a6-832f-f0f1a0b96380",
+  "total_cost_usd": 0.1152832,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22560,
+    "cache_read_input_tokens": 64012,
+    "output_tokens": 1863,
+    "output_tokens_details": {
+      "thinking_tokens": 380
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22560,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 665,
+        "cache_read_input_tokens": 32411,
+        "cache_creation_input_tokens": 723,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 723
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1863,
+      "cacheReadInputTokens": 64012,
+      "cacheCreationInputTokens": 22560,
+      "webSearchRequests": 0,
+      "costUSD": 0.1152832,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 380,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22560,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Picture a restaurant.\n\nYou're a diner at a table. You can't go into the kitchen. You only have a **menu**, a pen and an order slip. You want dinner, so you read the menu, write \"one pad thai, no peanuts\" on a slip, and hand it to the **waiter**. The waiter takes it to the kitchen, the kitchen cooks, and the waiter brings back the dish. You look at it and decide what's next: eat, ask for dessert, or send it back.\n\nHere is how that maps to tool calling:\n\n- **You, the diner, are the language model.** You can only produce text. You can't cook.\n- **The menu is the list of tool descriptions.** You can only order what's on it, and you pick based on what each line says. A vague menu line leads to wrong orders.\n- **The order slip is the tool call.** It's just text naming the tool and the details. Writing the slip does nothing by itself.\n- **The waiter and kitchen are your program.** The program reads the slip, does the real work, and brings the result back.\n- **The dish arriving is the tool result.** It goes back to the model as more text, and the model decides what to do next. That's the loop you already know.\n\nThe point people miss is that **the model never runs anything**. It only writes a request. Your code does the work.\n\nFor the makerspace assistant, a student asks, \"Can I use the laser cutter Thursday at 3?\" The menu has `check_calendar` and `book_machine`. The model writes a slip: \"check_calendar, laser cutter, Thursday 3pm\". Your program looks it up and returns \"free\". The model then writes a second slip, \"book_machine…\". When it has what it needs, it answers the student.\n\nThe analogy breaks in one place. A diner remembers the whole meal, but the model only knows what's on the table right now, meaning the conversation so far plus the menu. That is the **context**, which is our next topic.\n\nQuick check: if the menu line for `book_machine` just said \"books stuff\", what could go wrong at the order-slip step?\n\nI can turn this into a short lesson with a worked example if you'd like.",
+  "ttft_ms": 1164,
+  "type": "result",
+  "duration_ms": 14547,
+  "uuid": "9c7b006e-a46f-4d80-8456-f497e59e1fd0",
+  "ttft_stream_ms": 657,
+  "time_to_request_ms": 111,
+  "first_content_frame_ms": 657,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1863,
+      "cacheReadInputTokens": 64012,
+      "cacheCreationInputTokens": 22560,
+      "webSearchRequests": 0,
+      "costUSD": 0.1152832,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 380,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22560,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

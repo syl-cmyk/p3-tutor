@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 17121,
+  "stop_reason": "end_turn",
+  "session_id": "31329755-22bd-4cc4-8a86-d6b347334cc7",
+  "total_cost_usd": 0.1242972,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 23498,
+    "cache_read_input_tokens": 96492,
+    "output_tokens": 2064,
+    "output_tokens_details": {
+      "thinking_tokens": 385
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23498,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 669,
+        "cache_read_input_tokens": 33546,
+        "cache_creation_input_tokens": 526,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 526
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2064,
+      "cacheReadInputTokens": 96492,
+      "cacheCreationInputTokens": 23498,
+      "webSearchRequests": 0,
+      "costUSD": 0.1242972,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 385,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23498,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I'm not going to derive PPO here, and I don't think you should spend your three hours a week on it. Your mission lists training models and the math inside them as out of scope. Deriving PPO also needs probability and policy-gradient background that you haven't met yet. It wouldn't help you at the design review.\n\n**What's true in what you read.** Companies that build models do use reinforcement learning (RL) to make them better at calling tools. But that happens before you ever call the model. You choose a model that's already good at tool calling. You don't need to train one.\n\n**The idea behind PPO, with no math.** Say the model tries 8 ways to answer \"Book the laser cutter Friday at 2\". A scorer rewards the attempts that booked the right slot. Training nudges the model toward those attempts. PPO's one trick is a limit on each nudge. The model can't change too much in one step, because a big jump can wreck behaviour that was already working. The full objective is that idea written as a formula. The derivation needs policy gradients first.\n\n**Why it's wrong for your project.**\n- Training needs a model you can modify, a GPU, and thousands of scored attempts. That's far beyond a small model-usage budget.\n- Most tool-calling failures in a first version come from vague tool descriptions, overlapping tools and missing error messages. You can fix all of those without training.\n\n**What to do instead.** Write 20 real makerspace requests, such as \"Is the 3D printer free Friday?\" or \"How do I change the bit on the router?\". Next to each, write which tool should be called and with what arguments. Run the assistant on them, and when it picks the wrong tool, rewrite that tool's description. That's the cheap version of the reward-and-improve loop. It also matches your success criterion about writing clear tool descriptions.\n\nI can make the next lesson \"writing a tool description and testing it on a small request set\", or a lesson on context and memory, which was already next. Which one do you want?\n\nQuick check: if the assistant keeps picking the calendar tool when a student asks about a machine's safety rules, what is the first thing you'd change?",
+  "ttft_ms": 758,
+  "type": "result",
+  "duration_ms": 17308,
+  "uuid": "b5a6f6c0-3796-4c49-ace7-8764d7df8c43",
+  "ttft_stream_ms": 687,
+  "time_to_request_ms": 124,
+  "first_content_frame_ms": 687,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2064,
+      "cacheReadInputTokens": 96492,
+      "cacheCreationInputTokens": 23498,
+      "webSearchRequests": 0,
+      "costUSD": 0.1242972,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 385,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23498,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

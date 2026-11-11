@@ -1,0 +1,47 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow, developer-written code sets the path in advance; in an agent, the model decides its next step and tool use. Both can use tools (a) and either can make many model calls (c). Option d swaps the two definitions."
+    },
+    {
+      "id": "q2",
+      "answer": "d",
+      "rationale": "The order of steps is written in the program and is the same every time, so the code owns the control flow and the design is a workflow. The model is called inside the steps (extracting, writing), but it never chooses what runs next. Saying the model decides because it appears in the steps confuses using a model with the model owning the flow."
+    },
+    {
+      "id": "q3",
+      "answer": 2000,
+      "tolerance": 0,
+      "rationale": "The agent makes 6 - 2 = 4 more calls per question, and 4 x 500 = 2000. An answer of 3000 is the agent's total (6 x 500), and 1000 is the workflow's total (2 x 500): both skip the difference."
+    },
+    {
+      "id": "q4",
+      "answer": "The steps are known and identical every time, so fixed code gives predictable, consistent results at lower cost, with no model-made choices that could go wrong.",
+      "accepted": [
+        "It is cheaper and more predictable because the order never changes",
+        "Fewer model calls, so lower cost and latency, and more consistent",
+        "The model has no decisions to make, so there is no risk of it choosing the wrong step",
+        "Predictability and lower cost, since the path is already known"
+      ],
+      "rationale": "Any one of these reasons earns full credit: predictability or consistency, lower cost or latency (fewer model calls), or no room for compounding errors from model-made decisions. Saying only that agents are bad, or that workflows are more flexible, is wrong: flexibility is what a fixed workflow gives up."
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "An agent pays off when the number and order of steps cannot be known beforehand, so the model must direct the process. The other three tasks have known, fixed steps, which a workflow handles more cheaply and predictably."
+    },
+    {
+      "id": "q6",
+      "answer": "Use the simplest solution that works: keep fixed workflows for steps that are known in advance, such as booking, and use an agent only where the model must decide the path, since agents cost more and can compound errors.",
+      "accepted": [
+        "Start simple: a fixed workflow where the steps are known, and an agent only for open-ended parts, because agents add cost and error risk",
+        "Only add the complexity of an agent when needed; predictable steps like booking should be workflow code",
+        "Use the simplest design that works, so workflow for well-defined tasks and agent only where flexibility is needed"
+      ],
+      "rationale": "Full credit needs both the principle (simplest solution first, add agency only when needed, because of cost and compounding errors) and its application to this assistant (fixed steps like booking stay workflow, open-ended requests may use an agent). The principle alone is partial. Saying that one agent is always better because it is more flexible is wrong."
+    }
+  ]
+}

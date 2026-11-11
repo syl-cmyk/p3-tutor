@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 18138,
+  "stop_reason": "end_turn",
+  "session_id": "ee09ae71-7c34-4b7d-bd3f-eda1621de5ad",
+  "total_cost_usd": 0.1265463,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 23666,
+    "cache_read_input_tokens": 96463,
+    "output_tokens": 2222,
+    "output_tokens_details": {
+      "thinking_tokens": 567
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23666,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 653,
+        "cache_read_input_tokens": 33525,
+        "cache_creation_input_tokens": 715,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 715
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2222,
+      "cacheReadInputTokens": 96463,
+      "cacheCreationInputTokens": 23666,
+      "webSearchRequests": 0,
+      "costUSD": 0.1265463,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 567,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23666,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "You're right that RL is part of how strong agents get good at tools. But training your own model isn't the right move for your assistant, and your mission lists training and the math inside models as out of scope. Here is the short version of PPO, then what I'd do instead.\n\n**PPO in four steps** (Schulman et al., 2017, arXiv 1707.06347):\n\n1. **Policy gradient.** The *policy* is the model's probability of each next output. If a run of actions earned more reward than expected (the *advantage* A), nudge up the probability of those actions: ∇J = E[∇log π(a|s) · A].\n2. **Reuse samples.** Collecting runs is expensive, so you take several update steps on the same batch. After the first step the policy has changed, so you reweight by the ratio r = π_new(a|s) / π_old(a|s).\n3. **The risk.** If r drifts far from 1, one bad update can wreck the model.\n4. **The clip.** PPO maximizes E[min(r·A, clip(r, 1−ε, 1+ε)·A)]. Once a step moves an action's probability more than about ε (often 0.2) in the direction the advantage favors, the gradient from that action stops.\n\n**Training it yourself would mean:**\n- An open-weights model and GPUs.\n- A reward you can compute automatically, such as \"did it call `check_calendar` with valid arguments\".\n- Thousands of simulated makerspace conversations.\n\nThat's a lot of cost and risk for a team with a small sponsor budget.\n\n**What I'd do instead:**\n- Rewrite your tool descriptions so the model picks the right tool.\n- Collect 30–50 real student requests with the expected tool calls.\n- Rerun that set after every change and count the failures.\n\nThat is the cheap version of the same loop: measure, then improve.\n\nQuick check: in step 2, what is wrong with the ratio r drifting far from 1?\n\nI can write a 15-minute lesson on improving tool calling without training, including how to build that test set. Want it?",
+  "ttft_ms": 593,
+  "type": "result",
+  "duration_ms": 18285,
+  "uuid": "eb341a05-059e-4728-9afc-6cadf0b8d1bd",
+  "ttft_stream_ms": 506,
+  "time_to_request_ms": 60,
+  "first_content_frame_ms": 506,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2222,
+      "cacheReadInputTokens": 96463,
+      "cacheCreationInputTokens": 23666,
+      "webSearchRequests": 0,
+      "costUSD": 0.1265463,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 567,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23666,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

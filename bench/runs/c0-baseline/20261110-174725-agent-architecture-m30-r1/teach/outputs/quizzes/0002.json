@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant program calls the model three times to answer one student's question, using the usual loop. At the third call, what does the model receive as input?",
+      "options": [
+        {"id": "a", "text": "Only the newest tool result, since it remembers the earlier steps itself"},
+        {"id": "b", "text": "The instructions, tools, question, and everything that happened in steps one and two"},
+        {"id": "c", "text": "Only the question and the instructions, with tool results kept on the server"},
+        {"id": "d", "text": "A summary of earlier steps that the model wrote on its own at step two"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with the assistant on Monday and says they prefer metric units. On Thursday they open a new chat. Your program only sends the new chat's messages to the model. What happens?",
+      "options": [
+        {"id": "a", "text": "The assistant knows the preference, because the model keeps past chats"},
+        {"id": "b", "text": "The assistant knows it only if Monday's chat was long enough to be stored"},
+        {"id": "c", "text": "The assistant does not know it, unless your program saved and loaded it"},
+        {"id": "d", "text": "The assistant guesses it correctly because most students prefer metric units"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A run makes two model calls. The fixed part of the input (instructions, tools and question) is 2,000 tokens. The first call outputs a 100-token tool request. The tool result is 3,000 tokens. The second call outputs a 200-token answer. Counting only input tokens, how many input tokens does the model read across the two calls in total? (The program re-sends everything each call, and the second input includes the first call's output.)",
+      "unit": "tokens"
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two sentences: why is giving the assistant a model with a bigger context window not by itself a good reason to put every machine manual into every request?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your assistant uses a memory tool that the model calls to read and write note files. Who actually carries out each file read or write: the model or your program? Answer in one sentence."
+    }
+  ]
+}

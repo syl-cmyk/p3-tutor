@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program re-sends the instructions, tools, question and every earlier request and result, so the third input contains all of steps one and two. Thinking it remembers earlier steps itself (a) is the same mistake as expecting automatic memory.",
+      "distractors": {"a": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "A new session starts with an empty message list; nothing carries over unless the program saved a note or record and loads it at the start. Believing the model keeps past chats (a) or stores them on its own (b) is the misconception that memory between sessions is automatic.",
+      "distractors": {"a": "M3", "b": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": 7100,
+      "tolerance": 0,
+      "rationale": "Call 1 input is 2,000. Call 2 input is 2,000 + 100 (the tool request) + 3,000 (the tool result) = 5,100. Total input read: 2,000 + 5,100 = 7,100. The 200-token answer is output, not input. An answer of 5,100 counts only the last call, as if the first call's input were not read again."
+    },
+    {
+      "id": "q4",
+      "answer": "You would pay for those tokens again at every step, and the model recalls information less well as the context fills, so only the relevant passages should be brought in.",
+      "accepted": [
+        "It costs tokens on every call and accuracy drops as the context gets longer, so retrieve only what is needed.",
+        "More tokens cost more at every step and cause context rot, so it is better to search for the relevant pages."
+      ],
+      "rationale": "Full credit names the cost (paid for on each step) or the quality loss (context rot); both is best. Saying only that the manuals will not fit is partial, since some windows could hold them."
+    },
+    {
+      "id": "q5",
+      "answer": "Your program carries them out; the model only requests the operation.",
+      "accepted": [
+        "The program does, the model just asks for it.",
+        "Your application runs them; the model makes the request."
+      ],
+      "rationale": "The memory tool is client-side: the model outputs a request, the application runs it against storage it controls and returns the result as a tool result. Answering the model shows the earlier misconception that the model runs tools itself (M4)."
+    }
+  ]
+}

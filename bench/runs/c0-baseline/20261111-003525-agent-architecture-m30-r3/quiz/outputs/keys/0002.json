@@ -1,0 +1,49 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow: in a workflow, code written in advance fixes the order of steps; in an agent, the model decides each next step. Both can call tools and both call a model, so tool use (a) or model use (b) does not separate them, and the roles are not reversed (d).",
+      "distractors": {"a": "M7", "b": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "When the path depends on what each result reveals and cannot be listed in advance, the model has to choose the next step, which is what an agent does. Needing tools does not make a task fixed (b), a fixed order is cheaper but cannot handle an unknown path (c), and agents are not always more reliable (d), which is the belief that an agent is simply the better design (M9).",
+      "distractors": {"b": "M7", "c": "M9", "d": "M9"}
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "An agent spends more model calls and its path is harder to predict, and in return it can handle tasks whose steps are not known in advance. A fixed workflow is the one that guarantees each step happens (a), and an agent is not cheaper per request (b) or free of cost (c); believing it is better everywhere is M9.",
+      "distractors": {"a": "M9", "b": "M9", "c": "M9"}
+    },
+    {
+      "id": "q4",
+      "answer": 2,
+      "tolerance": 0,
+      "rationale": "The workflow makes 1 call to label the question plus 1 call to write the answer, 2 in total; the two tool runs are done by the code and are not model calls. The agent made 4, so the workflow makes 4 - 2 = 2 fewer. An answer of 4 or 3 counts the tools as model calls or gives the workflow's total instead of the difference."
+    },
+    {
+      "id": "q5",
+      "answer": "In a workflow the code decides, since the next step was fixed in advance; in an agent the model decides.",
+      "accepted": [
+        "The code decides in a workflow and the model decides in an agent.",
+        "Workflow: the predefined code path. Agent: the model.",
+        "The program's fixed code decides in a workflow, and the model chooses the next step in an agent."
+      ],
+      "rationale": "Full credit needs both halves: workflow means code or a predefined path, agent means the model. Naming only one half is partial. Saying the model decides in both, or the user decides, is wrong."
+    },
+    {
+      "id": "q6",
+      "answer": "The steps and their order are known in advance and must happen every time, so fixed code can guarantee them and run them more cheaply and predictably than a model choosing each step.",
+      "accepted": [
+        "The steps are always the same, so code can do them in order with fewer model calls and no risk of the model skipping one.",
+        "Because the order is known ahead of time, a fixed workflow is cheaper and more predictable.",
+        "The path never varies, so there is nothing for a model to decide, and a workflow costs less and is more reliable."
+      ],
+      "rationale": "Full credit: the steps are known in advance (or never vary) and the answer names a benefit, such as cost, predictability or a guarantee that each step runs. Giving only a vague preference, such as 'it is simpler', is partial. Saying that agents cannot call tools, or that a workflow is smarter, is wrong, and a claim that agents are always better shows M9."
+    }
+  ]
+}

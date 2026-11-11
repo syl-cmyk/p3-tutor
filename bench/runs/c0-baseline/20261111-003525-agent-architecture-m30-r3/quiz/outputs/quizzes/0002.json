@@ -1,0 +1,62 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In a system built around a language model, \"control flow\" means the choice of which step runs next. Which statement correctly separates a workflow from an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow never calls tools, while an agent calls tools to get things done"},
+        {"id": "b", "text": "A workflow never calls a model, while an agent calls a model at each step"},
+        {"id": "c", "text": "In a workflow, the code fixes the step order; in an agent, the model chooses it"},
+        {"id": "d", "text": "In a workflow, the model fixes the step order; in an agent, the code chooses it"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student tells the makerspace assistant, \"My 3D print keeps peeling off the bed.\" Nobody can say in advance which manual pages, checks or follow-up questions the answer will need. Which design fits this request best?",
+      "options": [
+        {"id": "a", "text": "An agent, because the steps depend on what each tool result turns up"},
+        {"id": "b", "text": "A fixed workflow, because any request that needs tools should be fixed"},
+        {"id": "c", "text": "A fixed workflow, because a fixed order is always cheaper than a loop"},
+        {"id": "d", "text": "An agent, because agents are always more reliable than fixed workflows"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Compared with a fixed workflow that does the same job, what does handing the control flow to an agent usually cost your team, and what does it buy?",
+      "options": [
+        {"id": "a", "text": "It costs fewer model calls and buys a guarantee that each step happens"},
+        {"id": "b", "text": "It costs more engineering time and buys a lower price for each request"},
+        {"id": "c", "text": "It costs nothing extra and buys better answers on every kind of request"},
+        {"id": "d", "text": "It costs more calls and less predictability, and buys flexibility on open tasks"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A student asks, \"Is the laser cutter free tomorrow at 3 pm, and do I need training to use it?\" As a fixed workflow, the code makes one model call to label the question as a booking question, then runs check_calendar and check_training_record itself in that order, then makes one model call to write the answer. An agent handling the same question made 4 model calls. How many fewer model calls does the workflow make than the agent?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "In one sentence, who decides what happens after a tool returns its result in a fixed workflow, and who decides it in an agent?"
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Booking a machine always goes the same way: check the student's training record, check the calendar, then write the booking. In one or two sentences, give a reason to build this part as a fixed workflow rather than an agent."
+    }
+  ]
+}

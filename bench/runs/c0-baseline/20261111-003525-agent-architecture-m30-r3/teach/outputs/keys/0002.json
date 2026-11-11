@@ -1,0 +1,38 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "Each call starts from the text the program sends; the model does not keep chats and learns nothing from them. If the program loads nothing about Monday, the model knows nothing about it. Options a, b and d all assume the model remembers by itself (M3).",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 10500,
+      "tolerance": 0,
+      "rationale": "The calls read 2,500, then 3,500, then 4,500 tokens, because each call is sent the whole window so far: 2,500 + 3,500 + 4,500 = 10,500. An answer of 4,500 counts only the final window once; 5,000 or 7,000 forget that earlier text is resent on every call."
+    },
+    {
+      "id": "q3",
+      "answer": "Cost: every call resends and is billed for all of those tokens, on every step of every request. Accuracy: recall gets worse as the window fills (context rot), so more text can mean worse answers.",
+      "accepted": [
+        "It is expensive because all the tokens are processed on each call, and the model recalls less accurately in a very long context.",
+        "High cost per call and context rot: accuracy drops when the window is stuffed."
+      ],
+      "rationale": "Full credit needs both a cost reason (all tokens are paid for on every call) and a quality reason (recall degrades as the context grows). One of the two is partial. Saying it simply will not fit shows M7, the belief that a big window means everything can be loaded."
+    },
+    {
+      "id": "q4",
+      "answer": "a",
+      "rationale": "Compaction summarises the conversation and restarts with the summary, keeping decisions, open problems and key details and dropping redundant raw outputs. Dropping the oldest half (b) or keeping only the last question (d) throws away what the summary should keep, and a bigger window (c) only postpones the problem and adds cost and context rot (M7).",
+      "distractors": {"c": "M7"}
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "The chunk lost its context when the manual was split: nothing in it says which machine it describes. Attaching the machine and section name (or a short generated note, as in contextual retrieval) fixes that. Returning more chunks (a), a bigger window (b) or a stricter prompt (c) leaves the retrieval problem in place; a and b also rest on the idea that more text solves it (M7).",
+      "distractors": {"a": "M7", "b": "M7"}
+    }
+  ]
+}

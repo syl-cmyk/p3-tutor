@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between sessions, and with no saving code the new context holds only the system prompt, the tools and the new question. A large window (c) only holds what the program puts in it, and the model remembering earlier chats (a) is the misconception that memory is automatic.",
+      "distractors": {"a": "M3", "c": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": 7400,
+      "tolerance": 0,
+      "rationale": "Call 1: 2,000 + 100 = 2,100. Call 2: 2,100 + 50 + 400 = 2,550. Call 3: 2,550 + 50 + 150 = 2,750. Total 2,100 + 2,550 + 2,750 = 7,400. An answer of 2,750 counts only the last call; 2,700 counts only the new information, and both miss that the history is re-sent each call."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Safety training status must be exactly right and gates a decision, so it belongs in a system of record the program controls and a tool reads. Preferences and past topics are soft context where a slightly wrong note costs little."
+    },
+    {
+      "id": "q4",
+      "answer": "It does not say which machine or material it is about, so it lacks the context needed to find or interpret it.",
+      "accepted": [
+        "It has no context: it does not name the machine or material",
+        "It does not say which machine it applies to",
+        "The chunk lost the information about what it refers to",
+        "It does not say which machine or material, so search cannot match it to a question"
+      ],
+      "rationale": "Chunking can strip out what the chunk refers to; the fix is to prepend a short description of the machine and section before indexing (contextual retrieval). Answers about the chunk being too short or too long, without the missing-context point, are wrong."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "Compaction is lossy: a summary can drop a detail that matters later. The tools are re-sent with each call so they are not lost (b), a summary is normally much shorter (c), and the window size is fixed (d).",
+      "distractors": {"d": "M7"}
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant's loop is on its third model call for one student question. The model asked for two tools in the first two calls, and both have run. What does the third call contain?",
+      "options": [
+        {"id": "a", "text": "Only the two newest tool results, since the model kept the rest"},
+        {"id": "b", "text": "The whole history so far, which the program sends again"},
+        {"id": "c", "text": "Only the student's question, with the tool results kept outside"},
+        {"id": "d", "text": "The model's own saved memory of the first two calls"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one run, the first model call sends 2,000 tokens. Each later call sends everything the previous call sent, plus 1,000 new tokens of tool results. The run makes three model calls. Ignoring caching and output, how many input tokens are sent in total across the three calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student finishes 3D-printer training on Monday and chats with the assistant again on Thursday in a new conversation. The assistant must know the training is done. What must your program do?",
+      "options": [
+        {"id": "a", "text": "Rely on the model, which carries Monday's chat into Thursday"},
+        {"id": "b", "text": "Save the training fact, then load it into Thursday's context"},
+        {"id": "c", "text": "Use a bigger context window so Monday's chat still fits in"},
+        {"id": "d", "text": "Tell the model in the prompt to remember each student well"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The 80-page laser-cutter manual fits inside your model's context window. A teammate suggests adding the whole manual to every call anyway. What is the strongest reason to retrieve only the relevant chunks instead?",
+      "options": [
+        {"id": "a", "text": "The manual would be sent and paid for on every call, and long contexts recall worse"},
+        {"id": "b", "text": "Models refuse requests that include any document longer than ten pages"},
+        {"id": "c", "text": "Chunks are read faster, but the manual costs the same to send"},
+        {"id": "d", "text": "A manual in the context cannot be used by the model's tools"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Over a long task, an agent's context is nearly full. In one or two sentences, describe one way to keep working that does not simply switch to a larger window."
+    }
+  ]
+}

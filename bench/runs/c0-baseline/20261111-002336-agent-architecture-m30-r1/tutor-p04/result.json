@@ -1,0 +1,151 @@
+{
+  "duration_api_ms": 18440,
+  "stop_reason": "end_turn",
+  "session_id": "15acd24f-de2f-43b5-8d2d-2b630dcee329",
+  "total_cost_usd": 0.1279619,
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 23780,
+    "cache_read_input_tokens": 131502,
+    "output_tokens": 1836,
+    "output_tokens_details": {
+      "thinking_tokens": 191
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23780,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 577,
+        "cache_read_input_tokens": 33950,
+        "cache_creation_input_tokens": 404,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 404
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 1836,
+      "cacheReadInputTokens": 131502,
+      "cacheCreationInputTokens": 23780,
+      "webSearchRequests": 0,
+      "costUSD": 0.1266542,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 191,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23780,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 9447,
+      "outputTokens": 726,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0013077000000000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 444,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 10,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Neither five nor ten. The premise that more agents always give better results isn't true, and for your assistant it points the wrong way.\n\n**Why it's tempting:** splitting work among specialists sounds like a team of people. But agents aren't people. Each one is a separate model loop that re-reads its own instructions and context, and that costs tokens. Anthropic's write-up of its multi-agent research system reports that agents use about 4× the tokens of a plain chat, and multi-agent setups about 15×. They say this only pays off for high-value tasks.\n\n**When splitting helps:** the work divides into many independent pieces that can run in parallel, the information is too big for one context window, or there are many complex tools. **When it doesn't:** the agents need the same shared context, or their steps depend on each other. That's the usual case for a request like \"How do I use the laser cutter, and can I book it Thursday?\". The answer depends on the manual, the student's training status and the calendar, all in one chain. Handing that between agents loses context and adds cost and new ways to fail.\n\n**For your budget:** start with one agent and three tools (search manuals, check calendar, book). Make the fixed steps, like confirming a booking, a plain workflow. Add a second agent only when you can name a measured problem it fixes. For example, if manual lookups flood the context, a separate lookup agent that returns a short summary might earn its cost.\n\nSource: [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system).\n\nQuick check: for the request above, which step would you be most tempted to give its own agent, and what would that agent need to be told by the others?\n\nIf you want, I can turn this into a lesson on when multi-agent pays off. It would probably work better after we cover context and memory, which is next on your list.",
+  "ttft_ms": 830,
+  "type": "result",
+  "duration_ms": 18923,
+  "uuid": "bc99ea9c-ee16-49a1-910e-d57037b416c8",
+  "ttft_stream_ms": 743,
+  "time_to_request_ms": 137,
+  "first_content_frame_ms": 743,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 1836,
+      "cacheReadInputTokens": 131502,
+      "cacheCreationInputTokens": 23780,
+      "webSearchRequests": 0,
+      "costUSD": 0.1266542,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 191,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23780,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 9447,
+      "outputTokens": 726,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0013077000000000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 444,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

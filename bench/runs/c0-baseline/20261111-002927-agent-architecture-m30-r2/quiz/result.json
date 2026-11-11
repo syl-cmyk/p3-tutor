@@ -1,0 +1,151 @@
+{
+  "duration_api_ms": 44261,
+  "stop_reason": "end_turn",
+  "session_id": "3791b1ac-0ea9-457e-94cd-0f810bb2c7cc",
+  "total_cost_usd": 0.18328969999999997,
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 29018,
+    "cache_read_input_tokens": 135021,
+    "output_tokens": 5227,
+    "output_tokens_details": {
+      "thinking_tokens": 1429
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 29018,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 381,
+        "cache_read_input_tokens": 35578,
+        "cache_creation_input_tokens": 4014,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4014
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 5227,
+      "cacheReadInputTokens": 135021,
+      "cacheCreationInputTokens": 29018,
+      "webSearchRequests": 0,
+      "costUSD": 0.18186809999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1429,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 29018,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 8091,
+      "outputTokens": 1225,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0014215999999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 912,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 13,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Quiz 0002 on O4 is ready: `quizzes/0002.json`, with its key in `keys/0002.json`. I didn't run any solver check. I answered each item from its stem alone and they matched the key.\n\n- **Contents:** six items, three multiple choice, one numeric and two short answer. They cover who owns the control flow, classifying a booking design, a cost comparison in model calls, why a fixed workflow suits known steps, which task is a real agent candidate, and answering \"make it all one agent\".\n- **Context:** the examples come from the makerspace assistant, and the cost item ties to the budget constraint. The source is Anthropic's \"Building effective agents\".\n- **Ahead of the lessons:** no lesson on O4 exists yet, so this is a check of the objective itself and is ahead of the lessons.\n- **Misconceptions:** the key's multiple-choice items have no `distractors` mapping. None of the workspace's existing misconception ids (M1, M3, M4, M6) fits these wrong answers, and I didn't want to invent new ids. The rationales describe the typical errors in words.\n\nDo you want a lesson on O4 before you take it?",
+  "ttft_ms": 1170,
+  "type": "result",
+  "duration_ms": 44688,
+  "uuid": "6649ae99-d08c-459f-85bd-b1c1b8340695",
+  "ttft_stream_ms": 609,
+  "time_to_request_ms": 89,
+  "first_content_frame_ms": 609,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 5227,
+      "cacheReadInputTokens": 135021,
+      "cacheCreationInputTokens": 29018,
+      "webSearchRequests": 0,
+      "costUSD": 0.18186809999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1429,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 29018,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 8091,
+      "outputTokens": 1225,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0014215999999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 912,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

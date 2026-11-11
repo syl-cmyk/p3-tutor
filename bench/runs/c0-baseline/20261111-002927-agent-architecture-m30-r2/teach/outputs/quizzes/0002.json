@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your makerspace assistant has no code that saves anything between sessions. Yesterday a student finished a chat with it. Today the student opens a new chat and asks, \"Did I finish my booking yesterday?\" Which statement is correct?",
+      "options": [
+        {"id": "a", "text": "It can answer, because the model keeps every earlier chat it has had"},
+        {"id": "b", "text": "It cannot know, because the new context starts without yesterday's chat"},
+        {"id": "c", "text": "It can answer, as long as the model's context window is big enough"},
+        {"id": "d", "text": "It cannot know, because the booking system hides records from the model"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An agent's system prompt and tool descriptions take 2,000 tokens and the student's question takes 100. The model is called three times: the first call ends with a tool request of 50 tokens whose result is 400 tokens; the second ends with a tool request of 50 tokens whose result is 150 tokens; the third writes the final answer. The program re-sends the full history on every call. How many input tokens are sent in total across the three calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team must decide which saved information belongs in a database that the program controls, rather than in a free-form note that the model writes for itself. Which item belongs in the database?",
+      "options": [
+        {"id": "a", "text": "That a student tends to prefer booking slots on weekends"},
+        {"id": "b", "text": "That a student asked about filament types in a past chat"},
+        {"id": "c", "text": "That a student likes short answers without extra detail"},
+        {"id": "d", "text": "That a student passed the safety training for the band saw"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "When manuals are split into chunks for search, a chunk reading \"Set the speed to 40% and the power to 70%\" is hard to retrieve correctly. In one sentence, what is the problem with this chunk?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A long session nears the context limit, so your program asks the model to summarize the conversation and starts a new context from that summary. What is the main risk of this step?",
+      "options": [
+        {"id": "a", "text": "The summary may leave out a detail that matters later"},
+        {"id": "b", "text": "The model loses its tools and cannot call them again"},
+        {"id": "c", "text": "The summary can never be shorter than the original chat"},
+        {"id": "d", "text": "The context window shrinks by the size of the summary"}
+      ]
+    }
+  ]
+}

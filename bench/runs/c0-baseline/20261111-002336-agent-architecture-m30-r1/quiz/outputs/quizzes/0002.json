@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which statement correctly tells a workflow apart from an agent?",
+      "options": [
+        {"id": "a", "text": "In a workflow the model chooses the steps; in an agent the code does"},
+        {"id": "b", "text": "A workflow never calls any tools, while an agent always calls tools"},
+        {"id": "c", "text": "In a workflow the code sets the steps; in an agent the model does"},
+        {"id": "d", "text": "A workflow runs a smaller model, while an agent runs a larger one"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every time a student asks to book a machine, the makerspace assistant must do the same three things in the same order: check the calendar for that slot, create the booking if the slot is free, then send a confirmation. Which design fits this part of the assistant best?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow: code runs the three steps in order, with no model choosing"},
+        {"id": "b", "text": "An agent, because it calls tools, and anything that calls tools is an agent"},
+        {"id": "c", "text": "An agent, because it can adapt if the booking steps change in the future"},
+        {"id": "d", "text": "An agent, because the model can then decide to skip the calendar check"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "For a booking request, a fixed workflow makes exactly 2 model calls. An agent handling the same request averages 5 model calls, because each loop step is one call. Over 100 booking requests, how many more model calls does the agent make than the workflow? Count calls only, and ignore their size.",
+      "unit": "model calls"
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Your sponsor gave you a small model budget. When a task's steps are the same every time, what does choosing an agent over a fixed workflow add to your costs? Answer in a few words."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which request to the makerspace assistant is the best candidate for an agent, rather than a fixed workflow?",
+      "options": [
+        {"id": "a", "text": "Sending every student a reminder the evening before a booking"},
+        {"id": "b", "text": "Showing a machine's open booking slots for one chosen day"},
+        {"id": "c", "text": "Emailing the manager whenever a student cancels a booking"},
+        {"id": "d", "text": "Finding why a student's laser cuts are scorched, with no set steps"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A teammate designs this: the model reads each message and labels it \"manual question\", \"availability\" or \"booking\". Code then runs the one hard-coded handler for that label. Who owns the control flow, and so what is the design?",
+      "options": [
+        {"id": "a", "text": "The model, because its label decides what happens next, so it is an agent"},
+        {"id": "b", "text": "The code, because it defines every path and the model only picks one, so it is a workflow"},
+        {"id": "c", "text": "The model, because it runs on every request, so it is an agent"},
+        {"id": "d", "text": "Neither, because a design with no loop and no tools is not a workflow"}
+      ]
+    }
+  ]
+}

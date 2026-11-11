@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 12732,
+  "stop_reason": "end_turn",
+  "session_id": "bc086524-dee3-4951-84b2-4cc9c3e8a9f4",
+  "total_cost_usd": 0.09220989999999998,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 16983,
+    "cache_read_input_tokens": 85419,
+    "output_tokens": 1572,
+    "output_tokens_details": {
+      "thinking_tokens": 185
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 16983,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 552,
+        "cache_read_input_tokens": 27168,
+        "cache_creation_input_tokens": 389,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 389
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1572,
+      "cacheReadInputTokens": 85419,
+      "cacheCreationInputTokens": 16983,
+      "webSearchRequests": 0,
+      "costUSD": 0.09220989999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 185,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 16983,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The premise isn't right: more agents don't always give better results. So \"five or ten?\" isn't the question to start with.\n\n**Why it's tempting.** A team of ten people can do more than a team of two. But people work at the same time and don't pay per sentence. Agents cost money every time they speak.\n\n**What an extra agent costs.** Each agent is its own loop of model calls. Every handoff between agents means writing a summary, then another agent reading it. That costs tokens, and detail gets lost on the way. Your sponsor's budget is small, so this matters.\n\n**Example.** A student asks, \"Can I use the laser cutter Friday at 3?\" One agent can do this. It checks the manual and the calendar, then books the slot. If you split it into a manuals agent, a calendar agent, a booking agent and a manager agent, you pay for at least four loops and three handoffs. The answer is no better.\n\n**When splitting does pay off:**\n- The tasks need very different context, such as a 200-page manual that would crowd out everything else.\n- The tasks are independent and can run in parallel.\n- One agent has so many tools that it starts picking the wrong one.\n\nYour assistant mostly has none of these yet. Start with one agent, and make the fixed steps plain workflow code (that's a later topic). Split only when you can name the specific problem the split fixes. That reasoning is also what a design review will want to hear.\n\n**Quick check:** Of your three jobs (answer from manuals, check the calendar, book time), which one is the strongest candidate for its own agent, and why?\n\nYour next topic is context and memory, because that's where the manual-length problem lives. I can write a lesson on when multi-agent splitting pays off after that, if you'd like.",
+  "ttft_ms": 1062,
+  "type": "result",
+  "duration_ms": 12852,
+  "uuid": "90edcb96-0655-433c-a2cc-a3a298d6a9e8",
+  "ttft_stream_ms": 561,
+  "time_to_request_ms": 72,
+  "first_content_frame_ms": 561,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1572,
+      "cacheReadInputTokens": 85419,
+      "cacheCreationInputTokens": 16983,
+      "webSearchRequests": 0,
+      "costUSD": 0.09220989999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 185,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 16983,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow: in a workflow, developer code fixes the sequence of steps; in an agent, the model decides the next step and when to stop. Option a swaps the two. Tools (b) and model size (d) do not separate them: workflows can call tools too.",
+      "distractors": {"b": "M7", "d": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "The steps and their order never vary, so code can own the control flow. A fixed workflow is cheaper, faster and more predictable, and the model has no choices to make. Using tools does not make something an agent (b), future flexibility is not a reason to pay for it now (c), and a model that may skip the calendar check is a risk here, not a benefit (d).",
+      "distractors": {"b": "M7", "c": "M9", "d": "M9"}
+    },
+    {
+      "id": "q3",
+      "answer": 300,
+      "tolerance": 0,
+      "rationale": "The agent makes 5 x 100 = 500 calls and the workflow makes 2 x 100 = 200, so the agent makes 300 more. A per-request difference of 3 (answering 3) forgets to scale to 100 requests."
+    },
+    {
+      "id": "q4",
+      "answer": "Higher cost: more model calls per request, and more latency",
+      "accepted": [
+        "higher cost",
+        "more cost",
+        "more model calls",
+        "more model calls per request",
+        "it costs more",
+        "more tokens",
+        "higher cost and latency",
+        "more calls, more latency"
+      ],
+      "rationale": "An agent decides its steps with extra model calls, so each request costs more and takes longer than a workflow that runs fixed steps, with no benefit when the steps never vary. Answers about unpredictability or accuracy alone, without cost or number of calls, miss the budget point. Saying an agent costs nothing extra shows M9: that flexibility is free."
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "An agent pays off when the steps cannot be known in advance: diagnosing scorched cuts may need manual searches, follow-up questions and settings checks in an order that depends on what turns up. The other three are the same steps every time, so a fixed workflow does them more cheaply and reliably.",
+      "distractors": {"a": "M9", "b": "M9", "c": "M9"}
+    },
+    {
+      "id": "q6",
+      "answer": "b",
+      "rationale": "This is a routing workflow. The model makes a decision, but code defines every possible path and runs the handler, so the code owns the control flow. A model making a choice inside fixed paths does not make the design an agent (a, c): in an agent the model chooses its own steps and when to stop. A workflow needs neither a loop nor tools (d).",
+      "distractors": {"a": "M10", "c": "M10", "d": "M7"}
+    }
+  ]
+}
