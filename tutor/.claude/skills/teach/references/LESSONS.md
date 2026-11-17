@@ -26,7 +26,7 @@ When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes
   | Part | Words |
   |---|---|
   | Opening: the win, why it matters for the mission, a warm-up recall question | 300 |
-  | Four to six sections, each one idea: explanation, example, practice check | 600 to 800 each |
+  | Three or four sections, each one idea: explanation, traces and examples, practice checks | 800 to 1,000 each |
   | A worked example, then a practice task the learner does with the steps faded | 600 |
   | Summary, a prompt to explain it in their own words, where to go next | 300 |
 
@@ -45,6 +45,27 @@ When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes
 6. **Summary:** the key ideas in three to five lines, and a prompt to explain the main idea in their own words before moving on.
 7. **Go further:** the primary source, the single most high-quality, high-trust resource you found, to read or watch next; two to four other sources you cited; and a community where they can test the skill (see Wisdom below).
 8. **Closing:** a reminder that they can ask you follow-up questions in the chat about anything unclear, and that a short quiz on this lesson is ready when they are.
+
+## Voice and density
+
+The learner reads a lesson the way they would listen to a friend who is good at this, so write it that way, at every length.
+
+- **Open every part with its point.** The first one or two sentences under each heading say, in plain words and with no numbers or new terms, what this part is about and why it comes next, so the learner gets the point at a glance before any detail.
+  Write them so that reading only these openers, part after part, tells the lesson's story as a chain of small steps, each following from the one before; for example: "The model only sees what's in its window. So every step, you're choosing what to put in."
+  Numbers, traces, calculations and sources come after the opener, never before it.
+
+- **Casual and direct.** Talk to the learner as "you", use contractions, and say things the way you would say them out loud at a whiteboard.
+  Never narrate a source ("X describes ...", "According to Y, ..."): say the idea in plain words, then put the citation link right after it.
+  Not: "The documentation describes retaining compact references and retrieving the full content on demand."
+  But: "Don't paste the whole file in. Keep a pointer to it, like its path, and load it only when you need it ([source](...))."
+- **Short paragraphs.** At most three sentences per paragraph, one idea each.
+  When a paragraph grows, split it, or turn it into a numbered list of short steps.
+- **Few headings.** Group the lesson into at most six headed parts, even at 30 or 60 minutes; use sub-steps, examples and practice inside a part instead of new headings.
+  Short means short paragraphs and few headings, not fewer minutes: the lesson still fills the requested length, with more worked examples and practice rather than longer prose.
+- **One example per part, built only from what came before.** A worked example uses only terms, labels and ideas the lesson has already explained in plain words; never introduce a new name or metaphor for the first time inside an example or a practice task.
+  Give each part one worked example; when a second idea needs its own example, give it its own part instead of adding it to the end of another.
+- **Keep the step-by-step traces.** Whenever the lesson shows a process, show it as a numbered trace of what actually happens, one line per step, for example: the user's message, what the system decides, what comes back, what it replies.
+  These traces are what makes an idea click for this learner, so give every main idea one.
 
 ## Knowledge and skills
 
@@ -108,3 +129,6 @@ Check the lesson once against this list, and fix anything that fails:
 - Every external link came from this session's search results or fetched pages.
 - The practice questions are not the quiz items, and the lesson gives away no quiz answer.
 - The lesson opens with the win and closes with the primary source and the reminder to ask you questions.
+- Every headed part opens with one or two plain sentences that give its point, and the openers read in order tell the whole lesson.
+- Each part has one worked example, and no example or practice task uses a term or label the lesson has not already explained.
+- No paragraph runs past three sentences, there are at most six headed parts, and no sentence narrates a source instead of saying the idea.
