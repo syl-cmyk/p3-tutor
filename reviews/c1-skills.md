@@ -66,6 +66,60 @@ I want each worked example to use only ideas the lesson already explained, and o
 - Files: tutor/.claude/skills/teach/references/LESSONS.md
 - Why: The last part used "three homes" before explaining it and packed a sorting example and a cost calculation into one part, so teach's lesson guide now builds every worked example only from ideas already explained and gives each part one example, with a second idea getting its own part.
 
+### Round 4
+
+**Run:** bench/runs/_live/20261117-202706-agent-architecture-m30-r1, tutor-p01 to tutor-p06
+
+
+**My thoughts:**
+
+The lesson changes from Round 3 helped, and the lesson is good now, so this round is about the tutor job.
+The tutor never gives the letter, which is good, but its hints point to the answer anyway. In p01 it asks what changes "at the point where the loop decides to stop", and in p02 it says "It's a language model, so it can only write text", which rules out options a and d.
+When a question goes beyond the course (p05, deriving PPO), it goes too deep with formulas instead of first pulling me back to my project.
+I want a tutor skill whose hints fit every option equally, and that answers an off-topic question in one or two plain sentences, then brings me back to my project.
+
+
+**What changed:**
+
+- Kind: new skill
+- Files: tutor/.claude/skills/tutor/SKILL.md
+- Why: The tutor job still ran inside /teach, whose hints in p01 and p02 pointed to the answer and which met p05 with PPO math, so a tutor skill of its own now tests every hint against each option and drops any topic fact the item tests, and answers a question beyond the course in one or two plain sentences before bringing the learner back to their mission.
+
+### Round 5
+
+**Run:** TODbench/runs/_live/20261117-204150-agent-architecture-m30-r1, quiz only
+
+
+**My thoughts:**
+
+The tutor skill helped: behavior met went from 0.50 to 0.83, and the hints in p01 and p02 no longer point to an answer. p06 got worse, though: the new analogy has no one who actually carries out the request.
+The quiz is fine: clear questions and a mix of types (four mcq, one numeric, one short).
+I want a quiz skill of its own that keeps this quality, with shorter stems, one or two sentences each.
+
+**What changed:**
+
+- Kind: new skill
+- Files: tutor/.claude/skills/quiz/SKILL.md
+- Why: The quiz was fine but still came from /teach, so a quiz skill of its own keeps the clear items and the mix of types and caps every stem at one or two short sentences, as these thoughts ask.
+
+### Round 6
+
+**Run:** bench/runs/_live/20261117-204711-agent-architecture-m30-r1, quiz, grade-s1 and grade-s2
+
+
+**My thoughts:**
+
+The quiz skill helped: stems are shorter, q1 is one sentence, and key agreement stayed at 1.00.
+Grading from /teach is already good: all 12 verdicts agree, and the feedback says plainly what part was wrong, like q2 in s1.
+I want a grade skill of its own that keeps this: a straight right or wrong first, then the exact part that was wrong, in two or three sentences.
+
+
+**What changed:**
+
+- Kind: new skill
+- Files: tutor/.claude/skills/grade/SKILL.md
+- Why: Grading was already good but still came from /teach, so a grade skill of its own keeps the verdicts and opens every item's feedback with a plain right or wrong, then names the exact part that was off in two or three sentences, as these thoughts ask.
+
 ## Major review
 
 **Run:** bench/runs/c1-skills/TODO

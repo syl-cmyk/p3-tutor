@@ -26,3 +26,30 @@ An example of a finished entry:
 - With and without: reviews/c1-skills.md, Round 1 (without) and Round 2 (with)
 - Review: TODO
 - Kept in final: TODO
+
+### tutor
+
+- Kind: skill
+- Step added: c1-skills
+- Purpose: TODO
+- With and without: reviews/c1-skills.md, Round 4 (without) and Round 5 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### quiz
+
+- Kind: skill
+- Step added: c1-skills
+- Purpose: TODO
+- With and without: reviews/c1-skills.md, Round 5 (without) and Round 6 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### grade
+
+- Kind: skill
+- Step added: c1-skills
+- Purpose: TODO
+- With and without: reviews/c1-skills.md, Round 6 (without) and Round 7 (with)
+- Review: TODO
+- Kept in final: TODO
