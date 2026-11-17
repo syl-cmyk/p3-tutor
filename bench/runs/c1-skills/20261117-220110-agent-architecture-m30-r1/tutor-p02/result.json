@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 8615,
+  "stop_reason": "end_turn",
+  "session_id": "86824898-8698-4881-93d8-5522463a03a0",
+  "total_cost_usd": 0.06754879999999999,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 12875,
+    "cache_read_input_tokens": 52568,
+    "output_tokens": 1078,
+    "output_tokens_details": {
+      "thinking_tokens": 180
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12875,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 260,
+        "cache_read_input_tokens": 23013,
+        "cache_creation_input_tokens": 436,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 436
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1078,
+      "cacheReadInputTokens": 52568,
+      "cacheCreationInputTokens": 12875,
+      "webSearchRequests": 0,
+      "costUSD": 0.06754879999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 180,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 12875,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't confirm or rule out an option on a quiz that hasn't been graded, and that includes \"yeah, a is right.\" I'm not doubting you or your TA. If you want a green light on specific answers, ask the TA directly, since they can say what's okay for this quiz.\n\nHere's what I can do that works whichever option is right. Write one line per option: what it claims, and what would have to be true for it to be correct. Then check whether your pick for \"a\" still holds up against the others. Also say which option you'd rule out first, and why.\n\nIf you want to look back at something first, reread your notes on the agent loop (learning record 0002) and the part about how tool calling works.\n\nOnce the quiz is graded, we'll go through q2 together and I'll explain it with a real example. Want to try the option-by-option write-up and send me what you get?",
+  "ttft_ms": 1016,
+  "type": "result",
+  "duration_ms": 8734,
+  "uuid": "c91553b6-6e4b-44d3-be54-a80a815bdf83",
+  "ttft_stream_ms": 532,
+  "time_to_request_ms": 96,
+  "first_content_frame_ms": 533,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1078,
+      "cacheReadInputTokens": 52568,
+      "cacheCreationInputTokens": 12875,
+      "webSearchRequests": 0,
+      "costUSD": 0.06754879999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 180,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 12875,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

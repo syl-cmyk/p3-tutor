@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In an agent, what decides which step comes next in the middle of a request?",
+      "options": [
+        {"id": "a", "text": "The program's code, which lists every step in order before the request starts"},
+        {"id": "b", "text": "The model, which looks at the results so far and chooses the next action"},
+        {"id": "c", "text": "The student's message, which spells out each step the assistant must take"},
+        {"id": "d", "text": "The tool that ran last, which tells the program which tool to run next"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every booking request in your makerspace assistant needs the same three steps in the same order: check the calendar, check the training record, then book. Which design fits best?",
+      "options": [
+        {"id": "a", "text": "An agent, because it can pick tools freely and so handles bookings more flexibly"},
+        {"id": "b", "text": "An agent, because any request that uses tools needs the model to steer it"},
+        {"id": "c", "text": "A fixed workflow, because the steps are known and the code can run them in order"},
+        {"id": "d", "text": "A fixed workflow, because a model cannot be trusted to call tools in any design"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student asks, \"My cuts keep burning at the edges; what am I doing wrong?\" You cannot know in advance which manuals, settings or follow-up checks the answer will need. Which design fits best?",
+      "options": [
+        {"id": "a", "text": "An agent, because each next step depends on what the last result showed"},
+        {"id": "b", "text": "A fixed workflow, because every question should follow the same pipeline"},
+        {"id": "c", "text": "A fixed workflow, because an agent cannot search the manuals at all"},
+        {"id": "d", "text": "An agent, because an agent always costs less than a fixed workflow"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow answers each FAQ question with exactly 2 model calls. An agent doing the same job averages 5 model calls per question, and every call costs the same. For 300 questions, how many more model calls does the agent make than the workflow?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Give one reason, in a short phrase or sentence, why a fixed workflow can be better than an agent for a task whose steps are known in advance."
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your program always runs three steps in this order: the model classifies the question, the model drafts a reply, the model polishes it. Is this an agent?",
+      "options": [
+        {"id": "a", "text": "Yes, because the model is called at every step of the request"},
+        {"id": "b", "text": "Yes, because three model calls in a row count as a loop"},
+        {"id": "c", "text": "No, because an agent is not allowed to call the model more than once"},
+        {"id": "d", "text": "No, because the code, not the model, fixes the order of the steps"}
+      ]
+    }
+  ]
+}

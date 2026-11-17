@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 32136,
+  "stop_reason": "end_turn",
+  "session_id": "8aabb46e-b9f0-49cd-96b2-5275e90908b7",
+  "total_cost_usd": 0.15849989999999997,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 26010,
+    "cache_read_input_tokens": 92239,
+    "output_tokens": 4522,
+    "output_tokens_details": {
+      "thinking_tokens": 1181
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 26010,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 270,
+        "cache_read_input_tokens": 32978,
+        "cache_creation_input_tokens": 3606,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3606
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 4522,
+      "cacheReadInputTokens": 92239,
+      "cacheCreationInputTokens": 26010,
+      "webSearchRequests": 0,
+      "costUSD": 0.15849989999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1181,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 26010,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 11,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Your O4 quiz is ready at `quizzes/0002.json`. It has six questions on workflows versus agents and who owns the control flow.\n\n- **Who decides the next step:** one question on what makes something an agent.\n- **Picking a design:** two makerspace cases, one where the steps are known and one where they aren't.\n- **Cost:** one numeric question on the extra model calls an agent makes over a fixed workflow.\n- **Why a fixed workflow:** one short answer where you give a reason.\n- **Calling the model at every step:** one stretch question on whether that makes something an agent.\n\nThere are no lessons on O4 yet, so this quiz is ahead of the lessons. It checks the objective as written. Give each question a go from what you know, and tell me which ones you're stuck on. I'll give you a hint rather than the answer.",
+  "ttft_ms": 1063,
+  "type": "result",
+  "duration_ms": 32860,
+  "uuid": "18d1ec88-0117-43ed-ac2b-d6b3f9f73066",
+  "ttft_stream_ms": 538,
+  "time_to_request_ms": 64,
+  "first_content_frame_ms": 538,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 4522,
+      "cacheReadInputTokens": 92239,
+      "cacheCreationInputTokens": 26010,
+      "webSearchRequests": 0,
+      "costUSD": 0.15849989999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1181,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 26010,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

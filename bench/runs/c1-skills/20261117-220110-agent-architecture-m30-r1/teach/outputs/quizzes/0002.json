@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your assistant on Monday and opens a new session on Wednesday. Unless the program loads something extra, what does the model know about Monday's chat when Wednesday's session starts?",
+      "options": [
+        {"id": "a", "text": "Everything, because the model itself keeps every chat it has had"},
+        {"id": "b", "text": "Only the last few messages, because it keeps a short tail"},
+        {"id": "c", "text": "Nothing, because it sees only what the program sends in the call"},
+        {"id": "d", "text": "A summary that it wrote itself and stored inside its own weights"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In your agent, the system prompt, tool definitions and the student's question together take 1,000 tokens. Each tool step adds 600 tokens (the model's request plus the tool's result), and the program resends everything on every call. How many input tokens does the model receive on its 4th call, which comes after three tool steps?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "All your machine manuals together come to 900,000 tokens, and the model's context window is 1,000,000 tokens. Which is the best reason to retrieve a few chunks instead of loading all the manuals into every call?",
+      "options": [
+        {"id": "a", "text": "Every call would pay for 900,000 tokens, and answers can get worse"},
+        {"id": "b", "text": "A model can never read more than 200,000 tokens of manuals"},
+        {"id": "c", "text": "Fitting under the limit already guarantees answers as good as short ones"},
+        {"id": "d", "text": "Retrieval is what lets the model remember the manuals between sessions"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A notes file survives after a session ends. In one sentence, what must the program do at the start of the next session for the model to benefit from a note in that file?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A long session is close to filling the context window. What does compaction do?",
+      "options": [
+        {"id": "a", "text": "Deletes the system prompt so that new messages have more space"},
+        {"id": "b", "text": "Summarizes the history so the session continues from that summary"},
+        {"id": "c", "text": "Saves the full history to a file and loads the whole file back"},
+        {"id": "d", "text": "Raises the window limit for the rest of this one session only"}
+      ]
+    }
+  ]
+}

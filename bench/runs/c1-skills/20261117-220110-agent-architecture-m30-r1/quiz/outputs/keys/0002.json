@@ -1,0 +1,46 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "In an agent the model owns the control flow: after each result it chooses the next action. Code that lists the steps in advance (a) is a workflow."
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "When the steps are known and always the same, a fixed workflow lets the code own the order, which is cheaper and more predictable. Using tools does not by itself call for an agent (b), and flexibility is not needed here (a)."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "When the path cannot be known in advance, the next step depends on what comes back, so the model has to own the control flow: that is an agent. A fixed pipeline (b) cannot adapt to an open-ended question."
+    },
+    {
+      "id": "q4",
+      "answer": 900,
+      "tolerance": 0,
+      "rationale": "The agent makes 300 x 5 = 1500 calls and the workflow 300 x 2 = 600, a difference of 900. An answer of 3 is the per-question gap and has not been scaled to 300 questions."
+    },
+    {
+      "id": "q5",
+      "answer": "It is cheaper and more predictable, because the code fixes the steps and the model makes fewer calls.",
+      "accepted": [
+        "cheaper",
+        "more predictable",
+        "fewer model calls",
+        "lower cost",
+        "easier to test and debug",
+        "more reliable",
+        "the steps are fixed so the code can run them without the model choosing",
+        "the model cannot take a wrong turn or loop"
+      ],
+      "rationale": "Any one of cost, predictability, reliability or ease of testing is correct, since a fixed workflow skips the model's choice of next step and needs fewer calls. Saying it is more flexible or smarter is wrong."
+    },
+    {
+      "id": "q6",
+      "answer": "d",
+      "rationale": "The code fixes the order of the steps, so it owns the control flow and this is a workflow, even though the model is called at every step. Using the model many times (a, b) does not make it an agent; the model must choose the steps."
+    }
+  ]
+}

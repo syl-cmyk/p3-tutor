@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.55; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #ccc; }
+    code { font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+<h1>Context and memory in an agent</h1>
+<p>Lesson: <a href="../lessons/0001-context-and-memory.html">Context and memory</a>.</p>
+<h2>Where does it live?</h2>
+<table>
+  <tr><th>Kind of information</th><th>Lives in</th><th>Makerspace example</th></tr>
+  <tr><td>Needed on every call</td><td>Context (system prompt)</td><td>Rules: never book without training</td></tr>
+  <tr><td>About one student, needed next visit</td><td>Notes, loaded at session start</td><td>Training done; usual slot</td></tr>
+  <tr><td>Long, looked up by topic</td><td>Retrieval from a manual store</td><td>Laser cutter manual chunks</td></tr>
+  <tr><td>Old and re-fetchable</td><td>Clear from context</td><td>A calendar lookup from 10 steps ago</td></tr>
+</table>
+<h2>Rules of thumb</h2>
+<ul>
+  <li>The model sees only what is in the call. The program resends the whole history every step.</li>
+  <li>Input cost = sum over calls of the context size at each call (4 calls: 1,530 + 1,980 + 4,430 + 4,630 = 12,570).</li>
+  <li>A fuller window can mean worse recall (context rot): keep it small.</li>
+  <li>Nothing carries across sessions unless the program saves it and loads it back.</li>
+  <li>Retrieval: chunk the manual, search (meaning via embeddings and exact words via BM25), put the top few chunks in context.</li>
+  <li>Long session: compaction (summarize and continue); put must-keep facts in notes.</li>
+</ul>
+</body>
+</html>

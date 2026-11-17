@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back for the next step."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a request naming the tool and its arguments, like check_calendar(laser cutter, tomorrow); the program does the actual running."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Not quite. You picked 'left to run longer, it will eventually fix the bug', but it has made the same edit and hit the same failure 40 times, so more steps won't change anything. The loop needs a stopping condition, like a step limit, that ends it and reports back to a person."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Partly right. 4 is the correct count, but your reason is off: 'the model runs check_calendar, then search_manuals...' is not what happens. The model only requests each tool, the program runs it, and each result triggers another model call. So 3 requests plus 1 final answer is 4 calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The result goes back in as the model's next input, and the model uses it to decide its next step. Your group-chat comparison fits: the model can only react to what's in front of it."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. The model does choose from what the program tells it about each tool, and the name is part of that. But it relies on the whole description: what the tool does and what parameters it takes. A name alone can mislead, like a tool called check that actually books a slot."
+    }
+  ],
+  "summary": "You've got the loop itself and what the model outputs when it calls a tool. Work on who does what: the program runs the tools, and the model only requests them from their descriptions. Next, try tracing the laser cutter question from q4 again, writing 'model' or 'program' next to every step."
+}

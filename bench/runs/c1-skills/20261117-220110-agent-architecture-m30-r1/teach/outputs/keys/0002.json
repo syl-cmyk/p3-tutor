@@ -1,0 +1,40 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "A model called from code keeps nothing between calls or sessions: it sees only what the program sends in the call. Anything that should carry over has to be saved by the program and loaded back in. The other options assume the model remembers earlier chats on its own (M3).",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 2800,
+      "tolerance": 0,
+      "rationale": "The 4th call carries the 1,000 fixed tokens plus the three earlier steps, 3 x 600 = 1,800, so 1,000 + 1,800 = 2,800. An answer of 1,600 counts only the newest step, as if the program sent just the new result (M7). An answer of 3,400 counts four steps."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "The program resends the whole context on every call, so 900,000 tokens would be paid for on every step, and recall tends to degrade as the window fills (context rot). Fitting under the limit does not make a full window as good as a short one (M8). There is no 200,000-token reading limit here, and retrieval does not give memory between sessions (M3); notes do.",
+      "distractors": {"c": "M8", "d": "M3"}
+    },
+    {
+      "id": "q4",
+      "answer": "Read the relevant notes from storage and put them into the new session's context window.",
+      "accepted": [
+        "Load the note into the context",
+        "Read the notes and include them in the new window",
+        "Load the saved notes back into the model's context at the start",
+        "It reads the notes file and adds the notes to the prompt"
+      ],
+      "rationale": "Notes live outside the context window, so they help only once the program reads them and puts them into the next call's context. An answer that the model remembers the notes on its own shows M3."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Compaction summarizes the conversation so far and continues in a fresh window from that summary, which keeps the active context small. It does not delete the system prompt, it does not reload the full history (that would refill the window), and it does not raise the limit.",
+      "distractors": {}
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. What makes it an agent is the loop: the model picks an action, the program runs it, and the result goes back to the model."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You picked 'The calendar entries, which it read by opening the booking system on its own', but the model never touches the booking system. It only outputs a request naming check_calendar with the machine and date, and the program around it runs the tool."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. Repeating the same failing step won't fix itself, so you need a stopping condition like a step limit that hands the problem back to a person."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You said 1, with the model running the 3 tools itself. The program runs the tools, and each tool result goes back to the model for another call: 3 tool requests plus 1 final answer is 4 calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. 'Sends it back to the model' is the what, and that's correct. You're missing the why: the model needs the result in its next input so it can decide its next step or write the final answer."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "Partly right. The first part is spot on: the model gets a list of tool names and descriptions and picks the one that fits. The part that's off is 'it remembers on its own which tool it picked in earlier sessions'. Nothing is remembered automatically between sessions, it only knows what the program puts in its input."
+    }
+  ],
+  "summary": "You've got the big picture of the agent loop and when to stop it, and you know the model picks tools from descriptions. The thing to fix is who does what: the model only asks for a tool, and the program runs it and feeds the result back. Try redoing q4 by writing out each model call and each program step on a line of its own."
+}
