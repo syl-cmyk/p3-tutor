@@ -122,108 +122,127 @@ I want a grade skill of its own that keeps this: a straight right or wrong first
 
 ## Major review
 
-**Run:** bench/runs/c1-skills/TODO
+**Run:** bench/runs/c1-skills/20261117-220110-agent-architecture-m30-r1
 
 **Live tries:**
 
-TODO
+Live try on 2026-11-19, tutor in tutor/, quiz 0001 on context and memory.
+The grading is direct: each item says right or wrong first, then why. The quiz is fairly easy, but I want the difficulty to rise step by step. There are a few examples, but I would like one short example of what goes into CLAUDE.md, for item 3. Item 2 uses the word "setup" without explaining it, so I did not know what to count.
+
 
 ### Lesson
 
 #### Technical correctness and facts
 
-Rating: TODO
+Rating: 4
 
-TODO
+Misconceptions are named but never shown with a simple real example. A short numeric case, worked through step by step, would make the wrong idea and the correction click.
+
 
 #### Pedagogy
 
-Rating: TODO
+Rating: 4
 
-TODO
+After each explanation there are examples and a quiz to try yourself, which is the right order. But some parts explain the idea before any example, and I could not follow those until I reached the example.
+
 
 #### Alignment with the learning goal
 
-Rating: TODO
+Rating: 5
 
-TODO
+The lesson explains what to keep in the context and what to leave out: it only brings in the few passages a question needs, not the whole manual. The worked example makes it concrete, with about 900 tokens fetched instead of 12,000.
+
 
 #### Overall quality
 
-Rating: TODO
+Rating: 4
 
-TODO
+Good overall, but short: the lesson sits right at the low end of the requested length (ratio 0.60). I would like more detail in the places where an idea is only named, such as the misconceptions and the steps for what stays between steps.
+
 
 ### Quiz
 
 #### Difficulty
 
-Rating: TODO
+Rating: 4
 
-TODO
+The quiz is clear, but most items sit at the same level, asking which label fits a description. I want one harder item that applies the same idea to a new case, using only what the lesson explains, so the learner has to reason rather than match a label.
+
 
 #### Coverage of the lesson's core
 
-Rating: TODO
+Rating: 3
 
-TODO
+Almost every item asks about workflow versus agent. Nothing tests what stays in the context or retrieval, which are the lesson's main points. I want the quiz spread across the concepts so each one gets its share of questions.
+
 
 #### Wording and possible misreadings
 
-Rating: TODO
+Rating: 5
 
-TODO
+The stems are short and each item asks one thing, so it is always clear what the question wants.
+
 
 #### Writing quality
 
-Rating: TODO
+Rating: 5
 
-TODO
+The quiz mixes item types: four multiple choice, one numeric and one short answer, so it checks recall, calculation and explanation, not just picking an option.
+
+
 
 #### Alignment with the learning goal
 
-Rating: TODO
+Rating: 3
 
-TODO
+The quiz tests the learning goal only in part. Almost every item is about workflow versus agent, so it checks that goal well, but it never checks what goes into the context, which is the other main goal.
+
 
 ### Feedback
 
 #### Useful
 
-Rating: TODO
+Rating: 3
 
-TODO
+The feedback names the mistake, but the explanation is hard to follow. For q2, the sentence about the model writing a request is more complicated than it needs to be, so I can't always use it to fix the error.
+
 
 #### Explains enough
 
-Rating: TODO
+Rating: 3
 
-TODO
+The feedback gives the reason, but it needs more simple examples with real data, one short concrete case per item. A life example can help a little, but the real data example should come first.
+
 
 #### Personalized to how I like things explained
 
-Rating: TODO
+Rating: 5
 
-TODO
+The feedback opens with a direct "Right." or "Not quite.", then says what was wrong, which matches how I like feedback.
+
 
 ### Tutor
 
 #### Guardrails
 
-Rating: TODO
+Rating: 4
 
-TODO
+p06 uses an everyday analogy, which fits "no code", but it ends without a simple real example. I want the analogy followed by one small concrete case with real data, such as one tool call with its real result.
+
 
 #### Personalization
 
-Rating: TODO
+Rating: 4
 
-TODO
+The tutor gives explanations and follows the tone I asked for, but it still misses the right difficulty for someone new to the topic. The examples are sometimes too hard, so I could not follow them.
+
 
 ### Compared with the previous step
 
-TODO
+The tutor skill improved the tutor: behavior met went from 0.56 to 0.83, and the cost is about the same. The lesson got shorter, from a length ratio of 0.69 to 0.60.
+
 
 ### What the next step should fix
 
-TODO
+The next step should fix the quiz: it should test what goes into the context and retrieval, not only workflow versus agent.
+
