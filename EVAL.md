@@ -28,14 +28,47 @@ The objective checks use the names `p3 report` prints, such as `teach_facts_corr
 
 Paste the `p3 report` table for `c0-baseline` (three full runs on the shared topic).
 
-TODO: paste the table and name the three run ids.
+Report from `uv run p3 report --configs c0-baseline` (3 scored full runs, agent-architecture):
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.69 (0.62-0.73) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.56 (0.50-0.67) |
+
+Cost per run (list-price): teach $0.62, quiz $0.19, grade $0.33, tutor $0.64, all jobs $1.78 (1.73M tokens).
+
+Runs:
+- bench/runs/c0-baseline/20261111-002336-agent-architecture-m30-r1
+- bench/runs/c0-baseline/20261111-002927-agent-architecture-m30-r2
+- bench/runs/c0-baseline/20261111-003525-agent-architecture-m30-r3
+
 
 What did the baseline do well, and where did it fall short, for each of the four jobs?
 Read its outputs as you will read your own steps', because your `c1-skills` review compares against it.
 Which of the gaps in `KNOWN-GAPS.md` did you see in your own runs, and did you find one that is not listed?
 Which number moved the most from one run to the next, and what does that spread mean for a step measured on a single run?
 
-TODO: your reading of the baseline.
+What the baseline did well:
+- Lesson: the core ideas are all there, and every key fact was correct in all three runs (teach facts 1.00).
+- Quiz: the item types are fine, and the keys agreed with the solver on every item (key agreement 1.00).
+- Feedback (grading): it graded every item correctly in all three runs (verdict agreement 1.00).
+- Tutor: it says right or wrong first, then the reason, as I wanted; tutor-p03 in r1 opens with "No, that isn't right".
+
+Where it fell short:
+- Lesson: in my first review round (a live run with only the teach skill but already my preferences, bench/runs/_live/20261117-184442-agent-architecture-m30-r1) the lesson had 10 sections and long paragraphs, and its tone was too formal. Reading the c0 lesson now, it is fairly clear, but I want more detail with real examples at the same difficulty.
+- Quiz: the items do not cover all the lesson's ideas evenly.
+- Feedback (grading): I found nothing wrong.
+- Tutor: the format is right, but I want more detailed, real examples that are not harder.
+
+Gaps from KNOWN-GAPS.md that I saw in my own runs:
+- The tutor narrows a quiz item down while refusing to answer it: tutor-p01 was not met in any of the three runs.
+- The tutor answers above the learner's level: tutor-p05 was not met in r1 and r3.
+- Tutor replies run long: tutor-p06 ran 335, 370 and 409 words and was not met in any run.
+- Lessons come in short: length ratio 0.62, 0.73 and 0.71, just above the 0.6 floor.
+One gap that is not listed: the quiz is on a different objective (O4, workflow versus agent) from the lesson (O3, context and memory), so it never tests what the lesson teaches.
+
+The number that moved the most was tutor behavior met, from 0.50 to 0.67 across the three runs, then the length ratio, from 0.62 to 0.73. So a step measured on one run can only claim a change bigger than that spread: c1-skills' behavior met of 0.83 is above the baseline's best run, but its length ratio of 0.60 is only a little below the baseline's lowest, which one run cannot settle.
+
+
 
 ---
 
@@ -46,13 +79,55 @@ TODO: your reading of the baseline.
 Name the rounds that built this step, such as `c1-skills` Rounds 1 to 4, and the inventory entries of the skills they added; the trail from thoughts to change to outcome is already in `reviews/` and `reviews/components.md`, so do not retell it here.
 Then what you put in `PREFERENCES.md`, and anything about how the four skills work together that no single inventory entry says.
 
-TODO: the rounds and entries, your preferences, and how the skills fit together.
+`c1-skills` Rounds 1 to 3 changed teach, and Rounds 4 to 6 added tutor, quiz and grade. My preferences, in PREFERENCES.md, ask for short plain lessons with real examples and no answers given away.
+The four skills share one set of guides: tutor, quiz and grade each read teach's reference files (TUTORING.md, QUIZZES.md, GRADING.md) and add their own rules on top, so teach keeps the common rules in one place. All four read PREFERENCES.md, NOTES.md and the learning records first, so what grade writes into the learning records shapes the next lesson and the next tutor reply. Only quiz and grade touch keys/; the tutor skill never opens it.
+
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c0-baseline,c1-skills`: the objective checks, the cost per job, and your ratings.
 
-TODO: paste the report tables.
+From `uv run p3 report --configs c0-baseline,c1-skills`: behavior met went from 0.56 (`c0-baseline`) to 0.83 (`c1-skills`).
+Report from `uv run p3 report --configs c0-baseline,c1-skills`:
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.69 (0.62-0.73) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.56 (0.50-0.67) |
+| `c1-skills` | 1 | 1.00 | 0 | 0.60 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+
+Cost per run (list-price):
+
+| job | `c0-baseline` (3 runs) | `c1-skills` (1 run) |
+|---|---|---|
+| teach | 729.7k tokens, $0.62 | 1.38M tokens, $0.83 |
+| quiz | 176.4k tokens, $0.19 | 122.8k tokens, $0.16 |
+| grade | 282.0k tokens, $0.33 | 281.8k tokens, $0.30 |
+| tutor | 544.5k tokens, $0.64 | 421.6k tokens, $0.41 |
+| all jobs | 1.73M tokens, $1.78 | 2.20M tokens, $1.70 |
+
+Runs:
+- c0-baseline: bench/runs/c0-baseline/20261111-002336-agent-architecture-m30-r1, ...002927-...-r2, ...003525-...-r3
+- c1-skills: bench/runs/c1-skills/20261117-220110-agent-architecture-m30-r1
+
+Your ratings (from `uv run p3 report --configs c0-baseline,c1-skills --reviews`):
+
+| job | criterion | c1-skills |
+|---|---|---:|
+| Lesson | Technical correctness and facts | 4 |
+| Lesson | Pedagogy | 4 |
+| Lesson | Alignment with the learning goal | 5 |
+| Lesson | Overall quality | 4 |
+| Quiz | Difficulty | 4 |
+| Quiz | Coverage of the lesson's core | 3 |
+| Quiz | Wording and possible misreadings | 5 |
+| Quiz | Writing quality | 5 |
+| Quiz | Alignment with the learning goal | 3 |
+| Feedback | Useful | 3 |
+| Feedback | Explains enough | 3 |
+| Feedback | Personalized to how I like things explained | 5 |
+| Tutor | Guardrails | 4 |
+| Tutor | Personalization | 4 |
+
 
 ### What the step bought and what it cost
 
@@ -62,7 +137,18 @@ Where they disagree, which do you believe, and why?
 What did the step cost per scenario, and was the gain worth it?
 Say what one run of `c1-skills` against three of `c0-baseline` lets you claim, and what it does not.
 
-TODO: your judgment of step 1.
+
+Per job, my major review against the objective checks:
+- Lesson: I rated it 4, 4, 5, 4 and wanted more detail. The checks agree that it is short: the length ratio fell from 0.69 to 0.60, while teach facts stayed at 1.00.
+- Quiz: I rated coverage and alignment 3, because almost every item is about workflow versus agent. Key agreement is 1.00 for both configs, so the checks see no difference. I believe my review here, because the checks only test whether the keys are right, not what the quiz covers.
+- Feedback: I rated useful and explains enough 3, and personalized 5. Verdict agreement is 1.00 for both, so again the checks only show that grading stayed correct; whether the feedback helps is something only my review can see.
+- Tutor: I rated guardrails and personalization 4, and the checks agree: behavior met went from 0.56 to 0.83, with tutor-p01 and tutor-p05 now met.
+
+What could come from my preferences rather than the skills: the shorter lesson and the casual tone could come from my PREFERENCES.md ("Keep it short"). The tutor's hints that fit every option come from the tutor skill.
+
+Cost: one full run cost $1.70 against $1.78 for the baseline. Teach got more expensive ($0.62 to $0.83, and 730k to 1.38M tokens), while tutor got cheaper ($0.64 to $0.41). For about the same total cost, the tutor improved clearly, so I think the step was worth it.
+
+What one run lets me claim: behavior met of 0.83 is above the baseline's best run (0.67), so the tutor improvement is likely real. The length ratio of 0.60 is only a little below the baseline's lowest run (0.62), so one run cannot tell whether the lesson really got shorter. The other checks are the same for both configs.
 
 ---
 
