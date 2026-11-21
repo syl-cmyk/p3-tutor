@@ -25,7 +25,7 @@ Also look at the titles of earlier lessons in `lessons/` and at `RESOURCES.md`, 
    - a **key sentence**, one or two plain sentences with no numbers and no new terms, that says the point of the part and why it comes next, so that reading only these sentences in order tells the lesson;
    - a **word budget**, so that the budgets add up to about 150 words per requested minute and never fall below 120 per minute, with a note on where the extra detail goes (more steps in a worked trace, one more concrete case of the same idea, a short recap), never a new topic or a harder explanation;
    - **one worked example**, built only from terms the lesson has already explained by that point, taken from the examples `PREFERENCES.md` says the learner relates to;
-   - the **figures** the part needs, if any: what each one shows, the exact numbers it plots (taken from the part's example), and which idea it comes after;
+   - the **figures** the part needs, if any: what each one shows, the exact numbers it plots (taken from the part's example), a plain-words label for every box, the reason for every arrow in a few words (which the part's text must also give), and which idea it comes after;
    - the **common misconceptions** the part should name, each with a simple real example, with real numbers or a real case, that shows why it is wrong.
 4. **Plan the practice and the summary:** a worked example then a practice task with the steps faded, with hints before solutions, and a summary of three to five lines.
 5. **List the sources** with the claim each one supports, and mark the primary source.

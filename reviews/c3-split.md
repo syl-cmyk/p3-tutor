@@ -78,6 +78,24 @@ I want a figure-designer subagent that draws the figures the plan names, checks 
 - Files: tutor/.claude/agents/figure-designer.md, tutor/.claude/agents/lesson-writer.md, tutor/.claude/agents/lesson-planner.md, tutor/.claude/skills/teach/SKILL.md
 - Why: The reviewers kept finding figures whose bars did not match the text, were not to scale or came before their idea, so a figure-designer subagent now draws every figure as inline SVG to scale, checks each number against the text and places each figure after its idea, the planner lists the figures with their numbers, the writer leaves placeholders, and the teach skill runs the designer between the writer and the reviewers.
 
+### Round 5
+
+**Run:** bench/runs/_live/20261121-212122-agent-architecture-m30-r1, teach only
+
+
+**My thoughts:**
+
+The figure-designer fixed the figures I complained about: in Figure A every bar and number matches the text, and the reviewers stopped flagging figures.
+Figure B still explains too little. The arrow "read on demand" is only a label, and it does not say why a note is read on demand: everything in the window is resent and paid for on every call, so only what is needed should be loaded. The caption "Session 2 starts with 0 tokens of history" also reads as if session 2 knows nothing, although the store keeps Maya's note and session 2 reads it.
+I want figures that label each box in plain words (window is what is being used now, store is what is saved) and add the reason next to the arrow.
+
+
+**What changed:**
+
+- Kind: modified skill
+- Files: tutor/.claude/agents/figure-designer.md, tutor/.claude/agents/lesson-planner.md
+- Why: The window and store figure labelled its arrows without saying why and a caption could be read as session 2 knowing nothing, so the figure-designer now labels every box in plain words, puts the reason next to every arrow from the lesson's text and completes any label a beginner could misread, and the planner lists those labels and reasons for each figure.
+
 ## Major review
 
 **Run:** bench/runs/c3-split/TODO

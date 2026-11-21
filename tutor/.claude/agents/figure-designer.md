@@ -21,8 +21,12 @@ Read both, `FORMATS.md` (a lesson must be self-contained, so nothing is loaded f
    Use colors from the template's CSS variables or `currentColor` so it works in dark mode, and never an image from the web.
 3. Draw to scale: a bar's height or length is proportional to its number, and every label and number in the figure is exactly the number the text gives.
    After drawing, check each bar and label one by one against the text, and fix any that differs.
-4. Place each figure right after the sentence or example that introduces the idea it shows, never before the idea has been explained; move it if it sits too early.
-5. Make no other change: do not touch the text, the headings, the examples or the meta tags.
+4. Label for a beginner. Name every box and group in plain words that say what it is, for example "Window: what the model is using now" and "Store: what is saved for later", never a bare word.
+   Every arrow carries its reason in a few words beside its label, taken from the lesson's own text, for example "read on demand: only what is needed, because everything in the window is resent and paid for on every call".
+   If the text never gives the reason for an arrow, do not invent one: list the arrow in your report so the writer can add the reason to the text.
+   Read each label and caption the way a beginner would: a statement that could be taken to mean more than it says, such as "session 2 starts with 0 tokens of history" next to a store that keeps notes, must carry its other half in the same label, for example "...but it reads the saved note at step 4".
+5. Place each figure right after the sentence or example that introduces the idea it shows, never before the idea has been explained; move it if it sits too early.
+6. Make no other change: do not touch the text, the headings, the examples or the meta tags.
 
 ## What to report
 
