@@ -132,94 +132,109 @@ The Round 6 change helped: the length ratio went from 0.56 to 0.77, with the sam
 
 ## Major review
 
-**Run:** bench/runs/c2-review/TODO
+**Run:** bench/runs/c2-review/20261121-003424-agent-architecture-m30-r1
 
 **Live tries:**
 
-TODO
+not tried for this step
 
 ### Lesson
 
 #### Technical correctness and facts
 
-Rating: TODO
+Rating: 5
 
-TODO
+The bench check agrees: every key fact in the lesson is present and correct (teach facts 1.00), with no misconception asserted and no dead links.
+
 
 #### Pedagogy
 
-Rating: TODO
+Rating: 5
 
-TODO
+Every part opens with its key sentence, then explains the idea with examples placed in the middle, which is the structure I asked for. It also fixes my c1 problem that misconceptions had no example: they now have simple real cases.
+
 
 #### Alignment with the learning goal
 
-Rating: TODO
+Rating: 5
 
-TODO
+The lesson covers what the learner needs: what stays in the context between steps, what is saved between sessions as notes, and how retrieval finds the right pages in a long manual. The last part practices sorting facts among the three, which is the decision the learner has to make.
+
 
 #### Overall quality
 
-Rating: TODO
+Rating: 4
 
-TODO
+The lesson is clear, longer now (length ratio 0.87), and keeps the same difficulty. One small thing I would change: the part titles, such as "What is kept between sessions", sound too casual. I would use the course's technical terms, such as "Context persistence across sessions", with a short plain explanation next to them.
+
 
 ### Quiz
 
 #### Difficulty
 
-Rating: TODO
+Rating: 4
 
-TODO
+The items now go from definition questions (q1, q2) to application (q3, q5) and a cost calculation (q4), so the difficulty rises a little. I would still like one harder item that mixes two ideas, such as a cost question where one part of the request is a fixed workflow and the rest is an agent.
+
 
 #### Coverage of the lesson's core
 
-Rating: TODO
+Rating: 5
 
-TODO
+In the bench the quiz is only on objective O4, and the six items spread over its ideas: the definition, who owns the control flow, what a fixed workflow does with a new request, cost, which request suits an agent, and why booking fits a fixed workflow. Nothing in O4 is left out. My c1 rating of 3 was about the quiz not covering the lesson, which the bench does not ask for.
+
 
 #### Wording and possible misreadings
 
-Rating: TODO
+Rating: 5
 
-TODO
+The wording is clear and I could tell what each item was asking. The bench found no ambiguous items and no wrong keys, and q2 now explains "control flow" as who decides which step comes next, so no term is left undefined.
+
 
 #### Writing quality
 
-Rating: TODO
+Rating: 5
 
-TODO
+The options in each item are about the same length, and the correct answer is not always the longest one, so nothing gives it away. The quiz also mixes item types: four multiple choice, one numeric and one short answer.
+
 
 #### Alignment with the learning goal
 
-Rating: TODO
+Rating: 5
 
-TODO
+The quiz is about what this learner actually needs: telling a workflow from an agent by who owns the control flow, and when a fixed workflow is the better choice, all in the makerspace booking assistant. In the bench the quiz is on objective O4 while the lesson is on O3, which is how the bench is set up and not a problem of the quiz.
+
 
 ### Feedback
 
 #### Useful
 
-Rating: TODO
+Rating: 5
 
-TODO
+The feedback is useful: for q4 it says the answer 4 is right, names the wrong part (the model does not run the tools, the program does), and counts the calls, 1 for the question plus 1 for each of the three results. The summary ends with one clear next step.
+
 
 #### Explains enough
 
-Rating: TODO
+Rating: 4
 
-TODO
+The feedback names the wrong part and gives a real example, but it is still not detailed enough. For q2 it says the model "outputs a request like check_calendar(machine="laser cutter", date="tomorrow")" without saying that this line is just text the model writes, which the program then reads and runs. A new learner can take it as code the model runs itself. I want the feedback to say this step by step, with the model's text and the program's action shown on separate lines.
+
 
 #### Personalized to how I like things explained
 
-Rating: TODO
+Rating: 5
 
-TODO
+The feedback matches how I like feedback: it says right or wrong first, points to the exact part that was wrong, and gives a simple real example, without asking me a question or re-explaining the whole topic.
+
 
 ### Compared with the previous step
 
-TODO
+The c2-review reviewers helped. In the lesson, the misconceptions now have simple real examples, every part opens with its key sentence, and the lesson is longer (length ratio 0.60 to 0.87) at the same difficulty. In the feedback, the examples are real and there are no questions left at the end. The quiz stays on O4 and its items are more spread out. The cost is high: a full run went from $1.70 to $3.31 and from 6.2 to 16.9 minutes.
+
 
 ### What the next step should fix
 
-TODO
+- The part titles sound too casual, such as "What is kept between sessions". I want titles in the course's technical terms, with a short plain explanation next to them.
+- Some concepts can still have more detail, at the same difficulty.
+- The review is not clean: the lesson's second pass still said "revise", and the last fixes were never reviewed again.
