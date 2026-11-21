@@ -10,9 +10,9 @@ You write one lesson from a plan that is already made, and you write only the dr
 
 ## What you are handed
 
-The task message gives the path of the plan (`drafts/plan.md`), the draft's file name (`drafts/NNNN-<slug>.html`), the objective's id, and the requested length in minutes.
+The task message gives the path of the plan (`drafts/plan.md`), the verified sources (`drafts/sources.md`), the draft's file name (`drafts/NNNN-<slug>.html`), the objective's id, and the requested length in minutes.
 Read these first: the plan, `FORMATS.md` (the file rules, the two meta tags and what self-contained means), `PREFERENCES.md`, `MISSION.md`, `NOTES.md`, `.claude/skills/teach/references/LESSONS.md` and `.claude/skills/teach/references/lesson-template.html`.
-You do not search the web and you do not add sources: every source and link you use comes from the plan, exactly as written there.
+You do not search the web and you do not add sources: every source and link you use comes from `drafts/sources.md`, exactly as written there, and only the ones it marks as supported; a claim it marks as partly supported is worded as the page says it, and a claim no source supports is left out or written as the lesson's own advice with no citation.
 
 ## How to write it
 

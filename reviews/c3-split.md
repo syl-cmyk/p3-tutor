@@ -96,6 +96,24 @@ I want figures that label each box in plain words (window is what is being used 
 - Files: tutor/.claude/agents/figure-designer.md, tutor/.claude/agents/lesson-planner.md
 - Why: The window and store figure labelled its arrows without saying why and a caption could be read as session 2 knowing nothing, so the figure-designer now labels every box in plain words, puts the reason next to every arrow from the lesson's text and completes any label a beginner could misread, and the planner lists those labels and reasons for each figure.
 
+### Round 6
+
+**Run:** bench/runs/_live/20261121-220422-agent-architecture-m30-r1, teach only
+
+
+**My thoughts:**
+
+The Round 5 change helped: the lesson and its figures are much more professional now, and that is enough for the text and the figures.
+The reviewers' records still keep finding problems with sources: a claim cited to the wrong page, a link that looked dead, a description they could not confirm, and claims stronger than the document says.
+I want a references-finder subagent that, before the lesson is written, opens each source the plan lists, checks that the link works and that the page supports the claim it is cited for, and writes drafts/sources.md for the writer and the reviewers to use.
+
+
+**What changed:**
+
+- Kind: new subagent
+- Files: tutor/.claude/agents/references-finder.md, tutor/.claude/agents/lesson-writer.md, tutor/.claude/agents/lesson-reviewer.md, tutor/.claude/skills/teach/SKILL.md
+- Why: The reviewers kept finding claims cited to the wrong page, dead-looking links and descriptions they could not confirm, so a references-finder subagent now opens every source in the plan, checks the link and that the page supports the claim, and writes drafts/sources.md, the teach skill runs it between the planner and the writer, the writer cites only what it marks as supported, and the lesson-reviewer starts its fact-check from that file.
+
 ## Major review
 
 **Run:** bench/runs/c3-split/TODO

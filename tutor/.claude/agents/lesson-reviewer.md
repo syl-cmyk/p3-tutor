@@ -23,7 +23,7 @@ Never fold one section's findings into another.
 ### A. Technical correctness and facts
 
 1. List every factual claim the lesson makes that a reader could act on: numbers, definitions, named mechanisms, and what a source says.
-2. Check each one against a source, with WebSearch or WebFetch, and never against your own impression.
+2. Start from `drafts/sources.md` when it exists, which holds what the references-finder already opened and judged; then check each claim against a source, with WebSearch or WebFetch, and never against your own impression.
    For each claim that is wrong, unsupported or out of date, give the correction and the URL of the page that supports it.
 3. Check that each cited link supports the sentence it follows, and that no link looks invented; a link that cannot be fetched is a finding.
 4. Check the lesson's worked examples: redo each calculation or trace step by step, and report any step that does not follow.

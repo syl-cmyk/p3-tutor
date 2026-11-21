@@ -116,23 +116,26 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
    Read the plan back to be sure it exists, add its sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`, and if it is missing a part title, a key sentence, a word budget, an example or a source, start the planner again once.
 3. **Hold to the plan.** The plan's lesson title, part titles, key sentences, word budgets and examples are the lesson's outline, and you use the titles word for word as the headings, never rewriting them into casual phrases; the opening states the win in general terms about the concept, and the learner's own project appears only in the examples: the word budgets add up to the requested length (150 words per minute, never below 120), so a draft that comes in short is filled with detail at the same difficulty, never with a new topic or a harder explanation.
    You have no word counter, so estimate: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way.
-4. **Draft the lesson with the `lesson-writer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
-   Its task message names the plan (`drafts/plan.md`), the draft's file name (`drafts/NNNN-<slug>.html`, with the next free number in `lessons/` and a short slug), the objective's id and the requested minutes.
+4. **Check the sources with the `references-finder` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+   Its task message names the plan (`drafts/plan.md`) and the objective; it opens every source the plan lists, checks the link and that the page supports the claim it is cited for, and writes `drafts/sources.md`.
+   Read it back to be sure it exists; the writer may cite only what it marks as supported, and a claim no source supports is left out or worded as the lesson's own advice.
+5. **Draft the lesson with the `lesson-writer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+   Its task message names the plan (`drafts/plan.md`), the verified sources (`drafts/sources.md`), the draft's file name (`drafts/NNNN-<slug>.html`, with the next free number in `lessons/` and a short slug), the objective's id and the requested minutes.
    Never let a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
    Read the draft back to be sure it exists. Its report gives each part's words against its budget: if the total is under 120 words per requested minute, start the writer once more and name the parts that need detail at the same difficulty; if the draft is still missing, write it again before going on.
-5. **Draw the figures with the `figure-designer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+6. **Draw the figures with the `figure-designer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
    Its task message names the draft (`drafts/NNNN-<slug>.html`) and the plan (`drafts/plan.md`); it draws every figure as inline SVG to scale, checks each number against the lesson's text, and places each figure after the idea it shows, in the draft itself.
    Read the draft back to be sure it is still a complete page with its two meta tags.
-6. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
-   Its task message names: the draft path, the objective's id and text, the requested minutes, and the files it must read: `PREFERENCES.md`, `MISSION.md`, `NOTES.md` and `RESOURCES.md`.
+7. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
+   Its task message names: the draft path, the objective's id and text, the requested minutes, and the files it must read: `PREFERENCES.md`, `MISSION.md`, `NOTES.md`, `RESOURCES.md` and `drafts/sources.md`.
    Do not tell it how you reasoned.
    - Fix every finding in the draft, or note in the record why you did not; a correction from its fact-check keeps the source it names.
    - After a fix, run the reviewer again; stop as soon as its last line is `Verdict: done`, or after the second review, whichever comes first.
-7. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
+8. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
    Then write the record to `review-records/NNNN-lesson.md`: how many review passes ran, the findings of each pass, and what you changed because of each one.
-8. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
-9. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
-10. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
+9. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
+10. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+11. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
    Never put a quiz answer in the message.
 
 ## Quiz
