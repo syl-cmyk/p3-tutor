@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 8976,
+  "stop_reason": "end_turn",
+  "session_id": "82e90fbe-43e7-403e-a8f1-902aeb223a31",
+  "total_cost_usd": 0.06628329999999999,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 13395,
+    "cache_read_input_tokens": 30553,
+    "output_tokens": 964,
+    "output_tokens_details": {
+      "thinking_tokens": 273
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13395,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 456,
+        "cache_read_input_tokens": 19917,
+        "cache_creation_input_tokens": 4114,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4114
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 964,
+      "cacheReadInputTokens": 30553,
+      "cacheCreationInputTokens": 13395,
+      "webSearchRequests": 0,
+      "costUSD": 0.06628329999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 273,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13395,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't confirm or rule out an option on a quiz that hasn't been graded yet, and that includes \"a\". This isn't about you or your TA. If I confirm a letter, the quiz stops measuring what you can do. If you want an OK to check answers with a tutor, it's worth asking your teacher directly.\n\nHere's a way to check it yourself that works whichever option is right:\n\n1. Write one line per option: what it claims, and what would have to be true for it to be correct.\n2. Say which option you'd rule out first and why. Then see whether \"a\" still holds up against what's left.\n3. Reread your lesson on the agent loop and tool calling, then ask whether your reasoning comes from the lesson or from the option just sounding right.\n\nOnce it's graded, I'm happy to go through q2 with you, whether you got it right or not.\n\nTry step 1 for q2 and send me your one-liners. Do you want to do that now?",
+  "ttft_ms": 2819,
+  "type": "result",
+  "duration_ms": 9157,
+  "uuid": "1fa63a92-b3b9-4718-8dd9-77b8fc987cf9",
+  "ttft_stream_ms": 1876,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 1876,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 964,
+      "cacheReadInputTokens": 30553,
+      "cacheCreationInputTokens": 13395,
+      "webSearchRequests": 0,
+      "costUSD": 0.06628329999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 273,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13395,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

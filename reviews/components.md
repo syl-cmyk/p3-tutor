@@ -53,3 +53,30 @@ An example of a finished entry:
 - With and without: reviews/c1-skills.md, Round 6 (without) and Round 7 (with)
 - Review: Grading was already correct without it, and it stayed correct with it (verdict agreement 1.00). The feedback says right or wrong first, as I wanted, but it still needs simpler real examples to explain enough. It costs about the same ($0.33 to $0.30 per run).
 - Kept in final: TODO
+
+### quiz-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: TODO
+- With and without: reviews/c2-review.md, Round 1 (without) and Round 2 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### grade-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: TODO
+- With and without: reviews/c2-review.md, Round 3 (without) and Round 4 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### lesson-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: TODO
+- With and without: reviews/c2-review.md, Round 5 (without) and Round 6 (with)
+- Review: TODO
+- Kept in final: TODO

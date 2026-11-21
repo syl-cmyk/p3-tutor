@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. What makes it an agent is the loop: the model picks an action, the program runs it, and the result comes back for the next step. A longer prompt or a bigger model is still just one call."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a request, like check_calendar(machine='laser cutter', date='tomorrow'); the program around it does the actual running."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Not quite. You picked c, 'No change; left to run longer, it will eventually fix the bug'. But after 40 identical edits and the same failing test, step 41 gets the same result. The loop needs a rule that ends it, which is b, a step limit: say it stops at 20 steps and reports 'same edit, same failing test, 20 times', so a person can take over."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Partly right. Your 4 is correct: 3 tool requests plus the final answer. The off part is 'it runs check_calendar, then search_manuals...': the model never runs a tool, it only writes a request and the program runs it. So the calls are 1 for the question + 1 for each of the 3 results = 4."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The result goes back in as the model's next input, and the model uses it to decide its next step or write the answer. Your group-chat comparison fits: the model can only react to what is in front of it."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. The name is part of it, but the model reads the whole description the program gives it: name, what the tool does, and its parameters. For example, 'check_calendar(machine, date): returns bookings for one machine on one date' tells the model it must supply a machine and a date; the name alone doesn't."
+    }
+  ],
+  "summary": "You've got the agent loop, what the model outputs for a tool call, and how results feed back in. Two things to fix: the program, not the model, runs the tools (q4), and an agent needs a rule that stops the loop, like a step limit (q3). Next, reread learning record 0002 and write one sentence on who runs a tool and who decides to call it."
+}

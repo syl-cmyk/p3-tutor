@@ -114,10 +114,22 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
 2. **Find the knowledge:** search the web for high-trust sources on exactly this objective, read the best two or three, and choose the single best one as the lesson's primary source.
    Add the sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`.
 3. **Plan to the minutes:** split the lesson into sections with a word budget for each, as `references/LESSONS.md` explains, so the whole lesson fits the requested length.
-4. **Write the lesson** to `lessons/NNNN-<slug>.html`, following `FORMATS.md` and the template: beautiful and self-contained, with figures, worked examples, practice with immediate feedback, and citations.
-5. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
-6. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
-7. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
+   Aim for 150 words per requested minute, and never go below 120 (3,600 words for 30 minutes): the bench counts visible words, and a lesson that comes in short has not filled the time the learner set aside.
+   When a draft is short, add detail at the same difficulty: more steps in each worked trace, one more concrete case of the same idea, a short recap at the end of a part; never a new topic and never a harder explanation.
+   You have no word counter, so estimate: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way.
+4. **Draft the lesson** to `drafts/NNNN-<slug>.html`, following `FORMATS.md` and the template: beautiful and self-contained, with figures, worked examples, practice with immediate feedback, and citations.
+   Never write a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
+   Then read the draft back to be sure it was written; if the read fails, write it again before going on.
+5. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
+   Its task message names: the draft path, the objective's id and text, the requested minutes, and the files it must read: `PREFERENCES.md`, `MISSION.md`, `NOTES.md` and `RESOURCES.md`.
+   Do not tell it how you reasoned.
+   - Fix every finding in the draft, or note in the record why you did not; a correction from its fact-check keeps the source it names.
+   - After a fix, run the reviewer again; stop as soon as its last line is `Verdict: done`, or after the second review, whichever comes first.
+6. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
+   Then write the record to `review-records/NNNN-lesson.md`: how many review passes ran, the findings of each pass, and what you changed because of each one.
+7. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
+8. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+9. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
    Never put a quiz answer in the message.
 
 ## Quiz

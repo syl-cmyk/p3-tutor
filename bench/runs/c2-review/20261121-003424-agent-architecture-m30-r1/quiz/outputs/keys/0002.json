@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow your code fixes the steps and their order, in an agent the model decides the next step. Workflows can contain model calls (a), and both can use tools (c); accuracy and cost (d) vary by case and are not the dividing line."
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The code fixes the steps and their order; the model only fills in one step (picking a slot), so the code owns the control flow and this is a workflow. A model call inside a flow does not make the model the owner."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "In a fixed workflow the code owns the control flow, so every request follows the same path, whatever it asks. That is the cost of a workflow: it cannot adapt to a request its path was not built for."
+    },
+    {
+      "id": "q4",
+      "answer": 900,
+      "tolerance": 0,
+      "rationale": "The agent uses 5 - 2 = 3 more calls per request, and 3 x 300 = 900. Fewer, predictable calls is why a fixed workflow is cheaper when the steps are known."
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "Finding why prints fail has no known sequence of steps: what to check next depends on what the last result showed, so the model should choose. The other three have steps you can write down in advance, so a fixed workflow fits."
+    },
+    {
+      "id": "q6",
+      "answer": "The steps are always the same, so code can run them in order with fewer model calls, which is cheaper, faster and more predictable.",
+      "accepted": [
+        "The steps are known in advance, so a workflow is cheaper and more reliable than letting the model decide.",
+        "It never varies, so a fixed workflow costs less and behaves more predictably.",
+        "The order is always the same, so there is nothing for the model to decide and an agent would only add cost and risk."
+      ],
+      "rationale": "Full credit names that the steps are known and fixed, plus at least one benefit: lower cost, speed, or predictability. Saying only that agents are worse, with no reason, is partial."
+    }
+  ]
+}

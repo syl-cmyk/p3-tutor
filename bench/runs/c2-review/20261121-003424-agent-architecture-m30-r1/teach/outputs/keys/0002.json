@@ -1,0 +1,36 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program re-sends the earlier messages each time, which only feels like memory."
+    },
+    {
+      "id": "q2",
+      "answer": 7650,
+      "tolerance": 0.5,
+      "rationale": "Call 1 sends 2,000. Call 2 sends 2,000 + 50 + 500 = 2,550. Call 3 sends 2,550 + 50 + 500 = 3,100. The total is 2,000 + 2,550 + 3,100 = 7,650. A total of 3,100 forgets that every call re-sends the context."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Next Friday's availability changes by the hour, so a note would go stale; it should come from the calendar tool fresh. The other three are stable facts about the student."
+    },
+    {
+      "id": "q4",
+      "answer": "Only the few matching chunks are sent, instead of all the manual text being re-sent on every call.",
+      "accepted": [
+        "only the relevant chunks are sent, not the whole manual",
+        "far fewer tokens are sent on each call",
+        "you send only a few small chunks instead of all the manuals every call"
+      ],
+      "rationale": "Every token in the context is sent again on every call, so putting only the retrieved chunks in the context means far fewer tokens are paid for."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "Cost follows the tokens sent, and a bigger window only raises the ceiling. The same request sends the same tokens, so it costs about the same."
+    }
+  ]
+}

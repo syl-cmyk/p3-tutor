@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "What is the clearest difference between a workflow and an agent in how they run?",
+      "options": [
+        {"id": "a", "text": "Workflows never call a language model, while agents always do"},
+        {"id": "b", "text": "Code sets the order of steps in a workflow; the model does in an agent"},
+        {"id": "c", "text": "Agents can call tools, while workflows only return fixed text answers"},
+        {"id": "d", "text": "Agents are always more accurate, while workflows are always cheaper"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your code always runs check_calendar, then one model call picks the best free slot from the list, then code books it. Who owns the control flow, meaning who decides which step comes next?",
+      "options": [
+        {"id": "a", "text": "The model, because it makes the key choice in the process"},
+        {"id": "b", "text": "The tool, because its result decides what happens next"},
+        {"id": "c", "text": "The code, because it fixes the order and the model fills one step"},
+        {"id": "d", "text": "The model and the code, because each one runs some steps"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your code always runs search_manuals, then one model call writes the answer. A student asks, \"Is the laser cutter free on Friday?\" What happens?",
+      "options": [
+        {"id": "a", "text": "It still searches the manuals first, because the code fixes that path"},
+        {"id": "b", "text": "The model sees a booking question and adds a calendar check step"},
+        {"id": "c", "text": "The model skips the search and answers the question from training"},
+        {"id": "d", "text": "The workflow stops and asks the student to rephrase the question"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow uses 2 model calls per request; an agent averages 5, and every call costs the same. For 300 requests, how many more model calls does the agent use?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which request is the best fit for an agent rather than a fixed workflow?",
+      "options": [
+        {"id": "a", "text": "Look up a machine's opening hours from a fixed table"},
+        {"id": "b", "text": "Book the slot a student picked and email a confirmation"},
+        {"id": "c", "text": "Find out why a student's prints keep failing, using the manuals"},
+        {"id": "d", "text": "Reformat each day's bookings as a line in a weekly report"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A teammate wants booking (check the calendar, book the slot, send a confirmation) to run as an agent. In one sentence, why might a fixed workflow be better there?"
+    }
+  ]
+}

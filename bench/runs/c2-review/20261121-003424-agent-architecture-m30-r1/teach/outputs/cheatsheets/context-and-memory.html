@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: where information lives in the assistant</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.55; background: #fffdf8; color: #1f1d1a; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.8rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } }
+  </style>
+</head>
+<body>
+<h1>Where information lives in the assistant</h1>
+<p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1: context and memory in an agent</a>.</p>
+<table>
+  <thead><tr><th>Home</th><th>Holds</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>Current context</td><td>Only what matters in this chat; re-sent on every call</td><td>The student's question</td></tr>
+    <tr><td>Saved note</td><td>Small, stable, dated facts about a student</td><td>"Laser cutter: trained 2026-10-02"</td></tr>
+    <tr><td>Retrieved chunk</td><td>Big documents, fetched per question</td><td>The laser cutter's thickness limit</td></tr>
+    <tr><td>Live tool</td><td>Facts that change by the hour</td><td>Calendar availability</td></tr>
+  </tbody>
+</table>
+<h2>Rules</h2>
+<ul>
+  <li>The model keeps nothing between calls: the program re-sends the context each time.</li>
+  <li>Tokens sent per call &times; number of calls drives cost; the window size is only a ceiling.</li>
+  <li>Trim: small tool results, clear used ones, summarize very long tasks.</li>
+  <li>Notes: save stable facts with dates, and check the real source for anything important.</li>
+  <li>Retrieval: give each chunk its source (machine and section); return few chunks.</li>
+</ul>
+</body>
+</html>

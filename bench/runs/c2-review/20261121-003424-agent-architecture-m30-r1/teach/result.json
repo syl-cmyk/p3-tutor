@@ -1,0 +1,125 @@
+{
+  "duration_api_ms": 516393,
+  "stop_reason": "end_turn",
+  "session_id": "dbe4e73d-76f1-40a8-b3ce-c68fad986a35",
+  "total_cost_usd": 1.5208753000000002,
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 30022,
+    "cache_read_input_tokens": 560326,
+    "output_tokens": 9109,
+    "output_tokens_details": {
+      "thinking_tokens": 1573
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 30022,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 738,
+        "cache_read_input_tokens": 122046,
+        "cache_creation_input_tokens": 4681,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4681
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 74,
+      "outputTokens": 60025,
+      "cacheReadInputTokens": 1913133,
+      "cacheCreationInputTokens": 185464,
+      "webSearchRequests": 0,
+      "costUSD": 1.4295078,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 14725,
+      "cacheCreationEphemeral5mInputTokens": 69373,
+      "cacheCreationEphemeral1hInputTokens": 116091,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 333860,
+      "outputTokens": 15963,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 5,
+      "costUSD": 0.09136750000000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 9149,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwpokuag-65e34d15"
+  },
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 2
+    },
+    "started_in_background": 2,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 18,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The 30-minute lesson on context and memory (O3) is written at `lessons/0001-context-and-memory-in-an-agent.html`. The lesson reviewer's second pass still said \"revise\". I fixed all its fact and example errors but didn't run a third review, because the limit is two. My estimate is 4,200–4,300 visible words (about 28 minutes); I couldn't run a word counter.\n\nIt has six parts:\n1. **Warm-up and what the model sees.** A four-call trace of the makerspace assistant with token counts. It shows that every call re-sends the whole context, which is why cost and the window limit both grow.\n2. **Between steps.** Trimming tool results, clearing used ones, and summarizing a long task, plus a pretend-price cost example.\n3. **Between sessions.** Saved notes, with a trace of the assistant remembering a student's training.\n4. **Retrieval.** Chunks, embeddings, and the fix for chunks that lose which machine they came from.\n5. **Put it together.** A worked example and a \"your turn\" task with a hint, then the summary.\n6. **Go further.** Sources and a design-review suggestion.\n\n- **Sources:** the main one is Anthropic's [Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents). I read most sources only as search-result excerpts, not full pages. The reviewer fetched and checked most of the cited claims and links, and I fixed what it flagged. `RESOURCES.md` lists them.\n- **Length vs. your preferences:** this is long for someone who likes short answers. If you want a shorter, tighter version, say so and I'll cut it.\n- **Quiz:** quiz 0002 (five items) is ready, and I haven't put any answers in this message.\n- **Other files:** I added a one-page cheat sheet (`cheatsheets/context-and-memory.html`) and a review record, and updated `NOTES.md`.\n- **Weak spots:** some paragraphs run to four sentences, and the retrieval part is still dense. The review record lists what I left unchanged.\n\nAsk me anything about the lesson in the chat. Which part felt least clear: the cost trace, the notes, or retrieval?",
+  "ttft_ms": 5936,
+  "type": "result",
+  "duration_ms": 72368,
+  "uuid": "17259eec-6761-419d-a957-0b0b98c6ffa2",
+  "ttft_stream_ms": 2506,
+  "time_to_request_ms": 42,
+  "first_content_frame_ms": 2506,
+  "queued_turn_count": 0,
+  "result_index": 2,
+  "model_usage_since_last_result": {}
+}

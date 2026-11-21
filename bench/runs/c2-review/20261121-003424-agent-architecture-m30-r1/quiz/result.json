@@ -1,0 +1,121 @@
+{
+  "duration_api_ms": 148692,
+  "stop_reason": "end_turn",
+  "session_id": "7713e833-fda8-402b-8d11-bce7a2dbc0ea",
+  "total_cost_usd": 0.49048870000000006,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 426,
+    "cache_read_input_tokens": 54606,
+    "output_tokens": 270,
+    "output_tokens_details": {
+      "thinking_tokens": 73
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 426,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 4,
+        "output_tokens": 270,
+        "cache_read_input_tokens": 54606,
+        "cache_creation_input_tokens": 426,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 426
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 44,
+      "outputTokens": 20500,
+      "cacheReadInputTokens": 668067,
+      "cacheCreationInputTokens": 60800,
+      "webSearchRequests": 0,
+      "costUSD": 0.49048870000000006,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 4980,
+      "cacheCreationEphemeral5mInputTokens": 16404,
+      "cacheCreationEphemeral1hInputTokens": 44396,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 1,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The quiz-reviewer reports came back earlier and the quiz is finished, so there's nothing left to wait for. That wakeup fired late.\n\n- **Review:** two passes ran, which is the limit. I applied the fixes after each one.\n- **Files:** `quizzes/0002.json` and `keys/0002.json` are written, along with the record at `review-records/0002-quiz.md`.\n- **Left unfixed:** the second pass still said \"revise\". The record lists the findings I left as they were.\n\nTake the quiz whenever you're ready. If you'd like a hint on any item before you answer, ask.",
+  "ttft_ms": 1386,
+  "type": "result",
+  "duration_ms": 3068,
+  "uuid": "5ad20b5b-0fd4-441f-a822-d5b8050d3a4f",
+  "ttft_stream_ms": 738,
+  "time_to_request_ms": 46,
+  "first_content_frame_ms": 739,
+  "queued_turn_count": 0,
+  "result_index": 2,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 270,
+      "cacheReadInputTokens": 54606,
+      "cacheCreationInputTokens": 426,
+      "webSearchRequests": 0,
+      "costUSD": 0.009872600000000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 73,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 426,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

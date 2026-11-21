@@ -160,7 +160,16 @@ Name the rounds that built this step and the inventory entries of the reviewers 
 Then the loops' design, for each of teach, quiz and grade: who reviews, what is on each reviewer's checklist and which items came from your `c1-skills` major review, how each reviewer gets a fresh context, how many passes a loop may run and what ends it early, and what each loop records.
 Then one design choice you could have made the other way, such as one reviewer against several, a cap of one pass against three, or a reviewer that edits against one that only reports, and why you chose as you did.
 
-TODO: the rounds and entries, and the design of your review loops.
+`c2-review` Rounds 1 to 6 added three reviewer subagents, `quiz-reviewer` (Rounds 1 and 2), `grade-reviewer` (Rounds 3 and 4) and `lesson-reviewer` (Rounds 5 and 6), each with an entry in `reviews/components.md`; Rounds 2, 4 and 6 changed an existing reviewer or its skill after I read a run.
+
+The loops, for each of teach, quiz and grade:
+- Who reviews: one reviewer subagent per job. `quiz-reviewer` and `grade-reviewer` each have a checklist of nine checks, and `lesson-reviewer` has sixteen checks in four separate sections (facts, pedagogy, alignment, overall).
+- What is on the checklists, from my `c1-skills` review: for the quiz, coverage spread over the objective's different ideas, difficulty that rises, and every term defined (my c1 Coverage rating of 3 and the undefined word "setup" in my live try); for grading, the verdict first, the exact part named, and a full reason with one simple real example (my c1 ratings of 3 for Useful and Explains enough); for the lesson, a simple real example for every named misconception, the idea after an example, and the length (my c1 Technical correctness and Overall quality ratings of 4).
+- Fresh context: each reviewer is a subagent with its own file and its own tools (Read, Glob and Grep, plus WebSearch and WebFetch for the lesson's fact-check), so it cannot start subagents of its own. The skill gives it only the paths and the objective and does not tell it how the draft was written.
+- Passes: at most two. The loop stops early when the reviewer's last line is "Verdict: done". The skills write drafts into `drafts/`, read each draft back before the review, and write the final file once.
+- What each loop records: `review-records/NNNN-quiz.md`, `review-records/NNNN-sN-grade.md` and `review-records/NNNN-lesson.md`, with the passes, the findings and what changed.
+
+One choice I could have made the other way: one lesson reviewer with four sections, against four reviewers. I chose one because every subagent pays its own share of the fixed load and reads the whole lesson again, and the teach scenario has a 45-minute limit. The risk is that findings blur together, so the reviewer reports each section under its own heading.
 
 ### The loops as they ran
 

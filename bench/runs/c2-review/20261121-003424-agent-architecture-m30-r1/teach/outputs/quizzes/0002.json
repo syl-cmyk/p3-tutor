@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A chatbot seems to remember what you said ten messages ago in the same chat. What is actually happening on each model call?",
+      "options": [
+        {"id": "a", "text": "The model's stored weights are updated after every message sent"},
+        {"id": "b", "text": "The program sends the earlier messages to the model again"},
+        {"id": "c", "text": "The model keeps a private hidden copy of the whole chat"},
+        {"id": "d", "text": "The model looks the earlier messages up in its training data"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An agent's first model call sends 2,000 tokens (instructions, tool descriptions and the question). Each tool request the model writes adds 50 tokens to the context, and each tool result adds 500 tokens. The model requests one tool, gets the result, requests a second tool, gets that result, and then writes its final answer, which takes three model calls in total. How many tokens are sent to the model across the three calls combined?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Which of these should the makerspace assistant NOT save as a note for the next visit?",
+      "options": [
+        {"id": "a", "text": "The name the student prefers to be called by"},
+        {"id": "b", "text": "Which machines the student has finished training on"},
+        {"id": "c", "text": "The weekday the student usually books equipment on"},
+        {"id": "d", "text": "Whether the 3D printer is free this coming Friday"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one sentence, why is searching the manuals and returning two or three chunks usually cheaper than keeping all the manual text in the context?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team switches to a model whose context window is five times larger and keeps everything else the same, including what each request sends. What happens to the cost of a request?",
+      "options": [
+        {"id": "a", "text": "It stays about the same, since tokens sent drive the cost"},
+        {"id": "b", "text": "It falls to a fifth, since each call has more room"},
+        {"id": "c", "text": "It rises fivefold, since the whole window gets filled"},
+        {"id": "d", "text": "It falls, since fewer calls are needed to finish it"}
+      ]
+    }
+  ]
+}
