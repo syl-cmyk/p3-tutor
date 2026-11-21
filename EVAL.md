@@ -176,13 +176,57 @@ One choice I could have made the other way: one lesson reviewer with four sectio
 For teach, quiz and grade: how many review passes ran in your bench run, what the reviewers flagged, and whether the revisions moved anything you can point at, a fact corrected, an ambiguous item rewritten, feedback that changed.
 The loop records in the run's outputs are the evidence; name the files.
 
-TODO: what the review loops did in the run.
+All three loops used the two-pass cap, and none ended early with "Verdict: done". The evidence is in `bench/runs/c2-review/20261121-003424-agent-architecture-m30-r1/`: `teach/outputs/review-records/0001-lesson.md`, `quiz/outputs/review-records/0002-quiz.md`, `grade-s1/outputs/review-records/0001-s1-grade.md` and `grade-s2/outputs/review-records/0001-s2-grade.md`. The run counted 2 lesson-reviewer, 2 quiz-reviewer and 5 grade-reviewer subagents.
+
+- Teach: two passes. The reviewer fixed facts (a memory-tool claim cited to the wrong page, wasted-token arithmetic of 12,000 where the example gave 15,000, a figure whose bars were not to scale, a missing prompt-caching paragraph) and added real cases to the misconceptions and detail to a lesson that was about 23 minutes long (length ratio 0.60 in c1-skills, 0.87 here). Pass 2 still said "revise", and the last fixes were not reviewed again.
+- Quiz: two passes. The reviewer saw q1 and q2 both asked for a definition, so q2 became a hybrid case, and it replaced weak distractors and removed words that gave the answer away, such as "fixed workflow" in q3.
+- Grade: two passes on each submission. The reviewer asked for shorter feedback, a real example for q6 and a summary that points to an existing learning record. Two of its requests were refused by the writer because the grade skill required them ("Not quite." as the opener, and verdict first before the example).
+
+Three rough spots in the records: in s1 the first reviewer run found nothing because the draft file had not been written yet; in s2 the pass-2 edit command failed, so pass 2 repeated pass 1; and in both cases the last edits were never reviewed again.
+
+I think the loops moved things I can point at: facts corrected, an example added to every named misconception, a quiz item rewritten and feedback shortened. I cannot say the 0.60 to 0.87 length change came from the reviewer alone, because c2-review also has the length rule from my Round 6.
+
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c1-skills,c2-review`.
 
-TODO: paste the report tables.
+Report from `uv run p3 report --configs c1-skills,c2-review` (one scored full run of each, agent-architecture):
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 1.00 | 0 | 0.60 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+| `c2-review` | 1 | 1.00 | 0 | 0.87 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.67 |
+
+Cost per run (list-price):
+
+| job | `c1-skills` | `c2-review` |
+|---|---|---|
+| teach | 1.38M tokens, 3.8 min, 0 subagents, $0.83 | 2.51M tokens, 8.0 min, 2 subagents, $1.52 |
+| quiz | 122.8k tokens, 0.6 min, 0 subagents, $0.16 | 749.4k tokens, 3.7 min, 2 subagents, $0.49 |
+| grade | 281.8k tokens, 0.9 min, 0 subagents, $0.30 | 1.42M tokens, 4.0 min, 5 subagents, $0.84 |
+| tutor | 421.6k tokens, 1.0 min, 0 subagents, $0.41 | 520.2k tokens, 1.2 min, 0 subagents, $0.46 |
+| all jobs | 2.20M tokens, 6.2 min, 0 subagents, $1.70 | 5.20M tokens, 16.9 min, 9 subagents, $3.31 |
+
+Your ratings:
+
+| job | criterion | c1-skills | c2-review |
+|---|---|---:|---:|
+| Lesson | Technical correctness and facts | 4 | 5 |
+| Lesson | Pedagogy | 4 | 5 |
+| Lesson | Alignment with the learning goal | 5 | 5 |
+| Lesson | Overall quality | 4 | 4 |
+| Quiz | Difficulty | 4 | 4 |
+| Quiz | Coverage of the lesson's core | 3 | 5 |
+| Quiz | Wording and possible misreadings | 5 | 5 |
+| Quiz | Writing quality | 5 | 5 |
+| Quiz | Alignment with the learning goal | 3 | 5 |
+| Feedback | Useful | 3 | 5 |
+| Feedback | Explains enough | 3 | 4 |
+| Feedback | Personalized to how I like things explained | 5 | 5 |
+
+Runs: c1-skills: bench/runs/c1-skills/20261117-220110-agent-architecture-m30-r1; c2-review: bench/runs/c2-review/20261121-003424-agent-architecture-m30-r1.
+
 
 ### What the step bought and what it cost
 
@@ -190,7 +234,14 @@ Did the problems your `c1-skills` review found go away, and which ratings moved?
 Which loop earned its cost and which did not?
 If a loop ran several passes and the final output was no better than the first draft, say so, because that is the finding.
 
-TODO: your judgment of step 2.
+Quiz: the review loop was not worth it. The quiz cost about three times as much ($0.16 to $0.49), yet its items did not get much harder: my Difficulty rating stayed at 4. Coverage and alignment went from 3 to 5, but that was because I learned the bench only asks for objective O4, not because the reviewer fixed anything.
+
+Grade: the loop was not worth its cost either. My ratings rose a little (Useful 3 to 5, Explains enough 3 to 4), but grading was already correct in c1-skills (verdict agreement 1.00 in both), and the feedback still explains too little, such as what the model's output looks like in q2. For about 2.8 times the cost ($0.30 to $0.84), I expected a clearer explanation of that.
+
+Teach: the loop was worth it. The lesson became longer (length ratio 0.60 to 0.87) and my Technical correctness and Pedagogy ratings both rose from 4 to 5, for about 1.8 times the cost ($0.83 to $1.52). It also followed the steps I asked for: each part opens with its key sentence, and every named misconception now has a simple real example.
+
+What one run of each lets me claim: the length ratio went from 0.60 to 0.87, which is outside the baseline's spread of 0.62 to 0.73, so the lesson really got longer, although c2-review also has the length rule from my Round 6. Facts, key agreement and verdict agreement are 1.00 for both, so they only show nothing broke. Behavior met fell from 0.83 to 0.67 although the tutor was not changed, so a single run can move that much by chance, and I do not claim the loops changed anything about the tutor.
+
 
 ---
 
