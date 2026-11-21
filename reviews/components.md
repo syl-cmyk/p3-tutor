@@ -58,25 +58,25 @@ An example of a finished entry:
 
 - Kind: subagent
 - Step added: c2-review
-- Purpose: TODO
+- Purpose: Checks a draft quiz with a fresh context against nine checks: coverage spread over the objective's ideas, rising difficulty, every term defined, short stems, one defensible answer, no giveaways, real distractors, correct numbers and a mix of item types.
 - With and without: reviews/c2-review.md, Round 1 (without) and Round 2 (with)
-- Review: TODO
+- Review: Without it the quiz cost $0.16, with it $0.49, about three times as much. Its fixes, such as turning q2 into a hybrid case and replacing weak distractors, did not make the quiz harder: my Difficulty rating stayed at 4, and key agreement stayed at 1.00. I do not think it was worth the cost.
 - Kept in final: TODO
 
 ### grade-reviewer
 
 - Kind: subagent
 - Step added: c2-review
-- Purpose: TODO
+- Purpose: Checks a draft grades file with a fresh context against nine checks: the verdicts re-judged, real misconception ids, the verdict first, the exact wrong part named, a full reason with one simple real example, wording a new learner can follow, short feedback, a fit with my preferences, and a concrete next step.
 - With and without: reviews/c2-review.md, Round 3 (without) and Round 4 (with)
-- Review: TODO
+- Review: Without it grading cost $0.30, with it $0.84, about 2.8 times as much. Grading was already correct (verdict agreement 1.00 both times), and with it the feedback got real examples and no closing questions: Useful rose from 3 to 5 and Explains enough from 3 to 4. It still does not explain what the model's output looks like in q2, so I do not think it was worth the cost.
 - Kept in final: TODO
 
 ### lesson-reviewer
 
 - Kind: subagent
 - Step added: c2-review
-- Purpose: TODO
+- Purpose: Checks a draft lesson with a fresh context in four separate sections: facts checked against sources with web search, pedagogy, alignment with the objective and my mission, and overall quality. It also estimates the lesson's length and names where to add detail.
 - With and without: reviews/c2-review.md, Round 5 (without) and Round 6 (with)
-- Review: TODO
+- Review: Without it the lesson cost $0.83 with a length ratio of 0.60, and with it $1.52 and 0.87, about 1.8 times as much. It corrected facts (a claim cited to the wrong page, arithmetic that did not match the example), added real cases to the misconceptions and made the lesson longer, and my Technical correctness and Pedagogy ratings both rose from 4 to 5. I think it was worth the cost, though the length change also comes from the length rule I added in Round 6.
 - Kept in final: TODO
