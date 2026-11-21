@@ -27,17 +27,39 @@ I want a planner subagent that plans the lesson before any writing: the sections
 
 ### Round 2
 
-**Run:** TODO
+**Run:** bench/runs/_live/20261121-202853-agent-architecture-m30-r1, teach only
+
 
 **My thoughts:**
 
-TODO
+The planner helped a little: the plan is complete, with a win, a running example and sources, and the lesson has six parts and the right facts.
+But the lesson still reads as an explanation and not as a professional treatment of context and memory. The lesson title, "Context and memory: what your assistant sees, keeps and finds", and its opening promise, that by the end I can say what the makerspace assistant keeps at each step, tie the whole concept to one project instead of stating it in general. The part titles, such as "Why more is not better" and "What stays between steps", are still casual.
+I want titles in the course's own terms, such as "Context window" and "Context persistence across sessions", each with a short plain explanation, and the concept stated in general first, with the makerspace assistant only as the example.
+
 
 **What changed:**
 
-- Kind: TODO
-- Files: TODO
-- Why: TODO
+- Kind: other
+- Files: tutor/.claude/agents/lesson-planner.md, tutor/.claude/skills/teach/SKILL.md, tutor/.claude/agents/lesson-reviewer.md
+- Why: The planner's lesson still had casual titles and tied the whole concept to the makerspace assistant, so the planner now writes a technical-term title with a plain explanation for the lesson and every part and states the win in general terms, the teach skill uses those titles word for word, and the lesson-reviewer flags any casual or project-specific title.
+
+### Round 3
+
+**Run:** bench/runs/_live/20261121-204609-agent-architecture-m30-r1, teach only
+
+
+**My thoughts:**
+
+The Round 2 change helped: the titles are now technical terms with a plain explanation, and the lesson is very clear.
+The lesson is still a little short: the length ratio is 0.76. The planner gives each part a word budget, but nothing checks that the writing meets it.
+I want a writer subagent that takes drafts/plan.md and writes the lesson part by part to each word budget, so the length and the detail come from the plan.
+
+
+**What changed:**
+
+- Kind: new subagent
+- Files: tutor/.claude/agents/lesson-writer.md, tutor/.claude/skills/teach/SKILL.md
+- Why: The lesson was still short (length ratio 0.76) because nothing held the writing to the planner's word budgets, so a lesson-writer subagent now writes drafts/NNNN-<slug>.html part by part from drafts/plan.md to each budget and reports its words against them, and the teach skill starts it after the planner and asks for more detail when the total is under 120 words per minute.
 
 ## Major review
 

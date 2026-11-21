@@ -114,11 +114,12 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
 2. **Plan with the `lesson-planner` subagent.** Start it with the Agent tool, and wait for its report before you go on.
    Its task message names the objective (id and text) and the requested minutes; it reads the learner files and the lesson guide itself, finds and reads the sources, and writes `drafts/plan.md`.
    Read the plan back to be sure it exists, add its sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`, and if it is missing a part title, a key sentence, a word budget, an example or a source, start the planner again once.
-3. **Hold to the plan.** The plan's parts, titles, key sentences, word budgets and examples are the lesson's outline: the word budgets add up to the requested length (150 words per minute, never below 120), so a draft that comes in short is filled with detail at the same difficulty, never with a new topic or a harder explanation.
+3. **Hold to the plan.** The plan's lesson title, part titles, key sentences, word budgets and examples are the lesson's outline, and you use the titles word for word as the headings, never rewriting them into casual phrases; the opening states the win in general terms about the concept, and the learner's own project appears only in the examples: the word budgets add up to the requested length (150 words per minute, never below 120), so a draft that comes in short is filled with detail at the same difficulty, never with a new topic or a harder explanation.
    You have no word counter, so estimate: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way.
-4. **Draft the lesson** to `drafts/NNNN-<slug>.html` from `drafts/plan.md`, following `FORMATS.md` and the template: beautiful and self-contained, with figures, worked examples, practice with immediate feedback, and citations.
-   Never write a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
-   Then read the draft back to be sure it was written; if the read fails, write it again before going on.
+4. **Draft the lesson with the `lesson-writer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+   Its task message names the plan (`drafts/plan.md`), the draft's file name (`drafts/NNNN-<slug>.html`, with the next free number in `lessons/` and a short slug), the objective's id and the requested minutes.
+   Never let a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
+   Read the draft back to be sure it exists. Its report gives each part's words against its budget: if the total is under 120 words per requested minute, start the writer once more and name the parts that need detail at the same difficulty; if the draft is still missing, write it again before going on.
 5. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
    Its task message names: the draft path, the objective's id and text, the requested minutes, and the files it must read: `PREFERENCES.md`, `MISSION.md`, `NOTES.md` and `RESOURCES.md`.
    Do not tell it how you reasoned.

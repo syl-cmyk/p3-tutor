@@ -89,3 +89,12 @@ An example of a finished entry:
 - With and without: reviews/c3-split.md, Round 1 (without) and Round 2 (with)
 - Review: TODO
 - Kept in final: TODO
+
+### lesson-writer
+
+- Kind: subagent
+- Step added: c3-split
+- Purpose: TODO
+- With and without: reviews/c3-split.md, Round 3 (without) and Round 4 (with)
+- Review: TODO
+- Kept in final: TODO

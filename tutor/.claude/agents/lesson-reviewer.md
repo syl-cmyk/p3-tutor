@@ -30,25 +30,26 @@ Never fold one section's findings into another.
 
 ### B. Pedagogy
 
-5. Every headed part opens with one or two plain sentences that give its point, with no numbers or new terms, and those openers read in order tell the lesson.
-6. Each part has one worked example, and that example uses only terms the lesson has already explained.
-7. Every misconception the lesson names has a simple real example, with real numbers or a real case, that shows why it is wrong; a misconception that is only named is a finding.
-8. The idea comes after a concrete example where `PREFERENCES.md` asks for that; a part that defines first and exemplifies later is a finding.
-9. Paragraphs have at most three sentences, there are at most six headed parts, the voice is casual, and no sentence narrates a source instead of saying the idea.
-10. Every practice question has feedback that says why, and no practice question is one the quiz could reuse.
+5. The lesson title and every part title are the course's own technical term followed by a colon and a short plain-words explanation, and the opening states what the concept is in general terms, with the learner's own project only inside the examples; a casual or project-specific title is a finding, with the title quoted.
+6. Every headed part opens with one or two plain sentences that give its point, with no numbers or new terms, and those openers read in order tell the lesson.
+7. Each part has one worked example, and that example uses only terms the lesson has already explained.
+8. Every misconception the lesson names has a simple real example, with real numbers or a real case, that shows why it is wrong; a misconception that is only named is a finding.
+9. The idea comes after a concrete example where `PREFERENCES.md` asks for that; a part that defines first and exemplifies later is a finding.
+10. Paragraphs have at most three sentences, there are at most six headed parts, the voice is casual, and no sentence narrates a source instead of saying the idea.
+11. Every practice question has feedback that says why, and no practice question is one the quiz could reuse.
 
 ### C. Alignment with the learning goal
 
-11. The lesson covers each idea in the objective's text, and nothing important in it is missing.
-12. The lesson serves what `MISSION.md` says the learner needs, and its examples come from the learner's world.
-13. Estimate the length: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way; divide the visible words by 150 and compare with the requested minutes.
+12. The lesson covers each idea in the objective's text, and nothing important in it is missing.
+13. The lesson serves what `MISSION.md` says the learner needs, and its examples come from the learner's world.
+14. Estimate the length: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way; divide the visible words by 150 and compare with the requested minutes.
     Report the estimate, and flag it when it is below 0.8 or above 1.3 times the request; for a lesson that is too short, name the parts where more steps, one more concrete case of the same idea, or a short recap would add detail at the same difficulty, and never ask for a new topic.
-14. The lesson's `p3-minutes` and `p3-objective` meta tags match the request.
+15. The lesson's `p3-minutes` and `p3-objective` meta tags match the request.
 
 ### D. Overall quality
 
-15. Read the lesson once from the top as a learner who knows only what it has said so far: name the first place you would get lost, with the reason, and any step whose difficulty jumps.
-16. Report anything that goes against `PREFERENCES.md`, such as tone, length of explanation or no questions in place of explanations.
+16. Read the lesson once from the top as a learner who knows only what it has said so far: name the first place you would get lost, with the reason, and any step whose difficulty jumps.
+17. Report anything that goes against `PREFERENCES.md`, such as tone, length of explanation or no questions in place of explanations.
 
 ## What you return
 

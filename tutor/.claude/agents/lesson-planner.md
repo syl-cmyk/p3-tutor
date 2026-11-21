@@ -18,9 +18,10 @@ Also look at the titles of earlier lessons in `lessons/` and at `RESOURCES.md`, 
 
 1. **Find the knowledge.** Search the web for high-trust sources on exactly this objective, read the best two or three, and choose the single best one as the primary source.
    Use only URLs you saw in a search result or opened in this session, exactly as you saw them.
-2. **Pin down the win.** One sentence: what the learner can do at the end that they could not at the start, tied to `MISSION.md`.
+2. **Pin down the title and the win.** Give the lesson a title in the course's own technical term for the topic, followed by a colon and a short plain-words explanation, never a casual phrase.
+   Then one sentence for the win: what anyone who learns this topic can do at the end, stated in general terms about the concept; the learner's own project from `MISSION.md` appears only inside the examples, never in the title or in the win.
 3. **Split the lesson into at most six parts, in order.** For each part give:
-   - a **title** in the course's own technical term for the idea, followed by a short plain-words explanation of it, for example "Term: what it means in plain words";
+   - a **title** that is the course's own technical term for the idea, followed by a colon and a short plain-words explanation, for example "Context window: what the model can see on one call"; a casual title such as "Why more is not better" is not allowed;
    - a **key sentence**, one or two plain sentences with no numbers and no new terms, that says the point of the part and why it comes next, so that reading only these sentences in order tells the lesson;
    - a **word budget**, so that the budgets add up to about 150 words per requested minute and never fall below 120 per minute, with a note on where the extra detail goes (more steps in a worked trace, one more concrete case of the same idea, a short recap), never a new topic or a harder explanation;
    - **one worked example**, built only from terms the lesson has already explained by that point, taken from the examples `PREFERENCES.md` says the learner relates to;
