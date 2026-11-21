@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submissions": {
+    "s1": [
+      {
+        "id": "q1",
+        "verdict": "wrong",
+        "misconception": null,
+        "why": "Picked a, with the fingers stretched out flat on the food, which puts the fingertips right in front of the blade; the claw grip curls them back."
+      },
+      {
+        "id": "q2",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The knuckles guide the side of the blade."
+      },
+      {
+        "id": "q3",
+        "verdict": "partial",
+        "misconception": null,
+        "why": "The knife slipping is a real risk, but the reason for curling the fingertips is to keep them away from the blade."
+      }
+    ]
+  }
+}

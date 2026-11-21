@@ -1,0 +1,24 @@
+{
+  "id": "0001",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The claw grip curls the fingertips back, so they are out of the way of the blade."
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The knuckles guide the side of the blade, so the fingertips never meet it."
+    },
+    {
+      "id": "q3",
+      "answer": "So the knuckles take the blade's side and the fingertips stay out of its way.",
+      "accepted": [
+        "To keep the fingertips away from the blade",
+        "So the blade cannot cut the fingertips"
+      ],
+      "rationale": "A right answer says the fingertips are kept away from the blade, with the knuckles in front."
+    }
+  ]
+}

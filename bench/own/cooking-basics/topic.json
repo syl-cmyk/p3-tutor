@@ -1,0 +1,75 @@
+{
+  "id": "cooking-basics",
+  "title": "Knife skills",
+  "learner_summary": "A home cook who has used a kitchen knife for years without any lessons. They can cut vegetables, but they have never been shown how to hold a knife or the food, which knife suits which job, or how to look after a knife.",
+  "minutes": 30,
+  "teach_objective": "O2",
+  "quiz_objective": "O3",
+  "graded_quiz": "0001",
+  "submissions": [
+    "s1"
+  ],
+  "objectives": [
+    {
+      "id": "O1",
+      "text": "Hold a knife and the food safely: the pinch grip on the blade and the claw grip on the food."
+    },
+    {
+      "id": "O2",
+      "text": "Choose the right knife and cut for a job: chef's, paring or serrated knife, and slice, dice or julienne."
+    },
+    {
+      "id": "O3",
+      "text": "Keep a knife sharp and store it safely: honing, sharpening, washing and storing."
+    }
+  ],
+  "facts": [
+    {
+      "id": "F1.1",
+      "objective": "O1",
+      "text": "In the claw grip the fingertips of the hand holding the food are curled back, and the knuckles guide the side of the blade."
+    },
+    {
+      "id": "F2.1",
+      "objective": "O2",
+      "text": "A chef's knife is the all-round knife for most chopping and slicing on a board."
+    },
+    {
+      "id": "F2.2",
+      "objective": "O2",
+      "text": "A paring knife is small and suits work done in the hand or on small items, such as peeling and trimming."
+    },
+    {
+      "id": "F2.3",
+      "objective": "O2",
+      "text": "A serrated knife saws through bread and soft-skinned food such as tomatoes, because its teeth grip the surface where a smooth edge would slip."
+    },
+    {
+      "id": "F2.4",
+      "objective": "O2",
+      "text": "A dice is a small cube, a julienne is a thin matchstick, and a slice is a flat cut across the food."
+    },
+    {
+      "id": "F3.1",
+      "objective": "O3",
+      "text": "Honing straightens the edge of a knife that has bent a little with use; sharpening grinds away metal to make a new edge."
+    },
+    {
+      "id": "F3.2",
+      "objective": "O3",
+      "text": "A knife should be washed by hand, dried, and stored in a block, sheath or magnetic strip, with its edge protected."
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "M1",
+      "text": "A dull knife is safer because it cuts less easily.",
+      "correction": "A dull knife needs more force and slips off the food, so it is more dangerous; a sharp knife bites in and goes where you steer it."
+    },
+    {
+      "id": "M2",
+      "text": "Honing a knife sharpens it.",
+      "correction": "Honing only straightens a bent edge; when a knife is truly dull it has to be sharpened, which removes metal."
+    }
+  ]
+}

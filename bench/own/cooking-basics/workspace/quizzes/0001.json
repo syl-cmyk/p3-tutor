@@ -1,0 +1,35 @@
+{
+  "id": "0001",
+  "objective": "O1",
+  "title": "Holding a knife and the food",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "How should the hand that holds the food be placed when you cut?",
+      "options": [
+        {"id": "a", "text": "Flat on the food, with the fingers stretched out"},
+        {"id": "b", "text": "In a claw, with the fingertips curled back"},
+        {"id": "c", "text": "Far from the knife, holding only the edge of the board"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "What guides the side of the blade in the claw grip?",
+      "options": [
+        {"id": "a", "text": "The fingertips"},
+        {"id": "b", "text": "The knuckles"},
+        {"id": "c", "text": "The thumb nail"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Why do the fingertips stay curled back? Answer in one sentence."
+    }
+  ]
+}
