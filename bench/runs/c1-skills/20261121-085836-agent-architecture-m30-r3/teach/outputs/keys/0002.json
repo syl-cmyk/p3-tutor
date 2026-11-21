@@ -1,0 +1,43 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model keeps nothing between sessions, so Monday's preference must have been saved outside the window and loaded into Friday's call. Training does not include the chat (a, M3), a big window only holds one session's text (b, M7), and a guess from booking patterns is not what the stem describes (d).",
+      "distractors": {"a": "M3", "b": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": 3350,
+      "tolerance": 0,
+      "rationale": "Call 1 is 700. Call 2 is 700 + 50 + 300 = 1,050. Call 3 is 1,050 + 50 + 500 = 1,600. Total 700 + 1,050 + 1,600 = 3,350. An answer of 1,600 counts only the last call, and shows the idea that earlier calls are not paid for again."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "An exact code that appears in the manual is what keyword search matches best. Embedding search is good for different wording but is not always better (a), the whole manual re-sent each call is costly (c, M8), and recall from the model's own memory can be wrong or out of date (d).",
+      "distractors": {"c": "M8"}
+    },
+    {
+      "id": "q4",
+      "answer": "Everything in the window is re-sent and paid for on every later call, so only the few relevant chunks should go in, which also keeps the window uncluttered.",
+      "accepted": [
+        "It saves tokens and cost, since whatever is in the window is sent again on every step.",
+        "The whole manual would cost too many tokens on every call and would not fit well; the top chunks are enough to answer.",
+        "To keep cost down and the window focused on what is relevant."
+      ],
+      "rationale": "Full credit names the cost or window-space reason: tokens in the window are paid for on each call. Saying only that the manual is too big to fit is partial, since a big window could hold it but at a high cost per call (M8)."
+    },
+    {
+      "id": "q5",
+      "answer": "The window is emptied when the session ends, so nothing from this visit is there at the next one unless it was saved and loaded back.",
+      "accepted": [
+        "A window only lasts for one session, so it can't carry information to the next visit.",
+        "Nothing is kept after the session ends; notes must be saved outside the window.",
+        "Context is wiped between sessions."
+      ],
+      "rationale": "A larger window holds more within one request or session, but it starts empty each session, so memory between visits needs saved notes or a database (M7). A cost reason alone is only partial, since the question asks about memory between visits."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "Within a session the model remembers nothing by itself: the program re-sends the earlier messages in every call, so the name is still in the window. Options b, c and d all assume the model has memory of its own.",
+      "distractors": {"b": "M3", "c": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "A new session starts with an empty window, and the model keeps nothing between sessions. Anything from Monday has to be saved by the program and loaded back in; without that, the assistant knows nothing about Monday.",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": 10,
+      "tolerance": 0,
+      "rationale": "10,000 - 1,500 - 100 = 8,400 tokens remain; 8,400 / 800 = 10.5, which is 10 whole chunks, so the answer is 10. Checking: 10 chunks = 8,000 tokens, leaving 400 spare."
+    },
+    {
+      "id": "q4",
+      "answer": "Save the student's training status outside the model (in a file or database) and load it into the new session's context, or give the assistant a tool that looks it up.",
+      "accepted": [
+        "Store the training record in a database and put it in the context at the start of each session.",
+        "Write it to a note or record and load it back into the window when the student returns.",
+        "Save it externally and retrieve it into the context in the next session."
+      ],
+      "rationale": "Full credit needs both halves: saved outside the model, and brought back into the window in the new session (loaded up front or fetched by a tool). Only saying it is saved is partial. Saying the model remembers it is wrong."
+    },
+    {
+      "id": "q5",
+      "answer": "It costs tokens on every call, and a very long context makes the model worse at using any one fact in it; the manual may also exceed the window.",
+      "accepted": [
+        "It is expensive because you pay for every token on every call.",
+        "A longer context makes the model less accurate at recalling details.",
+        "The manual may not fit in the window.",
+        "Retrieve only the relevant chunks instead, to save cost and keep the model focused."
+      ],
+      "rationale": "Any one of these reasons is full credit: cost (every token in the window is paid for on every call), context rot (recall gets worse as the window fills), or the manual not fitting. Saying only that it is 'slow' or 'messy' without one of these is partial."
+    }
+  ]
+}

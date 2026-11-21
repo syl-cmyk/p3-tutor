@@ -1,0 +1,31 @@
+{
+  "id": "0001",
+  "objective": "O1",
+  "title": "Why pipelining makes a processor faster",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "What does pipelining make faster?",
+      "options": [
+        {"id": "a", "text": "The time one instruction takes by itself"},
+        {"id": "b", "text": "The number of instructions finished in a given time"},
+        {"id": "c", "text": "The first instruction, which now ends in 1 cycle"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O1",
+      "stem": "A pipeline has 4 stages and each stage takes 1 cycle. How many cycles does it take to finish 100 instructions?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Why does the total time get shorter even though one instruction takes the same time as before? Answer in one sentence."
+    }
+  ]
+}

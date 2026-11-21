@@ -1,0 +1,159 @@
+{
+  "duration_api_ms": 116595,
+  "stop_reason": "end_turn",
+  "session_id": "f4c190f4-7326-49b5-8b09-0305a48adc73",
+  "total_cost_usd": 0.46808959999999994,
+  "usage": {
+    "input_tokens": 26,
+    "cache_creation_input_tokens": 57697,
+    "cache_read_input_tokens": 577450,
+    "output_tokens": 15559,
+    "output_tokens_details": {
+      "thinking_tokens": 973
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 57697,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 424,
+        "cache_read_input_tokens": 66891,
+        "cache_creation_input_tokens": 1442,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1442
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 26,
+      "outputTokens": 15559,
+      "cacheReadInputTokens": 577450,
+      "cacheCreationInputTokens": 57697,
+      "webSearchRequests": 0,
+      "costUSD": 0.44417500000000004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 973,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 57697,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 27356,
+      "outputTokens": 2358,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 2,
+      "costUSD": 0.0239146,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 558,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_019rbqzyYpc8Mme7aSjopXaf",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-9jl84k_e/lessons && perl -pi -e 's/\\[([^\\]]+)\\]\\((https:[^)]+)\\)/<a href=\"$2\">$1<\\/a>/g; s/if Riley\\x27s training status/if a student\\x27s training status/' 0001-context-and-memory.html && grep -n '\\](http' 0001-context-and-memory.html; grep -c '<a href' 0001-context-and-memory.html; sed 's/<script.*//;' 0001-context-and-memory.html | perl -0pe 's/<style.*?<\\/style>//gs; s/<[^>]+>//g' | wc -w"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 28,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The O3 lesson, its quiz and its key are written. I haven't opened the lesson in a browser or counted its words. I estimate it at about 1,150 words, which should fit the 10-minute window.\n\n- **Lesson:** `lessons/0001-context-and-memory.html`. It starts with a laser-cutter trace showing what sits in the context window, then covers what is kept between steps and between sessions. It ends on retrieval and notes, with a worked example on a 60,000-token manual. It has two figures, two quick checks and a \"your turn\" task, and it's a casual, example-first read, as your preferences ask.\n- **Quiz:** `quizzes/0002.json` has five fresh items, with the key in `keys/0002.json`. Ask me for it whenever you want to take it, and I'll give hints rather than answers.\n- **Workspace:** I created `RESOURCES.md` with the Anthropic context-engineering and memory-tool sources, and I added a line to `NOTES.md`.\n\nThe \"Test it with others\" section points to your own design review, because I found no real community link to cite. `RESOURCES.md` lists that as a gap.\n\nDo you want the next lesson to go deeper on retrieval, meaning how to chunk and search a long manual? That's the part of your assistant I only sketched here.",
+  "ttft_ms": 1436,
+  "type": "result",
+  "duration_ms": 110486,
+  "uuid": "5dff4a10-a190-4109-baaa-2190673122c8",
+  "ttft_stream_ms": 944,
+  "time_to_request_ms": 244,
+  "first_content_frame_ms": 944,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 26,
+      "outputTokens": 15559,
+      "cacheReadInputTokens": 577450,
+      "cacheCreationInputTokens": 57697,
+      "webSearchRequests": 0,
+      "costUSD": 0.44417500000000004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 973,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 57697,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 27356,
+      "outputTokens": 2358,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 2,
+      "costUSD": 0.0239146,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 558,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

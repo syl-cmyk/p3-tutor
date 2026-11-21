@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program re-sends the whole message list each time. Picking a or c shows the belief that the model remembers or forgets by itself."
+    },
+    {
+      "id": "q2",
+      "answer": 6200,
+      "tolerance": 0,
+      "rationale": "Call 1: 800. Call 2: 800 + 500 = 1,300. Call 3: 800 + 1,000 = 1,800. Call 4: 800 + 1,500 = 2,300. Total 6,200. Answering 3,500 (800 + 3 x 500 + ...) or 3,200 + 1,500 = 4,700 shows counting each result once instead of re-sending it every call."
+    },
+    {
+      "id": "q3",
+      "answer": "Save the training status outside the model (a file or database) and load it into the new session's context.",
+      "accepted": ["save it to a file or database and load it next session", "store a note and read it back at the start of the session", "write it to memory storage and put it in the context next time"],
+      "rationale": "The model remembers nothing across sessions, so the program must persist the fact and put it back in context. Saying the model will remember, or that the old conversation carries over automatically, is wrong."
+    },
+    {
+      "id": "q4",
+      "answer": "a",
+      "rationale": "Retrieval brings in only the relevant pages when needed, keeping tokens and cost low. A larger window still costs tokens on every call and does not solve the cost."
+    },
+    {
+      "id": "q5",
+      "answer": "More text costs more tokens on every call, and the irrelevant text can distract the model so it recalls or uses the right facts less accurately.",
+      "accepted": ["it costs more", "it increases cost", "the model gets distracted by irrelevant text", "accuracy drops as context grows", "context rot"],
+      "rationale": "Either cost per call or reduced accuracy as the window fills (context rot) is a valid reason."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": 6000,
+      "tolerance": 0,
+      "rationale": "The whole context is re-sent on every call: call 1 is 1,500, call 2 is 1,500 + 500 = 2,000, call 3 is 2,000 + 500 = 2,500. The total is 1,500 + 2,000 + 2,500 = 6,000. An answer of 2,500 counts only the last call, and 2,500 or 3,000 shows the idea that each call is billed only for what is new."
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The model does not change when it chats and each session starts a fresh window; carrying a preference over needs the program to save it and load it into the next window. Options a and d treat the model as remembering by itself.",
+      "distractors": {"a": "M3", "d": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "A knowledge base under about 200,000 tokens (roughly 500 pages) can go in the prompt, and prompt caching cuts the cost and latency, so it is the simplest thing to try before a retrieval index. Sending only part of each manual risks losing the page needed, and a model-rewritten note adds errors."
+    },
+    {
+      "id": "q4",
+      "answer": "It prepends a short explanation of where the chunk comes from (such as the machine and manual) before the chunk is indexed.",
+      "accepted": [
+        "It adds a short context sentence naming the machine to each chunk before embedding and indexing it.",
+        "It prepends chunk-specific context to the chunk before indexing it.",
+        "It adds a short description of the source to each chunk before it is embedded."
+      ],
+      "rationale": "Contextual retrieval has a model write a short (50 to 100 token) context for each chunk, which is prepended before the chunk is embedded and added to the BM25 index. Answers about retrieving more chunks, or a larger window, miss the fix."
+    },
+    {
+      "id": "q5",
+      "answer": "Because the whole transcript, including that result, is sent as input on every later call, so its 20,000 tokens are processed and billed again each time.",
+      "accepted": [
+        "The full conversation is re-sent on each call, so the result stays in the context and is paid for every time.",
+        "It stays in the context window, and the context is re-read and billed on every call."
+      ],
+      "rationale": "The model is stateless: the program re-sends the whole context on every call, so a result that stays in the context is billed again each time (three more times here, 60,000 extra tokens). Saying the model remembers it for free, or that it is billed once, shows the misconception that earlier steps cost nothing later."
+    }
+  ]
+}

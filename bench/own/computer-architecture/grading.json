@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submissions": {
+    "s1": [
+      {
+        "id": "q1",
+        "verdict": "wrong",
+        "misconception": "M2",
+        "why": "Picked a, which says pipelining makes one instruction faster; pipelining only raises the total throughput, one instruction still takes the same time."
+      },
+      {
+        "id": "q2",
+        "verdict": "wrong",
+        "misconception": null,
+        "why": "100 is not 103: the first instruction takes 4 cycles and each of the other 99 finishes one cycle later, 4 + 99 = 103. The learner seems to count one cycle per instruction."
+      },
+      {
+        "id": "q3",
+        "verdict": "partial",
+        "misconception": null,
+        "why": "It says instructions overlap, which is right, but it does not say that one instruction still takes the same time and only the total gets shorter."
+      }
+    ]
+  }
+}

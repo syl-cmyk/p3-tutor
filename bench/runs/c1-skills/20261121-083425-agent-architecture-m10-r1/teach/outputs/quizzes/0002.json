@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant is on its 4th model call in one request. Which statement about what the model sees on that call is correct?",
+      "options": [
+        {"id": "a", "text": "Only the newest tool result, since earlier calls are already finished"},
+        {"id": "b", "text": "The whole conversation so far, re-sent by the program with the new result"},
+        {"id": "c", "text": "Everything it has ever seen, held inside the model between calls"},
+        {"id": "d", "text": "A short summary the model wrote itself on the earlier calls"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Every model call re-sends a fixed 800 tokens (system prompt and tool descriptions). A request takes 4 model calls, and each of the first three calls adds one tool result of 500 tokens to the context for later calls. The final call's input also includes all of those results. How many input tokens are sent across all 4 calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student finishes safety training on Monday and returns on Thursday in a brand-new session. In one sentence, what must your program do for the assistant to know about the training?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The 200-page CNC router manual is too long to include in every request, and most questions need only one or two pages of it. Which design fits best?",
+      "options": [
+        {"id": "a", "text": "A search tool that returns the best-matching pages only when asked"},
+        {"id": "b", "text": "A model with a bigger window so the whole manual is always loaded"},
+        {"id": "c", "text": "A system prompt telling the model to remember the manual closely"},
+        {"id": "d", "text": "A note file that the model writes the whole manual into each time"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Give one reason, in a sentence, why filling the context window with extra manual text can make the assistant worse, apart from running out of room."
+    }
+  ]
+}

@@ -111,13 +111,12 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
 
 1. **Pin down the lesson:** the objective and its id, the requested length in minutes, where the learner starts, and the one tangible win they will walk away with.
    When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes, declare it in `p3-minutes`, and say in your message that the learner can ask for a shorter or longer lesson.
-2. **Find the knowledge:** search the web for high-trust sources on exactly this objective, read the best two or three, and choose the single best one as the lesson's primary source.
-   Add the sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`.
-3. **Plan to the minutes:** split the lesson into sections with a word budget for each, as `references/LESSONS.md` explains, so the whole lesson fits the requested length.
-   Aim for 150 words per requested minute, and never go below 120 (3,600 words for 30 minutes): the bench counts visible words, and a lesson that comes in short has not filled the time the learner set aside.
-   When a draft is short, add detail at the same difficulty: more steps in each worked trace, one more concrete case of the same idea, a short recap at the end of a part; never a new topic and never a harder explanation.
+2. **Plan with the `lesson-planner` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+   Its task message names the objective (id and text) and the requested minutes; it reads the learner files and the lesson guide itself, finds and reads the sources, and writes `drafts/plan.md`.
+   Read the plan back to be sure it exists, add its sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`, and if it is missing a part title, a key sentence, a word budget, an example or a source, start the planner again once.
+3. **Hold to the plan.** The plan's parts, titles, key sentences, word budgets and examples are the lesson's outline: the word budgets add up to the requested length (150 words per minute, never below 120), so a draft that comes in short is filled with detail at the same difficulty, never with a new topic or a harder explanation.
    You have no word counter, so estimate: count the words in one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way.
-4. **Draft the lesson** to `drafts/NNNN-<slug>.html`, following `FORMATS.md` and the template: beautiful and self-contained, with figures, worked examples, practice with immediate feedback, and citations.
+4. **Draft the lesson** to `drafts/NNNN-<slug>.html` from `drafts/plan.md`, following `FORMATS.md` and the template: beautiful and self-contained, with figures, worked examples, practice with immediate feedback, and citations.
    Never write a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
    Then read the draft back to be sure it was written; if the read fails, write it again before going on.
 5. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.

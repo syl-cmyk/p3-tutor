@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student tells your assistant, \"I finished CNC router training.\" On Thursday the same student opens a new chat. Your program saved nothing between the two chats and sends only the instructions and the new question. What does the model know about the student's CNC training?",
+      "options": [
+        {"id": "a", "text": "It still knows, because the model keeps every past chat"},
+        {"id": "b", "text": "It knows only if the student asks about the CNC router"},
+        {"id": "c", "text": "It knows nothing, because the new window never contained it"},
+        {"id": "d", "text": "It knows, because Monday's window was larger than Thursday's"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one request, the first model call reads 1,000 input tokens. Each later call re-sends everything before it plus 500 new tokens (the previous request and its tool result). The model is called 4 times in total. How many input tokens does the model read across all 4 calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team learns that a new model has a context window big enough to hold all the makerspace manuals at once. A teammate says retrieval is now unnecessary. Which reply is best for a small model budget?",
+      "options": [
+        {"id": "a", "text": "Agreed, since a window that fits the manuals removes any cost"},
+        {"id": "b", "text": "Agreed, since a model reads long text as well as short"},
+        {"id": "c", "text": "Disagree, because the model would then forget the students"},
+        {"id": "d", "text": "Disagree, because every call would re-read the manuals and pay for them"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A request that takes ten tool calls costs far more than ten times the cost of a request with one model call and no tools. In one sentence, why?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student asks about the maximum thickness for the laser cutter, and the assistant quotes the figure for the 3D printer. You find the search returned three chunks, all from the 3D printer manual. What is the best first step?",
+      "options": [
+        {"id": "a", "text": "Switch to a bigger model so that it reads more carefully"},
+        {"id": "b", "text": "Add the laser manual to the saved notes for every student"},
+        {"id": "c", "text": "Log the returned chunks and test the search on this question"},
+        {"id": "d", "text": "Tell the model in its instructions to never quote a figure"}
+      ]
+    }
+  ]
+}

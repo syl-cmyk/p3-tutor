@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your makerspace assistant on Monday and the session ends. On Thursday they open a new session and ask, \"What did I book on Monday?\" Nothing was saved anywhere. What can the assistant do?",
+      "options": [
+        {"id": "a", "text": "Recall it, because the model keeps every past chat inside its weights"},
+        {"id": "b", "text": "Recall it, because a large window holds all earlier sessions together"},
+        {"id": "c", "text": "Not recall it, because the new context never contained that chat"},
+        {"id": "d", "text": "Recall it, because the program resends old chats at every step"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An agent's first model call sends 2,000 tokens. It requests a tool that returns 500 tokens. The second call re-sends the history plus the tool request (50 tokens) and result, then the model writes a final answer. How many input tokens did the model read across both calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant must answer from a 150,000-token machine manual, and each question needs only one short section. Which design keeps the cost per request lowest?",
+      "options": [
+        {"id": "a", "text": "Put the full manual in every call so nothing can be missed"},
+        {"id": "b", "text": "Search the manual and load only the best few matching chunks"},
+        {"id": "c", "text": "Pick a model with a bigger window and paste the manual once"},
+        {"id": "d", "text": "Summarize the manual into one line and load that each call"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one sentence: what must your program do so the assistant knows a student's training status in a brand-new session?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A retrieval search returns the wrong manual section, and the assistant answers confidently from it. In one sentence, why does the model not notice the mistake?"
+    }
+  ]
+}

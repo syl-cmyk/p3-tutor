@@ -1,0 +1,28 @@
+{
+  "id": "0001",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "Pipelining overlaps instructions, so more of them finish in a given time; one instruction still takes the same time.",
+      "distractors": {
+        "a": "M2"
+      }
+    },
+    {
+      "id": "q2",
+      "answer": 103,
+      "tolerance": 0.5,
+      "rationale": "The first instruction takes 4 cycles, and each of the other 99 finishes one cycle after the one before it: 4 + 99 = 103 cycles, against 400 without overlap."
+    },
+    {
+      "id": "q3",
+      "answer": "Instructions overlap, so one finishes every cycle even though each one still takes the same time.",
+      "accepted": [
+        "Several instructions are in different stages at the same time",
+        "A new instruction starts before the earlier one finishes"
+      ],
+      "rationale": "A right answer says that instructions overlap, and that only the total gets shorter, not the time of one instruction."
+    }
+  ]
+}

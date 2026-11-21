@@ -1,0 +1,75 @@
+{
+  "id": "computer-architecture",
+  "title": "Pipelining in a processor",
+  "learner_summary": "A student who has just started computer architecture. They know what an instruction is and that a processor runs one after another, but they have not yet learned how pipelining overlaps instructions, or why a pipeline can stall.",
+  "minutes": 30,
+  "teach_objective": "O2",
+  "quiz_objective": "O3",
+  "graded_quiz": "0001",
+  "submissions": [
+    "s1"
+  ],
+  "objectives": [
+    {
+      "id": "O1",
+      "text": "Explain why pipelining makes a processor faster: it overlaps instructions."
+    },
+    {
+      "id": "O2",
+      "text": "Explain why a pipeline stalls: a hazard, which is structural, data or control."
+    },
+    {
+      "id": "O3",
+      "text": "Explain how a pipeline handles a hazard: stalling or bypassing."
+    }
+  ],
+  "facts": [
+    {
+      "id": "F1.1",
+      "objective": "O1",
+      "text": "Pipelining overlaps instructions: with 4 stages, 100 instructions take 4 + 99 = 103 cycles, against 400 cycles without overlap."
+    },
+    {
+      "id": "F2.1",
+      "objective": "O2",
+      "text": "A hazard stops the pipeline when an instruction needs something that is not ready yet."
+    },
+    {
+      "id": "F2.2",
+      "objective": "O2",
+      "text": "In ADDI R1, R0, #10 followed by ADDI R4, R1, #17, the second instruction needs R1 before the first has computed it, so there is a data hazard."
+    },
+    {
+      "id": "F2.3",
+      "objective": "O2",
+      "text": "A structural hazard happens when two instructions need the same piece of hardware in the same cycle, so one of them has to wait."
+    },
+    {
+      "id": "F2.4",
+      "objective": "O2",
+      "text": "A control hazard happens when an instruction has to wait for the result of a branch before the pipeline knows which instruction comes next."
+    },
+    {
+      "id": "F3.1",
+      "objective": "O3",
+      "text": "A pipeline can stall, which means waiting until the result is ready."
+    },
+    {
+      "id": "F3.2",
+      "objective": "O3",
+      "text": "A pipeline can bypass, which means sending the result directly to the instruction that needs it."
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "M1",
+      "text": "Every pipeline stall is a data hazard.",
+      "correction": "Ask what the instruction is waiting for: the same piece of hardware is a structural hazard, the result of an earlier instruction is a data hazard, and the result of a branch is a control hazard."
+    },
+    {
+      "id": "M2",
+      "text": "Pipelining makes every single instruction faster.",
+      "correction": "One instruction still takes the same time; what gets faster is the total throughput: 100 instructions go from 400 cycles to 103 cycles."
+    }
+  ]
+}

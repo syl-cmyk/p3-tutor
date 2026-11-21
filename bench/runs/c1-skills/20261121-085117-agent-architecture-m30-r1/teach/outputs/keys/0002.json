@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "Each model call sees only the text in its window. With nothing saved and re-sent, Thursday's window has no trace of Monday's chat. Thinking the model keeps past chats (a) is the misconception M3 that memory between sessions is automatic; (d) confuses window size with persistence.",
+      "distractors": {"a": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 7000,
+      "tolerance": 0,
+      "rationale": "The calls read 1,000, then 1,500, then 2,000, then 2,500 tokens: 1,000 + 1,500 + 2,000 + 2,500 = 7,000. An answer of 2,500 counts only the last call; 3,500 counts only the new tokens."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "A big window only allows the manuals to fit; every call still re-sends and pays for everything in it, and long contexts can recall less accurately (context rot). Retrieval loads only the few chunks needed. Believing a big window removes the need for retrieval is M7.",
+      "distractors": {"a": "M7", "b": "M7"}
+    },
+    {
+      "id": "q4",
+      "answer": "Every call re-sends the whole history, so later calls read more and more tokens and the cost grows faster than the number of calls.",
+      "accepted": [
+        "Each call re-reads everything before it, so input grows with each step.",
+        "Because the context is re-sent in full on each call, later calls are bigger.",
+        "The history is sent again every time, so each call costs more than the last."
+      ],
+      "rationale": "The key idea is that the context is re-sent in full on every call and grows, so total input is a sum of growing amounts. Saying only that tools or steps cost money is incomplete; saying the model remembers earlier steps for free shows M3-style thinking."
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "The model could only use the chunks it was given, so first find out whether retrieval returned the wrong chunks. Logging the results and testing the search separates a search failure from a model failure. Assuming retrieval always finds the right page is M8; a bigger model (a) cannot fix wrong input.",
+      "distractors": {"a": "M8", "d": "M8"}
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "In one chat session, a student tells the makerspace assistant their name in the first message. Five steps later the assistant uses the name. Which statement best explains why the assistant can do that?",
+      "options": [
+        {"id": "a", "text": "The program sends the earlier messages again in each new model call"},
+        {"id": "b", "text": "The model updates its own training whenever a student shares a fact"},
+        {"id": "c", "text": "The model stores each chat in a private memory it can search"},
+        {"id": "d", "text": "The model keeps the name because it was told to remember it"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chatted with your assistant on Monday and returns on Friday in a brand-new session. You have built nothing to save or load anything. What does the assistant know about Monday?",
+      "options": [
+        {"id": "a", "text": "Everything, because the model remembers every chat it has had"},
+        {"id": "b", "text": "Only a short summary the model made itself at the end of Monday"},
+        {"id": "c", "text": "Nothing, because the new session's context window starts out empty"},
+        {"id": "d", "text": "Only the facts the student told it more than once on Monday"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Your assistant's context window holds 10,000 tokens. The system prompt and tool descriptions use 1,500 tokens, and the student's question uses 100. Each retrieved manual chunk is 800 tokens. Leaving the model room for its answer is ignored here. What is the largest whole number of chunks you can put in the window?",
+      "unit": "chunks"
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your assistant must know which machines each student is trained on, across visits. In one sentence, what must your program do so that the assistant knows this in a new session?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate says: \"Just paste all 60 pages of the laser cutter manual into the window on every request, so the assistant never misses anything.\" Give one reason, in a sentence, that this is a poor design for your assistant."
+    }
+  ]
+}

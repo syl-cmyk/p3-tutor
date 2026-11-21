@@ -1,0 +1,34 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model has no memory between sessions; only text in the current context is visible. Option b treats the window as memory (M3); a and d assume memory that does not exist.",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 4550,
+      "tolerance": 0,
+      "rationale": "Call 1 reads 2,000. Call 2 re-sends the history plus the request and result: 2,000 + 50 + 500 = 2,550. Total 2,000 + 2,550 = 4,550. Answering 2,500 counts only the new tool result and request once, forgetting that every call re-sends the history."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "Retrieval loads only a few small chunks, so each call stays small. Pasting the manual, even once into a bigger window, is re-sent and paid for at every call."
+    },
+    {
+      "id": "q4",
+      "answer": "Save it as a note outside the model and load it into the new context",
+      "accepted": ["save it and load it back in", "store it in a file or database and load it into the context", "load the saved note into the context", "save a note and reload it each session"],
+      "rationale": "Only saved data survives a session; the program must load it into the new context. An answer saying the model remembers it shows M3."
+    },
+    {
+      "id": "q5",
+      "answer": "It only sees what is in its context, so it cannot know the chunk is wrong",
+      "accepted": ["it trusts the context", "the retrieved text is all it sees", "it answers from what is in its context"],
+      "rationale": "The model works from the text in front of it and has no view of the full manual."
+    }
+  ]
+}

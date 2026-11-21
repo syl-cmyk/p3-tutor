@@ -80,3 +80,12 @@ An example of a finished entry:
 - With and without: reviews/c2-review.md, Round 5 (without) and Round 6 (with)
 - Review: Without it the lesson cost $0.83 with a length ratio of 0.60, and with it $1.52 and 0.87, about 1.8 times as much. It corrected facts (a claim cited to the wrong page, arithmetic that did not match the example), added real cases to the misconceptions and made the lesson longer, and my Technical correctness and Pedagogy ratings both rose from 4 to 5. I think it was worth the cost, though the length change also comes from the length rule I added in Round 6.
 - Kept in final: TODO
+
+### lesson-planner
+
+- Kind: subagent
+- Step added: c3-split
+- Purpose: TODO
+- With and without: reviews/c3-split.md, Round 1 (without) and Round 2 (with)
+- Review: TODO
+- Kept in final: TODO

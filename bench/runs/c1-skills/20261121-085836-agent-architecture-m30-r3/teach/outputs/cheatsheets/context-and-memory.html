@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.55; background: #fffdf8; color: #1f1d1a; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    code { font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; background: #f3efe6; padding: 0.1em 0.3em; border-radius: 4px; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } code { background: #23211e; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory: one page</h1>
+  <p>From <a href="../lessons/0001-context-and-memory.html">lesson 1</a>.</p>
+
+  <h2>Where information lives</h2>
+  <table>
+    <tr><th>Place</th><th>Lasts</th><th>Use for</th></tr>
+    <tr><td>Context window</td><td>One request</td><td>The conversation, tool results, rules</td></tr>
+    <tr><td>Saved notes</td><td>Across sessions</td><td>Soft facts such as preferences</td></tr>
+    <tr><td>Database tool</td><td>Permanent, exact</td><td>Training status, bookings</td></tr>
+    <tr><td>Retrieval index</td><td>Permanent, read-only</td><td>Long manuals</td></tr>
+  </table>
+
+  <h2>Rules to remember</h2>
+  <ul>
+    <li>The model keeps nothing between calls; the program re-sends what it needs.</li>
+    <li>Input tokens for call n = everything before it, so each step costs more than the last.</li>
+    <li>Tokens in the window are paid for again on every later call.</li>
+    <li>A new session starts empty: load notes in, save new ones out.</li>
+  </ul>
+
+  <h2>Retrieval steps</h2>
+  <ol>
+    <li>Once: split manuals into chunks, add a short context line to each, index them.</li>
+    <li>Per question: search (keyword for exact codes, embeddings for similar meaning, both if you can).</li>
+    <li>Return only the top few chunks into the window.</li>
+  </ol>
+</main>
+</body>
+</html>

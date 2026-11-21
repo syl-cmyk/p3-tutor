@@ -11,17 +11,19 @@ Keep every heading as it is, because `p3 check` reads them, and add a round by c
 
 ### Round 1
 
-**Run:** TODO
+**Run:** bench/runs/c2-review/20261121-003424-agent-architecture-m30-r1, the c2-review full run, lesson only
 
 **My thoughts:**
 
-TODO
+The c2-review lesson is clear and has the right length now, but my review found three things I want the split to fix: the part titles sound too casual, some concepts could have more detail at the same difficulty, and the review is not clean because the last fixes were never reviewed again.
+I want a planner subagent that plans the lesson before any writing: the sections in order, a title for each in the course's technical terms with a short plain explanation, a word budget for each part, and the example it uses, so every part has enough detail.
+
 
 **What changed:**
 
-- Kind: TODO
-- Files: TODO
-- Why: TODO
+- Kind: new subagent
+- Files: tutor/.claude/agents/lesson-planner.md, tutor/.claude/skills/teach/SKILL.md
+- Why: The lesson's titles were too casual and some parts lacked detail because nothing planned the lesson before it was written, so a lesson-planner subagent now finds the sources and writes drafts/plan.md with technical titles and plain explanations, a key sentence, a word budget and an example for each part, and the teach skill drafts the lesson from that plan.
 
 ### Round 2
 

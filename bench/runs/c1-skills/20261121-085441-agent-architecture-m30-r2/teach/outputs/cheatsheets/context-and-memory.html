@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: where information lives in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; color: #1f1d1a; background: #fffdf8; }
+    h1 { font-size: 1.6rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    th { font-family: system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; color: #6b665e; }
+    a { color: #9a4517; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } td, th { border-color: #36332e; } a { color: #eaa77a; } }
+  </style>
+</head>
+<body>
+  <h1>Where information lives in an agent</h1>
+  <table>
+    <tr><th>Place</th><th>Holds</th><th>Lasts</th><th>Makerspace example</th></tr>
+    <tr><td>Context window</td><td>System prompt, tool definitions, messages, tool results, the reply</td><td>One session; re-sent every call</td><td>Rules, tool list, today's question</td></tr>
+    <tr><td>Saved notes or records</td><td>Short facts loaded into the next window</td><td>Across sessions</td><td>Training status, bookings, preferences</td></tr>
+    <tr><td>Searchable store</td><td>Large documents split into chunks</td><td>Permanent; only the top chunks enter the window</td><td>Machine manuals</td></tr>
+  </table>
+  <h2>Rules of thumb</h2>
+  <ul>
+    <li>Input cost = the sum of the whole context on every call. A result stays billed until you clear it.</li>
+    <li>Over the window or rotting: clear old tool results first, then compact (summarize).</li>
+    <li>Knowledge base under about 200,000 tokens: try the whole thing in the prompt with caching before building search.</li>
+    <li>Search: embeddings match meaning, BM25 matches exact words; use both. Prepend context to each chunk before indexing.</li>
+    <li>Facts where a mistake is costly (training status) live in a database the program reads, not in a note the model wrote.</li>
+  </ul>
+  <p>Sources: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a>, <a href="https://www.anthropic.com/engineering/contextual-retrieval">Contextual Retrieval</a>. Lesson: <a href="../lessons/0001-context-and-memory-in-an-agent.html">Context and memory in an agent</a>.</p>
+</body>
+</html>

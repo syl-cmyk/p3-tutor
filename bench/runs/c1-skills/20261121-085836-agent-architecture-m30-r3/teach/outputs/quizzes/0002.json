@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday, Sam tells your assistant, \"I always use the small printer.\" On Friday the program starts a new session and sends the model only Sam's new message: \"Book my usual printer.\" What must have happened for the model to book the right one?",
+      "options": [
+        {"id": "a", "text": "The model remembered Monday's chat because it was trained on it"},
+        {"id": "b", "text": "The window was large enough to hold all of last week's chat"},
+        {"id": "c", "text": "A saved note from Monday was loaded into Friday's call"},
+        {"id": "d", "text": "The model guessed from the printers that are usually booked"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A loop has three model calls. Call 1 receives the system prompt and question, 700 tokens in all, and asks for tool A. The program runs tool A, whose result is 300 tokens; call 2 asks for tool B, whose result is 500 tokens; call 3 writes the final answer. Each tool request is 50 tokens, and every call re-sends everything before it. How many input tokens are sent across the three calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student types, \"The display says error F-17. What do I do?\" The code F-17 appears word for word in the machine's manual. Which search for the right chunk is the safest choice here?",
+      "options": [
+        {"id": "a", "text": "Embedding search, since it always beats exact word matching"},
+        {"id": "b", "text": "Keyword search, since the exact code is in the manual"},
+        {"id": "c", "text": "No search, and paste the whole manual into every call"},
+        {"id": "d", "text": "No search, and let the model recall the code itself"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two sentences: why does the search tool return only the few best chunks of a manual instead of the whole manual?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate says, \"Let's pick a model with a huge context window, then we won't need saved notes.\" In one or two sentences, give one reason this does not give the assistant memory between visits."
+    }
+  ]
+}

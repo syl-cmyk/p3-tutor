@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Your assistant answers a question in three model calls. Call 1 receives 1,500 tokens (system prompt, tool list and question). The model requests a tool after call 1 and after call 2, and each tool result adds 500 tokens to the context. Ignore the model's own request text. How many input tokens are processed across all three calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Tuesday a student tells your assistant they only book machines after 5 pm. On Wednesday a new session starts, and the assistant offers a 10 am slot. Which explanation fits how the assistant was built?",
+      "options": [
+        {"id": "a", "text": "The model learned the preference on Tuesday but lost it when the session closed"},
+        {"id": "b", "text": "Nothing was saved, so Wednesday's window started without anything from Tuesday"},
+        {"id": "c", "text": "The window filled up on Tuesday, which erased the model's stored memory"},
+        {"id": "d", "text": "The model only keeps a preference when the student says remember this"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "All of your team's machine manuals add up to about 120,000 tokens. Before building a search index, which approach should you try first?",
+      "options": [
+        {"id": "a", "text": "Build a vector index of every manual chunk, with a reranking step"},
+        {"id": "b", "text": "Send only the first 30 pages of each manual on every call"},
+        {"id": "c", "text": "Put every manual in the prompt and turn on prompt caching"},
+        {"id": "d", "text": "Save each manual as a note and let the model rewrite it"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A manual chunk reads \"Press the red button twice to reset.\" It never names the machine, so search matches it to questions about the wrong machine. In one sentence, what does contextual retrieval do to each chunk to fix this?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In step 2 of a run, a tool returns a 20,000-token result that the model uses once. The run goes on for three more model calls. In one or two sentences, why does that result still add to the cost of those later calls?"
+    }
+  ]
+}
