@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model only knows what is in the text sent on this call. A new conversation starts with an empty context, and nothing from yesterday was included, so it knows nothing about it. Believing the model stores or remembers earlier chats itself is M3; believing the window carries text over between sessions confuses its size limit with memory (M7).",
+      "distractors": {"a": "M3", "b": "M3", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": 12800,
+      "tolerance": 0.5,
+      "rationale": "Call 1 reads 1,600. Calls 2 and 3 both read the 4,000-token result as well, so each reads 1,600 + 4,000 = 5,600. Total: 1,600 + 5,600 + 5,600 = 12,800. Answering 5,600 or 9,600 counts the old text only once, missing that every call re-reads the whole context."
+    },
+    {
+      "id": "q3",
+      "answer": "Every step re-reads and re-bills the whole context, so loading only the matching pages is much cheaper, and it avoids burying the useful page among irrelevant text.",
+      "accepted": [
+        "It is cheaper, because everything in the context is paid for on every call, and only the relevant pages are needed.",
+        "Pasting everything costs tokens on every call and may not even fit, while search brings in only the few pages that matter.",
+        "Because the manuals are too long to fit in the context and would cost too much on each step, so it fetches only what it needs."
+      ],
+      "rationale": "Full credit names a valid reason: cost (the whole context is paid for on every call), the size limit, or lower accuracy when relevant text is buried. A bare 'because it is better' is wrong; saying the model can read the whole manual for free shows M7."
+    },
+    {
+      "id": "q4",
+      "answer": "b",
+      "rationale": "A short, stable record per student is small, survives between sessions, and is loaded into the context only at the start. An endless chat (a) and pasting every record into the prompt (d) bloat the context and the bill; the model has no record of its own to recall (c), which is M3.",
+      "distractors": {"a": "M7", "c": "M3", "d": "M7"}
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "The model only reads what the search tool returns. If the search misses the page, the model never sees it, however good the model is. The manual was never loaded whole (a, c), and notes are for small stable facts, not for fixing a search (d). Option c shows M8, the belief that the model reads the whole manual and finds the page itself.",
+      "distractors": {"a": "M7", "c": "M8"}
+    }
+  ]
+}

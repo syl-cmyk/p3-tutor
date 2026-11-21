@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student used your makerspace assistant yesterday and told it their name and their project. Today they open a brand-new conversation, and your program sends only the system prompt, the tool list and today's question. What does the model know about yesterday?",
+      "options": [
+        {"id": "a", "text": "Everything, because the model stores each earlier chat on its own"},
+        {"id": "b", "text": "Only the project, because the model remembers the important parts"},
+        {"id": "c", "text": "Nothing, because yesterday's text was not included in this call"},
+        {"id": "d", "text": "Everything, because the context window keeps text between sessions"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A request takes three model calls. The system prompt, tool list and question total 1,600 tokens. One tool result of 4,000 tokens arrives before call 2, and nothing else is added before call 3. Ignoring the model's own output, how many input tokens does the model read across all three calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one sentence: why is it better for the assistant to search the manuals for the right page than to paste all the manuals into every request?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant must know, on each visit, which machines a student has passed training for. Which design fits best?",
+      "options": [
+        {"id": "a", "text": "Keep one endless chat per student and always resend all of it"},
+        {"id": "b", "text": "Save a short record per student and load it at session start"},
+        {"id": "c", "text": "Rely on the model to recall each student from its training"},
+        {"id": "d", "text": "Paste every student's record into the system prompt each call"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant searches the manuals for \"burn marks\" and gets nothing useful, but the manual's page on \"scorching\" does exist. What is the most direct reason the model gives a wrong answer?",
+      "options": [
+        {"id": "a", "text": "The context window was too small to hold the manual"},
+        {"id": "b", "text": "The model never saw the page, because the search did not return it"},
+        {"id": "c", "text": "The model read the whole manual and skipped the right page"},
+        {"id": "d", "text": "The notes file did not contain a line about burn marks"}
+      ]
+    }
+  ]
+}

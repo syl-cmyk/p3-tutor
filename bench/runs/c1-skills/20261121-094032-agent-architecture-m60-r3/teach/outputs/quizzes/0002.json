@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Last week a student finished laser cutter training with your assistant. This week they start a new session, and the assistant has no idea they were ever trained. What is the most likely cause?",
+      "options": [
+        {"id": "a", "text": "The model's context window was too small to hold last week's visit"},
+        {"id": "b", "text": "Nothing saved the training status and loaded it at this session's start"},
+        {"id": "c", "text": "The model gradually forgot the training fact as several days went by"},
+        {"id": "d", "text": "The manuals index held too few chunks about the laser cutter"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one request, the assistant makes 3 model calls. The system prompt and tool descriptions together are 2,000 tokens, and they are the same in every call. Counting only those fixed 2,000 tokens, how many input tokens are sent across the whole request?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your check_calendar tool returns the whole month's bookings (3,000 tokens), but students almost always ask about one day. Which change cuts cost most directly?",
+      "options": [
+        {"id": "a", "text": "Switch to a model with a larger context window for the assistant"},
+        {"id": "b", "text": "Add a line to the system prompt asking the model to be brief"},
+        {"id": "c", "text": "Save each month's bookings as a long-term note for each student"},
+        {"id": "d", "text": "Make the tool return only the bookings for the requested day"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student asks about a setting that sits on page 63 of an 80-page manual. In one or two sentences, how does retrieval get that page to the model without putting the whole manual in the context window?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Three weeks ago the assistant saved the note \"Priya has the laser cutter booked Friday at 2 pm\". Today Priya asks, \"Do I have anything booked?\" In one or two sentences, why is that note a poor thing to answer from, and what should the assistant do instead?"
+    }
+  ]
+}

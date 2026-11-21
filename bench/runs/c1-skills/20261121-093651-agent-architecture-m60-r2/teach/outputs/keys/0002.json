@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program holds the conversation as a list and sends it again each time. Thinking the model or a provider session remembers it shows the idea that memory is automatic.",
+      "distractors": {"a": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 2700,
+      "tolerance": 0,
+      "rationale": "Call 1 sends 1,000 + 100 = 1,100 tokens. Call 2 sends all of that plus the 50-token tool request and the 450-token result: 1,600. Total 1,100 + 1,600 = 2,700. Answering 1,600 forgets that call 1 is billed too; 1,650 counts only one call's history."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "The chunk lost the context saying which machine it is about, so the fix is to restore it by prepending a short chunk-specific note before indexing (contextual retrieval). Returning more chunks, a bigger prompt or a larger window adds cost without making this chunk identifiable."
+    },
+    {
+      "id": "q4",
+      "answer": "The program",
+      "accepted": ["the program around it", "the program", "the application", "my program", "the app", "your code", "the client", "the program, not the model"],
+      "rationale": "The memory tool is client-side: the model only requests a file operation, and the application executes it against storage the developer controls. Answering the model shows the misconception that the model carries out the action itself."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "Stale tool results are the cheapest thing to drop, and the program controls the history, so it can delete them and leave a stub. The model has no saved memory to store (b), restarting loses the work (c), and an instruction to pay less attention still sends and bills the tokens (d)."
+    }
+  ]
+}

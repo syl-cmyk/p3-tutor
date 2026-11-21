@@ -1,0 +1,174 @@
+{
+  "run_id": "20261121-093157-agent-architecture-m60-r1",
+  "scored_at": "2026-11-21T09:36:51Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O3",
+      "requested_minutes": 60.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-context-and-memory-in-an-agent.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 60.0,
+      "declared_objective": "O3",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 4992,
+      "est_minutes": 33.28,
+      "length_ratio": 0.555,
+      "length_ok": false,
+      "links": [
+        {
+          "url": "https://anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://aclanthology.org/2024.tacl-1.9/",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://claude.com/blog/context-management",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://docs.claude.com/en/docs/build-with-claude/context-editing",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=45418251",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F3.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.4",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.5",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.6",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 5,
+        "notes": "All six facts are stated accurately: F3.1 via the context definition and figure listing system prompt, tools, history, results and reply; F3.4 via cost on every call, the Lost in the Middle point, and the hedged caching remark. The lesson raises M3 and M5 only to correct them. Level fit is high because it defines tokens and context window early, uses the learner's makerspace project, builds on the agent loop session, and keeps arithmetic simple with worked examples before practice."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": null,
+    "grade": null,
+    "tutor": null
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 0.555,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": null,
+    "quiz_ambiguous": null,
+    "quiz_wrong_key": null,
+    "grade_verdict_agreement": null,
+    "grade_false_wrong": null,
+    "grade_misconception_hit": null,
+    "tutor_leaks": null,
+    "tutor_behavior_met": null,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 1635221,
+        "tokens_output": 41103,
+        "minutes": 4.83,
+        "subagents": 0,
+        "cost_usd_list": 0.8999
+      },
+      "quiz": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "grade": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "tutor": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "total": {
+        "scenarios": 1,
+        "tokens_total": 1635221,
+        "tokens_output": 41103,
+        "minutes": 4.83,
+        "subagents": 0,
+        "cost_usd_list": 0.8999
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 15508,
+    "cost_usd_list": 0.0614,
+    "calls": 1
+  },
+  "warnings": []
+}

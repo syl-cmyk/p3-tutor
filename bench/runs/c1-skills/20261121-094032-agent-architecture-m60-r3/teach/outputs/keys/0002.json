@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between sessions; memory is a store the program writes to and loads from. Choosing a (window too small) or c (forgetting over time) treats the model as if it remembered by itself."
+    },
+    {
+      "id": "q2",
+      "answer": 6000,
+      "tolerance": 0,
+      "rationale": "Each call re-sends the whole transcript, so the fixed 2,000 tokens are sent on all 3 calls: 3 x 2,000 = 6,000. An answer of 2,000 treats the model as remembering earlier calls."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Tool results enter the window and are re-sent on every later call, so returning only the needed day shrinks every later call. A larger window gives room, not savings."
+    },
+    {
+      "id": "q4",
+      "answer": "It searches stored chunks of the manual for those closest in meaning to the question and puts only the top few matching chunks into the window.",
+      "accepted": [
+        "It searches the manual and puts only the best-matching chunks into the window",
+        "A search tool finds the most relevant chunks and returns only those",
+        "The manual is split into chunks and the closest matches to the question are retrieved"
+      ],
+      "rationale": "Retrieval is a search over text outside the window that brings in only the top-k best matches. An answer saying the model recalls the page from training is wrong."
+    },
+    {
+      "id": "q5",
+      "answer": "Bookings go stale, so a weeks-old note may be wrong; the assistant should call the calendar tool, which is current.",
+      "accepted": [
+        "The note is out of date; check the calendar tool instead",
+        "Bookings change, so notes should hold lasting facts only and the calendar should be queried",
+        "It may be stale, so call check_calendar for the current bookings"
+      ],
+      "rationale": "Notes are claims from the past, so they suit lasting facts like training status. For things a tool knows and that change, such as bookings, call the tool. A good answer names staleness and the tool."
+    }
+  ]
+}

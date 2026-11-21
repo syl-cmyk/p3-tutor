@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your assistant for ten turns. Between one model call and the next, where does the text of the earlier turns live?",
+      "options": [
+        {"id": "a", "text": "Inside the model, which keeps a running memory of the chat"},
+        {"id": "b", "text": "In a list your program keeps and sends again each call"},
+        {"id": "c", "text": "In the search index, which stores every message as a chunk"},
+        {"id": "d", "text": "On the model provider's server, which holds a session for you"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Each model call sends the full history so far. The system prompt and tool descriptions total 1,000 tokens and the student's question is 100 tokens. The model's first reply, a tool request, is 50 tokens, and the tool's result is 450 tokens. The model is then called a second time, with nothing deleted. How many input tokens do the two calls use in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your manual is split into chunks, and one chunk reads only: \"Replace the filter every 40 hours.\" Students asking about the laser cutter keep getting it mixed up with the vinyl cutter's. What is the best fix?",
+      "options": [
+        {"id": "a", "text": "Add a short note naming the machine to each chunk before indexing"},
+        {"id": "b", "text": "Return the top 20 chunks so that the right one is surely included"},
+        {"id": "c", "text": "Paste the full manuals into the system prompt for every call"},
+        {"id": "d", "text": "Switch to a model with a larger window to avoid missing context"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "With the memory tool, the model asks to write a note to a file. Which part of the system actually writes the file: the model or the program around it?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "After 40 steps, your agent's history is full of old calendar lookups and manual excerpts the task no longer needs, and the window is nearly full. Which is the best first move?",
+      "options": [
+        {"id": "a", "text": "Delete the stale tool results and keep a short stub in place"},
+        {"id": "b", "text": "Save the model's memory of the task so it can resume later"},
+        {"id": "c", "text": "Restart the request and let the model forget all it has done"},
+        {"id": "d", "text": "Ask the model in the prompt to pay less attention to old text"}
+      ]
+    }
+  ]
+}
