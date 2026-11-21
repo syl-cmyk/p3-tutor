@@ -23,7 +23,7 @@ You do not search the web and you do not add sources: every source and link you 
 4. Keep the learner's voice and the tone `PREFERENCES.md` asks for: casual and direct, short paragraphs of at most three sentences, no sentence that narrates a source, and one numbered trace for every main idea.
 5. After each part, count its words: take one typical paragraph, multiply by the number of paragraphs, and add the lists, traces and examples the same way.
    When a part is under its budget, add detail at the same difficulty before you move on: more steps in a worked trace, one more concrete case of the same idea, a short recap; never a new topic and never a harder explanation.
-6. Draw each figure the plan names as inline SVG with a `viewBox`, a `<title>` and a `<figcaption>`, with every bar, label and number matching the numbers in the text, and with colors from the template so it works in dark mode.
+6. For each figure the plan names, leave a placeholder where it belongs, right after the idea it shows: `<figure id="fig-N"><figcaption>what to notice, with the numbers it will show</figcaption></figure>`; the figure-designer draws it, so do not draw any SVG yourself.
 7. Put the practice tasks and the summary where the plan puts them, with hints before solutions, and finish with the plan's sources and the reminder that the learner can ask questions in the chat.
 
 ## What to report

@@ -61,6 +61,23 @@ I want a writer subagent that takes drafts/plan.md and writes the lesson part by
 - Files: tutor/.claude/agents/lesson-writer.md, tutor/.claude/skills/teach/SKILL.md
 - Why: The lesson was still short (length ratio 0.76) because nothing held the writing to the planner's word budgets, so a lesson-writer subagent now writes drafts/NNNN-<slug>.html part by part from drafts/plan.md to each budget and reports its words against them, and the teach skill starts it after the planner and asks for more detail when the total is under 120 words per minute.
 
+### Round 4
+
+**Run:** bench/runs/_live/20261121-210114-agent-architecture-m30-r1, teach only
+
+**My thoughts:**
+
+The Round 3 change helped: the length ratio went from 0.76 to 0.95 and the lesson is very good now.
+One thing still goes wrong in the reviewers' records: the figures. They flagged bars that did not match the numbers in the text, a figure that was not to scale and a figure shown before the idea it needs.
+I want a figure-designer subagent that draws the figures the plan names, checks every bar and label against the numbers in the lesson, and places each figure after the idea it shows.
+
+
+**What changed:**
+
+- Kind: new subagent
+- Files: tutor/.claude/agents/figure-designer.md, tutor/.claude/agents/lesson-writer.md, tutor/.claude/agents/lesson-planner.md, tutor/.claude/skills/teach/SKILL.md
+- Why: The reviewers kept finding figures whose bars did not match the text, were not to scale or came before their idea, so a figure-designer subagent now draws every figure as inline SVG to scale, checks each number against the text and places each figure after its idea, the planner lists the figures with their numbers, the writer leaves placeholders, and the teach skill runs the designer between the writer and the reviewers.
+
 ## Major review
 
 **Run:** bench/runs/c3-split/TODO

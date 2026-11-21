@@ -120,16 +120,19 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
    Its task message names the plan (`drafts/plan.md`), the draft's file name (`drafts/NNNN-<slug>.html`, with the next free number in `lessons/` and a short slug), the objective's id and the requested minutes.
    Never let a draft into `lessons/`: the bench expects exactly one new lesson there, and it gets the final file only.
    Read the draft back to be sure it exists. Its report gives each part's words against its budget: if the total is under 120 words per requested minute, start the writer once more and name the parts that need detail at the same difficulty; if the draft is still missing, write it again before going on.
-5. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
+5. **Draw the figures with the `figure-designer` subagent.** Start it with the Agent tool, and wait for its report before you go on.
+   Its task message names the draft (`drafts/NNNN-<slug>.html`) and the plan (`drafts/plan.md`); it draws every figure as inline SVG to scale, checks each number against the lesson's text, and places each figure after the idea it shows, in the draft itself.
+   Read the draft back to be sure it is still a complete page with its two meta tags.
+6. **Review loop, at most two passes.** Start the `lesson-reviewer` subagent with the Agent tool, and wait for its report before you go on.
    Its task message names: the draft path, the objective's id and text, the requested minutes, and the files it must read: `PREFERENCES.md`, `MISSION.md`, `NOTES.md` and `RESOURCES.md`.
    Do not tell it how you reasoned.
    - Fix every finding in the draft, or note in the record why you did not; a correction from its fact-check keeps the source it names.
    - After a fix, run the reviewer again; stop as soon as its last line is `Verdict: done`, or after the second review, whichever comes first.
-6. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
+7. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
    Then write the record to `review-records/NNNN-lesson.md`: how many review passes ran, the findings of each pass, and what you changed because of each one.
-7. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
-8. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
-9. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
+8. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
+9. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+10. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
    Never put a quiz answer in the message.
 
 ## Quiz
