@@ -114,6 +114,21 @@ I want a references-finder subagent that, before the lesson is written, opens ea
 - Files: tutor/.claude/agents/references-finder.md, tutor/.claude/agents/lesson-writer.md, tutor/.claude/agents/lesson-reviewer.md, tutor/.claude/skills/teach/SKILL.md
 - Why: The reviewers kept finding claims cited to the wrong page, dead-looking links and descriptions they could not confirm, so a references-finder subagent now opens every source in the plan, checks the link and that the page supports the claim, and writes drafts/sources.md, the teach skill runs it between the planner and the writer, the writer cites only what it marks as supported, and the lesson-reviewer starts its fact-check from that file.
 
+### Round 7
+
+**Run:** bench/runs/_live/20261121-225407-agent-architecture-m30-r1, teach only
+
+**My thoughts:**
+
+The Round 6 change helped: every source in the lesson was opened and checked, and the reviewers stopped flagging pages cited for things they do not say and links that look dead. The lesson stays professional and clear, with a length ratio of 0.97, so I am stopping here for the lesson.
+
+
+**What changed:**
+
+- Kind: other
+- Files: none
+- Why: The thoughts say the Round 6 change helped and the lesson is good enough, so this round makes no change and only records that result.
+
 ## Major review
 
 **Run:** bench/runs/c3-split/TODO
