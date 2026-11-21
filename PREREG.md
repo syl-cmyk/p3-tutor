@@ -57,7 +57,8 @@ One or two sentences: as the requested length grows from 10 to 60 minutes, which
 For example: "The single-agent `c1-skills` loses more than `final` as lessons get longer, because one context writing a 60-minute lesson drifts from the plan, so its `teach_facts_correct` falls further from 10 to 60 minutes, and `final` wins more of the blind pairs at 60 minutes than at 10."
 It should be something you could be wrong about.
 
-TODO: your hypothesis.
+As the requested length grows from 10 to 60 minutes, `c1-skills` loses more quality than `final`, because one agent writing a 60-minute lesson drifts from its plan, so its `teach_facts_correct` falls further from 10 to 60 minutes than `final`'s does.
+
 
 ---
 
@@ -72,7 +73,7 @@ Across all three lengths there are nine pairs: 8 of 9 gives a p-value of about 0
 An objective measure, such as `teach_facts_correct` or the judge's level fit, gives three numbers per cell, and you can see a difference only when it is larger than the spread between the three runs.
 So choose a Δ that is large enough to matter and large enough for three runs to see.
 
-TODO: your primary measure and your Δ, with the reason.
+My primary measure is `teach_facts_correct`, the share of the lesson's key facts that are present and correct. Δ = 0.10: if `c1-skills` falls 0.10 or more further than `final` from 10 to 60 minutes, then one lesson in ten teaches a wrong fact, which a learner would notice.
 
 ---
 
@@ -88,7 +89,11 @@ At least these:
 - **Cost against length:** tokens per minute of lesson for each config, and whether `final`'s overhead grows in step with length or faster.
   Say whether you divide by the minutes requested or by the estimated minutes.
 
-TODO: your measures, and how you compute each one.
+- Primary measure: `teach_facts_correct` per cell, as the mean and the range of the three runs, from `uv run p3 report --configs c1-skills,final --teach-only`.
+- Blind comparison: `c1-skills` against `final` at each length, one session per length and never across lengths, with `final`'s share of the non-tie picks at each.
+- Length accuracy: `teach_length_ratio` per cell, the estimated reading time (visible words divided by 150) against the minutes requested. If a cell's lessons miss their length (a ratio below 0.6), I will still report its other measures but say that the cell is confounded.
+- Cost against length: tokens per minute of lesson for each config, dividing by the minutes requested, and I will say whether `final`'s overhead grows in step with length or faster.
+
 
 ---
 
@@ -108,7 +113,15 @@ This is the default rule, and you can tighten it, but do not loosen it after you
 Then name the threats to validity you will report (lecture 22): blinding failures (your could-tell share at each length), judge bias toward longer outputs (lecture 24), the rough length estimate, and three runs per cell.
 Say which one worries you most for your hypothesis.
 
-TODO: confirm or tighten this rule, and name your threats to validity.
+I keep the default rule in the table as it is and will not loosen it after I see the numbers.
+
+Threats to validity I will report:
+- Blinding failures: my could-tell share at each length, since I know what `c1-skills` and `final` lessons usually look like.
+- Judge bias toward longer outputs: the judge may rate a longer lesson higher only because it is longer.
+- The rough length estimate: words divided by 150 does not measure how long an exercise takes, so a "60-minute" lesson may really be shorter.
+- Three runs per cell: the ranges are wide, so only a large difference can show.
+
+The one that worries me most is three runs per cell, together with a ceiling on my primary measure: `teach_facts_correct` was 1.00 in every full run so far, so if it stays at 1.00 at 60 minutes, three runs will show no difference even if one exists.
 
 ---
 
