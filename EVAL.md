@@ -253,13 +253,35 @@ Name the rounds that built this step and the inventory entries of the pipeline's
 Then the split: the roles you split the teach job into, what each one receives and returns, what runs in order and what in parallel, and who puts the lesson together at the end.
 Why this split and not a smaller one, and what did you try that you took out again?
 
-TODO: the rounds and entries, and the design of your teach split.
+`c3-split` Rounds 1 to 7 built the split, and added the subagents `lesson-planner` (Rounds 1 and 2), `lesson-writer` (Round 3), `figure-designer` (Rounds 4 and 5) and `references-finder` (Round 6), each with an entry in `reviews/components.md`; Round 7 made no change and only recorded the result.
+
+The split: the teach skill starts four subagents in order. The planner receives the objective and the minutes, reads the learner's files, and returns drafts/plan.md with the lesson title, up to six parts, each with a technical-term title, a key sentence, a word budget, one worked example and its figures. The references-finder receives the plan and returns drafts/sources.md, with each source checked. The writer receives the plan and the sources and returns the draft lesson, with placeholders for the figures. The figure-designer receives the draft and returns it with the figures drawn to scale. Then the c2-review lesson-reviewer reads the assembled draft for at most two passes, and the teach skill alone writes the final lesson into lessons/, once. Everything runs in order, none in parallel, because each role needs the output of the one before it.
+
+I split into four roles and not a smaller pipeline because each reviewer finding that kept coming back belonged to one role: short lessons to the writer's word budgets, wrong figures to the figure-designer and wrong sources to the references-finder. I did not take any role out again after adding it.
+
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c2-review,c3-split`.
 
-TODO: paste the report tables.
+Report from `uv run p3 report --configs c2-review,c3-split` (one scored full run of each, agent-architecture):
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 1.00 | 0 | 0.87 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.67 |
+| `c3-split` | 1 | 1.00 | 0 | 0.90 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+
+Cost per run (list-price):
+
+| job | `c2-review` | `c3-split` |
+|---|---|---|
+| teach | 2.51M tokens, 8.0 min, 2 subagents, $1.52 | 2.24M tokens, 13.8 min, 6 subagents, $2.42 |
+| all jobs | 5.20M tokens, 16.9 min, 9 subagents, $3.31 | 4.22M tokens, 20.3 min, 14 subagents, $4.13 |
+
+Your ratings, Lesson only: Technical correctness and facts 5 and 5, Pedagogy 5 and 5, Alignment with the learning goal 5 and 5, Overall quality 4 and 5 (c2-review and c3-split).
+
+Runs: c2-review: bench/runs/c2-review/20261121-003424-agent-architecture-m30-r1; c3-split: bench/runs/c3-split/20261122-004820-agent-architecture-m30-r1.
+
 
 ### What the step bought and what it cost
 
@@ -267,7 +289,12 @@ What did the split change in the lesson: its structure, its figures, its referen
 What did it cost in tokens, minutes and subagents against `c2-review`, and how much of that was overhead rather than writing?
 Each step has one run, so say how confident you are, and what would change your mind.
 
-TODO: your judgment of step 3.
+Structure: every part now opens with its key sentence, with titles that are the course's technical term and a plain explanation, which the c2-review lesson did not have. Figures: four figures labelled in plain words with the reason beside every arrow, against two before. References: every source was opened and marked supported before it was cited. Fit to me: the lesson is clear, in my tone, at the length I asked for. My Lesson ratings were 5, 5, 5 and 4 for c2-review and 5, 5, 5 and 5 for c3-split, so only Overall quality moved, by one point.
+
+It cost about $0.9 more on the teach scenario ($1.52 to $2.42) and 5.8 more minutes, with 6 subagents against 2. Most of that is overhead, not writing: each subagent pays its own share of the fixed load of a Claude Code session and reads the plan again. I think the step was worth it for the lesson, because the clearer titles and figures are what I asked for, but the gain over c2-review is small (the facts were already 1.00 and the length ratio moved from 0.87 to 0.90).
+
+I have one run of each, so I am not sure the length change is real: the baseline's own runs varied by 0.11 in length ratio, which is about as large as the change I see. Three runs of each would change my mind.
+
 
 ---
 
@@ -334,7 +361,20 @@ Then the bench evidence that the hook runs in the bench and not only in its test
 Then `tutor_leaks` for `final` against `c0-baseline`, and any denial of the guard you found in a trace.
 Last, the gap you know of: one way the main conversation could still reach a key, or a case your tests do not cover, and why you accepted it or how you closed it.
 
-TODO: the guard, its tests and the evidence.
+Blocks: the main conversation reading keys/ with Read, Grep, Glob, Bash or PowerShell, in any path style, and a Grep over the whole workspace. Allows: the `grader` and `grade-reviewer` subagents, and all other reads. It tells them apart by `agent_type`, which only a subagent's input carries. Unreadable input is blocked.
+
+Why a PreToolUse hook in `tutor/.claude/settings.json`: a deny rule would block the grader too, a hook in a subagent's frontmatter does not run in the bench, a `tools` list does not cover the main conversation, and a skill instruction can be ignored. `"onFailure": "block"` makes a crash block the call.
+
+Changed elsewhere: grading moved to a `grader` subagent; the quiz skill no longer reads keys.
+
+Tests: `python3 -m unittest tests.test_guard`, 27 tests, all OK. They cover the main conversation with each of the five tools and several path styles, the grader and grade-reviewer reading keys, another subagent being blocked, and the reads that must still work.
+
+Bench evidence: `bench/runs/_live/20261122-012805-agent-architecture-m30-r1`, scenario grade-s1: the grader and grade-reviewer read `keys/0001.json` three times, the main conversation never did, and verdict agreement stayed 1.00. A manual try in tutor/ was refused, but I did not check the trace, so I cannot say whether the hook or the tutor's own rule refused it.
+
+`tutor_leaks`, `final` against `c0-baseline`: TODO, after the runs of final.
+
+Known gap: a shell command that builds the folder name at run time is not caught. I accepted it because the tutor's own rule also forbids keys/, and closing it would block most shell commands.
+
 
 ---
 
