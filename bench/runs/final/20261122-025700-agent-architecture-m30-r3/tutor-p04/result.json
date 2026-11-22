@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 9146,
+  "stop_reason": "end_turn",
+  "session_id": "74a5790c-96ab-4c72-85fa-24bc20ea7d8a",
+  "total_cost_usd": 0.0668778,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 14234,
+    "cache_read_input_tokens": 55648,
+    "output_tokens": 1086,
+    "output_tokens_details": {
+      "thinking_tokens": 69
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9904,
+      "ephemeral_5m_input_tokens": 4330
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 421,
+        "cache_read_input_tokens": 24472,
+        "cache_creation_input_tokens": 398,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 398,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1086,
+      "cacheReadInputTokens": 55648,
+      "cacheCreationInputTokens": 14234,
+      "webSearchRequests": 0,
+      "costUSD": 0.0668778,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 69,
+      "cacheCreationEphemeral5mInputTokens": 4330,
+      "cacheCreationEphemeral1hInputTokens": 9904,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. \"More agents always give better results\" is the premise to drop, so the real question isn't five versus ten. It's whether you need to split at all.\n\nHere's a student asking \"Can I book the laser cutter tomorrow at 3?\" With one agent, the flow is:\n\n1. It checks the calendar.\n2. It books the slot.\n3. It replies.\n\nThat's about 3 model calls. Split it into a \"router\" agent, a \"calendar\" agent, a \"booking\" agent and a \"reply\" agent, and each hand-off is another model call. Each one re-reads the context it was given, and details can get lost between agents. The same request might now take 8 or more calls, so it costs more and has more places to go wrong. With ten agents it gets worse.\n\nSplitting pays off when the tasks really are different. Examples are a huge manual-search job that would flood one agent's context, or work that can run in parallel. Checking a calendar and booking a slot don't qualify.\n\nYour budget is small, so I'd start with one agent and good tools. Make the steps that are always the same, like the booking confirmation, a fixed workflow. Split only when you can point to a specific problem that splitting solves. That's also the argument that will hold up at your design review.\n\nQuick check: which part of your assistant could you defend splitting out, and what problem would the split solve?",
+  "ttft_ms": 1481,
+  "type": "result",
+  "duration_ms": 9340,
+  "uuid": "0cfd456d-dd19-4d7e-bea3-364e49660b36",
+  "ttft_stream_ms": 995,
+  "time_to_request_ms": 130,
+  "first_content_frame_ms": 995,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1086,
+      "cacheReadInputTokens": 55648,
+      "cacheCreationInputTokens": 14234,
+      "webSearchRequests": 0,
+      "costUSD": 0.0668778,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 69,
+      "cacheCreationEphemeral5mInputTokens": 4330,
+      "cacheCreationEphemeral1hInputTokens": 9904,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

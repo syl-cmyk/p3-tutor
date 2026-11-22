@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Call 1 sends a 1,250-token request and the model answers with a 30-token tool request. The program runs the tool and gets a 200-token result. How many input tokens does call 2 send?",
+      "options": [
+        {"id": "a", "text": "230 tokens, the new text"},
+        {"id": "b", "text": "1,250 tokens, same as call 1"},
+        {"id": "c", "text": "2,730 tokens, both calls added"},
+        {"id": "d", "text": "1,480 tokens, history plus new"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student told the assistant they need a bench near the door. On Tuesday, in a new session, the assistant does not mention it. Nothing was saved. What is the best explanation?",
+      "options": [
+        {"id": "a", "text": "The model forgot it because the window filled up"},
+        {"id": "b", "text": "The new window started empty and nothing put it back"},
+        {"id": "c", "text": "The provider deletes every chat after one day"},
+        {"id": "d", "text": "The model cannot remember anything from a student"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "The makerspace manuals total 120,000 tokens. A team pastes all of them into the request on every call. One student request takes 4 calls. How many input tokens do the manuals alone add across those 4 calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Which fact should the assistant get by calling a tool that reads the makerspace's own record, not from retrieval or from the model's notes?",
+      "options": [
+        {"id": "a", "text": "The CNC router's spindle speed table"},
+        {"id": "b", "text": "Whether this student passed CNC training"},
+        {"id": "c", "text": "That this student likes quiet afternoons"},
+        {"id": "d", "text": "The assistant's role and its tone of voice"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "At the start of a new session, what does the assistant do to get a student's saved notes back into its context window? Answer in one sentence."
+    }
+  ]
+}

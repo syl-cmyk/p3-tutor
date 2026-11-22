@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is the thing: the model picks an action, the program runs it, and the result comes back. A longer prompt or a bigger model only makes one call better, it doesn't change the structure."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You picked (a), but the model can't open the booking system, it only writes text. What it outputs is a request like check_calendar(machine=\"laser cutter\", date=\"tomorrow's date\"), which is (c), and the program runs it."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The agent is stuck repeating itself, so a step limit that stops the loop and reports back is the fix. A bigger window wouldn't help, since all 40 steps already fit."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You said the model runs the 3 tools itself, but the program runs them and the model just requests them. Each model call ends with one tool request or the final answer, so it's 3 requests + 1 final answer = 4 calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. \"Sends it back to the model\" is the what, but you skipped the why: the model needs the result to pick its next step or write the answer. Like check_calendar saying \"free at 3 pm\", which the model needs before it moves on to the training check."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "Partly right. The tool names and descriptions part is spot on, but the model doesn't remember past tool choices on its own. Say a student asks \"Do I need training?\" last week and the model picks search_manuals; in a new chat next week, the model starts with no trace of that choice. The program has to save that history and resend it if you want it remembered."
+    }
+  ],
+  "summary": "You've got the agent loop idea and the stopping safeguard down, and you describe tool descriptions well. The thing to work on is who does what: the model only writes requests, while the program runs the tools and sends results back, and nothing is remembered between sessions unless the program supplies it. Next, redraw the laser cutter example as two columns, 'model does' and 'program does', and mark each of the 4 model calls."
+}

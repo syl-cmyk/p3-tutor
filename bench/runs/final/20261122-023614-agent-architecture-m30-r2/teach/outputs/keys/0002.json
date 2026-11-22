@@ -1,0 +1,32 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls, so each call's input is the earlier history plus the new message, sent by the program. A, C and D treat the model or a tool as holding the history."
+    },
+    {
+      "id": "q2",
+      "answer": 2270,
+      "tolerance": 0,
+      "rationale": "Call 1 input is 1,000 + 20 = 1,020. Call 2 input is 1,020 + 30 + 200 = 1,250. The total is 2,270. The final 50-token answer is output, not input. An answer of 1,250 forgets that call 1 is paid for too."
+    },
+    {
+      "id": "q3",
+      "answer": "Nothing was saved outside the window and loaded back into the new chat",
+      "accepted": ["no saved notes", "no memory between sessions", "it was not saved and loaded into the new window", "the information was never stored outside the window", "a saved note that is read at the start of the session", "persistent memory", "notes that persist between sessions"],
+      "rationale": "The window is gone when a session ends, so facts must be saved outside it and loaded back in. Answers about a bigger window or a better model miss the point."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "It is big, the same for everyone and needed only now and then, so a searchable store with a few passages per question is cheapest. In the window or in notes it would add about 12,000 tokens to every call or visit."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Search returns the nearest chunks even when none is relevant, so the assistant needs to say it can't find the answer when the passages don't address the question. Answering from unrelated chunks risks a confident wrong answer."
+    }
+  ]
+}

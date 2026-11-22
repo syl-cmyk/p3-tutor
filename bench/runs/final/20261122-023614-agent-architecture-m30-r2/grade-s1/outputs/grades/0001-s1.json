@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back for the next step. A longer prompt or a bigger model just changes what one call can do."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. Picture the student asking about the laser cutter: the model writes something like check_calendar(machine=\"laser cutter\", date=\"tomorrow\"), and that's all it does. You said (a), that the model opens the booking system itself, but the program around it runs the tool and sends the calendar entries back, so the answer is (c)."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The agent is stuck repeating the same failing edit, so more steps or more context won't help. A step limit ends the loop and reports back, so a person can step in."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. Count it like this: the question goes in and the model asks for check_calendar (call 1), the result goes in and it asks for search_manuals (call 2), then check_training_record (call 3), then the last result goes in and it writes the answer (call 4). So it's 4, not 1: you had the model running the 3 tools itself, but the program runs them and the model only writes requests."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. Say check_calendar comes back with \"laser cutter booked 2-4 pm\": the program puts that into the model's next input and calls it again, so the model can tell the student it's busy at 3. You had the \"sends it back to the model\" part, but you left out the why, which is so the model can use the result to pick its next step or write the final answer."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "Partly right. A student asks about bookings, and the model sees \"check_calendar: looks up machine bookings\" in its list and picks it, which is the part you nailed. The memory bit is wrong though: even if it picked check_calendar last week, a new session starts blank, so it picks again from the descriptions it's given that time."
+    }
+  ],
+  "summary": "You've got the agent loop and the stopping safeguard down, and you know the model chooses tools from their descriptions. The thing to fix is who does what: the model only writes a request, and the program runs the tool and feeds the result back. Next, trace the laser cutter question from quiz item 4 step by step, writing down for each step whether the model or the program acts."
+}

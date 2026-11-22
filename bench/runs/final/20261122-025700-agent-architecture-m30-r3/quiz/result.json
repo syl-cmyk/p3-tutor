@@ -1,0 +1,121 @@
+{
+  "duration_api_ms": 168200,
+  "stop_reason": "end_turn",
+  "session_id": "a2f6e298-29fc-4ead-b2f8-0f45d7ad7841",
+  "total_cost_usd": 0.4775856,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 429,
+    "cache_read_input_tokens": 56984,
+    "output_tokens": 165,
+    "output_tokens_details": {
+      "thinking_tokens": 29
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 429
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 4,
+        "output_tokens": 165,
+        "cache_read_input_tokens": 56984,
+        "cache_creation_input_tokens": 429,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 429,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 44,
+      "outputTokens": 24235,
+      "cacheReadInputTokens": 664396,
+      "cacheCreationInputTokens": 61461,
+      "webSearchRequests": 0,
+      "costUSD": 0.4775856,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5544,
+      "cacheCreationEphemeral5mInputTokens": 51424,
+      "cacheCreationEphemeral1hInputTokens": 10037,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 1,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Nothing is left to do on quiz 0002. That message is a leftover wakeup from when I was waiting on the reviewer, and both review passes have since finished.\n\nThe quiz is at `quizzes/0002.json` and the key is at `keys/0002.json`. The review notes are in `review-records/0002-quiz.md`.\n\nI haven't written an O4 lesson. Do you want a short one before you take the quiz?",
+  "ttft_ms": 1110,
+  "type": "result",
+  "duration_ms": 2014,
+  "uuid": "6470cdc9-330a-48ee-bdd2-0c69be5a6904",
+  "ttft_stream_ms": 685,
+  "time_to_request_ms": 45,
+  "first_content_frame_ms": 685,
+  "queued_turn_count": 0,
+  "result_index": 2,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 165,
+      "cacheReadInputTokens": 56984,
+      "cacheCreationInputTokens": 429,
+      "webSearchRequests": 0,
+      "costUSD": 0.0084289,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 29,
+      "cacheCreationEphemeral5mInputTokens": 429,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

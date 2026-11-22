@@ -1,0 +1,11 @@
+{
+  "id": "0002",
+  "items": [
+    {"id": "q1", "answer": "b", "rationale": "In an agent the model decides the next step each time round the loop; the program only runs the tools. Running the tools is not the same as owning the control flow."},
+    {"id": "q2", "answer": "c", "rationale": "When the sequence is known and never changes, code can fix it, which is a workflow. Workflows can call tools and models too; the difference is who picks the next step."},
+    {"id": "q3", "answer": "a", "rationale": "A workflow can only follow the paths its code defines, so a new kind of request needs a new path or a fallback. That rigidity is the price of its predictability; an agent would choose its own steps."},
+    {"id": "q4", "answer": 4, "tolerance": 0.05, "rationale": "The agent uses 7 - 3 = 4 extra calls per booking: 4 x $0.002 = $0.008, and 500 bookings x $0.008 = $4."},
+    {"id": "q5", "answer": "d", "rationale": "When the path cannot be known in advance, the model has to choose how many lookups to make, so an agent fits. Any fixed count either wastes calls or misses information."},
+    {"id": "q6", "answer": "the code", "accepted": ["code", "the program", "program", "the program's code", "the developer", "the code owns it", "the code, not the model"], "rationale": "The model only fills in one step (the label); the code fixes which path runs next, so this is still a workflow. The model owns the control flow only when it chooses the steps itself."}
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 16972,
+  "stop_reason": "end_turn",
+  "session_id": "e44d64d5-c879-4a28-ad1d-1c0e8706cb84",
+  "total_cost_usd": 0.0816996,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 15446,
+    "cache_read_input_tokens": 80856,
+    "output_tokens": 2013,
+    "output_tokens_details": {
+      "thinking_tokens": 838
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9902,
+      "ephemeral_5m_input_tokens": 5544
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 458,
+        "cache_read_input_tokens": 25215,
+        "cache_creation_input_tokens": 867,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 867,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2013,
+      "cacheReadInputTokens": 80856,
+      "cacheCreationInputTokens": 15446,
+      "webSearchRequests": 0,
+      "costUSD": 0.0816996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 838,
+      "cacheCreationEphemeral5mInputTokens": 5544,
+      "cacheCreationEphemeral1hInputTokens": 9902,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Tool calling is the model asking for help by filling out a request slip, because it can only write text and can't reach the calendar itself.\n\nPicture a front-desk helper at the makerspace. Pinned next to them is a menu:\n- **\"Check calendar\":** needs a machine and a day.\n- **\"Book slot\":** needs a machine, a day and a time.\n- **\"Look up manual\":** needs a topic.\n\nA student asks, \"Is the laser cutter free Friday?\" The helper doesn't guess. They read the menu and write a slip: *Check calendar: laser cutter, Friday.* A slip comes back saying *booked 2–4pm, free otherwise*. Then they tell the student, \"Free except 2–4.\"\n\nHere's how it maps:\n- **Menu:** the tool descriptions you write.\n- **Slip:** the tool call, meaning which tool plus its inputs.\n- **Slip that comes back:** the tool result.\n- **Final answer:** the reply to the student.\n\nThe helper only knows what the menu says. A vague description gets the wrong slip, which is why writing good descriptions is on your mission list.\n\nI'm leaving out who handles the slip once it's written. Your quiz 0001 tests that and it isn't graded yet, so we'll cover it right after grading.\n\nYour turn: if a student says \"book me the 3D printer tomorrow at 3,\" which slip would the helper write, and what would be on it?",
+  "ttft_ms": 1269,
+  "type": "result",
+  "duration_ms": 17176,
+  "uuid": "22346ed8-f9a1-43f2-8fb2-b0611dbe2f74",
+  "ttft_stream_ms": 815,
+  "time_to_request_ms": 119,
+  "first_content_frame_ms": 815,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2013,
+      "cacheReadInputTokens": 80856,
+      "cacheCreationInputTokens": 15446,
+      "webSearchRequests": 0,
+      "costUSD": 0.0816996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 838,
+      "cacheCreationEphemeral5mInputTokens": 5544,
+      "cacheCreationEphemeral1hInputTokens": 9902,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your program calls the model three times to finish one student request. On the third call, how does the model know what happened in the first call?",
+      "options": [
+        {"id": "a", "text": "It stored the first call itself, so nothing needs to be sent again"},
+        {"id": "b", "text": "Your program sends the earlier history again as part of the input"},
+        {"id": "c", "text": "It learned from the first call and adjusted itself before the next"},
+        {"id": "d", "text": "The tool that ran in between keeps the history and tells the model"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In your assistant, instructions and tool descriptions take 1,000 tokens, and the student's message is 20 tokens. Call 1: the model replies with a tool request of 30 tokens. The tool result is 200 tokens. Call 2: the model writes its final answer of 50 tokens. Each call's input is everything in the window so far. How many input tokens do the two calls use in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Yesterday a student told the assistant which machines they train on. Today, in a new chat, the assistant has no idea. In one sentence, what is missing from the design?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The 30-page soldering guide is about 12,000 tokens. It is the same for every student, and about one question in ten needs it. Where should it live in the assistant?",
+      "options": [
+        {"id": "a", "text": "In the window on every call, so the model always has it ready"},
+        {"id": "b", "text": "In each student's note file, so it is loaded at every visit"},
+        {"id": "c", "text": "In the instructions, repeated once for each step of the loop"},
+        {"id": "d", "text": "In a searchable store, with a few passages fetched per question"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student asks about the vinyl cutter, but no vinyl cutter manual is in your search store. The search still returns its 3 closest chunks, all about other machines. What should the assistant do?",
+      "options": [
+        {"id": "a", "text": "Answer from the closest chunks, since search always finds the page"},
+        {"id": "b", "text": "Say the manuals don't cover it, because the chunks don't answer it"},
+        {"id": "c", "text": "Retrain the model on the manuals so that it can answer next time"},
+        {"id": "d", "text": "Save the question as a note and reply with the first chunk's text"}
+      ]
+    }
+  ]
+}

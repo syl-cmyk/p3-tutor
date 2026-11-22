@@ -1,0 +1,136 @@
+{
+  "duration_api_ms": 140201,
+  "stop_reason": "end_turn",
+  "session_id": "3593c3f9-4074-4e01-bc93-924353810fb3",
+  "total_cost_usd": 0.41430859999999997,
+  "usage": {
+    "input_tokens": 22,
+    "cache_creation_input_tokens": 42444,
+    "cache_read_input_tokens": 412794,
+    "output_tokens": 14978,
+    "output_tokens_details": {
+      "thinking_tokens": 3773
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10041,
+      "ephemeral_5m_input_tokens": 32403
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 477,
+        "cache_read_input_tokens": 50029,
+        "cache_creation_input_tokens": 3051,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3051,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 38,
+      "outputTokens": 20296,
+      "cacheReadInputTokens": 456386,
+      "cacheCreationInputTokens": 60229,
+      "webSearchRequests": 0,
+      "costUSD": 0.41430859999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3773,
+      "cacheCreationEphemeral5mInputTokens": 50188,
+      "cacheCreationEphemeral1hInputTokens": 10041,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01JVUui1SAQLBVo9dXN5JMuf",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-sotuy2qn; mkdir -p drafts review-records\ncat > drafts/0002-quiz.json <<'EOF'\n{\n  \"id\": \"0002\",\n  \"objective\": \"O4\",\n  \"title\": \"Workflows, agents and who owns the control flow\",\n  \"items\": [\n    {\n      \"id\": \"q1\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"What is the core difference between a workflow and an agent?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"A workflow never calls a language model, but an agent always does\"},\n        {\"id\": \"b\", \"text\": \"A workflow cannot use any tools, but an agent is allowed to use them\"},\n        {\"id\": \"c\", \"text\": \"A workflow's steps are set in code, but an agent's model picks its next step\"},\n        {\"id\": \"d\", \"text\": \"A workflow needs a smaller model, but an agent needs a larger model\"}\n      ]\n    },\n    {\n      \"id\": \"q2\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"Your code always runs three steps in order: search the manual, one model call to draft an answer, a second model call to check the draft. What is this system?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"A workflow, since the code fixes the order of the steps\"},\n        {\"id\": \"b\", \"text\": \"An agent, since it makes more than one model call\"},\n        {\"id\": \"c\", \"text\": \"An agent, since it searches the manual with a tool\"},\n        {\"id\": \"d\", \"text\": \"An agent, since the model reviews its own draft\"}\n      ]\n    },\n    {\n      \"id\": \"q3\",\n      \"type\": \"short\",\n      \"objective\": \"O4\",\n      \"stem\": \"After each result, the makerspace assistant's model chooses whether to check the calendar, ask the student a question, book, or stop. Who owns the control flow here, the code or the model?\"\n    },\n    {\n      \"id\": \"q4\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"Which makerspace task is the best fit for a fixed workflow rather than an agent?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"Answering any question a student asks about any machine in the shop\"},\n        {\"id\": \"b\", \"text\": \"One hour before a booking, look it up, fill a template, send a reminder\"},\n        {\"id\": \"c\", \"text\": \"Working out why a student's print failed when the cause is unknown\"},\n        {\"id\": \"d\", \"text\": \"Planning a project that may need several machines in an unknown order\"}\n      ]\n    },\n    {\n      \"id\": \"q5\",\n      \"type\": \"numeric\",\n      \"objective\": \"O4\",\n      \"stem\": \"A fixed workflow makes exactly 3 model calls per request. An agent on the same task averages 8 calls; every call costs $0.002. How many dollars more does the agent cost over 500 requests?\",\n      \"unit\": \"dollars\"\n    },\n    {\n      \"id\": \"q6\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"Every booking runs the same steps: check the calendar, confirm with the student, write the booking. A teammate wants an agent \\\"for flexibility\\\"; what is your best reply?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"Agree, since an agent costs the same as a workflow and adapts to anything\"},\n        {\"id\": \"b\", \"text\": \"Agree, since only an agent can call the calendar and booking tools\"},\n        {\"id\": \"c\", \"text\": \"Disagree, since a workflow cannot make the model write the confirmation\"},\n        {\"id\": \"d\", \"text\": \"Disagree, since known steps run cheaper and more predictably as a workflow\"}\n      ]\n    }\n  ]\n}\nEOF\ncat > drafts/0002-key.json <<'EOF'\n{\n  \"id\": \"0002\",\n  \"items\": [\n    {\"id\": \"q1\", \"answer\": \"c\", \"rationale\": \"In a workflow, code predefines the path; in an agent, the model directs its own steps. Using a model, tools or a bigger model does not decide it.\"},\n    {\"id\": \"q2\", \"answer\": \"a\", \"rationale\": \"The order is fixed in code, so it is a workflow even though it uses a tool and calls the model twice. Several model calls, tool use or self-checking do not make a system an agent.\"},\n    {\"id\": \"q3\", \"answer\": \"the model\", \"accepted\": [\"model\", \"the language model\", \"the LLM\", \"LLM\", \"the model owns it\", \"the model decides\"], \"rationale\": \"The model picks each next step and the code only runs what it asks, which is what makes this an agent.\"},\n    {\"id\": \"q4\", \"answer\": \"b\", \"rationale\": \"The steps are known and the same every time, so a workflow is cheaper and more predictable. The other tasks have open-ended or unpredictable steps, where an agent earns its cost.\"},\n    {\"id\": \"q5\", \"answer\": 5, \"tolerance\": 0.05, \"rationale\": \"The agent makes 8 - 3 = 5 extra calls per request: 5 x $0.002 = $0.01, and over 500 requests that is $5.\"},\n    {\"id\": \"q6\", \"answer\": \"d\", \"rationale\": \"When the steps are known, a fixed workflow is cheaper and more predictable, and an agent's flexibility goes unused. Workflows can call tools and models too.\"}\n  ]\n}\nEOF"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_012eSxJy1qvERdTvtpsYuPih",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-sotuy2qn/drafts && python3 -I - <<'EOF'\nimport json\nq=json.load(open('0002-quiz.json'));k=json.load(open('0002-key.json'))\nit={i['id']:i for i in q['items']}\nit['q1']['options']=[\n {\"id\":\"a\",\"text\":\"A workflow only answers questions, but an agent is any system that uses tools\"},\n {\"id\":\"b\",\"text\":\"A workflow calls the model once, but an agent calls the model many times\"},\n {\"id\":\"c\",\"text\":\"A workflow's steps are set in code, but an agent's model picks its next step\"},\n {\"id\":\"d\",\"text\":\"A workflow runs on a smaller model, but an agent needs a larger model\"}]\nit['q3']['stem']=\"After each result, the makerspace assistant's model chooses whether to check the calendar, ask the student a question, book, or stop. Who owns the control flow (who decides the next step): the code or the model?\"\nit['q4']['options']=[\n {\"id\":\"a\",\"text\":\"Answering any question a student asks about any machine in the shop\"},\n {\"id\":\"b\",\"text\":\"Before each booking, look it up, fill a template, and send a reminder\"},\n {\"id\":\"c\",\"text\":\"Working out why a student's print failed when the cause is not known\"},\n {\"id\":\"d\",\"text\":\"Planning a project that may need several machines in an order not known\"}]\nit['q6']['stem']=\"Every booking runs the same three steps: check the calendar, confirm with the student, write the booking. A teammate wants an agent \\\"for flexibility\\\"; what is your best reply?\"\nit['q6']['options']=[\n {\"id\":\"a\",\"text\":\"Agree, since an agent is safer because the model can double-check each step\"},\n {\"id\":\"b\",\"text\":\"Agree, since any system that calls tools counts as an agent anyway\"},\n {\"id\":\"c\",\"text\":\"Disagree, since a workflow is always the better choice over an agent\"},\n {\"id\":\"d\",\"text\":\"Disagree, since steps known in advance can be fixed in code, cheaper and steadier\"}]\njson.dump(q,open('0002-quiz.json','w'),indent=2)\nkk={i['id']:i for i in k['items']}\nkk['q3']['accepted']+=[\"the model picks\",\"model picks\",\"the model chooses\"]\njson.dump(k,open('0002-key.json','w'),indent=2)\nEOF"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 3,
+    "requested": {
+      "background": 0,
+      "foreground": 2,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 3,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 3
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 21,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Your quiz is ready at `quizzes/0002.json`, with six questions on O4 (workflows vs agents, and who owns the control flow). I wrote the answer key too, but I'm keeping it out of this message.\n\nIt runs in this order:\n- **q1:** the core difference between a workflow and an agent (multiple choice).\n- **q2:** classify a fixed three-step system (multiple choice).\n- **q3:** name who owns the control flow in a makerspace-assistant case (short answer).\n- **q4:** pick the makerspace task that suits a fixed workflow (multiple choice).\n- **q5:** work out what an agent's extra model calls cost over 500 requests (numeric).\n- **q6:** answer a teammate who wants an agent \"for flexibility\" (multiple choice).\n\n- **Ahead of the lessons:** there's no lesson on O4 yet, so the quiz checks the objective itself. A lesson would help you before you take it.\n- **Reviews:** two review passes ran, and the reviewer still asked for changes at the end of both. I fixed the weak wrong options and shortened the longest option in q6. I left a few points as they are, and the review record (`review-records/0002-quiz.md`) says why.\n- **No misconception tags:** the key doesn't tag the wrong options with misconception ids, because the workspace has none yet and I didn't want to invent them.\n\nWant to try it? Answer in the chat and I'll give hints before any grading.",
+  "ttft_ms": 1638,
+  "type": "result",
+  "duration_ms": 134131,
+  "uuid": "94fb67b7-f2ae-4613-adf9-6b57bead8bd1",
+  "ttft_stream_ms": 1182,
+  "time_to_request_ms": 251,
+  "first_content_frame_ms": 1182,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 38,
+      "outputTokens": 20296,
+      "cacheReadInputTokens": 456386,
+      "cacheCreationInputTokens": 60229,
+      "webSearchRequests": 0,
+      "costUSD": 0.41430859999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3773,
+      "cacheCreationEphemeral5mInputTokens": 50188,
+      "cacheCreationEphemeral1hInputTokens": 10041,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

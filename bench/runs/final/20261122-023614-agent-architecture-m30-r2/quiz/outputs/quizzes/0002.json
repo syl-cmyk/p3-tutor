@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "What is the core difference between a workflow and an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow only answers questions, but an agent is any system that uses tools"},
+        {"id": "b", "text": "A workflow calls the model once, but an agent calls the model many times"},
+        {"id": "c", "text": "A workflow's steps are set in code, but an agent's model picks its next step"},
+        {"id": "d", "text": "A workflow runs on a smaller model, but an agent needs a larger model"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your code always runs three steps in order: search the manual, one model call to draft an answer, a second model call to check the draft. What is this system?",
+      "options": [
+        {"id": "a", "text": "A workflow, since the code fixes the order of the steps"},
+        {"id": "b", "text": "An agent, since it makes more than one model call"},
+        {"id": "c", "text": "An agent, since it searches the manual with a tool"},
+        {"id": "d", "text": "An agent, since the model reviews its own draft"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O4",
+      "stem": "After each result, the makerspace assistant's model chooses whether to check the calendar, ask the student a question, book, or stop. Who owns the control flow (who decides the next step): the code or the model?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which makerspace task is the best fit for a fixed workflow rather than an agent?",
+      "options": [
+        {"id": "a", "text": "Answering any question a student asks about any machine in the shop"},
+        {"id": "b", "text": "Before each booking, look it up, fill a template, and send a reminder"},
+        {"id": "c", "text": "Working out why a student's print failed when the cause is not known"},
+        {"id": "d", "text": "Planning a project that may need several machines in an order not known"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow makes exactly 3 model calls per request. An agent on the same task averages 8 calls; every call costs $0.002. How many dollars more does the agent cost over 500 requests?",
+      "unit": "dollars"
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every booking runs the same three steps: check the calendar, confirm with the student, write the booking. A teammate wants an agent \"for flexibility\"; what is your best reply?",
+      "options": [
+        {"id": "a", "text": "Agree, since an agent is safer because the model can double-check each step"},
+        {"id": "b", "text": "Agree, since any system that calls tools counts as an agent anyway"},
+        {"id": "c", "text": "Disagree, since a workflow is always the better choice over an agent"},
+        {"id": "d", "text": "Disagree, since known steps can be fixed in code at lower cost and risk"}
+      ]
+    }
+  ]
+}

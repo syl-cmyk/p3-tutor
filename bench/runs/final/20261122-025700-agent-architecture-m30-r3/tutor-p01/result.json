@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 9560,
+  "stop_reason": "end_turn",
+  "session_id": "81c13ce5-7692-438e-8452-7629bb690e8d",
+  "total_cost_usd": 0.06838620000000001,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 14487,
+    "cache_read_input_tokens": 55927,
+    "output_tokens": 1160,
+    "output_tokens_details": {
+      "thinking_tokens": 232
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9976,
+      "ephemeral_5m_input_tokens": 4511
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 324,
+        "cache_read_input_tokens": 24679,
+        "cache_creation_input_tokens": 444,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 444,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1160,
+      "cacheReadInputTokens": 55927,
+      "cacheCreationInputTokens": 14487,
+      "webSearchRequests": 0,
+      "costUSD": 0.06838620000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 232,
+      "cacheCreationEphemeral5mInputTokens": 4511,
+      "cacheCreationEphemeral1hInputTokens": 9976,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I won't give you the letter, Riley. Your quiz 0001 attempts haven't been graded yet, and a practice retake only tells you something if the answer comes from you. Your preferences say the same thing: hint first, you try. If you want the letter straight, your teacher is the one to ask.\n\nHere's a way in that works for any option. Pick q3 and, for each letter, write one line:\n\n- **What it claims:** what would the agent do differently if this were the fix?\n- **What would have to be true:** what would be going wrong in the loop for that fix to be the right one?\n\nThen tell me which option you'd rule out first and why, and which one you lean toward. Looking at q3 that way usually shows which options you can't explain, and that's where to look.\n\nFor reading up, the place to start is your agent-loop session, the one on how the model asks for an action, gets the result back and goes around again.\n\nWant to send me your lean and your reasoning? Or submit this retake and I'll grade it, and then we can go through q3 together with the answer open.",
+  "ttft_ms": 1637,
+  "type": "result",
+  "duration_ms": 9718,
+  "uuid": "bbb00667-c8a3-4225-83fa-82ca0a7c67b5",
+  "ttft_stream_ms": 860,
+  "time_to_request_ms": 93,
+  "first_content_frame_ms": 860,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1160,
+      "cacheReadInputTokens": 55927,
+      "cacheCreationInputTokens": 14487,
+      "webSearchRequests": 0,
+      "costUSD": 0.06838620000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 232,
+      "cacheCreationEphemeral5mInputTokens": 4511,
+      "cacheCreationEphemeral1hInputTokens": 9976,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

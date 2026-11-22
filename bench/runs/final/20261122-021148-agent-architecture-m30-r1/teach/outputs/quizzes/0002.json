@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A request to a 3D-printer assistant makes 2 model calls. The base (instructions, tools, question) is 2,000 tokens. After call 1, the program runs a tool that returns 3,000 tokens, and call 2 sends everything so far. Ignoring the model's own short requests, how many input tokens are billed for the whole request?",
+      "options": [
+        {"id": "a", "text": "5,000 tokens in total"},
+        {"id": "b", "text": "7,000 tokens in total"},
+        {"id": "c", "text": "10,000 tokens in total"},
+        {"id": "d", "text": "3,000 tokens in total"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "One call to the assistant sends 25,000 input tokens. Input tokens cost $2 per million. How much does the input of that one call cost, in dollars?",
+      "unit": "dollars"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student tells the assistant they are certified on the vinyl cutter. On Thursday, in a new session, the assistant asks them to prove it. Which explanation fits?",
+      "options": [
+        {"id": "a", "text": "Monday's window was discarded and nothing was saved outside it"},
+        {"id": "b", "text": "The model forgot because its window filled up overnight"},
+        {"id": "c", "text": "Thursday's call is billed separately so it cannot see Monday"},
+        {"id": "d", "text": "The assistant never reads files, so notes cannot work at all"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In a retrieval setup where the model calls a search_manual tool, what actually runs the search over the stored chunks: the model or your program?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A teammate wants the assistant to save \"resin printer is free Saturday\" in a student's notes file so it can answer faster next visit. What is the best objection?",
+      "options": [
+        {"id": "a", "text": "A notes file cannot hold a short sentence like that"},
+        {"id": "b", "text": "Saving a note costs more than resending the calendar"},
+        {"id": "c", "text": "Bookings change, so the note goes stale; use a tool call"},
+        {"id": "d", "text": "The model cannot read a note written in an earlier session"}
+      ]
+    }
+  ]
+}

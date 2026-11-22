@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back. A longer prompt or a bigger model only changes what a single call can do."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a request naming check_calendar with the laser cutter and tomorrow's date. The program around it actually runs the tool."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Not quite. You picked 'left to run longer, it will eventually fix the bug', but an agent repeating the same edit with the same failing test has no reason to do better on step 41. The fix is a step limit that stops the loop and reports back to a person. Say it's capped at 20 steps: at step 20 it stops and tells you 'same test failed 20 times'."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Partly right. Your 4 is correct, but 'it runs check_calendar, then search_manuals...' is off, because the model never runs a tool. It only requests one each call, and the program runs it. So it's 3 tool requests plus 1 final answer, 3 + 1 = 4."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. You got both parts: the result goes back in as the model's next input, so it can decide what to do next. Your group chat comparison fits well."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. The name helps, but 'by the name' alone is the part that's off. The model reads the whole tool description the program gives it: name, what it does and its parameters. For example, 'check_calendar' could mean bookings or opening hours, and a description like 'returns a machine's bookings for a date' settles it."
+    }
+  ],
+  "summary": "You've got the agent loop down: what makes an agent, what the model outputs for a tool call, and where results go. The thing to work on is who does what: the model only requests, the program runs, and the loop needs a stopping condition. Redo q4 by writing a trace of the three-tool run that marks each step as model or program, then redo q3 with the stopping condition in mind, and for q6 write what a tool description holds."
+}

@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back. A longer prompt or a bigger model still gives you just one call."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a request, like check_calendar(laser cutter, tomorrow's date). The program around it does the actual running and sends the result back."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Not quite. You picked 'no change, it will eventually fix the bug', but an agent needs a stopping condition. After 40 identical failed steps it is stuck in a rut, and more steps just repeat the same edit and the same failing test. The fix is b, a step limit that ends the loop and reports back to a person, like cutting it off at 40 steps and saying 'I tried this edit 40 times and the test still fails'."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Partly right. Your 4 is correct, with the 4th call writing the answer. But you said the model runs the tools itself, and it doesn't: each call it only asks for one tool, and the program runs it, so 3 requests plus 1 final answer gives 4 calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The result goes back in as the model's next input, and the model uses it to decide its next step. The group chat comparison fits: the model can't continue until it sees the reply."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. The name does help, but the program also gives the model a description of each tool: what it does and what parameters it takes. A name alone can mislead, for example a tool called 'lookup' could mean calendar, manuals or training records, and the description tells it which."
+    }
+  ],
+  "summary": "You've got the agent loop down: what makes an agent, what the model outputs for a tool call, and where the result goes. Work next on what the program does versus what the model does, and on why an agent needs a stopping condition. Reread learning record 0002 (learning-records/0002-the-agent-loop.md) from the agent-loop session, then write out one run of the loop in two columns, 'model outputs' and 'program does', and mark where a step limit would stop it."
+}

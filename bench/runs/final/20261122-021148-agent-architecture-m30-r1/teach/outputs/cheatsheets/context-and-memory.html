@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --warn-soft:#f9eaec; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --warn-soft:#2f1f22; } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: Charter, Georgia, serif; line-height:1.5; font-size:16px; }
+    main { max-width:44rem; margin:0 auto; padding:1.5rem 1.25rem 2rem; }
+    h1 { font-size:1.6rem; margin:0 0 .25rem; }
+    h2 { font-size:1.05rem; margin:1.25rem 0 .4rem; color:var(--accent); }
+    p, li { margin:.25rem 0; }
+    table { width:100%; border-collapse:collapse; font-size:.9rem; font-family:system-ui,sans-serif; }
+    th, td { text-align:left; vertical-align:top; padding:.3rem .5rem; border-bottom:1px solid var(--rule); }
+    th { font-size:.75rem; text-transform:uppercase; color:var(--muted); }
+    code { font-family:ui-monospace,Menlo,monospace; font-size:.88em; }
+    .mistakes { background:var(--warn-soft); border-left:4px solid var(--warn); padding:.5rem 1rem; }
+    a { color:var(--accent); }
+    @media print { :root { --bg:#fff; --text:#000; --accent:#000; --warn-soft:#f2f2f2; --warn:#000; } main { padding:0; } body { font-size:10.5pt; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p>Look-up sheet for what the model sees on each call, and what you save outside it. Sizes are the lesson's made-up examples.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><th>Term</th><th>Plain meaning</th></tr>
+    <tr><td>Token</td><td>A small piece of text the model reads or writes; billed per token</td></tr>
+    <tr><td>Context window</td><td>All the text the model can see on one call, including its reply</td></tr>
+    <tr><td>Context rot</td><td>Recall gets worse as the window fills up</td></tr>
+    <tr><td>Compaction</td><td>Shrinking the history (clear old tool results, or summarize)</td></tr>
+    <tr><td>Chunk / retrieval</td><td>A few-hundred-token piece of a manual / searching chunks and loading only the best few</td></tr>
+    <tr><td>Memory file</td><td>A note saved outside the window that a later session reads back</td></tr>
+  </table>
+
+  <h2>Three kinds of memory</h2>
+  <table>
+    <tr><th>Kind</th><th>What holds it</th><th>At session end</th></tr>
+    <tr><td>Within one call</td><td>The window</td><td>Gone</td></tr>
+    <tr><td>Between steps of a request</td><td>History your program resends each call</td><td>Gone, unless saved</td></tr>
+    <tr><td>Between sessions</td><td>Notes, files or a database</td><td>Kept</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>Cost of a call = tokens sent &times; price per token, because input is billed every call. At $2 per million: tokens &times; 2 / 1,000,000.</li>
+    <li>Each call resends the whole history, because the model keeps nothing between calls.</li>
+    <li>Big or rarely needed text goes behind retrieval, because it is costly and mostly irrelevant on any one call.</li>
+    <li>Facts that must survive the session go in notes; facts that change go in a tool call, because notes go stale.</li>
+  </ol>
+
+  <h2>Worked example: a 3-call request</h2>
+  <p>Base 1,000 tokens; a 500-token tool result is added after each of the first two calls.</p>
+  <ol>
+    <li>Call 1 sends 1,000.</li>
+    <li>Call 2 sends 1,000 + 500 = 1,500.</li>
+    <li>Call 3 sends 1,500 + 500 = 2,000.</li>
+    <li>Billed: 1,000 + 1,500 + 2,000 = 4,500 tokens, which is $0.009 at $2 per million.</li>
+  </ol>
+
+  <h2>Where things go</h2>
+  <table>
+    <tr><th>Information</th><th>Where</th></tr>
+    <tr><td>Role, rules, tool descriptions</td><td>Always in the window</td></tr>
+    <tr><td>Machine manuals</td><td>Retrieval</td></tr>
+    <tr><td>Booking calendar</td><td>Tool call, then clear</td></tr>
+    <tr><td>Student training status</td><td>Notes file, read at session start</td></tr>
+  </table>
+
+  <h2>Common mistakes</h2>
+  <div class="mistakes">
+    <ul>
+      <li>"A token is a word." No: long or odd words split into several tokens.</li>
+      <li>"The model remembers last week." No: your program must send it again.</li>
+      <li>"Cost is the size of the question." No: the resent history dominates.</li>
+      <li>"The model searches the manual itself." No: your program runs the search.</li>
+      <li>"Save everything in notes." No: notes cost tokens on every read and go stale.</li>
+    </ul>
+  </div>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory.html">the lesson</a>. Primary source: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</main>
+</body>
+</html>

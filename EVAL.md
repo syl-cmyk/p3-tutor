@@ -305,28 +305,62 @@ I have one run of each, so I am not sure the length change is real: the baseline
 A diagram of `final`: the main conversation, each skill, each subagent and the guard hook, with arrows for who starts whom and which files each one reads and writes.
 ASCII art in a code block or a Mermaid block are both fine; for example:
 
-```
-/quiz (skill, main conversation)  writes drafts/0002.json
-  -> quiz-reviewer (subagent, fresh context)  reads drafts/
-  <- revise, at most 2 passes
+teach (skill, main conversation)
+  -> lesson-planner (subagent)       reads learner files, searches the web   writes drafts/plan.md
+  -> references-finder (subagent)    reads drafts/plan.md, opens each source writes drafts/sources.md
+  -> lesson-writer (subagent)        reads plan and sources                   writes drafts/NNNN-slug.html
+  -> figure-designer (subagent)      reads the draft and the plan             edits the figures in the draft
+  -> lesson-reviewer (subagent)      reads the draft; at most 2 passes        revise
+  => lessons/NNNN-slug.html (written once), review-records/NNNN-lesson.md
+  -> /cheatsheet (skill)             writes cheatsheets/<slug>.html
+  -> quiz skill (see below)          writes the quiz and its key
+
+/quiz (skill, main conversation)    writes drafts/NNNN-quiz.json, drafts/NNNN-key.json
+  -> quiz-reviewer (subagent)       reads the drafts; at most 2 passes       revise
   => quizzes/NNNN.json, keys/NNNN.json, review-records/NNNN-quiz.md
-```
 
-Draw yours, all four jobs, and delete the example.
+/grade (skill, main conversation)   never reads keys/
+  -> grader (subagent)              reads quiz, key, submission              writes drafts/NNNN-sN-grade.json
+  -> grade-reviewer (subagent)      reads quiz, key, submission, draft       revise, at most 2 passes
+  => grades/NNNN-sN.json, review-records/NNNN-sN-grade.md
 
-TODO: your diagram.
+/tutor (skill, main conversation)   answers in the chat, never reads keys/
+/mission (skill)                    asks four questions, writes MISSION.md
+
+guard (PreToolUse hook in tutor/.claude/settings.json): blocks the main conversation from keys/, allows grader and grade-reviewer.
 
 What did you keep from each step, what did you drop, and why?
 Point at the inventory entries in `reviews/components.md` rather than repeating them.
 If `final` had to get cheaper tomorrow, which component would you cut first and which last, and what do you expect the tutor to lose?
 
-TODO: what `final` is made of, and what you would cut first.
+`final` keeps all four skills and adds `cheatsheet` and `mission`, keeps the three reviewers of `c2-review` and the four lesson subagents of `c3-split`, and adds the `grader` and the guard; I dropped nothing, and the entries in `reviews/components.md` say why each one is there.
+
+If `final` had to get cheaper tomorrow, I would cut the quiz-reviewer first: it tripled the quiz's cost ($0.16 to $0.49) and did not make the quiz harder, so I expect the tutor to lose almost nothing. I would cut the grader last, because the guard needs it and without it grading breaks.
+
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c0-baseline,final`, with three scored runs of each.
 
-TODO: paste the report tables.
+Report from `uv run p3 report --configs c0-baseline,final` (three scored full runs of each, agent-architecture):
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.69 (0.62-0.73) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.56 (0.50-0.67) |
+| `final` | 3 | 1.00 | 0 | 1.05 (0.98-1.13) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.78 (0.67-1.00) |
+
+Cost per run (list-price), mean of three:
+
+| job | `c0-baseline` | `final` |
+|---|---|---|
+| teach | 729.7k tokens, 3.1 min, $0.62 | 3.02M tokens, 15.2 min, 6 subagents, $2.81 |
+| quiz | 176.4k tokens, 0.7 min, $0.19 | 606.9k tokens, 2.6 min, 2.7 subagents, $0.45 |
+| grade | 282.0k tokens, 0.9 min, $0.33 | 1.53M tokens, 3.6 min, 6 subagents, $0.93 |
+| tutor | 544.5k tokens, 1.4 min, $0.64 | 465.3k tokens, 1.1 min, $0.42 |
+| all jobs | 1.73M tokens, 6.0 min, $1.78 | 5.62M tokens, 22.5 min, 14.7 subagents, $4.61 |
+
+Runs: c0-baseline: bench/runs/c0-baseline/20261111-002336-...-r1, ...002927-...-r2, ...003525-...-r3; final: bench/runs/final/20261122-021148-...-r1, ...023614-...-r2, ...025700-...-r3.
+
 
 ### What the repeats let you claim
 
@@ -334,7 +368,12 @@ For each headline number: is the difference between the two configs larger than 
 Where the ranges overlap, say "not distinguishable with three runs", and do not rank the two by their means.
 Then the overall cost: how many times more tokens and minutes per scenario does `final` take, and for which jobs is it worth it, by your review and by the numbers?
 
-TODO: your reading of `final` against the baseline.
+Length ratio: `final` 0.98 to 1.13 against the baseline's 0.62 to 0.73. The ranges do not overlap, so the lessons really are longer, and now fill the 30 minutes.
+Behavior met: `final` 0.67 to 1.00 against 0.50 to 0.67. The ranges overlap at 0.67, so this is not distinguishable with three runs, and I do not rank the two by their means.
+Teach facts, key agreement, verdict agreement and leaks are the same for both, so they only show nothing broke.
+
+Cost: `final` takes 3.2 times the tokens and 3.8 times the minutes per run ($1.78 to $4.61). Teach costs 4.5 times as much, quiz 2.4 times and grade 2.8 times, while the tutor job is a little cheaper. By my reviews the teach job is worth it, because the lesson is clearer and fills the length; the quiz and grade loops are not, because they cost 2 to 3 times as much for little I could see.
+
 
 ---
 

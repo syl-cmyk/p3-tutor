@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who decides the next step",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "The control flow is whatever decides which step runs next. In an agent loop, what decides after each tool result whether to call another tool or stop?",
+      "options": [
+        {"id": "a", "text": "A fixed list of steps written by the developer in advance"},
+        {"id": "b", "text": "The tool, which reports whether it needs one more call"},
+        {"id": "c", "text": "The model, judging from the goal and the results so far"},
+        {"id": "d", "text": "The student, who approves every step before it runs"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow always makes 2 model calls per request. An agent on the same requests averages 5 calls per request. Over 200 requests, how many more model calls does the agent make?",
+      "unit": "calls"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every booking must run these steps in this order: check training status, check the calendar, book the slot, send a confirmation. For reliability and low cost, which design is best?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow, because the steps and their order never change"},
+        {"id": "b", "text": "An agent, because booking needs the model's judgment at every step"},
+        {"id": "c", "text": "An agent, because bookings matter too much for fixed steps"},
+        {"id": "d", "text": "A fixed workflow, because a model cannot be used inside one"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your program makes one model call that labels a question \"manual\" or \"booking\", then runs the matching fixed steps. Is this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "An agent, because the model writes the steps that then run"},
+        {"id": "b", "text": "An agent, because any program that calls a model is one"},
+        {"id": "c", "text": "An agent, because the model reads the question and acts"},
+        {"id": "d", "text": "A workflow, because the program fixes the steps after the label"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student writes, \"My 3D print keeps warping and I don't know why.\" Which design is most likely to find the cause?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow, because every question should follow the same steps"},
+        {"id": "b", "text": "An agent, because each check's result decides which check comes next"},
+        {"id": "c", "text": "A fixed workflow, because a long enough list covers every problem"},
+        {"id": "d", "text": "An agent, because more model calls give better answers"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Policy says the training-status check must happen before every booking, with no exceptions. Should the model or the code own that step? Answer with one word."
+    }
+  ]
+}

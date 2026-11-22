@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --code-bg:#f3efe6;
+      --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --code-bg:#23211e; } }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.5; font-size:17px; }
+    main { max-width:42rem; margin:0 auto; padding:2rem 1.25rem 3rem; }
+    h1 { font-size:1.7rem; margin:0 0 .25rem; } h2 { font-size:1.1rem; margin:1.5rem 0 .4rem; font-family:var(--sans); }
+    a { color:var(--accent); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; }
+    th, td { text-align:left; vertical-align:top; padding:.3rem .5rem; border-bottom:1px solid var(--rule); }
+    code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.85em; background:var(--code-bg); padding:.1em .3em; border-radius:4px; }
+    .muted { color:var(--muted); } .warn { color:var(--warn); font-weight:600; }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --accent:#000; --warn:#000; } main { padding:0; max-width:none; } body { font-size:10.5pt; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p class="muted">Use this to decide where each fact lives: in the context window, looked up, or saved.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><td>Token</td><td>A small piece of text; limits and cost are counted in these.</td></tr>
+    <tr><td>Context window</td><td>All the text the model sees on one call, including its own answer.</td></tr>
+    <tr><td>Conversation history</td><td>The messages so far, kept and resent by the program.</td></tr>
+    <tr><td>Context rot</td><td>Recall gets worse as the window fills.</td></tr>
+    <tr><td>Compaction</td><td>Summarize a long chat and start a new window from the summary.</td></tr>
+    <tr><td>Retrieval</td><td>Search long text and put only the best chunks in the window.</td></tr>
+    <tr><td>Memory (notes)</td><td>Files saved outside the window and read back later.</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>Everything in a call counts (system prompt, tool definitions, messages, tool results), because the model reads all of it.</li>
+    <li>The model keeps nothing between calls, so the program resends the history. Input = old history + new text.</li>
+    <li>Clear old tool results and compact long chats, because a big window is not a better one.</li>
+    <li>Use retrieval when the manuals are too long for the window. Count their tokens first (the lesson's advice).</li>
+    <li>Notes carry soft facts between sessions. Rules that decide access come from the official record, through a tool.</li>
+  </ol>
+  <table>
+    <tr><th>Fact</th><th>Home</th></tr>
+    <tr><td>Role, rules</td><td>System prompt</td></tr>
+    <tr><td>Settings in a manual</td><td>Retrieval</td></tr>
+    <tr><td>Free slots, training status</td><td>Tool result</td></tr>
+    <tr><td>"Likes mornings"</td><td>Notes</td></tr>
+  </table>
+
+  <h2>Worked example</h2>
+  <p>Call 1 input is 1,520 tokens. The model asks for the calendar (40 tokens) and the tool returns 150.</p>
+  <ol>
+    <li>Call 2 input = 1,520 + 40 + 150 = 1,710.</li>
+    <li>Reply: 30 tokens. Student answers with 10 tokens.</li>
+    <li>Call 3 input = 1,710 + 30 + 10 = 1,750, not 40. (All counts are illustrative.)</li>
+  </ol>
+
+  <h2>Common mistakes</h2>
+  <ul>
+    <li><span class="warn">"The model remembers me."</span> Each new window starts empty; notes must be read back.</li>
+    <li><span class="warn">"A step costs only its new text."</span> The whole history is resent.</li>
+    <li><span class="warn">"A 1M window means keep everything."</span> Recall degrades and you pay for every resend.</li>
+    <li><span class="warn">"Retrieval teaches the model the manual."</span> It only sees the chunks returned for this question.</li>
+    <li><span class="warn">"Notes are true."</span> A note can be stale or only a student's claim.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p><a href="../lessons/0001-context-window-and-memory.html">Lesson 1: Context and memory in an agent</a>. Primary source: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</main>
+</body>
+</html>

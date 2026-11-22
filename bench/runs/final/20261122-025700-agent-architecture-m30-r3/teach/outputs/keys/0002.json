@@ -1,0 +1,38 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "d",
+      "rationale": "Each call sends the whole history plus the new text: 1,250 + 30 + 200 = 1,480. Answering 230 treats a call as costing only its new text; 1,250 forgets the tool request and result; 2,730 adds call 1's input to call 2's instead of just resending the history once."
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls or sessions; a new window starts empty unless the program saved notes and reads them back. 'Window filled up' confuses session end with context limits."
+    },
+    {
+      "id": "q3",
+      "answer": 480000,
+      "tolerance": 0,
+      "rationale": "Nothing is removed from a call, so the manuals are resent every time: 4 x 120,000 = 480,000. An answer of 120,000 counts them once, which misses that every call resends the whole input."
+    },
+    {
+      "id": "q4",
+      "answer": "b",
+      "rationale": "Training status decides whether a student may use a machine, so it comes fresh from the official record through a tool (the lesson's own advice). Spindle speeds are manual text for retrieval, quiet afternoons is a soft preference for notes, and the role belongs in the system prompt."
+    },
+    {
+      "id": "q5",
+      "answer": "It reads (views) the notes file with the memory tool, so the notes enter the new window.",
+      "accepted": [
+        "it reads the notes file",
+        "it views the memory folder and opens the student's file",
+        "it calls the memory tool to read the saved notes",
+        "the model asks the memory tool to view the notes and the program returns the text",
+        "it loads the notes file into the context"
+      ],
+      "rationale": "Notes live outside the window, so the model asks for a view of the notes file through the memory tool and the program returns the text into the new window. An answer that says the model just remembers shows the idea that the model keeps memory between chats."
+    }
+  ]
+}

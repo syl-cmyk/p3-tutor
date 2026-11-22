@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 15255,
+  "stop_reason": "end_turn",
+  "session_id": "65aa75e2-7780-424e-beab-f03bec6347ff",
+  "total_cost_usd": 0.0788232,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 15262,
+    "cache_read_input_tokens": 80632,
+    "output_tokens": 1773,
+    "output_tokens_details": {
+      "thinking_tokens": 663
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9906,
+      "ephemeral_5m_input_tokens": 5356
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 407,
+        "cache_read_input_tokens": 24980,
+        "cache_creation_input_tokens": 918,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 918,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1773,
+      "cacheReadInputTokens": 80632,
+      "cacheCreationInputTokens": 15262,
+      "webSearchRequests": 0,
+      "costUSD": 0.0788232,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 663,
+      "cacheCreationEphemeral5mInputTokens": 5356,
+      "cacheCreationEphemeral1hInputTokens": 9906,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Picture a smart person locked in a room with only paper and a pen. A runner waits outside the door.\n\nHere's how it goes with your makerspace assistant:\n\n1. A student asks, \"Is the laser cutter free Friday?\"\n2. The person in the room can't see the calendar, so they slide a note under the door: *\"Look up laser cutter, Friday.\"*\n3. The runner reads the note, checks the real booking calendar and slides back: *\"Booked 2–4pm.\"*\n4. The person reads that and writes the final answer: *\"Free all day except 2–4pm.\"*\n\nHere's how the pieces map back to the real thing:\n- **The person in the room** is the model. It only reads and writes text.\n- **The note** is the tool call. It's a request, not an action.\n- **The runner** is your program. It does the actual lookup.\n- **The calendar** is the tool.\n- **The reply slid back** is the tool result.\n\nThe analogy breaks in one place. The person in the room has a menu of errands taped to the wall, which are your tool descriptions. They can only ask for errands on that menu.\n\nThis matters because the model never touches your calendar. Your code decides what actually runs, and that's where you control cost and safety.\n\nQuick check: in this story, who actually looks at the calendar?",
+  "ttft_ms": 1261,
+  "type": "result",
+  "duration_ms": 15449,
+  "uuid": "e90bbe02-9357-46aa-879c-41b4415e18d6",
+  "ttft_stream_ms": 789,
+  "time_to_request_ms": 109,
+  "first_content_frame_ms": 789,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1773,
+      "cacheReadInputTokens": 80632,
+      "cacheCreationInputTokens": 15262,
+      "webSearchRequests": 0,
+      "costUSD": 0.0788232,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 663,
+      "cacheCreationEphemeral5mInputTokens": 5356,
+      "cacheCreationEphemeral1hInputTokens": 9906,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

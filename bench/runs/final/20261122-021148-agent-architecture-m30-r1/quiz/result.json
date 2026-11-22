@@ -1,0 +1,150 @@
+{
+  "duration_api_ms": 172901,
+  "stop_reason": "end_turn",
+  "session_id": "e3579d29-c7ef-4624-9025-0bb362faeee7",
+  "total_cost_usd": 0.4533319,
+  "usage": {
+    "input_tokens": 20,
+    "cache_creation_input_tokens": 47329,
+    "cache_read_input_tokens": 391042,
+    "output_tokens": 18451,
+    "output_tokens_details": {
+      "thinking_tokens": 6408
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10037,
+      "ephemeral_5m_input_tokens": 37292
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 391,
+        "cache_read_input_tokens": 55723,
+        "cache_creation_input_tokens": 2242,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2242,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 38,
+      "outputTokens": 24014,
+      "cacheReadInputTokens": 448404,
+      "cacheCreationInputTokens": 61288,
+      "webSearchRequests": 0,
+      "costUSD": 0.4533319,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 6430,
+      "cacheCreationEphemeral5mInputTokens": 51251,
+      "cacheCreationEphemeral1hInputTokens": 10037,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01JaGh2MubvoxypoUSZtumDL",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-6upoklyp; mkdir -p drafts review-records\ncat > drafts/0002-quiz.json <<'EOF'\n{\n  \"id\": \"0002\",\n  \"objective\": \"O4\",\n  \"title\": \"Workflows, agents and who owns the control flow\",\n  \"items\": [\n    {\n      \"id\": \"q1\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"A program gives the model a goal and three tools, runs whichever tool the model asks for, and stops when the model writes a final answer. Who owns the control flow here?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"The program, because the developer fixed the order of steps in advance\"},\n        {\"id\": \"b\", \"text\": \"The model, because it picks the next step each time round the loop\"},\n        {\"id\": \"c\", \"text\": \"Both equally, because the program runs every tool the model requests\"},\n        {\"id\": \"d\", \"text\": \"The tools, because their results decide what happens after each step\"}\n      ]\n    },\n    {\n      \"id\": \"q2\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"Booking a slot in your makerspace assistant always goes: check the calendar, write the booking, send a confirmation. Which design fits this part best?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"An agent, so that the model can choose the order of the steps each time\"},\n        {\"id\": \"b\", \"text\": \"An agent, because booking needs tools and only agents can call tools\"},\n        {\"id\": \"c\", \"text\": \"A fixed workflow, because the steps and their order are known in advance\"},\n        {\"id\": \"d\", \"text\": \"A fixed workflow, because a workflow never has to call a language model\"}\n      ]\n    },\n    {\n      \"id\": \"q3\",\n      \"type\": \"numeric\",\n      \"objective\": \"O4\",\n      \"stem\": \"A fixed workflow handles each booking in 3 model calls. An agent handles the same booking in 7 model calls on average. If every call costs $0.002, how many dollars more does the agent cost for 500 bookings?\",\n      \"unit\": \"dollars\"\n    },\n    {\n      \"id\": \"q4\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"A student's manual question needs one lookup or four, and you cannot tell which from the question. Which design gets the answer right without wasting model calls?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"A fixed workflow that always makes four lookups for every question\"},\n        {\"id\": \"b\", \"text\": \"A fixed workflow that always makes one lookup for every question\"},\n        {\"id\": \"c\", \"text\": \"A fixed workflow that always makes two lookups as a compromise\"},\n        {\"id\": \"d\", \"text\": \"An agent loop with a step limit, where the model decides when it has enough\"}\n      ]\n    },\n    {\n      \"id\": \"q5\",\n      \"type\": \"short\",\n      \"objective\": \"O4\",\n      \"stem\": \"Your code asks the model to label each question \\\"manual\\\" or \\\"booking\\\", then runs a fixed manual path or a fixed booking path. Who still owns the control flow: the model or the code?\"\n    },\n    {\n      \"id\": \"q6\",\n      \"type\": \"mcq\",\n      \"objective\": \"O4\",\n      \"stem\": \"Your sponsor wants a firm limit on the cost of each booking. Why does a fixed workflow suit that better than an agent?\",\n      \"options\": [\n        {\"id\": \"a\", \"text\": \"Its number of model calls is set in advance, so the cost is predictable\"},\n        {\"id\": \"b\", \"text\": \"It always uses a cheaper model than an agent does, whatever the task\"},\n        {\"id\": \"c\", \"text\": \"It makes no tool calls, so no tool costs can ever be added to the bill\"},\n        {\"id\": \"d\", \"text\": \"An agent has no way to be stopped, so its cost cannot be limited\"}\n      ]\n    }\n  ]\n}\nEOF\ncat > drafts/0002-key.json <<'EOF'\n{\n  \"id\": \"0002\",\n  \"items\": [\n    {\"id\": \"q1\", \"answer\": \"b\", \"rationale\": \"In an agent the model decides the next step each time round the loop; the program only runs the tools. Running the tools is not the same as owning the control flow.\"},\n    {\"id\": \"q2\", \"answer\": \"c\", \"rationale\": \"When the steps and their order are known in advance, code can fix them, which is a workflow. Workflows can call tools and models too; the difference is who picks the next step.\"},\n    {\"id\": \"q3\", \"answer\": 4, \"tolerance\": 0.05, \"rationale\": \"The agent uses 7 - 3 = 4 extra calls per booking: 4 x $0.002 = $0.008, and 500 bookings x $0.008 = $4.\"},\n    {\"id\": \"q4\", \"answer\": \"d\", \"rationale\": \"When the path cannot be known in advance, the model has to choose how many lookups to make, so an agent with a step limit fits. Any fixed count either wastes calls or misses information.\"},\n    {\"id\": \"q5\", \"answer\": \"the code\", \"accepted\": [\"code\", \"the program\", \"program\", \"the program's code\", \"the developer\", \"the code owns it\", \"the code, not the model\"], \"rationale\": \"The model only fills in one step (the label); the code fixes which path runs next, so this is still a workflow. The model owns the control flow only when it chooses the steps itself.\"},\n    {\"id\": \"q6\", \"answer\": \"a\", \"rationale\": \"A workflow's steps, and so its number of model calls, are fixed in advance, so cost per request is known. Agents can be stopped with a step limit, but their number of calls varies.\"}\n  ]\n}\nEOF"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01KV9JhxWpZhKDWWcQv8BKoR",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-6upoklyp/drafts && python3 -I - <<'PY'\nimport json\nq=json.load(open('0002-quiz.json')); k=json.load(open('0002-key.json'))\nqi={i['id']:i for i in q['items']}; ki={i['id']:i for i in k['items']}\nnew_q3={\"id\":\"q3\",\"type\":\"mcq\",\"objective\":\"O4\",\"stem\":\"A student asks your fixed-workflow assistant to compare two machines, a request none of its paths was built for. What happens?\",\"options\":[\n {\"id\":\"a\",\"text\":\"It follows only the paths coded in advance, so it needs a new path or a fallback\"},\n {\"id\":\"b\",\"text\":\"The model notices the gap and invents a new path for this one request\"},\n {\"id\":\"c\",\"text\":\"It turns into an agent for this request, then goes back to being a workflow\"},\n {\"id\":\"d\",\"text\":\"It runs every path it has in turn until one of them gives a usable answer\"}]}\nnew_k3={\"id\":\"q3\",\"answer\":\"a\",\"rationale\":\"A workflow can only follow the paths its code defines, so a new kind of request needs a new path or a fallback. That rigidity is the price of its predictability; an agent would choose its own steps.\"}\nq4=qi['q3']; k4=ki['q3']; q5=qi['q4']; k5=ki['q4']; q6=qi['q5']; k6=ki['q5']\nq5['options'][3]['text']=\"An agent loop, so that the model decides when it has enough\"\nk5['rationale']=\"When the path cannot be known in advance, the model has to choose how many lookups to make, so an agent fits. Any fixed count either wastes calls or misses information.\"\norder=[(qi['q1'],ki['q1']),(qi['q2'],ki['q2']),(new_q3,new_k3),(q4,k4),(q5,k5),(q6,k6)]\nfor n,(a,b) in enumerate(order,1): a['id']=b['id']=f'q{n}'\nq['items']=[a for a,_ in order]; k['items']=[b for _,b in order]\njson.dump(q,open('0002-quiz.json','w'),indent=2); json.dump(k,open('0002-key.json','w'),indent=2)\nPY"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01UKKW5KzxUwpqdUborpZiAp",
+      "tool_input": {
+        "command": "cp drafts/0002-quiz.json quizzes/0002.json && python3 -c \"import json;json.load(open('quizzes/0002.json'))\" && echo ok"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01MgALG5Tir13mm2fuFETP9J",
+      "tool_input": {
+        "command": "cp drafts/0002-key.json keys/0002.json && echo copied"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 3,
+    "requested": {
+      "background": 0,
+      "foreground": 2,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 3,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 3
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 22,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Your O4 quiz is ready at `quizzes/0002.json`, with six items. The key is `keys/0002.json`, and the review notes are in `review-records/0002-quiz.md`.\n\nIt covers who owns the control flow in an agent and in a workflow, and when a fixed workflow is the better choice for the makerspace assistant. That includes a case where the model only labels a request and the code still picks the path. There are four multiple-choice items, one cost calculation and one short answer. They run from easy to hard, all in makerspace terms.\n\n- **Ahead of the lessons:** there's no lesson on workflows vs. agents yet, so this quiz is ahead of them. Q1 spells out \"control flow\" in the stem.\n- **Review passes:** the second review pass ran on the unrevised draft, because my edit was blocked. I applied the fixes from the first pass, but they were never re-reviewed. The record has the details.\n- **No misconception ids:** I left `distractors` out of the key, because the workspace has no misconception ids yet and I can't read `keys/` to check for clashes.\n\nQuick question for you: want me to write the O4 lesson before you take this, or are you going to try the quiz cold first?",
+  "ttft_ms": 1526,
+  "type": "result",
+  "duration_ms": 164581,
+  "uuid": "4a62a69c-c0c0-436a-b8bb-8b31290973bd",
+  "ttft_stream_ms": 1047,
+  "time_to_request_ms": 183,
+  "first_content_frame_ms": 1047,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 38,
+      "outputTokens": 24014,
+      "cacheReadInputTokens": 448404,
+      "cacheCreationInputTokens": 61288,
+      "webSearchRequests": 0,
+      "costUSD": 0.4533319,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 6430,
+      "cacheCreationEphemeral5mInputTokens": 51251,
+      "cacheCreationEphemeral1hInputTokens": 10037,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

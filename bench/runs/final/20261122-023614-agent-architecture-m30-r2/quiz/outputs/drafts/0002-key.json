@@ -1,0 +1,11 @@
+{
+  "id": "0002",
+  "items": [
+    {"id": "q1", "answer": "c", "rationale": "In a workflow, code predefines the path; in an agent, the model directs its own steps. Using a model, tools or a bigger model does not decide it."},
+    {"id": "q2", "answer": "a", "rationale": "The order is fixed in code, so it is a workflow even though it uses a tool and calls the model twice. Several model calls, tool use or self-checking do not make a system an agent."},
+    {"id": "q3", "answer": "the model", "accepted": ["model", "the language model", "the LLM", "LLM", "the model owns it", "the model decides", "the model picks", "model picks", "the model chooses"], "rationale": "The model picks each next step and the code only runs what it asks, which is what makes this an agent."},
+    {"id": "q4", "answer": "b", "rationale": "The steps are known and the same every time, so a workflow is cheaper and more predictable. The other tasks have open-ended or unpredictable steps, where an agent earns its cost."},
+    {"id": "q5", "answer": 5, "tolerance": 0.05, "rationale": "The agent makes 8 - 3 = 5 extra calls per request: 5 x $0.002 = $0.01, and over 500 requests that is $5."},
+    {"id": "q6", "answer": "d", "rationale": "When the steps are known, a fixed workflow is cheaper and more predictable, and an agent's flexibility goes unused. Workflows can call tools and models too."}
+  ]
+}

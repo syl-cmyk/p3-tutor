@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 9435,
+  "stop_reason": "end_turn",
+  "session_id": "60c1d824-c6ca-412e-bb7a-8aad39528221",
+  "total_cost_usd": 0.0676578,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 14381,
+    "cache_read_input_tokens": 55783,
+    "output_tokens": 1116,
+    "output_tokens_details": {
+      "thinking_tokens": 114
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9970,
+      "ephemeral_5m_input_tokens": 4411
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 371,
+        "cache_read_input_tokens": 24541,
+        "cache_creation_input_tokens": 476,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 476,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1116,
+      "cacheReadInputTokens": 55783,
+      "cacheCreationInputTokens": 14381,
+      "webSearchRequests": 0,
+      "costUSD": 0.0676578,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 114,
+      "cacheCreationEphemeral5mInputTokens": 4411,
+      "cacheCreationEphemeral1hInputTokens": 9970,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "PPO is a reinforcement-learning method. The model tries tasks, gets a score for each attempt, and its weights get nudged toward what scored well, with a limit so no single update changes it too much. I'm skipping the derivation because it needs math you haven't met yet.\n\nYou also don't need it for the makerspace assistant. Training is out of scope in your mission, and with a small model budget it would cost far more than it saves. Most of the tool-calling gains for a project like yours come from the setup around the model.\n\nHere's what that looks like. A student writes \"book the laser cutter Friday 2pm\" and the assistant calls `get_calendar` when it should have called `book_slot`. The usual fix is a clearer tool description, like \"Use this to *reserve* time, not to check availability\". You don't retrain anything.\n\nNext step: write 10 realistic student requests, and next to each one the tool you'd expect the assistant to call. That's your test set. Then rewrite one tool description and see whether the picks improve.\n\nWant to draft the first three requests together? If you still want RL later, the prerequisites are basic probability and gradient descent. I can do that as a separate lesson.",
+  "ttft_ms": 1331,
+  "type": "result",
+  "duration_ms": 9607,
+  "uuid": "3b940a20-006e-4640-91c2-a123def86847",
+  "ttft_stream_ms": 844,
+  "time_to_request_ms": 127,
+  "first_content_frame_ms": 844,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1116,
+      "cacheReadInputTokens": 55783,
+      "cacheCreationInputTokens": 14381,
+      "webSearchRequests": 0,
+      "costUSD": 0.0676578,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 114,
+      "cacheCreationEphemeral5mInputTokens": 4411,
+      "cacheCreationEphemeral1hInputTokens": 9970,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

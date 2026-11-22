@@ -1,0 +1,138 @@
+{
+  "duration_api_ms": 927628,
+  "stop_reason": "end_turn",
+  "session_id": "8e760bc1-b74c-4881-b757-554c50abc82e",
+  "total_cost_usd": 2.8358241,
+  "usage": {
+    "input_tokens": 34,
+    "cache_creation_input_tokens": 64907,
+    "cache_read_input_tokens": 1275897,
+    "output_tokens": 17535,
+    "output_tokens_details": {
+      "thinking_tokens": 1534
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 64907
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 623,
+        "cache_read_input_tokens": 112276,
+        "cache_creation_input_tokens": 2879,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2879,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 98,
+      "outputTokens": 127424,
+      "cacheReadInputTokens": 2210419,
+      "cacheCreationInputTokens": 519520,
+      "webSearchRequests": 0,
+      "costUSD": 2.8147529,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 40635,
+      "cacheCreationEphemeral5mInputTokens": 505870,
+      "cacheCreationEphemeral1hInputTokens": 13650,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 65087,
+      "outputTokens": 9125,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 1,
+      "costUSD": 0.021071199999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5637,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01LdpYSTUzP2Vy4MgjMZGBt2",
+      "tool_input": {
+        "command": "mkdir -p lessons review-records quizzes keys && cp drafts/0001-context-window-and-memory.html lessons/0001-context-window-and-memory.html && grep -c 'p3-minutes\" content=\"30\"\\|p3-objective\" content=\"O3\"' lessons/0001-context-window-and-memory.html && ls lessons",
+        "description": "Copy final draft into lessons and verify meta tags"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwr8xj7j-7e869e34"
+  },
+  "subagent_stats": {
+    "spawned": 6,
+    "requested": {
+      "background": 0,
+      "foreground": 5,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 6,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 42,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The O3 lesson is written, along with a quiz and a cheat sheet. After the second review pass the reviewer still said \"revise\", so some open style findings remain.\n\n- **Lesson:** `lessons/0001-context-window-and-memory.html`, 30 minutes. It has six parts: the context window, conversation history, context rot and compaction, retrieval, persistent memory (notes), and where each fact should live. Each part uses a makerspace example with a numbered trace, and the lesson has five figures. It ends with a worked example, a faded practice task, a summary and sources.\n- **Open review findings:** Parts 4 and 5 are dense. There are also many misconception boxes, which cuts against your \"keep it short\" preference. The lesson's visible text is probably around 5,000 words by the reviewer's estimate, so it should still fit the 30-minute band. I left those as they were. `review-records/0001-lesson.md` records what changed in each pass and what I left alone.\n- **Quiz:** `quizzes/0002.json` has five fresh items: a token sum, why a new session starts empty, resending a 120,000-token manual, where training status lives, and how saved notes get back into the window. Ask me for it when you want to try it. I can't see the earlier keys, so I didn't name any misconception ids in this key.\n- **Cheat sheet:** `cheatsheets/context-and-memory.html`. One page with the key terms, the five rules, a where-each-fact-lives table, the 1,520 / 1,710 / 1,750 example and the common mistakes.\n\nAll the makerspace token counts in the lesson are made up for the examples, and the lesson says so. The retrieval-size check and the rule that training status comes from the official record are the lesson's own advice, not from a source.\n\nAsk me anything about the lesson. Which part would you like me to shorten first, Part 4 (retrieval) or Part 5 (notes)?",
+  "ttft_ms": 1530,
+  "type": "result",
+  "duration_ms": 772284,
+  "uuid": "bc6099cf-9959-484c-8c19-bdaab01fbde3",
+  "ttft_stream_ms": 619,
+  "time_to_request_ms": 13,
+  "first_content_frame_ms": 620,
+  "queued_turn_count": 0,
+  "result_index": 1,
+  "model_usage_since_last_result": {}
+}

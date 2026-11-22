@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 15114,
+  "stop_reason": "end_turn",
+  "session_id": "e15130bd-742f-4c14-a541-4c8ceb8f219c",
+  "total_cost_usd": 0.0778695,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 15166,
+    "cache_read_input_tokens": 80755,
+    "output_tokens": 1701,
+    "output_tokens_details": {
+      "thinking_tokens": 565
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9902,
+      "ephemeral_5m_input_tokens": 5264
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 426,
+        "cache_read_input_tokens": 25114,
+        "cache_creation_input_tokens": 688,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 688,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1701,
+      "cacheReadInputTokens": 80755,
+      "cacheCreationInputTokens": 15166,
+      "webSearchRequests": 0,
+      "costUSD": 0.0778695,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 565,
+      "cacheCreationEphemeral5mInputTokens": 5264,
+      "cacheCreationEphemeral1hInputTokens": 9902,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Tool calling is the model filling in a request slip for something it can't do by itself, then using whatever comes back to answer.\n\nPicture a friend who knows a lot but is stuck in a room with a slot in the door. You slide a note under it: \"Is the laser cutter free Friday?\" Your friend can't see the calendar. So they write a slip: **\"Check calendar → laser cutter → Friday.\"** The slip comes back with \"Booked 2–4pm.\" Now they can answer you: \"Free except 2–4.\"\n\nMapping it to your assistant:\n- The menu of things they're allowed to ask for is the **tool list**. Each item has a short description, and the descriptions are how your friend knows which slip to write.\n- The filled-in slip is the **tool call**: a tool name plus details like the machine and the day.\n- The note that comes back is the **tool result**.\n- Your friend's final reply is the **answer**.\n\nThe analogy breaks down because your friend is a person. The model only writes the slip as text. I'm leaving out who acts on that slip, and how many separate \"thinking turns\" this takes, because quiz 0001 tests exactly that. Once it's graded, we'll go through both.\n\nTry this: your assistant gets \"Book me the 3D printer tomorrow at 4.\" Which slip would it write first, and what would you want back?",
+  "ttft_ms": 1541,
+  "type": "result",
+  "duration_ms": 15378,
+  "uuid": "316c6f18-b9ae-4e70-9957-ddd83894ec84",
+  "ttft_stream_ms": 1057,
+  "time_to_request_ms": 181,
+  "first_content_frame_ms": 1057,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1701,
+      "cacheReadInputTokens": 80755,
+      "cacheCreationInputTokens": 15166,
+      "webSearchRequests": 0,
+      "costUSD": 0.0778695,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 565,
+      "cacheCreationEphemeral5mInputTokens": 5264,
+      "cacheCreationEphemeral1hInputTokens": 9902,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

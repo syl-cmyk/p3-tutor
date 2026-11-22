@@ -1,0 +1,11 @@
+{
+  "id": "0002",
+  "items": [
+    {"id": "q1", "answer": "c", "rationale": "In an agent the model owns the control flow: it picks the next action or stops. A fixed list of steps written in advance describes a workflow.", "distractors": {"a": "M10", "b": "M11", "d": "M11"}},
+    {"id": "q2", "answer": 600, "tolerance": 0.5, "rationale": "The agent makes 5 - 2 = 3 extra calls per request, and 3 x 200 = 600. An answer of 400 or 1000 counts only one of the two designs."},
+    {"id": "q3", "answer": "a", "rationale": "When the steps and their order are known and never change, a fixed workflow is cheaper, more predictable and easier to test than an agent.", "distractors": {"b": "M12", "c": "M12", "d": "M13"}},
+    {"id": "q4", "answer": "d", "rationale": "The program decides which step runs next, so it is a workflow; a model call inside it, even one that picks a branch, does not hand over the control flow.", "distractors": {"a": "M13", "b": "M14", "c": "M14"}},
+    {"id": "q5", "answer": "b", "rationale": "When the path cannot be written in advance because each finding decides the next check, the model must own the control flow, so an agent fits.", "distractors": {"a": "M12", "c": "M12", "d": "M12"}},
+    {"id": "q6", "answer": "code", "accepted": ["program", "the code", "the program"], "rationale": "A step that must always happen belongs in code, because a model may skip or reorder it; this is the reliability reason to use a fixed workflow."}
+  ]
+}

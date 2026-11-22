@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A program gives the model a goal and three tools, runs whichever tool the model asks for, and stops when the model writes a final answer. Who owns the control flow, meaning who decides which step runs next?",
+      "options": [
+        {"id": "a", "text": "The program, because the developer fixed the order of steps in advance"},
+        {"id": "b", "text": "The model, because it picks the next step each time round the loop"},
+        {"id": "c", "text": "Both equally, because the program runs every tool the model requests"},
+        {"id": "d", "text": "The tools, because their results decide what happens after each step"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Booking a slot in your makerspace assistant goes the same way every time: check the calendar, write the booking, send a confirmation. Which design fits this part best?",
+      "options": [
+        {"id": "a", "text": "An agent, so that the model can pick the sequence afresh for each booking"},
+        {"id": "b", "text": "An agent, because booking needs tools and only agents can call tools"},
+        {"id": "c", "text": "A fixed workflow, because the sequence never changes from one booking to the next"},
+        {"id": "d", "text": "A fixed workflow, because a workflow is always more accurate than an agent"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student asks your fixed-workflow assistant to compare two machines, a request none of its paths was built for. What happens?",
+      "options": [
+        {"id": "a", "text": "It follows only the paths coded in advance, so it needs a new path or a fallback"},
+        {"id": "b", "text": "The model notices the gap and invents a new path for this one request"},
+        {"id": "c", "text": "It turns into an agent for this request, then goes back to being a workflow"},
+        {"id": "d", "text": "It runs every path it has in turn until one of them gives a usable answer"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow handles each booking in 3 model calls. An agent handles the same booking in 7 model calls on average. If every call costs $0.002, how many dollars more does the agent cost for 500 bookings?",
+      "unit": "dollars"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student's manual question needs one lookup or four, and you cannot tell which from the question. Which design gets the answer right without wasting model calls?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow that always makes four lookups for every question"},
+        {"id": "b", "text": "A fixed workflow that always makes one lookup for every question"},
+        {"id": "c", "text": "A fixed workflow that always makes two lookups as a middle ground"},
+        {"id": "d", "text": "An agent loop, so that the model decides when it has enough"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Your code asks the model to label each question \"manual\" or \"booking\", then runs a fixed manual path or a fixed booking path. After the label, who picks the next step: the model or the code?"
+    }
+  ]
+}

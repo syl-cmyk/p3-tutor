@@ -1,0 +1,32 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "Call 1 sends 2,000. Call 2 resends the history plus the 3,000-token result, so it sends 5,000. The total is 2,000 + 5,000 = 7,000. Answering 5,000 counts only the last call; 10,000 treats every call as the final size."
+    },
+    {
+      "id": "q2",
+      "answer": 0.05,
+      "tolerance": 0.001,
+      "rationale": "25,000 x 2 / 1,000,000 = $0.05."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Nothing is kept inside the model between sessions; the window ends with the session, so a fact has to be saved in a file or database outside it and read back in."
+    },
+    {
+      "id": "q4",
+      "answer": "your program",
+      "accepted": ["the program", "program", "your code", "the code", "the application", "the app", "my program"],
+      "rationale": "The model only asks for the tool call; the program runs the search and returns the chunks as text, the same rule as in the agent loop."
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "Bookings change constantly, so a saved copy goes stale; a live fact belongs to a calendar tool call. Notes can hold short sentences and be read in later sessions."
+    }
+  ]
+}
