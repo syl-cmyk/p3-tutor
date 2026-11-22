@@ -18,7 +18,8 @@ Do what it asks now, and put any question for the learner at the end of your fin
 ## Read first
 
 The current directory is the learner's workspace; every path is relative to it.
-Read `FORMATS.md` (the exact shape of `quizzes/NNNN.json` and `keys/NNNN.json`), `PREFERENCES.md`, `MISSION.md`, `NOTES.md`, the files in `learning-records/`, the lessons on the objective in `lessons/`, and the earlier quizzes, keys and grades.
+Read `FORMATS.md` (the exact shape of `quizzes/NNNN.json` and `keys/NNNN.json`), `PREFERENCES.md`, `MISSION.md`, `NOTES.md`, the files in `learning-records/`, the lessons on the objective in `lessons/`, and the earlier quizzes and grades.
+Never read `keys/`: a guard blocks it for this conversation, so use the earlier grades for the misconceptions this learner shows, and write the new key from the draft you made.
 Then read `.claude/skills/teach/references/QUIZZES.md`, the guide to writing good items and keys; this skill adds to it, and where the two differ, follow this skill.
 Never edit `PREFERENCES.md`, `FORMATS.md` or anything under `.claude/`.
 

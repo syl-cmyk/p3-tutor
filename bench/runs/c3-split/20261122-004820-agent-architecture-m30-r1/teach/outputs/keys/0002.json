@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": 1200,
+      "tolerance": 0.5,
+      "rationale": "Call 2 re-sends everything: 800 + 50 + 100 + 250 = 1,200. An answer of 250 or 350 forgets that the model keeps nothing between calls."
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "Each session starts with an empty window and the model keeps nothing; only something written to storage and read back can cross.",
+      "distractors": {"a": "M3", "c": "M3", "d": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "The set is over the 200,000-token guidance, and only a little is needed, so retrieve a few chunks. Pasting everything bills it every call; a one-time summary can drop details; notes are for facts the agent writes, not a fixed manual.",
+      "distractors": {"b": "M4", "d": "M5"}
+    },
+    {
+      "id": "q4",
+      "answer": "The window, notes and retrieval: e.g. instructions in the window, a student's training status in notes, the machine manual by retrieval.",
+      "accepted": ["window, notes, retrieval", "context window, notes file, retrieved manual chunks", "the window, saved notes and retrieval"],
+      "rationale": "Any sensible example per place is fine: window for what every call needs, notes for small facts that must outlast a session, retrieval for large documents of which little is needed."
+    },
+    {
+      "id": "q5",
+      "answer": "A keyword search such as BM25, because it matches the exact string H-17.",
+      "accepted": ["keyword search", "BM25", "keyword search because it matches the exact code", "exact-match search"],
+      "rationale": "Meaning-based search can miss exact codes; keyword search matches the string, and combining both covers both kinds of question."
+    }
+  ]
+}

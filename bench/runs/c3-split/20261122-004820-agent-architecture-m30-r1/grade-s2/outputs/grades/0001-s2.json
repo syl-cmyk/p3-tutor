@@ -1,0 +1,13 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {"id": "q1", "verdict": "correct", "misconception": null, "feedback": "Right. What makes it an agent is the loop: the model picks an action, the program runs it, and the result comes back for the next step."},
+    {"id": "q2", "verdict": "correct", "misconception": null, "feedback": "Right. The model only writes a request, like check_calendar(machine=\"laser cutter\", date=\"tomorrow\"); the program around it does the actual calling."},
+    {"id": "q3", "verdict": "wrong", "misconception": "M6", "feedback": "Not quite. You picked 'No change; left to run longer, it will eventually fix the bug', which assumes an agent needs no stopping condition. If step 40 got the same failing test as step 1, step 400 will too, so you need a step limit: at 20 steps it stops the loop and tells a person what happened."},
+    {"id": "q4", "verdict": "partial", "misconception": "M4", "feedback": "Partly right. 4 is the correct count, but your reason is off: the model doesn't run check_calendar, it just asks for it and the program runs it. So it's 3 tool requests plus the final answer, 4 calls, with the program doing the 3 tool runs in between."},
+    {"id": "q5", "verdict": "correct", "misconception": null, "feedback": "Right. The result goes back in as the model's next input, and the model uses it to decide its next step, like the calendar result telling it to go check the manuals next."},
+    {"id": "q6", "verdict": "partial", "misconception": null, "feedback": "Partly right. The name helps, but the model works from the whole description the program gives it: name, what the tool does, and its parameters. A tool called do_thing3 described as 'checks machine bookings for a date' still gets picked correctly; a well-named tool with no description is a guess."}
+  ],
+  "summary": "You have the agent loop down: what makes an agent, what the model outputs, and why results go back in. Work next on who runs the tools: the program does, never the model, and the model picks a tool from its description, not just its name. Redo q4 and q6 from memory."
+}

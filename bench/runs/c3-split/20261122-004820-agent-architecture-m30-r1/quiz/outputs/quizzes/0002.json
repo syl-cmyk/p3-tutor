@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Control flow means deciding which step runs next. What is the core difference between a workflow and an agent?",
+      "options": [
+        {"id": "a", "text": "An agent can call tools, while a workflow cannot call any"},
+        {"id": "b", "text": "An agent runs on a larger model than a workflow does"},
+        {"id": "c", "text": "In a workflow code picks each step; in an agent the model does"},
+        {"id": "d", "text": "An agent takes several steps, while a workflow takes just one"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your booking feature always runs check_calendar, then reserve_slot, then one model call that writes the confirmation message. Is this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "An agent, because a model writes part of the output"},
+        {"id": "b", "text": "A workflow, because the code fixes the order of the steps"},
+        {"id": "c", "text": "An agent, because it calls tools such as check_calendar"},
+        {"id": "d", "text": "An agent, because it runs more than one step per request"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow makes 2 model calls per request. An agent doing the same job averages 5 model calls per request. Over 200 requests, how many more model calls does the agent make?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which request is best handled by an agent, because the steps needed cannot be listed ahead of time?",
+      "options": [
+        {"id": "a", "text": "\"Reserve the 3D printer for Friday at 2 pm.\""},
+        {"id": "b", "text": "\"Show me all of my current bookings.\""},
+        {"id": "c", "text": "\"Remind me an hour before my booking starts.\""},
+        {"id": "d", "text": "\"Why are my acrylic cuts melting at the edges?\""}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "One model call labels each student message \"booking\", \"manual question\" or \"other\". Code then runs a fixed handler for that label. Is this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow, because code runs fixed paths and the model only labels"},
+        {"id": "b", "text": "An agent, because the model's label decides which path runs"},
+        {"id": "c", "text": "An agent, because the model makes a decision during the run"},
+        {"id": "d", "text": "An agent, because it calls the model before any handler runs"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "The makerspace assistant must book machines (check calendar, reserve, confirm) and answer open-ended questions about the manuals. In one sentence, which part would you build as a fixed workflow, and why?"
+    }
+  ]
+}

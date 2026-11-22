@@ -131,42 +131,36 @@ The Round 6 change helped: every source in the lesson was opened and checked, an
 
 ## Major review
 
-**Run:** bench/runs/c3-split/TODO
+**Run:** bench/runs/c3-split/20261122-004820-agent-architecture-m30-r1
+
 
 **Live tries:**
 
-TODO
+Not tried live for this step; judged from the c3-split full run.
+
 
 ### Lesson
 
 #### Technical correctness and facts
-
-Rating: TODO
-
-TODO
+Rating: 5
+The bench check agrees: all six key facts are present and correct (teach facts 1.00), with no misconception asserted and no dead links, and every source was opened and checked by the references-finder.
 
 #### Pedagogy
-
-Rating: TODO
-
-TODO
+Rating: 5
+Every part opens with its key sentence and carries a worked example, the part titles are the course's technical terms with a plain explanation, and each figure labels its boxes and gives the reason beside every arrow.
 
 #### Alignment with the learning goal
-
-Rating: TODO
-
-TODO
+Rating: 5
+The lesson covers what the learner needs: what is in the context window, what is kept between steps and sessions, and how retrieval finds the right page, and its last part practices choosing where each fact belongs.
 
 #### Overall quality
-
-Rating: TODO
-
-TODO
+Rating: 5
+The lesson is clear and professional at the requested length (length ratio 0.90), with the same difficulty as before and nothing I would ask the Builder to change.
 
 ### Compared with the previous step
 
-TODO
+The split helped the lesson: it is longer (length ratio 0.87 to 0.90), every part title is the course's technical term with a plain explanation, the figures are labelled in plain words with the reason beside every arrow, and every source was checked before it was cited. The cost is higher: a full run went from $3.31 to $4.13 and from 16.9 to 20.3 minutes, with 14 subagents against 9.
 
 ### What the next step should fix
 
-TODO
+The next step is final, so it should add the guard that keeps the answer keys away from the main conversation, and it should hand grading to a grader subagent the guard allows.

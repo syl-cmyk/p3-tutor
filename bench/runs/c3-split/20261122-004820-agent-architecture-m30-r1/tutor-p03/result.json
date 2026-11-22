@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 8446,
+  "stop_reason": "end_turn",
+  "session_id": "79254fbb-434b-4b34-9c48-5627961f0872",
+  "total_cost_usd": 0.0715442,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 13978,
+    "cache_read_input_tokens": 55102,
+    "output_tokens": 1011,
+    "output_tokens_details": {
+      "thinking_tokens": 102
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13978,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 319,
+        "cache_read_input_tokens": 24185,
+        "cache_creation_input_tokens": 429,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 429
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1011,
+      "cacheReadInputTokens": 55102,
+      "cacheCreationInputTokens": 13978,
+      "webSearchRequests": 0,
+      "costUSD": 0.0715442,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 102,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13978,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. A language model doesn't remember anything between conversations on its own, so your assistant won't recall what a student said last week unless your code saves it and sends it back in.\n\nHere's what that looks like:\n\n- **Monday:** Sam says, \"I finished the laser cutter training.\" The model replies, \"Great, noted!\"\n- **Next Monday:** Sam asks, \"Can I book the laser cutter?\" Your code sends only that one question. The model has never seen Monday's chat, so it can't know about the training.\n\nThe \"noted!\" was only the model writing text. Nothing got stored.\n\nTo fix it, your app has to save \"Sam: laser cutter trained\" somewhere, like a file or database. Next visit, it puts that line into the prompt before the model answers.\n\nThis matters for your design review because \"what the assistant saves between sessions\" is a decision your team makes, not something that comes built in. It's also the next thing in your mission.\n\nQuick check: where would your team store Sam's training status so it's ready next week?",
+  "ttft_ms": 1272,
+  "type": "result",
+  "duration_ms": 8620,
+  "uuid": "dd2556f1-a5b5-42c5-a407-c17ce863e560",
+  "ttft_stream_ms": 657,
+  "time_to_request_ms": 142,
+  "first_content_frame_ms": 657,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1011,
+      "cacheReadInputTokens": 55102,
+      "cacheCreationInputTokens": 13978,
+      "webSearchRequests": 0,
+      "costUSD": 0.0715442,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 102,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13978,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

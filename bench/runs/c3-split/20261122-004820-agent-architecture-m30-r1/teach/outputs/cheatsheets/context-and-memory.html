@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1rem; font-family: Georgia, serif; line-height: 1.5; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid #8884; padding: .4rem; text-align: left; vertical-align: top; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory: one page</h1>
+  <p>From <a href="../lessons/0001-context-and-memory.html">the lesson</a>.</p>
+  <table>
+    <thead><tr><th>Place</th><th>Holds</th><th>Lasts</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Context window</td><td>Instructions, tool descriptions, history, results, the reply</td><td>One call; the program re-sends it each step</td><td>System prompt, today's calendar result</td></tr>
+      <tr><td>Notes (memory)</td><td>Small facts the agent writes and reads back</td><td>Across sessions</td><td>A student's training status</td></tr>
+      <tr><td>Retrieval</td><td>A large fixed document, searched in chunks</td><td>Permanent, not edited by the agent</td><td>The laser cutter manual</td></tr>
+    </tbody>
+  </table>
+  <h2>Rules of thumb</h2>
+  <ul>
+    <li>Input on call n = everything before it + the new step; cost grows faster than step count.</li>
+    <li>Clear old tool results first; compact (summarize) if still too big.</li>
+    <li>Keep notes small and organized; do not dump transcripts.</li>
+    <li>Under about 200,000 tokens, pasting it all in is an option to price; above, retrieve.</li>
+    <li>Use keyword search for exact codes, meaning search for topics, and expect misses.</li>
+    <li>Place each fact by: how often needed, how long it must last, how big.</li>
+  </ul>
+</main>
+</body>
+</html>

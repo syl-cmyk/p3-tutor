@@ -1,0 +1,45 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "Who owns the control flow is the difference: in a workflow the developer's code fixes the steps and their order, in an agent the model chooses the next step at run time. Both can use tools and models, and size or step count does not define either.",
+      "distractors": {"a": "M7", "b": "M8", "d": "M9"}
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The code fixes the order (calendar, reserve, confirm) and the model only writes text inside one step, so the code owns the control flow: a workflow. Using a model, using tools or having several steps does not make something an agent.",
+      "distractors": {"a": "M7", "c": "M7", "d": "M9"}
+    },
+    {
+      "id": "q3",
+      "answer": 600,
+      "tolerance": 0,
+      "rationale": "The agent makes 5 - 2 = 3 extra calls per request, and 3 x 200 = 600. Extra calls are extra cost, which is one reason to prefer a fixed workflow when the steps are known."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "Diagnosing melted edges is open-ended: which manual pages, checks or follow-up questions are needed cannot be listed in advance, so the model has to choose the steps. The other three have known, repeatable steps that code can run.",
+      "distractors": {"a": "M11", "b": "M11", "c": "M11"}
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "The model's only job is to pick a label; the paths are written in advance and code runs them, so the code owns the control flow and this is a workflow (a routing workflow). A model making a choice inside a fixed structure does not make it an agent.",
+      "distractors": {"b": "M10", "c": "M10", "d": "M7"}
+    },
+    {
+      "id": "q6",
+      "answer": "The booking, because its steps are known in advance and the same every time, so code can run them more cheaply and reliably than a model choosing them.",
+      "accepted": [
+        "Booking, since the steps are fixed and predictable, which is cheaper and more reliable.",
+        "The booking part, because the order never changes, so a workflow costs less and behaves predictably.",
+        "Booking, because the steps are known ahead of time and need no model decisions."
+      ],
+      "rationale": "Full credit picks booking and gives the reason: fixed, known-in-advance steps, with a benefit such as lower cost or reliability. Picking booking with no reason, or picking the manual questions, is partial or wrong; choosing an agent for everything shows M11."
+    }
+  ]
+}

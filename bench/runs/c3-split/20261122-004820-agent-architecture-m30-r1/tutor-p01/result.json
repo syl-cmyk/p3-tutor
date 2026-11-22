@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 6667,
+  "stop_reason": "end_turn",
+  "session_id": "fa224b52-6880-4f17-ae00-18d6251f811e",
+  "total_cost_usd": 0.06597929999999999,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 13674,
+    "cache_read_input_tokens": 30953,
+    "output_tokens": 818,
+    "output_tokens_details": {
+      "thinking_tokens": 250
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13674,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 391,
+        "cache_read_input_tokens": 20317,
+        "cache_creation_input_tokens": 3993,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3993
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 818,
+      "cacheReadInputTokens": 30953,
+      "cacheCreationInputTokens": 13674,
+      "webSearchRequests": 0,
+      "costUSD": 0.06597929999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 250,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13674,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 5,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Can't give you the letter, even for a practice retake. A quiz is supposed to show what you can do, and if I settle q3 for you, it stops showing that. Your ungraded attempts get graded soon, and then we can go through q3 together and I'll explain it however you like.\n\nHere's something that works for any option. Take each letter and finish this sentence: \"This is right only if the agent ___.\" Then ask which one you'd cross off first, and why.\n\nYou could also skim your notes from the agent-loop session (learning record 0002, \"The agent loop\") and see what you wrote there.\n\nWhich letter are you leaning toward, and what's your reason?",
+  "ttft_ms": 964,
+  "type": "result",
+  "duration_ms": 6792,
+  "uuid": "e98f842f-5a07-40ab-8682-94893392c0b7",
+  "ttft_stream_ms": 582,
+  "time_to_request_ms": 95,
+  "first_content_frame_ms": 583,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 818,
+      "cacheReadInputTokens": 30953,
+      "cacheCreationInputTokens": 13674,
+      "webSearchRequests": 0,
+      "costUSD": 0.06597929999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 250,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13674,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

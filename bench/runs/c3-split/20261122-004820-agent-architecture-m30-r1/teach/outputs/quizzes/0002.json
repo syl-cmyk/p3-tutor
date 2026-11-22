@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A 3D printer assistant has 800 tokens of instructions and tool descriptions. The student's question is 50 tokens. Call 1 returns a 100-token tool request, the tool result is 250 tokens, and call 2 sends the whole history again. How many input tokens does call 2 contain?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student tells the assistant they passed the laser cutter safety test. On Friday they open a new session and the assistant has no notes tool. What happens?",
+      "options": [
+        {"id": "a", "text": "It recalls Monday because the model kept the chat history"},
+        {"id": "b", "text": "It cannot know, since Monday's window ended with that session"},
+        {"id": "c", "text": "It looks the fact up in what it learned in training"},
+        {"id": "d", "text": "It finds it, because the program re-sends old histories"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A 400,000-token set of manuals must answer a question using one paragraph. Which plan fits the lesson's advice best?",
+      "options": [
+        {"id": "a", "text": "Split it into chunks, search them, and add the few best matches"},
+        {"id": "b", "text": "Paste all of it into every call, since the window is large enough"},
+        {"id": "c", "text": "Summarize all of it once and never load the original again"},
+        {"id": "d", "text": "Save all of it in the notes file and load that each session"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Name the three places an agent's information can live, as the lesson sorts them, and give one example of what belongs in each for the makerspace assistant."
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student asks about error code 'H-17' and a meaning-based search returns only general troubleshooting pages. In one sentence, what kind of search would you add, and why?"
+    }
+  ]
+}

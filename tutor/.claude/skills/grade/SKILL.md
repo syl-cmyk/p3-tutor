@@ -19,27 +19,27 @@ Do what the request asks now, and put any question for the learner at the end of
 ## Read first
 
 The current directory is the learner's workspace; every path is relative to it.
-Read `FORMATS.md` (the exact shape of `grades/NNNN-sN.json`), `PREFERENCES.md`, `NOTES.md`, the files in `learning-records/`, the quiz in `quizzes/`, its key in `keys/`, the submission in `submissions/`, and the lesson on the quiz's objective if there is one.
+Read `FORMATS.md` (the exact shape of `grades/NNNN-sN.json`), `PREFERENCES.md`, `NOTES.md`, the files in `learning-records/`, the quiz in `quizzes/`, the submission in `submissions/`, and the lesson on the quiz's objective if there is one.
+Never read `keys/`: a guard blocks it for this conversation, and the `grader` subagent is the one that reads the key.
 Then read `.claude/skills/teach/references/GRADING.md`, the rules for verdicts and misconceptions; this skill adds to it, and where the two differ, follow this skill.
 Never edit `PREFERENCES.md`, `FORMATS.md` or anything under `.claude/`.
 
 ## Steps
 
-1. **Judge every item**, in the quiz's order, including blank ones: a verdict (`correct`, `partial` or `wrong`) by what the response means, not how it is worded, following `GRADING.md`.
-2. **Name the misconception** a response shows, by an id the workspace already uses, or `null`; never invent an id.
-3. **Write the feedback** for each item as below.
-4. **Draft** the grades to `drafts/NNNN-sN-grade.json`, in the shape `FORMATS.md` shows, with the summary.
-   Never write a draft into `grades/`: the bench scores that folder, and it gets the final file only.
-   Then read the draft back to be sure it was written and is valid JSON; if the read fails, write it again before going on.
-5. **Review loop, at most two passes.** Start the `grade-reviewer` subagent with the Agent tool, and wait for its report before you go on.
+1. **Pin down** the quiz and the submission to grade, and the next free names: the draft `drafts/NNNN-sN-grade.json` and the final `grades/NNNN-sN.json`.
+2. **Start the `grader` subagent** with the Agent tool, and wait for its report before you go on.
+   Its task message names the quiz (`quizzes/NNNN.json`), its key (`keys/NNNN.json`), the submission (`submissions/sN.json`) and the draft file to write; it reads the key, the learner files and `GRADING.md` itself, judges every item, names the misconceptions, writes the feedback and the summary as the sections below describe, and writes the draft.
+   You do not judge the items yourself, because you cannot read the key.
+3. **Read the draft back** to be sure it exists and is valid JSON with an entry for every quiz item; if it does not, start the grader again once.
+4. **Review loop, at most two passes.** Start the `grade-reviewer` subagent with the Agent tool, and wait for its report before you go on.
    Its task message names: the draft grades path, the quiz, its key and the submission, and the files it must read: `PREFERENCES.md`, `NOTES.md` and, when there is one, the lesson in `lessons/` on the quiz's objective.
    Do not tell it how you reasoned.
-   - Fix every finding in the draft, or note in the record why you did not, and read the draft back after each fix.
+   - Hand every finding to the `grader` again, in a task message with the draft path and the reviewer's findings, and wait for its report; note in the record any finding it did not fix, and read the draft back after each fix.
    - After a fix, run the reviewer again; stop as soon as its last line is `Verdict: done`, or after the second review, whichever comes first.
-6. **Write the final file once:** `grades/NNNN-sN.json` from the last draft, exactly as `FORMATS.md` shows, and read it back to check it is valid JSON.
-7. **Write the record** to `review-records/NNNN-sN-grade.md`: how many review passes ran, the findings of each pass, and what you changed because of each one.
-8. **Record** what the grades show: a learning record for real understanding or a misconception to work on, in the format in `.claude/skills/teach/references/LEARNING-RECORD-FORMAT.md`, and an update to `NOTES.md`.
-9. **Finish** in the chat with the summary and the one next step.
+5. **Write the final file once:** `grades/NNNN-sN.json`, copied in full from the last draft with the Write tool, exactly as `FORMATS.md` shows, and read it back to check it is valid JSON.
+6. **Write the record** to `review-records/NNNN-sN-grade.md`: how many review passes ran, the findings of each pass, and what changed because of each one.
+7. **Record** what the grades show: a learning record for real understanding or a misconception to work on, in the format in `.claude/skills/teach/references/LEARNING-RECORD-FORMAT.md`, and an update to `NOTES.md`.
+8. **Finish** in the chat with the summary and the one next step.
 
 ## Feedback: the verdict first, then the exact part
 

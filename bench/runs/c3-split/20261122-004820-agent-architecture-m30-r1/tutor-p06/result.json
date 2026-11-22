@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 15964,
+  "stop_reason": "end_turn",
+  "session_id": "725b5809-e68c-449f-be95-1cad130ca49f",
+  "total_cost_usd": 0.09692239999999999,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 16587,
+    "cache_read_input_tokens": 106644,
+    "output_tokens": 1989,
+    "output_tokens_details": {
+      "thinking_tokens": 780
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 16587,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 315,
+        "cache_read_input_tokens": 26559,
+        "cache_creation_input_tokens": 664,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 664
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 10,
+      "outputTokens": 1989,
+      "cacheReadInputTokens": 106644,
+      "cacheCreationInputTokens": 16587,
+      "webSearchRequests": 0,
+      "costUSD": 0.09692239999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 780,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 16587,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I'm going to hold off on the analogy for a bit. Quiz 0001 is about tool calling and hasn't been graded yet. A good analogy would show you who does what in a tool call, and that's exactly what several quiz items test. Explaining it now would hand you those answers, and you'd lose the real read on what you know.\n\nHere's what I'd do instead:\n\n1. **Get the quiz graded first.** You've submitted it twice (`s1.json` and `s2.json`). Ask me to grade it, and right after I'll explain tool calling again with an everyday analogy and no code. I'll use your own mistakes to pick the example.\n2. **Before that, try this on q2, q5 and q6.** For each option or answer, write one line on what it claims and what would have to be true for it to be right. Then say which one you'd rule out first, and why.\n\nIf you'd like, re-read the \"agent loop and tool calling\" lesson as well. Which of those three questions feels the foggiest to you?",
+  "ttft_ms": 1121,
+  "type": "result",
+  "duration_ms": 16142,
+  "uuid": "4214ebb7-d977-4386-99d3-a3f590d69894",
+  "ttft_stream_ms": 642,
+  "time_to_request_ms": 126,
+  "first_content_frame_ms": 643,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 10,
+      "outputTokens": 1989,
+      "cacheReadInputTokens": 106644,
+      "cacheCreationInputTokens": 16587,
+      "webSearchRequests": 0,
+      "costUSD": 0.09692239999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 780,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 16587,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

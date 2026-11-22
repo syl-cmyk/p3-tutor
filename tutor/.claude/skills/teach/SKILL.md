@@ -134,7 +134,7 @@ Read `references/LESSONS.md` and `references/lesson-template.html`, then the tit
 8. **Write the final lesson once** to `lessons/NNNN-<slug>.html`, as the last draft in full, and read it back to check the file exists and keeps its `p3-minutes` and `p3-objective` tags.
    Then write the record to `review-records/NNNN-lesson.md`: how many review passes ran, the findings of each pass, and what you changed because of each one.
 9. **Write a short quiz and its key** on the lesson's objective, in the same pass: four or five items, as `references/QUIZZES.md` describes, none of them a repeat of the lesson's practice questions.
-10. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+10. **Keep the workspace current:** start the `cheatsheet` skill (`/cheatsheet`) for this lesson when it holds something worth looking up later, so the cheat sheet is the one page that skill describes, and update `NOTES.md` for anything you learned about the learner.
 11. **Finish** with a short message: the lesson's path and what it covers, that a quiz is ready when they are, and a reminder that they can ask you anything about it.
    Never put a quiz answer in the message.
 

@@ -116,3 +116,21 @@ An example of a finished entry:
 - With and without: reviews/c3-split.md, Round 6 (without) and Round 7 (with)
 - Review: TODO
 - Kept in final: TODO
+
+### grader
+
+- Kind: subagent
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 1 (without) and Round 2 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### cheatsheet
+
+- Kind: skill
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 3 (without) and Round 4 (with)
+- Review: TODO
+- Kept in final: TODO

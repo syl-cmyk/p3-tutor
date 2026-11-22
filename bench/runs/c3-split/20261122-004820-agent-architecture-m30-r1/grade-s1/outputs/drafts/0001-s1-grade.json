@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back for the next step. A longer prompt or bigger model is still one call."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You picked 'a', that the model opens the booking system itself, but the model only writes text. For 'Is the laser cutter free tomorrow?' it writes a request: check_calendar(laser cutter, tomorrow's date), which is option c. The program runs the tool and sends back something like 'free at 2 pm'."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. Same failing step 40 times means more room or more effort won't help; a step limit stops the loop and reports back. Stopping at, say, 10 steps beats burning 40 on one failing test."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Not quite. You answered 1 and said the model 'runs the 3 tools itself', but the program runs the tools and the model is called again after each result. Call 1 asks for check_calendar, call 2 asks for search_manuals, call 3 asks for check_training_record, and call 4 writes the final answer. That makes 4."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. 'Sends it back to the model' is the what, and it's correct; the why is missing. The model needs the result so it can choose its next step or write the answer, e.g. the calendar says 'free at 3 pm', so the model moves on to ask for check_training_record."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "Partly right. The list of tools with names and short descriptions, and picking the one that fits, is correct. The off part is 'it remembers on its own which tool it picked in earlier sessions': nothing is remembered automatically, each new chat starts blank. So the program resends the list each time, e.g. 'check_calendar: looks up a machine's bookings for a date'."
+    }
+  ],
+  "summary": "You've got the agent loop, stopping conditions and tool descriptions down. The thing to fix is who does what: the model only writes requests, and the program runs the tools and sends the results back, with no memory carried between chats on its own. Redo q4 by listing each model call in order, one tool request per call, then the final answer."
+}
