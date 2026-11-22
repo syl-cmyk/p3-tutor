@@ -132,7 +132,23 @@ Which row of the table in section 4 is it?
 Did the lessons meet their lengths, and what did the cost per minute of lesson do?
 What would you do next, and what would you want a reader to take from this?
 
-TODO: your outcome.
+Primary measure, `teach_facts_correct`, from `uv run p3 report --configs c1-skills,final --teach-only`:
+
+| minutes | `c1-skills` | `final` |
+|---:|---:|---:|
+| 10 | 0.83 | 1.00 |
+| 30 | 1.00 | 1.00 |
+| 60 | 1.00 | 1.00 |
+
+My hypothesis was that `c1-skills` would fall further than `final` from 10 to 60 minutes. It did not fall: it went up from 0.83 to 1.00 (+0.17), and `final` stayed at 1.00 (0.00). The two changes differ by 0.17, more than my Δ of 0.10, but in the other direction, and the ranges at 60 minutes both sit at 1.00 and overlap. That is the "anything else" row of section 4: inconclusive with three runs per cell. The ceiling I worried about in section 4 happened, `final` was at 1.00 everywhere, so this measure could not show a drop. The hypothesis was not supported, and I cannot say it was contradicted either.
+
+Blind comparison, `c1-skills` against `final`, three pairs at each length: `final` won 3 of 3 at 10 minutes (session 20261122-215946-teach), 3 of 3 at 30 minutes (20261122-220154-teach) and 2 of 3 at 60 minutes (20261122-220333-teach). Together that is 8 of 9, a p-value of about 0.04. I could not tell which config made which in any of the nine pairs, so the blinding held. The reasons were about clearer diagrams, worked examples with concrete token and dollar numbers, and scaffolded practice.
+
+Length: `final` was on length at every size but too long at 10 minutes (ratio 1.35, 1.02 at 30, 0.83 at 60). `c1-skills` was on length only at 10 minutes (0.77) and missed it at 30 (0.56) and 60 (0.51), below my 0.6 line, so by my own rule those two cells are confounded: its 30 and 60 minute lessons were really about 17 and 31 minutes long.
+
+Cost per minute requested, list price: `c1-skills` 0.043, 0.023 and 0.013 dollars per minute at 10, 30 and 60 minutes; `final` 0.199, 0.082 and 0.058. `final` costs about 4.6, 3.6 and 4.3 times as much, so its overhead grows in dollars (1.56, 1.77 and 2.66 more per lesson) but not faster than the lesson length in ratio.
+
+What I would take from this: at these lengths the objective facts check could not separate the configs, but in the blind picks `final` won 8 of 9, and part of that may be that it wrote longer lessons, which the picks and the judge may favour. Next I would pick a measure that is not at its ceiling, such as the share of lesson sections the plan listed that the lesson actually covered, and re-run 60 minutes with `c1-skills` forced to the full length.
 
 ---
 

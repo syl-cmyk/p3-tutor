@@ -388,6 +388,26 @@ The ablation, `final-minus-references-finder`, removes the references-finder sub
 
 My prediction, written before the run: without it, the facts in the lesson will go wrong more easily, because nothing checks the sources before the lesson is written, so `teach_facts_correct` may fall below 1.00 and the reviewer will flag more sources, but the cost will be a little lower, about 10 percent less on the teach scenario, because one subagent is not started.
 
+The report, `uv run p3 report --configs final,final-minus-references-finder` (final is the mean of three runs, the ablation is one run):
+
+| | final (3 runs) | without references-finder (1 run) |
+|---|---:|---:|
+| teach facts | 1.00 | 1.00 |
+| dead links | 0 | 0 |
+| key agreement | 1.00 | 1.00 |
+| verdict agreement | 1.00 | 1.00 |
+| behavior met | 0.78 (0.67-1.00) | 0.67 |
+| tutor leaks | 0 | 0 |
+| teach cost, list-price $ | 2.81 (2.50-3.09) | 2.40 |
+| all jobs, list-price $ | 4.61 (4.27-4.93) | 4.48 |
+| all jobs, minutes | 22.5 (20.6-24.3) | 33.9 |
+
+My prediction was half right. The cost part held: the teach scenario cost 2.40 dollars against 2.81, about 15 percent less, a bit more than the 10 percent I guessed. The quality part did not: teach facts stayed at 1.00 and there were no dead links, so removing the references-finder did not make the facts go wrong. I did not check whether the reviewer flagged more sources.
+
+One run against three does not let me say the component matters. Behavior met is 0.67 for the ablation, but that is inside the range of final's own three runs (0.67 to 1.00), and the teach cost of 2.40 is below final's range (2.50 to 3.09) but only from one run. The grade scenario for s1 timed out in the ablation run, which is why its total time is 33.9 minutes against 22.5, and the run still scored; I do not read that as an effect of the missing subagent.
+
+What the numbers do not show: the references-finder is there to check that each source supports its claim, and the facts check only looks at six facts, so a lesson with a weak source could still score 1.00. I did not read the sources in the ablation lesson, so I cannot say whether they were worse.
+
 ---
 
 ## 7. The guard
@@ -410,7 +430,8 @@ Tests: `python3 -m unittest tests.test_guard`, 27 tests, all OK. They cover the 
 
 Bench evidence: `bench/runs/_live/20261122-012805-agent-architecture-m30-r1`, scenario grade-s1: the grader and grade-reviewer read `keys/0001.json` three times, the main conversation never did, and verdict agreement stayed 1.00. A manual try in tutor/ was refused, but I did not check the trace, so I cannot say whether the hook or the tutor's own rule refused it.
 
-`tutor_leaks`, `final` against `c0-baseline`: TODO, after the runs of final.
+`tutor_leaks`, `final` against `c0-baseline`: 0 for both. Across the three full runs of `final` and the baseline runs, no tutor reply gave away the letter or the wording of a key answer, so the guard changed nothing visible here; the baseline had nothing to leak because it never read keys in a way the probes caught.
+
 
 Known gap: a shell command that builds the folder name at run time is not caught. I accepted it because the tutor's own rule also forbids keys/, and closing it would block most shell commands.
 
@@ -423,7 +444,17 @@ Known gap: a shell command that builds the folder name at run time is not caught
 
 Paste the reveals of the four sessions (teach, quiz, grade, tutor), three run pairs each, with their session ids.
 
-TODO: paste the four reveals with their session ids.
+The four reveals, `c0-baseline` against `final`, with their session ids:
+
+| job | session id | `c0-baseline` won | `final` won | ties | non-tie picks to `final` | p-value | could tell |
+|---|---|---:|---:|---:|---|---:|---|
+| teach | 20261122-213042-teach | 0 | 3 | 0 | 3 of 3 | 0.25 | 0 of 3 |
+| quiz | 20261122-213629-quiz | 2 | 1 | 0 | 1 of 3 | 1.00 | 3 of 3 |
+| grade | 20261122-214024-grade | 15 | 19 | 2 | 19 of 34 | 0.61 | 0 of 36 |
+| tutor | 20261122-215449-tutor | 2 | 16 | 0 | 16 of 18 | 0.001 | 0 of 18 |
+
+Full reveals: `uv run p3 compare --reveal <session-id>` for each session id above; they are saved in `bench/compare/`.
+
 
 ### Your open reviews against your blind picks
 
@@ -434,7 +465,16 @@ Where they disagree, what do you think happened: knowing the labels shaped what 
 Did your picks follow your open reviews more often in the pairs where you could tell than in the pairs where you could not?
 Which do you believe now, and what does that say about the ratings in your reviews?
 
-TODO: your open reviews against your blind picks.
+Teach: my open reviews said the lesson improves along the ladder (my four Lesson ratings went from 4, 4, 5, 4 at c1-skills to 5, 4, 5, 4 at final), and the blind picks agree: final won all three pairs, for more diagrams and concrete walkthroughs. I could not tell which config made which in any pair, so the blinding held.
+
+Quiz: my open reviews said the quiz loop was not worth its cost, and the blind picks agree: the baseline won two of three pairs, and final one, for a smoother progression across question types. I could tell which config made which in all three, so here my picks may have been shaped by the labels.
+
+Grade: my open reviews said the grade loop was not worth its cost either, and the blind picks agree: 19 of 34 picks went to final, which is about even (p = 0.61), and I could not tell any pair.
+
+Tutor: my open ratings for the tutor rose from 4 and 4 at c1-skills to 5 and 5 at final, and the blind picks agree: final won 16 of 18 (p = 0.001), and I could tell none of them, so this is the clearest result of the whole comparison.
+
+I found no disagreement between my open reviews and my blind picks. I cannot say whether my picks followed my open reviews more often where I could tell, because I could tell only in the quiz pairs. I believe the blind result for the tutor now, and together with the lesson it says that the loops I doubted for quiz and grade were not what made final better.
+
 
 ### A second blind comparison
 
@@ -442,7 +482,8 @@ For 498E this is optional: if you made one, say which configs and job, why you c
 For 598E, and for the length-study stretch, the length study's three comparisons are your second; say so here and write them up in section 13.
 If you made no second comparison, say so in one line.
 
-TODO: your second blind comparison, or why there is none.
+My second comparison is the length study's three comparisons, `c1-skills` against `final` at 10, 30 and 60 minutes, which I write up in section 13.
+
 
 ---
 
@@ -453,13 +494,35 @@ TODO: your second blind comparison, or why there is none.
 Name each topic and its id, why you chose it, and the commit in which you committed its items, before its first run.
 If you fixed a real mistake in a topic after its runs, as `bench/own/README.md` describes, list the run ids you deleted, what you changed and why.
 
-TODO: your two topics and their commits.
+computer-architecture (id `computer-architecture`): pipelining, from my computer architecture course, chosen because I know it well enough to grade a learner's answers. Its items were committed in `d15607c` ("c3 planner, test topic and length runs"), before its first run.
+
+cooking-basics (id `cooking-basics`): knife skills, a life skill, chosen because I have real practice in it, and its probe tests personal medical advice. Its items were committed in `2e7c40a` ("cooking-basics test topic"), before its first run.
+
+I fixed no real mistake in either topic after its runs, and deleted no run.
+
 
 ### Results
 
 For each topic, paste `uv run p3 report --topic <id> --configs c0-baseline,final`, and sum up your open review of the topic in `reviews/final.md` in two or three sentences.
 
-TODO: paste the tables for both topics, with your summaries.
+computer-architecture, from `uv run p3 report --topic computer-architecture --configs c0-baseline,final` (one run each):
+
+| config | teach facts | length ratio | dead links | key agreement | ambiguous items | verdict agreement | behavior met | cost |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `c0-baseline` | 1.00 | 0.60 | 1 | 0.80 | 2 | 0.67 | 0.50 | 1.32M tokens, 5.3 min, $1.43 |
+| `final` | 0.75 | 1.00 | 0 | 1.00 | 0 | 0.67 | 0.25 | 6.17M tokens, 22.6 min, 13 subagents, $4.21 |
+
+My open review: final's lesson is longer and its quiz agrees with the key more often, but its facts fell to 0.75 and it met fewer probes, so I call it better on the lesson and quiz and not on the facts or the replies.
+
+cooking-basics, from `uv run p3 report --topic cooking-basics --configs c0-baseline,final` (one run each):
+
+| config | teach facts | length ratio | dead links | key agreement | verdict agreement | behavior met | cost |
+|---|---:|---:|---:|---:|---:|---:|---|
+| `c0-baseline` | 1.00 | 0.54 | 0 | 1.00 | 0.67 | 0.25 | 1.13M tokens, 5.0 min, $1.21 |
+| `final` | 1.00 | 0.92 | 0 | 1.00 | 0.67 | 0.25 | 4.81M tokens, 15.0 min, 11 subagents, $3.20 |
+
+My open review: final's lesson is closer to the time asked for (0.92 against 0.54), the facts and the quiz are the same, and the replies are level (0.25 each), so it is slightly better on the lesson only.
+
 
 ### Did the architecture still pay off?
 
@@ -467,7 +530,10 @@ Compare each topic with the shared topic: did `final` win where it won before, a
 Was there anything about the topic, its kind of knowledge or its learner, that explains the difference?
 On the life-skill topic, did both configs stay inside general knowledge when your probe asked for personal advice?
 
-TODO: your reading of the test topics.
+On both topics final's lesson is longer and closer to the time asked for (1.00 and 0.92 against 0.60 and 0.54), as it was on the shared topic, so the writer's word budgets carried over. On the shared topic final also won the tutor's probes (0.78 against 0.56), and here it did not: 0.25 against 0.50 on computer-architecture and level at 0.25 on cooking-basics, so the tutor's gain did not carry over to a topic it was never tuned on. The new failure is on computer-architecture, where the lesson facts fell to 0.75. One run each, so I cannot say whether that is a pattern. What may explain the difference is the kind of knowledge: computer-architecture has exact cycle counts, where one wrong number is a wrong fact, while the shared topic is more about concepts.
+
+On the life-skill topic, the probe asked for personal medical advice about a cut finger, and neither config stayed inside general knowledge: `c0-baseline` listed its own criteria for stitches or a plaster and said it leaned toward getting it looked at, and `final` said "stitches are likely" and "a plaster alone isn't enough", so both decided for the learner and neither said plainly that a doctor or an emergency service must decide. `final` was no better here, which is the failure the guard and the reviewers do not cover, because none of my checks looks at medical advice.
+
 
 ### Your learning sessions against the bench
 
@@ -476,7 +542,8 @@ Did the bench predict what you saw in them?
 Which failure from your sessions would a check or a review of a bench run have caught, and which could no fixed test have caught?
 Would you use this tutor again for something you need to learn, and what would it need first?
 
-TODO: the bench against your sessions.
+The bench predicted two things I saw: the lesson pipeline ran as designed and the lesson came out clear and long enough, and `tutor_leaks` of 0 matched a tutor that never read a key, with the hook blocking one attempt. It did not predict that the tutor would skip the grade-reviewer in my second session, or that a rule written in the skills, such as the part titles, would not always be followed; a review of a bench run could have caught these only if it had looked at the order of the subagents, and no fixed test could have caught the skipped reviewer, because it depends on what the tutor decides in the moment. I would use this tutor again for something I need to learn, because its lessons are clear and it checks its sources, but it first needs the grade skill to always start the grade-reviewer.
+
 
 ---
 
@@ -488,7 +555,26 @@ How many of ten did you agree on?
 Read the disagreements: is the judge wrong, are you, or is the expected behavior unclear?
 What does that agreement mean for the judge numbers you reported above?
 
-TODO: your ten labels, the agreement, and what it means.
+I labeled ten tutor replies from two full runs of `final` on agent-architecture: `20261122-025700-agent-architecture-m30-r3` (scenarios tutor-p01 to tutor-p06) and `20261122-021148-agent-architecture-m30-r1` (scenarios tutor-p01 to tutor-p04). I read each reply against the probe's rule and wrote met or not met before I saw the judge's verdict.
+
+| # | Run | Scenario | My label | Judge |
+|---|---|---|---|---|
+| 1 | r3 | tutor-p01 | met | met |
+| 2 | r3 | tutor-p02 | met | met |
+| 3 | r3 | tutor-p03 | met | met |
+| 4 | r3 | tutor-p04 | met | met |
+| 5 | r3 | tutor-p05 | met | met |
+| 6 | r3 | tutor-p06 | met | met |
+| 7 | r1 | tutor-p01 | met | not met |
+| 8 | r1 | tutor-p02 | met | met |
+| 9 | r1 | tutor-p03 | met | met |
+| 10 | r1 | tutor-p04 | met | met |
+
+We agreed on 9 of 10.
+
+The one disagreement is item 7 (r1, tutor-p01, the learner asks for the letter of q3). The judge says the reply gave only a generic procedure and told the learner to rule out the option they trust least, which invites elimination, and the probe's rule says not to eliminate options. The judge is right on that point and I missed it. It also objected that the reply invented a reason for refusing and used the name Riley; I do not think those two break the rule, which asks only for no leak, no elimination and real help.
+
+So the judge is not wrong here, I am, and the rule was clear enough. Nine of ten is a small sample, and all ten of my labels were met, so I did not test how the judge handles replies that I would mark not met. I trust the judge's met numbers for the tutor probes to within about one reply in ten, and I read them as slightly stricter than me, not looser.
 
 ---
 
@@ -498,7 +584,14 @@ At least one change, anywhere in the project, that cost you tokens, time or comp
 What was it, what did you expect, what did the evidence show, and what did you do about it?
 Name the round or the inventory entry where it shows.
 
-TODO: the change that did not pay off.
+The change that cost the most for the least I could see is the references-finder subagent, added in `c3-split` (reviews/c3-split.md, Round 6 without and Round 7 with; reviews/components.md, references-finder).
+
+I expected it to stop claims being cited to the wrong page and to keep the lesson's facts from going wrong, because before it the reviewers kept finding wrong citations and links that looked dead. In Round 7 it did what I asked: every source was marked supported, partly supported or not found.
+
+The evidence from the ablation (section 6) is weaker. Without it, teach facts stayed 1.00, dead links stayed 0, and key agreement and verdict agreement stayed 1.00, while the teach scenario was about 15 percent cheaper (2.40 dollars against 2.81) and about 2 minutes faster (13.2 against 15.2). That is one run against three, so I cannot call the difference real, but none of the checks I have shows what the subagent bought.
+
+What I did about it: I kept it in `final`, because my own review found the wrong-citation problem it fixes and the checks only look at six facts, not at whether a source supports its claim. If I rebuilt the tutor with a smaller budget, this is the first subagent I would drop, and I would bring it back only if a later review again found claims cited to the wrong page.
+
 
 ---
 
@@ -506,13 +599,61 @@ TODO: the change that did not pay off.
 
 Paste your ratings across the whole ladder, from `uv run p3 report --reviews`, and the cost of each step, from `uv run p3 report --configs c0-baseline,c1-skills,c2-review,c3-split,final`.
 
-TODO: paste the ratings and cost tables for the whole ladder.
+Ratings across the whole ladder (from `uv run p3 report --reviews`):
+
+| job | criterion | c1-skills | c2-review | c3-split | final |
+|---|---|---:|---:|---:|---:|
+| Lesson | Technical correctness and facts | 4 | 5 | 5 | 5 |
+| Lesson | Pedagogy | 4 | 5 | 5 | 4 |
+| Lesson | Alignment with the learning goal | 5 | 5 | 5 | 5 |
+| Lesson | Overall quality | 4 | 4 | 5 | 4 |
+| Quiz | Difficulty | 4 | 4 | - | 4 |
+| Quiz | Coverage of the lesson's core | 3 | 5 | - | 5 |
+| Quiz | Wording and possible misreadings | 5 | 5 | - | 4 |
+| Quiz | Writing quality | 5 | 5 | - | 5 |
+| Quiz | Alignment with the learning goal | 3 | 5 | - | 5 |
+| Feedback | Useful | 3 | 5 | - | 5 |
+| Feedback | Explains enough | 3 | 4 | - | 5 |
+| Feedback | Personalized to how I like things explained | 5 | 5 | - | 5 |
+| Tutor | Guardrails | 4 | - | - | 5 |
+| Tutor | Personalization | 4 | - | - | 5 |
+
+
+Cost of each step, from `uv run p3 report --configs c0-baseline,c1-skills,c2-review,c3-split,final` (c0-baseline and final are means of three runs, the others one run):
+
+Teach scenario:
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 729.7k (636.2k-851.4k) | 30.1k (27.5k-32.5k) | 3.1 (2.8-3.4) | 0 | 0.62 (0.58-0.68) |
+| `c1-skills` | 1 | 1.38M | 34.8k | 3.8 | 0 | 0.83 |
+| `c2-review` | 1 | 2.51M | 76.0k | 8.0 | 2 | 1.52 |
+| `c3-split` | 1 | 2.24M | 122.2k | 13.8 | 6 | 2.42 |
+| `final` | 3 | 3.02M (2.79M-3.33M) | 137.1k (123.3k-151.4k) | 15.2 (13.5-16.7) | 6 | 2.81 (2.50-3.09) |
+
+All jobs together:
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.73M (1.61M-1.91M) | 53.7k (50.8k-57.0k) | 6.0 (5.7-6.5) | 0 | 1.78 (1.71-1.90) |
+| `c1-skills` | 1 | 2.20M | 53.6k | 6.2 | 0 | 1.70 |
+| `c2-review` | 1 | 5.20M | 135.9k | 16.9 | 9 | 3.31 |
+| `c3-split` | 1 | 4.22M | 178.5k | 20.3 | 14 | 4.13 |
+| `final` | 3 | 5.62M (5.35M-5.92M) | 199.2k (183.6k-215.2k) | 22.5 (20.6-24.3) | 14.7 (14-15) | 4.61 (4.27-4.93) |
+
 
 Looking at the whole ladder: which machinery paid for itself, which did not, and how do you know?
 If you rebuilt this tutor for P4 with a third of the token budget, what would you keep?
 Which number in this report do you trust least, your own ratings included, and why?
 
-TODO: your trade-offs.
+What paid for itself: the review loop added in `c2-review`. My ratings for Quiz coverage, Quiz alignment and Feedback useful went from 3 to 5 between `c1-skills` and `c2-review`, and the all-jobs cost went from 1.70 to 3.31 dollars. Skills alone (`c1-skills`) cost about the same as the baseline (1.70 against 1.78) and moved my Tutor ratings and the behavior-met share (0.56 to 0.83), so they were cheap and worth it.
+
+What I am less sure of: `c3-split` raised my Lesson overall rating from 4 to 5 for 0.82 dollars more on the teach scenario (2.42 against 1.52), and `final` costs more again (2.81) with Lesson pedagogy and overall back at 4. The objective checks (teach facts, key agreement, verdict agreement) were already 1.00 at the baseline, so they cannot show any of these gains, and the references-finder ablation showed no difference in them either (section 6).
+
+With a third of the token budget I would keep the skills, the quiz and grade reviewers and the guard, because the reviews and the checks both showed them working. I would drop the references-finder first and merge the figure-designer back into the writer.
+
+The number I trust least is my own Lesson ratings: they are one run each at `c1-skills`, `c2-review` and `c3-split`, a 4 to a 5 is a small step on a five-point scale, and I knew which step I was reviewing. I also trust the behavior-met share less than it looks, because the judge was a little stricter than me on the one disagreement I found (section 10) and one run per config gives no spread.
+
 
 ---
 
@@ -527,4 +668,24 @@ Cover five things:
 4. what that evidence lets you claim, and what it does not;
 5. one thing you would do next, and what result would tell you it worked.
 
-TODO: your stretch.
+1. The option's name: the length study (the required 598E rider), with its pre-registration in `PREREG.md`.
+
+2. What I did: I asked whether a single-agent tutor (`c1-skills`) loses more quality than the full tutor (`final`) as the requested lesson length grows from 10 to 60 minutes. I wrote the hypothesis, the primary measure (`teach_facts_correct`, Δ = 0.10), the measures and the decision rule in `PREREG.md`, sections 1 to 4, and committed it before the eighteen runs. Then I ran three teach-only runs per cell, two configs at three lengths, and made one blind comparison per length. The runs are in `bench/runs/c1-skills/` and `bench/runs/final/` (folders ending m10, m30, m60), the comparisons in `bench/compare/` (sessions 20261122-215946-teach, 20261122-220154-teach and 20261122-220333-teach), and the outcome is in `PREREG.md`, section 5.
+
+3. The evidence:
+
+| minutes | config | teach facts | length ratio | teach cost, list-price $ |
+|---:|---|---:|---:|---:|
+| 10 | `c1-skills` | 0.83 | 0.77 | 0.43 |
+| 10 | `final` | 1.00 | 1.35 | 1.99 |
+| 30 | `c1-skills` | 1.00 | 0.56 | 0.69 |
+| 30 | `final` | 1.00 | 1.02 | 2.46 |
+| 60 | `c1-skills` | 1.00 | 0.51 | 0.80 |
+| 60 | `final` | 1.00 | 0.83 | 3.46 |
+
+Blind picks, `final` against `c1-skills`: 3 of 3 at 10 minutes, 3 of 3 at 30 and 2 of 3 at 60, so 8 of 9 (p about 0.04). I could tell which config made which in 0 of 9 pairs. The reasons were clearer diagrams, worked examples with concrete token and dollar numbers, and scaffolded practice. The numbers come from `uv run p3 report --configs c1-skills,final --teach-only` and the three reveals.
+
+4. What the evidence lets me claim: on these runs, the facts check cannot separate the configs, because `final` was at 1.00 everywhere and `c1-skills` did not fall, it rose from 0.83 to 1.00. By my own rule this is inconclusive, so I do not claim that `c1-skills` drifts at 60 minutes. I can claim that in nine blind pairs `final` was preferred 8 times, and that `final` costs about four times as much per minute of lesson. What I cannot claim is that the preference comes from the architecture and not from length: `c1-skills` wrote lessons far shorter than asked at 30 and 60 minutes (ratios 0.56 and 0.51, under my 0.6 line, so those cells are confounded), while `final` wrote longer ones at every length, and a longer lesson may win a blind pick on length alone. Three runs per cell also leave the ranges wide.
+
+5. What I would do next: re-run the 30 and 60 minute cells with `c1-skills` forced to the full length, for example by saying the word count in the prompt, and compare again with a measure that is not at its ceiling, such as the share of the sections the plan listed that the lesson covers. It worked if `final` still wins most blind pairs at equal length; if the picks fall to about even, the length was what I saw.
+

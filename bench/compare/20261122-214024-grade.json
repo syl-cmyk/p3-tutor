@@ -1,0 +1,887 @@
+{
+  "session": "20261122-214024-grade",
+  "job": "grade",
+  "topic": "agent-architecture",
+  "configs": [
+    "c0-baseline",
+    "final"
+  ],
+  "created_at": "2026-11-22T21:40:24Z",
+  "minutes": 30,
+  "quick": false,
+  "teach_only": false,
+  "pairs": [
+    {
+      "pair_id": "001",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q1"
+    },
+    {
+      "pair_id": "002",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q2"
+    },
+    {
+      "pair_id": "003",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q3"
+    },
+    {
+      "pair_id": "004",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q4"
+    },
+    {
+      "pair_id": "005",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q5"
+    },
+    {
+      "pair_id": "006",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s1/q6"
+    },
+    {
+      "pair_id": "007",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q1"
+    },
+    {
+      "pair_id": "008",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q2"
+    },
+    {
+      "pair_id": "009",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q3"
+    },
+    {
+      "pair_id": "010",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q4"
+    },
+    {
+      "pair_id": "011",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q5"
+    },
+    {
+      "pair_id": "012",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "grade-s2/q6"
+    },
+    {
+      "pair_id": "013",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q1"
+    },
+    {
+      "pair_id": "014",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q2"
+    },
+    {
+      "pair_id": "015",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q3"
+    },
+    {
+      "pair_id": "016",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q4"
+    },
+    {
+      "pair_id": "017",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q5"
+    },
+    {
+      "pair_id": "018",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s1/q6"
+    },
+    {
+      "pair_id": "019",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q1"
+    },
+    {
+      "pair_id": "020",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q2"
+    },
+    {
+      "pair_id": "021",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q3"
+    },
+    {
+      "pair_id": "022",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q4"
+    },
+    {
+      "pair_id": "023",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q5"
+    },
+    {
+      "pair_id": "024",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "grade-s2/q6"
+    },
+    {
+      "pair_id": "025",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q1"
+    },
+    {
+      "pair_id": "026",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q2"
+    },
+    {
+      "pair_id": "027",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q3"
+    },
+    {
+      "pair_id": "028",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q4"
+    },
+    {
+      "pair_id": "029",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q5"
+    },
+    {
+      "pair_id": "030",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s1/q6"
+    },
+    {
+      "pair_id": "031",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q1"
+    },
+    {
+      "pair_id": "032",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q2"
+    },
+    {
+      "pair_id": "033",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q3"
+    },
+    {
+      "pair_id": "034",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q4"
+    },
+    {
+      "pair_id": "035",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q5"
+    },
+    {
+      "pair_id": "036",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "grade-s2/q6"
+    }
+  ],
+  "picks": [
+    {
+      "pair_id": "001",
+      "choice": "left",
+      "reason": "Left is clearer and more direct with a concrete step-by-step example.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:42:12Z"
+    },
+    {
+      "pair_id": "002",
+      "choice": "right",
+      "reason": "Right is more direct and clearer with a concrete code example of the tool call.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:42:44Z"
+    },
+    {
+      "pair_id": "003",
+      "choice": "left",
+      "reason": "Left is more direct and clearer, pointing out specifically that all 40 steps already fit in the window without extra fluff.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:42:58Z"
+    },
+    {
+      "pair_id": "004",
+      "choice": "left",
+      "reason": "Left is clearer and more direct, adding a concrete check by counting the inputs the model receives.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:43:23Z"
+    },
+    {
+      "pair_id": "005",
+      "choice": "left",
+      "reason": "Left is clearer and adds a concrete example.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:43:50Z"
+    },
+    {
+      "pair_id": "006",
+      "choice": "left",
+      "reason": "Left is clearer and more direct with a concrete search_manuals example.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:44:06Z"
+    },
+    {
+      "pair_id": "007",
+      "choice": "tie",
+      "reason": "Both give virtually the same clear explanation of the action-execution-result loop.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:44:57Z"
+    },
+    {
+      "pair_id": "008",
+      "choice": "left",
+      "reason": "Left is clearer and more direct with a concrete split between the model's request and the surrounding program.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:47:02Z"
+    },
+    {
+      "pair_id": "009",
+      "choice": "right",
+      "reason": "Right is clearer and more direct with a concrete example of cutting off at 40 steps.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:48:37Z"
+    },
+    {
+      "pair_id": "010",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete breakdown of the 4 calls.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:49:05Z"
+    },
+    {
+      "pair_id": "011",
+      "choice": "left",
+      "reason": "Left is clearer and more direct, spelling out how the tool result acts as a new message before the next turn.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:49:15Z"
+    },
+    {
+      "pair_id": "012",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete example ('lookup') of why name alone misleads.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:49:36Z"
+    },
+    {
+      "pair_id": "013",
+      "choice": "right",
+      "reason": "Right is clearer and slightly more direct on how the result returns for the next step.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:49:44Z"
+    },
+    {
+      "pair_id": "014",
+      "choice": "left",
+      "reason": "Left is clearer and more direct, explaining that the model only outputs text while the surrounding program runs the tool.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:49:52Z"
+    },
+    {
+      "pair_id": "015",
+      "choice": "right",
+      "reason": "Right is clearer and more direct, noting why a larger context window fails since all 40 steps already fit.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:50:01Z"
+    },
+    {
+      "pair_id": "016",
+      "choice": "right",
+      "reason": "Right is clearer and more direct in walking through each of the 4 calls step by step.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:50:09Z"
+    },
+    {
+      "pair_id": "017",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete check_calendar example alongside why the model needs the result.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:01Z"
+    },
+    {
+      "pair_id": "018",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete check_calendar example of how tool descriptions pick the tool.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:08Z"
+    },
+    {
+      "pair_id": "019",
+      "choice": "left",
+      "reason": "Left is slightly cleaner and flows smoothly right into why longer prompts or larger models only change one call.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:17Z"
+    },
+    {
+      "pair_id": "020",
+      "choice": "right",
+      "reason": "Right is clearer and more direct in stating that the model only outputs the request while the program runs the tool.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:32Z"
+    },
+    {
+      "pair_id": "021",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete step-20 example of reporting back instead of looping endlessly.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:39Z"
+    },
+    {
+      "pair_id": "022",
+      "choice": "left",
+      "reason": "Left is clearer and gives a concrete billing tie-in while explaining how each call's result feeds the next.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:47Z"
+    },
+    {
+      "pair_id": "023",
+      "choice": "right",
+      "reason": "Right adds the helpful distinction that the model only sees what the program carries back.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:51:55Z"
+    },
+    {
+      "pair_id": "024",
+      "choice": "left",
+      "reason": "Left gives a sharper example of how a tool description resolves ambiguity between bookings and opening hours.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:52:08Z"
+    },
+    {
+      "pair_id": "025",
+      "choice": "left",
+      "reason": "Left is slightly clearer and more direct in stating that the loop is what makes a system an agent rather than prompt length or model size.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:52:15Z"
+    },
+    {
+      "pair_id": "026",
+      "choice": "left",
+      "reason": "Left is clearer and more concise in showing the exact check_calendar call and noting that the model only outputs text while the surrounding program runs the tool.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:52:22Z"
+    },
+    {
+      "pair_id": "027",
+      "choice": "left",
+      "reason": "Left is slightly more concise and direct in stating why a step limit works while a larger context window does not.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:52:29Z"
+    },
+    {
+      "pair_id": "028",
+      "choice": "right",
+      "reason": "Right is slightly clearer and more direct in stating that the program runs the tools and calls the model again after each result.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:52:36Z"
+    },
+    {
+      "pair_id": "029",
+      "choice": "tie",
+      "reason": "Both Left and Right give helpful feedback—Left adds a concrete laser-cutter example while Right highlights why the model needs the result back.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:53:19Z"
+    },
+    {
+      "pair_id": "030",
+      "choice": "right",
+      "reason": "Right gives a concrete laser-cutter example showing why a new call starts blank without program-managed memory.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:53:30Z"
+    },
+    {
+      "pair_id": "031",
+      "choice": "left",
+      "reason": "Left is slightly cleaner and more concise in stating that the loop changes the system's structure rather than a single call.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:53:37Z"
+    },
+    {
+      "pair_id": "032",
+      "choice": "right",
+      "reason": "Right is clearer and highlights why the split matters because you control the tool's code.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:53:53Z"
+    },
+    {
+      "pair_id": "033",
+      "choice": "right",
+      "reason": "Right directly addresses the 40-step loop already in context and adds the practical budget impact of an unbounded loop.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:54:02Z"
+    },
+    {
+      "pair_id": "034",
+      "choice": "right",
+      "reason": "Right gives a cleaner step-by-step trace of the question, each tool call, and each result leading to the 4 model calls.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:54:11Z"
+    },
+    {
+      "pair_id": "035",
+      "choice": "right",
+      "reason": "Right adds the helpful distinction that feeding the result back to the model is what differs from simply showing it to the user.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:54:18Z"
+    },
+    {
+      "pair_id": "036",
+      "choice": "right",
+      "reason": "Right adds the helpful point that similar-looking tool names can mislead without full descriptions, tying directly to makerspace tools.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:54:26Z"
+    }
+  ],
+  "complete": true,
+  "revealed": {
+    "revealed_at": "2026-11-22T22:05:01Z",
+    "wins": {
+      "c0-baseline": 15,
+      "final": 19
+    },
+    "ties": 2,
+    "non_tie": 34,
+    "p_value": 0.607591,
+    "could_tell": {
+      "yes": 0,
+      "pairs": 36,
+      "share": 0.0
+    },
+    "reasons": {
+      "c0-baseline": [
+        {
+          "pair_id": "004",
+          "item": "grade-s1/q4",
+          "reason": "Left is clearer and more direct, adding a concrete check by counting the inputs the model receives."
+        },
+        {
+          "pair_id": "008",
+          "item": "grade-s2/q2",
+          "reason": "Left is clearer and more direct with a concrete split between the model's request and the surrounding program."
+        },
+        {
+          "pair_id": "010",
+          "item": "grade-s2/q4",
+          "reason": "Left is clearer and gives a concrete breakdown of the 4 calls."
+        },
+        {
+          "pair_id": "011",
+          "item": "grade-s2/q5",
+          "reason": "Left is clearer and more direct, spelling out how the tool result acts as a new message before the next turn."
+        },
+        {
+          "pair_id": "014",
+          "item": "grade-s1/q2",
+          "reason": "Left is clearer and more direct, explaining that the model only outputs text while the surrounding program runs the tool."
+        },
+        {
+          "pair_id": "015",
+          "item": "grade-s1/q3",
+          "reason": "Right is clearer and more direct, noting why a larger context window fails since all 40 steps already fit."
+        },
+        {
+          "pair_id": "019",
+          "item": "grade-s2/q1",
+          "reason": "Left is slightly cleaner and flows smoothly right into why longer prompts or larger models only change one call."
+        },
+        {
+          "pair_id": "022",
+          "item": "grade-s2/q4",
+          "reason": "Left is clearer and gives a concrete billing tie-in while explaining how each call's result feeds the next."
+        },
+        {
+          "pair_id": "023",
+          "item": "grade-s2/q5",
+          "reason": "Right adds the helpful distinction that the model only sees what the program carries back."
+        },
+        {
+          "pair_id": "025",
+          "item": "grade-s1/q1",
+          "reason": "Left is slightly clearer and more direct in stating that the loop is what makes a system an agent rather than prompt length or model size."
+        },
+        {
+          "pair_id": "031",
+          "item": "grade-s2/q1",
+          "reason": "Left is slightly cleaner and more concise in stating that the loop changes the system's structure rather than a single call."
+        },
+        {
+          "pair_id": "032",
+          "item": "grade-s2/q2",
+          "reason": "Right is clearer and highlights why the split matters because you control the tool's code."
+        },
+        {
+          "pair_id": "033",
+          "item": "grade-s2/q3",
+          "reason": "Right directly addresses the 40-step loop already in context and adds the practical budget impact of an unbounded loop."
+        },
+        {
+          "pair_id": "035",
+          "item": "grade-s2/q5",
+          "reason": "Right adds the helpful distinction that feeding the result back to the model is what differs from simply showing it to the user."
+        },
+        {
+          "pair_id": "036",
+          "item": "grade-s2/q6",
+          "reason": "Right adds the helpful point that similar-looking tool names can mislead without full descriptions, tying directly to makerspace tools."
+        }
+      ],
+      "final": [
+        {
+          "pair_id": "001",
+          "item": "grade-s1/q1",
+          "reason": "Left is clearer and more direct with a concrete step-by-step example."
+        },
+        {
+          "pair_id": "002",
+          "item": "grade-s1/q2",
+          "reason": "Right is more direct and clearer with a concrete code example of the tool call."
+        },
+        {
+          "pair_id": "003",
+          "item": "grade-s1/q3",
+          "reason": "Left is more direct and clearer, pointing out specifically that all 40 steps already fit in the window without extra fluff."
+        },
+        {
+          "pair_id": "005",
+          "item": "grade-s1/q5",
+          "reason": "Left is clearer and adds a concrete example."
+        },
+        {
+          "pair_id": "006",
+          "item": "grade-s1/q6",
+          "reason": "Left is clearer and more direct with a concrete search_manuals example."
+        },
+        {
+          "pair_id": "009",
+          "item": "grade-s2/q3",
+          "reason": "Right is clearer and more direct with a concrete example of cutting off at 40 steps."
+        },
+        {
+          "pair_id": "012",
+          "item": "grade-s2/q6",
+          "reason": "Left is clearer and gives a concrete example ('lookup') of why name alone misleads."
+        },
+        {
+          "pair_id": "013",
+          "item": "grade-s1/q1",
+          "reason": "Right is clearer and slightly more direct on how the result returns for the next step."
+        },
+        {
+          "pair_id": "016",
+          "item": "grade-s1/q4",
+          "reason": "Right is clearer and more direct in walking through each of the 4 calls step by step."
+        },
+        {
+          "pair_id": "017",
+          "item": "grade-s1/q5",
+          "reason": "Left is clearer and gives a concrete check_calendar example alongside why the model needs the result."
+        },
+        {
+          "pair_id": "018",
+          "item": "grade-s1/q6",
+          "reason": "Left is clearer and gives a concrete check_calendar example of how tool descriptions pick the tool."
+        },
+        {
+          "pair_id": "020",
+          "item": "grade-s2/q2",
+          "reason": "Right is clearer and more direct in stating that the model only outputs the request while the program runs the tool."
+        },
+        {
+          "pair_id": "021",
+          "item": "grade-s2/q3",
+          "reason": "Left is clearer and gives a concrete step-20 example of reporting back instead of looping endlessly."
+        },
+        {
+          "pair_id": "024",
+          "item": "grade-s2/q6",
+          "reason": "Left gives a sharper example of how a tool description resolves ambiguity between bookings and opening hours."
+        },
+        {
+          "pair_id": "026",
+          "item": "grade-s1/q2",
+          "reason": "Left is clearer and more concise in showing the exact check_calendar call and noting that the model only outputs text while the surrounding program runs the tool."
+        },
+        {
+          "pair_id": "027",
+          "item": "grade-s1/q3",
+          "reason": "Left is slightly more concise and direct in stating why a step limit works while a larger context window does not."
+        },
+        {
+          "pair_id": "028",
+          "item": "grade-s1/q4",
+          "reason": "Right is slightly clearer and more direct in stating that the program runs the tools and calls the model again after each result."
+        },
+        {
+          "pair_id": "030",
+          "item": "grade-s1/q6",
+          "reason": "Right gives a concrete laser-cutter example showing why a new call starts blank without program-managed memory."
+        },
+        {
+          "pair_id": "034",
+          "item": "grade-s2/q4",
+          "reason": "Right gives a cleaner step-by-step trace of the question, each tool call, and each result leading to the 4 model calls."
+        }
+      ],
+      "tie": [
+        {
+          "pair_id": "007",
+          "item": "grade-s2/q1",
+          "reason": "Both give virtually the same clear explanation of the action-execution-result loop."
+        },
+        {
+          "pair_id": "029",
+          "item": "grade-s1/q5",
+          "reason": "Both Left and Right give helpful feedback—Left adds a concrete laser-cutter example while Right highlights why the model needs the result back."
+        }
+      ]
+    },
+    "objective": {
+      "c0-baseline": {
+        "grade_verdict_agreement": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "grade_false_wrong": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "grade_misconception_hit": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "final": {
+        "grade_verdict_agreement": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "grade_false_wrong": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "grade_misconception_hit": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "cost": {
+      "c0-baseline": {
+        "runs": 3,
+        "scenarios": 6,
+        "tokens": [
+          133743,
+          135074,
+          134499,
+          132078,
+          175893,
+          134649
+        ],
+        "output": [
+          3799,
+          3751,
+          3830,
+          3447,
+          4103,
+          3849
+        ],
+        "minutes": [
+          0.43,
+          0.43,
+          0.42,
+          0.39,
+          0.47,
+          0.44
+        ],
+        "subagents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cost": [
+          0.165862,
+          0.165505,
+          0.16745,
+          0.156568,
+          0.174635,
+          0.168059
+        ]
+      },
+      "final": {
+        "runs": 3,
+        "scenarios": 6,
+        "tokens": [
+          929965,
+          690689,
+          854834,
+          659043,
+          669324,
+          775007
+        ],
+        "output": [
+          17791,
+          14589,
+          16751,
+          15471,
+          13794,
+          16966
+        ],
+        "minutes": [
+          2.02,
+          1.68,
+          1.88,
+          1.79,
+          1.57,
+          2.0
+        ],
+        "subagents": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "cost": [
+          0.536945,
+          0.433334,
+          0.490219,
+          0.433719,
+          0.434402,
+          0.468877
+        ]
+      }
+    }
+  }
+}

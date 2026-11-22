@@ -1,0 +1,196 @@
+{
+  "session": "20261122-213629-quiz",
+  "job": "quiz",
+  "topic": "agent-architecture",
+  "configs": [
+    "c0-baseline",
+    "final"
+  ],
+  "created_at": "2026-11-22T21:36:29Z",
+  "minutes": 30,
+  "quick": false,
+  "teach_only": false,
+  "pairs": [
+    {
+      "pair_id": "001",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "quiz"
+    },
+    {
+      "pair_id": "002",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "quiz"
+    },
+    {
+      "pair_id": "003",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "quiz"
+    }
+  ],
+  "picks": [
+    {
+      "pair_id": "001",
+      "choice": "left",
+      "reason": "Left progresses smoothly from basic concepts to complex scenarios across multiple question types, with clearer and more detailed explanations.",
+      "could_tell": true,
+      "picked_at": "2026-11-22T21:38:49Z"
+    },
+    {
+      "pair_id": "002",
+      "choice": "left",
+      "reason": "Left builds a cohesive scenario-based progression from basic definitions to architectural trade-offs, with much more thorough explanations, misconception breakdowns, and grading examples.",
+      "could_tell": true,
+      "picked_at": "2026-11-22T21:39:15Z"
+    },
+    {
+      "pair_id": "003",
+      "choice": "left",
+      "reason": "Left provides a smoother progression from basic concepts to practical trade-offs across varied question types, with more detailed explanations, examples, and grading notes.",
+      "could_tell": true,
+      "picked_at": "2026-11-22T21:39:35Z"
+    }
+  ],
+  "complete": true,
+  "revealed": {
+    "revealed_at": "2026-11-22T22:04:56Z",
+    "wins": {
+      "c0-baseline": 2,
+      "final": 1
+    },
+    "ties": 0,
+    "non_tie": 3,
+    "p_value": 1.0,
+    "could_tell": {
+      "yes": 3,
+      "pairs": 3,
+      "share": 1.0
+    },
+    "reasons": {
+      "c0-baseline": [
+        {
+          "pair_id": "002",
+          "item": "quiz",
+          "reason": "Left builds a cohesive scenario-based progression from basic definitions to architectural trade-offs, with much more thorough explanations, misconception breakdowns, and grading examples."
+        },
+        {
+          "pair_id": "003",
+          "item": "quiz",
+          "reason": "Left provides a smoother progression from basic concepts to practical trade-offs across varied question types, with more detailed explanations, examples, and grading notes."
+        }
+      ],
+      "final": [
+        {
+          "pair_id": "001",
+          "item": "quiz",
+          "reason": "Left progresses smoothly from basic concepts to complex scenarios across multiple question types, with clearer and more detailed explanations."
+        }
+      ],
+      "tie": []
+    },
+    "objective": {
+      "c0-baseline": {
+        "quiz_key_agreement": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quiz_ambiguous": [
+          0,
+          0,
+          0
+        ],
+        "quiz_wrong_key": [
+          0,
+          0,
+          0
+        ]
+      },
+      "final": {
+        "quiz_key_agreement": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quiz_ambiguous": [
+          0,
+          0,
+          0
+        ],
+        "quiz_wrong_key": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "cost": {
+      "c0-baseline": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          176316,
+          178594,
+          174190
+        ],
+        "output": [
+          5678,
+          6452,
+          5482
+        ],
+        "minutes": [
+          0.7,
+          0.75,
+          0.67
+        ],
+        "subagents": [
+          0,
+          0,
+          0
+        ],
+        "cost": [
+          0.19121,
+          0.18329,
+          0.18793
+        ]
+      },
+      "final": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          533744,
+          536949,
+          750136
+        ],
+        "output": [
+          24014,
+          20296,
+          24235
+        ],
+        "minutes": [
+          2.75,
+          2.24,
+          2.78
+        ],
+        "subagents": [
+          3,
+          3,
+          2
+        ],
+        "cost": [
+          0.453332,
+          0.414309,
+          0.477586
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "session": "20261122-213042-teach",
+  "job": "teach",
+  "topic": "agent-architecture",
+  "configs": [
+    "c0-baseline",
+    "final"
+  ],
+  "created_at": "2026-11-22T21:30:42Z",
+  "minutes": 30,
+  "quick": false,
+  "teach_only": false,
+  "pairs": [
+    {
+      "pair_id": "001",
+      "run_pair": [
+        "20261111-002336-agent-architecture-m30-r1",
+        "20261122-021148-agent-architecture-m30-r1"
+      ],
+      "item": "teach"
+    },
+    {
+      "pair_id": "002",
+      "run_pair": [
+        "20261111-002927-agent-architecture-m30-r2",
+        "20261122-023614-agent-architecture-m30-r2"
+      ],
+      "item": "teach"
+    },
+    {
+      "pair_id": "003",
+      "run_pair": [
+        "20261111-003525-agent-architecture-m30-r3",
+        "20261122-025700-agent-architecture-m30-r3"
+      ],
+      "item": "teach"
+    }
+  ],
+  "picks": [
+    {
+      "pair_id": "001",
+      "choice": "left",
+      "reason": "Left has richer, scaled diagrams for every key concept—like the multi-call token stack, cross-session memory flow, and four-lane placement chart—making it much easier to grasp the concepts visually through concrete examples.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:34:55Z"
+    },
+    {
+      "pair_id": "002",
+      "choice": "left",
+      "reason": "Left uses a concrete multi-session student example and step-by-step guided practice with clear token numbers, making it easy to follow how each memory choice works in practice.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:35:26Z"
+    },
+    {
+      "pair_id": "003",
+      "choice": "right",
+      "reason": "Right includes more diagrams and concrete walkthroughs—such as trimming five manual lookups and tracing Maya's cross-session notes and full request—making it easier to grasp each concept through examples.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T21:35:51Z"
+    }
+  ],
+  "complete": true,
+  "revealed": {
+    "revealed_at": "2026-11-22T22:04:56Z",
+    "wins": {
+      "c0-baseline": 0,
+      "final": 3
+    },
+    "ties": 0,
+    "non_tie": 3,
+    "p_value": 0.25,
+    "could_tell": {
+      "yes": 0,
+      "pairs": 3,
+      "share": 0.0
+    },
+    "reasons": {
+      "c0-baseline": [],
+      "final": [
+        {
+          "pair_id": "001",
+          "item": "teach",
+          "reason": "Left has richer, scaled diagrams for every key concept—like the multi-call token stack, cross-session memory flow, and four-lane placement chart—making it much easier to grasp the concepts visually through concrete examples."
+        },
+        {
+          "pair_id": "002",
+          "item": "teach",
+          "reason": "Left uses a concrete multi-session student example and step-by-step guided practice with clear token numbers, making it easy to follow how each memory choice works in practice."
+        },
+        {
+          "pair_id": "003",
+          "item": "teach",
+          "reason": "Right includes more diagrams and concrete walkthroughs—such as trimming five manual lookups and tracing Maya's cross-session notes and full request—making it easier to grasp each concept through examples."
+        }
+      ],
+      "tie": []
+    },
+    "objective": {
+      "c0-baseline": {
+        "teach_facts_correct": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "teach_misconceptions": [
+          0,
+          0,
+          0
+        ],
+        "teach_length_ratio": [
+          0.618,
+          0.735,
+          0.711
+        ],
+        "teach_dead_links": [
+          0,
+          0,
+          0
+        ]
+      },
+      "final": {
+        "teach_facts_correct": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "teach_misconceptions": [
+          0,
+          0,
+          0
+        ],
+        "teach_length_ratio": [
+          1.134,
+          1.028,
+          0.982
+        ],
+        "teach_dead_links": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "cost": {
+      "c0-baseline": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          636233,
+          701496,
+          851380
+        ],
+        "output": [
+          27495,
+          30254,
+          32492
+        ],
+        "minutes": [
+          2.77,
+          2.99,
+          3.4
+        ],
+        "subagents": [
+          0,
+          0,
+          0
+        ],
+        "cost": [
+          0.580789,
+          0.604967,
+          0.678843
+        ]
+      },
+      "final": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          3330515,
+          2790536,
+          2931673
+        ],
+        "output": [
+          151360,
+          123265,
+          136549
+        ],
+        "minutes": [
+          16.72,
+          13.5,
+          15.24
+        ],
+        "subagents": [
+          6,
+          6,
+          6
+        ],
+        "cost": [
+          3.086147,
+          2.496904,
+          2.835824
+        ]
+      }
+    }
+  }
+}

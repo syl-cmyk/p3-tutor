@@ -1,0 +1,205 @@
+{
+  "session": "20261122-220154-teach",
+  "job": "teach",
+  "topic": "agent-architecture",
+  "configs": [
+    "c1-skills",
+    "final"
+  ],
+  "created_at": "2026-11-22T22:01:54Z",
+  "minutes": 30,
+  "quick": false,
+  "teach_only": true,
+  "pairs": [
+    {
+      "pair_id": "001",
+      "run_pair": [
+        "20261121-085117-agent-architecture-m30-r1",
+        "20261122-081615-agent-architecture-m30-r1"
+      ],
+      "item": "teach"
+    },
+    {
+      "pair_id": "002",
+      "run_pair": [
+        "20261121-085441-agent-architecture-m30-r2",
+        "20261122-082959-agent-architecture-m30-r2"
+      ],
+      "item": "teach"
+    },
+    {
+      "pair_id": "003",
+      "run_pair": [
+        "20261121-085836-agent-architecture-m30-r3",
+        "20261122-084453-agent-architecture-m30-r3"
+      ],
+      "item": "teach"
+    }
+  ],
+  "picks": [
+    {
+      "pair_id": "001",
+      "choice": "right",
+      "reason": "Right provides a clearer mental model by separating in-run state management from cross-session memory, includes a handy summary decision table, and offers more scaffolded practice tasks with hints.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T22:02:55Z"
+    },
+    {
+      "pair_id": "002",
+      "choice": "left",
+      "reason": "Left is much better scaffolded for a learner: it uses clear visual token breakdowns, covers context rot and compaction systematically, provides a structured decision table, and includes progressive two-tier practice exercises with hints.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T22:03:07Z"
+    },
+    {
+      "pair_id": "003",
+      "choice": "right",
+      "reason": "Right goes deeper on practical context management by dedicatedly explaining context rot, compaction vs. clearing trade-offs, BM25 vs. embeddings, security/staleness risks for notes, and scaffolded faded practice.",
+      "could_tell": false,
+      "picked_at": "2026-11-22T22:03:22Z"
+    }
+  ],
+  "complete": true,
+  "revealed": {
+    "revealed_at": "2026-11-22T22:05:01Z",
+    "wins": {
+      "c1-skills": 0,
+      "final": 3
+    },
+    "ties": 0,
+    "non_tie": 3,
+    "p_value": 0.25,
+    "could_tell": {
+      "yes": 0,
+      "pairs": 3,
+      "share": 0.0
+    },
+    "reasons": {
+      "c1-skills": [],
+      "final": [
+        {
+          "pair_id": "001",
+          "item": "teach",
+          "reason": "Right provides a clearer mental model by separating in-run state management from cross-session memory, includes a handy summary decision table, and offers more scaffolded practice tasks with hints."
+        },
+        {
+          "pair_id": "002",
+          "item": "teach",
+          "reason": "Left is much better scaffolded for a learner: it uses clear visual token breakdowns, covers context rot and compaction systematically, provides a structured decision table, and includes progressive two-tier practice exercises with hints."
+        },
+        {
+          "pair_id": "003",
+          "item": "teach",
+          "reason": "Right goes deeper on practical context management by dedicatedly explaining context rot, compaction vs. clearing trade-offs, BM25 vs. embeddings, security/staleness risks for notes, and scaffolded faded practice."
+        }
+      ],
+      "tie": []
+    },
+    "objective": {
+      "c1-skills": {
+        "teach_facts_correct": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "teach_misconceptions": [
+          0,
+          0,
+          0
+        ],
+        "teach_length_ratio": [
+          0.578,
+          0.583,
+          0.534
+        ],
+        "teach_dead_links": [
+          0,
+          0,
+          0
+        ]
+      },
+      "final": {
+        "teach_facts_correct": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "teach_misconceptions": [
+          0,
+          0,
+          0
+        ],
+        "teach_length_ratio": [
+          1.016,
+          1.048,
+          0.996
+        ],
+        "teach_dead_links": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "cost": {
+      "c1-skills": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          1074779,
+          1349074,
+          866590
+        ],
+        "output": [
+          30260,
+          38086,
+          30347
+        ],
+        "minutes": [
+          3.26,
+          3.83,
+          3.21
+        ],
+        "subagents": [
+          1,
+          1,
+          0
+        ],
+        "cost": [
+          0.652405,
+          0.748092,
+          0.663924
+        ]
+      },
+      "final": {
+        "runs": 3,
+        "scenarios": 3,
+        "tokens": [
+          2885963,
+          3180037,
+          2871442
+        ],
+        "output": [
+          119107,
+          137637,
+          123874
+        ],
+        "minutes": [
+          13.65,
+          14.84,
+          12.9
+        ],
+        "subagents": [
+          6,
+          6,
+          5
+        ],
+        "cost": [
+          2.447501,
+          2.624032,
+          2.320447
+        ]
+      }
+    }
+  }
+}
