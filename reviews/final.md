@@ -28,20 +28,6 @@ The key guard is about to keep keys/ away from the main conversation, so /grade 
 - Files: tutor/.claude/agents/grader.md, tutor/.claude/skills/grade/SKILL.md, tutor/.claude/skills/quiz/SKILL.md, tutor/.claude/settings.json
 - Why: The key guard keeps keys/ away from the main conversation, where /grade read the key, so a grader subagent that the guard allows now judges every item and writes the draft grades, the grade skill starts it and the grade-reviewer and never reads a key, the quiz skill no longer reads earlier keys, and the guard hook is registered in tutor/.claude/settings.json with onFailure block.
 
-### Round 2 (optional)
-
-**Run:** TODO
-
-**My thoughts:**
-
-TODO
-
-**What changed:**
-
-- Kind: TODO
-- Files: TODO
-- Why: TODO
-
 ### Round 3 (optional)
 
 **Run:** bench/runs/_live/20261121-212122-agent-architecture-m30-r1, teach only, whose cheat sheet came from the teach skill
@@ -77,17 +63,20 @@ But the sheet is only so-so, because its rules are less clear than they could be
 
 ### Round 5 (optional)
 
-**Run:** TODO
+**Run:** a live try in tutor/ of /cheatsheet on lesson 0001, which updated tutor/cheatsheets/context-and-memory.html
+
 
 **My thoughts:**
 
-TODO
+The Round 4 change helped: /cheatsheet updated the sheet so that "turn", "session" and "setup" are explained in the key terms and every rule has a "because" beside it, so the rules are much clearer than before.
+Setting the goal first lets me decide which knowledge is worth learning and which can wait. I want a skill that asks me why I am learning a topic and what I want to be able to do, and writes that into MISSION.md before any lesson.
+
 
 **What changed:**
 
-- Kind: TODO
-- Files: TODO
-- Why: TODO
+- Kind: new skill
+- Files: tutor/.claude/skills/mission/SKILL.md
+- Why: Lessons started without asking why the learner was learning, so a mission skill now asks up to four short questions about the reason, the specific outcomes, the limits and what to leave out, and writes the answer into MISSION.md in the learner's own words before any lesson.
 
 ### Round 6 (optional)
 

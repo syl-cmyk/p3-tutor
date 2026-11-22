@@ -122,7 +122,7 @@ An example of a finished entry:
 - Kind: subagent
 - Step added: final
 - Purpose: TODO
-- With and without: reviews/final.md, Round 1 (without) and Round 2 (with)
+- With and without: reviews/final.md, Round 1 (without); the with is the grade-s1 live run in bench/runs/_live/20261122-012805-agent-architecture-m30-r1, where the grader and the reviewers read the key and the main conversation did not
 - Review: TODO
 - Kept in final: TODO
 
@@ -132,5 +132,14 @@ An example of a finished entry:
 - Step added: final
 - Purpose: TODO
 - With and without: reviews/final.md, Round 3 (without) and Round 4 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### mission
+
+- Kind: skill
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 5 (without) and Round 6 (with)
 - Review: TODO
 - Kept in final: TODO
