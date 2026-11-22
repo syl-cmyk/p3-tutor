@@ -94,144 +94,130 @@ TODO
 
 ## Major review
 
-**Run:** bench/runs/final/TODO
+**Run:** bench/runs/final/20261122-025700-agent-architecture-m30-r3
+
 
 **Live tries:**
 
-TODO: one line that points at your three learning sessions under Learning sessions below, and names anything else you tried with `final`.
+Live tries are my three learning sessions under Learning sessions below, all on computer-architecture; I did not try anything else with final.
+
 
 ### Lesson
 
 #### Technical correctness and facts
-
-Rating: TODO
-
-TODO
+Rating: 5
+The bench check agrees: all six key facts are present and correct, with no misconception asserted and no dead links. The lesson draws the line between the model and the program, and the token rule (what is sent, and what is paid for on each call) is stated and worked through.
 
 #### Pedagogy
-
-Rating: TODO
-
-TODO
+Rating: 4
+Each part leads with the point, then an example, then the detail, and the common mix-ups each have a concrete case. Two things to change: the summary at the start of "Context design" should be shorter, and the definition at the start of the retrieval part should move after its example.
 
 #### Alignment with the learning goal
-
-Rating: TODO
-
-TODO
+Rating: 5
+The lesson covers what the learner needs, deciding what the agent keeps in its context, what it saves and what it looks up, with the makerspace budget and the design trade-offs. At 4,418 words its length is about right, and the examples and the decision table stay tied to the goal.
 
 #### Overall quality
+Rating: 4
+The worked example, the decision table and the self-check are solid, but the closing section and the external links are crowded, so it is not yet as clean as the rest.
 
-Rating: TODO
-
-TODO
 
 ### Quiz
 
 #### Difficulty
-
-Rating: TODO
-
-TODO
+Rating: 4
+Question 6 tests applying the idea to a policy and a one-word answer, which is an application test, not harder reasoning than question 5, so the items are at about the same level.
 
 #### Coverage of the lesson's core
-
-Rating: TODO
-
-TODO
+Rating: 5
+The six items cover the O4 ideas: who decides the next step, the call count of a fixed workflow against an agent, choosing a design for a fixed set of steps, labelling a question with a fixed follow-up, when an agent helps a diagnosis, and who owns a policy step.
 
 #### Wording and possible misreadings
-
-Rating: TODO
-
-TODO
+Rating: 4
+Question 6 asks "model or the code" and says "Answer with one word", but "code" and "program" mean the same thing, and "The code." would go over one word, so the wording can be read two ways.
 
 #### Writing quality
-
-Rating: TODO
-
-TODO
+Rating: 5
+The options are about the same length, and the right answer is not always the longest one.
 
 #### Alignment with the learning goal
+Rating: 5
+The quiz is on O4 and ties to the makerspace's engineering trade-offs, which is what this learner needs now.
 
-Rating: TODO
-
-TODO
 
 ### Feedback
 
 #### Useful
-
-Rating: TODO
-
-TODO
+Rating: 5
+The summary says which item to redo and lists the three things to write for it, and each wrong or partly right item has a clear correction to make.
 
 #### Explains enough
-
-Rating: TODO
-
-TODO
+Rating: 5
+Each item explains the mechanism and why the answer fails, with concrete examples such as check_calendar and a three-step tool lookup.
 
 #### Personalized to how I like things explained
+Rating: 5
+Each item gives the verdict first and points to the exact part that is off, with no questions back to me, which matches how I like feedback.
 
-Rating: TODO
-
-TODO
 
 ### Tutor
 
 #### Guardrails
-
-Rating: TODO
-
-TODO
+Rating: 5
+All six replies stay inside the rules: none gives a quiz answer or confirms an option, none leaks a key, and the replies to the off-topic question and the personal-advice question stay general and send the learner back to the course.
 
 #### Personalization
+Rating: 5
+The replies are direct and plain, give hints before answers, and do not ask the learner questions back, which matches how I like to be talked to.
 
-Rating: TODO
-
-TODO
 
 ### Compared with the previous step
 
-TODO
+final is measured against the baseline on three runs each. The lesson is longer and fills the 30 minutes (length ratio 1.05, against 0.69 for the baseline, and the ranges do not overlap), and the tutor meets more of its probes (0.78, against 0.56; the ranges just touch at 0.67). Every quality check is the same for both, so they only show that nothing broke. The cost is about 2.6 times the baseline ($4.61 against $1.78, 22.5 minutes against 6.0, and 14.7 subagents against none), and most of it is in the teach job.
+
 
 ### What I would do next
 
-TODO
+
+The next step is nothing more to add, but the tutor's quiz and grade loops are not worth their cost, so I would cut the quiz reviewer first and check whether the lesson keeps its length without the writer's budgets.
+
 
 ## Learning sessions
 
 ### Session 1
 
-**Date:** TODO
+**Date:** 2026-11-22
 
-**Topic:** TODO
+**Topic:** computer-architecture, how a pipeline handles data hazards (stalling and forwarding)
 
-TODO
+I asked for a 10-minute lesson on how a pipeline handles hazards. The tutor ran its whole pipeline of subagents, planner, references-finder, writer, figure-designer and two reviews, and wrote a lesson, a five-item quiz and a cheat sheet in about 11 minutes. The content was correct, and I thought the process was very good. It checked its sources and used only the two pages that opened. The lesson was about 1,700 words, a little over 10 minutes, and its part titles did not follow the "term: plain explanation" pattern, because the second review ran out of passes.
+
+The quiz suited a beginner well. I answered it and it graded my five answers: it told me right or wrong first, then gave the reason with the numbers, and the grade-reviewer made it fix one word, "ALU", that the lesson never taught. I got all five right, so I did not see how it handles a wrong answer.
+
+The guard worked for real: the tutor tried to copy the key into keys/ with a shell command, the hook blocked it with its message, and the tutor wrote the key with the Write tool instead. It also noticed that my MISSION.md is about agent memory and asked whether this topic belongs to another course.
 
 ### Session 2
 
-**Date:** TODO
+**Date:** 2026-11-22
 
-**Topic:** TODO
+**Topic:** computer-architecture, a short quiz on load-use stalls and reordering instructions
 
-TODO
+I asked for a three-question quiz and answered it, all correct. The grader wrote the grades in about 12 seconds without reading the lesson or the guides, and this time the tutor skipped the grade-reviewer that the grade skill requires, so it checked the grader's draft itself against its own answers. It said it had checked the draft "against the key", but the log shows that the main conversation never read keys/; it only started the grader and wrote its own quiz's key, so the guard held. The feedback was short and direct, right or wrong first and then the cycle count, but because I got everything right I still did not see how it handles a wrong answer. I would change two things in the tutor: make the grade skill always start the grade-reviewer, and make the grader read the lesson before grading.
+
 
 ### Session 3
 
-**Date:** TODO
+**Date:** 2026-11-22
 
-**Topic:** TODO
+**Topic:** computer-architecture, a question beyond my lesson: whether out-of-order execution with register renaming avoids all stalls
 
-TODO
+I asked a question far above my lesson. The tutor named the wrong premise in its first sentence, "an out-of-order processor with register renaming does not avoid all stalls", then gave a three-instruction example, with a name clash that renaming removes and a real dependency it cannot. It said twice that its sketch and its list of stalls that never go away came from general knowledge and not from a source it had checked, and it offered a short lesson because the question was outside my lesson. It tied the answer to the forwarding I had learned. The answer was a little long for my preference of short replies, with a table and a list of three more stalls. I would change nothing in what it said, only make it shorter.
+
 
 ## Test topics
 
-### TODO: your first test topic's id
+### computer-architecture
+final is better on this topic, because its lesson is longer and fills the time (length ratio 1.00, against 0.60 for the baseline), its quiz agrees with the answer key more often (1.00 against 0.80), and its lesson is more complete. On the tutor's probes it is not better (1 of 6 against 2 of 6), so the gain is in the lesson and the quiz, not in the replies. One run each, so I hold this lightly.
 
-TODO
+### cooking-basics
+final is better, or slightly better, on this topic, because its lesson is closer to the time asked for (length ratio 0.92, against 0.54 for the baseline) and the quiz agrees with the key on both (1.00). The tutor's probes are level (1 of 6 each), so the gain again is in the lesson and the quiz.
 
-### TODO: your second test topic's id
-
-TODO
