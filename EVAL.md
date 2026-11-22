@@ -318,7 +318,9 @@ Paste `uv run p3 report --configs final,final-minus-<x>`.
 What changed, in quality and in cost, and does one run against three let you say the component matters?
 If you looked at its outputs, what did you see that the numbers do not show?
 
-TODO: your ablation, its prediction, its table and your reading.
+The ablation, `final-minus-references-finder`, removes the references-finder subagent, which opens every source in the plan, checks the link and that the page supports the claim, and writes drafts/sources.md for the writer and the reviewer.
+
+My prediction, written before the run: without it, the facts in the lesson will go wrong more easily, because nothing checks the sources before the lesson is written, so `teach_facts_correct` may fall below 1.00 and the reviewer will flag more sources, but the cost will be a little lower, about 10 percent less on the teach scenario, because one subagent is not started.
 
 ---
 
