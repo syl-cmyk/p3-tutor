@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --warn-soft:#f9eaec; --code-bg:#f3efe6;
+      --serif: Charter,"Iowan Old Style",Cambria,Georgia,serif; --sans: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --warn-soft:#2f1f22; --code-bg:#23211e; } }
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.5; }
+    main { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; }
+    h1 { font-size: 1.6rem; margin: 0 0 .25rem; line-height: 1.25; }
+    h2 { font-size: 1.05rem; margin: 1.3rem 0 .4rem; font-family: var(--sans); color: var(--accent); }
+    a { color: var(--accent); }
+    .sub { color: var(--muted); margin: 0; }
+    table { width:100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { text-align:left; vertical-align:top; padding:.3rem .5rem; border-bottom:1px solid var(--rule); }
+    th { font-family: var(--sans); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+    ol, ul { margin: .3rem 0; padding-left: 1.2rem; font-size: .93rem; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.85em; background:var(--code-bg); padding:.05em .25em; border-radius:3px; }
+    .warn { background:var(--warn-soft); border-left:4px solid var(--warn); padding:.4rem .8rem; }
+    .warn ul { margin: 0; }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --accent:#000; --warn-soft:#fff; --warn:#000; } html { font-size: 11pt; } main { padding: 0; max-width: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p class="sub">What the model sees on each call, what is saved, and how it finds one fact. Every number below is made up for the makerspace example.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><th>Term</th><th>Plain meaning</th></tr>
+    <tr><td>Token</td><td>A piece of text the model reads or writes; about 100 tokens is 75 English words.</td></tr>
+    <tr><td>Context window</td><td>All the text on one call: instructions, tool descriptions, history, and the reply.</td></tr>
+    <tr><td>Clearing</td><td>Dropping old tool results from the history.</td></tr>
+    <tr><td>Compaction</td><td>Summarizing the chat and starting a fresh window from the summary.</td></tr>
+    <tr><td>Chunk</td><td>A piece of a manual, about 300 tokens, that can be fetched alone.</td></tr>
+    <tr><td>BM25 / embeddings</td><td>Scoring chunks by exact words / by meaning.</td></tr>
+    <tr><td>Top-k</td><td>How many best-scoring chunks go to the model.</td></tr>
+    <tr><td>Lookup</td><td>A tool that reads the current answer from the real record.</td></tr>
+  </table>
+
+  <h2>What goes where</h2>
+  <table>
+    <tr><th>Fact</th><th>Place</th><th>Because</th></tr>
+    <tr><td>Instructions, tool descriptions</td><td>Window, every call</td><td>the model sees only what is sent</td></tr>
+    <tr><td>Long manuals</td><td>Retrieval (top few chunks)</td><td>pasting all costs every call</td></tr>
+    <tr><td>Preferences, what was tried</td><td>Notes (files)</td><td>low risk if slightly stale</td></tr>
+    <tr><td>Training status, bookings</td><td>Lookup</td><td>they change and gate safety</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>The program resends the whole history on every call, because the model keeps nothing itself.</li>
+    <li>Cost per request = input tokens across all calls at the input rate, plus output tokens at the output rate.</li>
+    <li>Clear old tool results first, because they can be fetched again; summarize only when you must.</li>
+    <li>Check a summary keeps the facts you cannot lose, before you shorten it.</li>
+  </ol>
+
+  <h2>Worked example (made-up prices: $2 in, $10 out per million tokens)</h2>
+  <ol>
+    <li>Call 1 input: 800 + 600 + 30 = 1,430. Model asks for the calendar (40 out).</li>
+    <li>Call 2 input: 1,430 + 40 + 350 = 1,820. Reply: 60 out.</li>
+    <li>Input 3,250 &times; $2/M = $0.0065. Output 100 &times; $10/M = $0.0010. Total <strong>$0.0075</strong>.</li>
+    <li>Pasting a 60,000-token manual into both calls: $0.2475, about 33 times more.</li>
+  </ol>
+
+  <h2>Common mistakes</h2>
+  <div class="warn"><ul>
+    <li>"The model remembers the chat." No: the program resends it.</li>
+    <li>"A bigger window means stuff it all in." No: you pay per token per call, and recall gets worse.</li>
+    <li>"Output is free." No: it counts and costs more per token.</li>
+    <li>"Everything goes in notes." No: a saved "trained" note can be stale; look it up.</li>
+  </ul></div>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory.html">lesson 0001</a>. Primary source: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>. Read real prices on the <a href="https://platform.claude.com/docs/en/about-claude/pricing">pricing page</a>.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,311 @@
+{
+  "run_id": "20261122-065425-computer-architecture-m30-r1",
+  "config": "c0-baseline",
+  "config_hash": "sha256:3727de8ebe2e5331f2d9ccfd57b54b5f969ef6ca0e181c1f994201ad3ebde8f5",
+  "topic": "computer-architecture",
+  "topic_hash": "sha256:b58fad7c8cd7ccf336b7ff903b9dcb5aaa7665e74169a8421fa43e7fd71ca2d3",
+  "topic_commit": "d274cdad17b0b4cf0f9cd895a174fd22aab83600",
+  "repeat": 1,
+  "minutes": 30,
+  "quick": false,
+  "started_at": "2026-11-22T06:54:25Z",
+  "finished_at": "2026-11-22T06:59:41Z",
+  "claude_version": "2.1.311 (Claude Code)",
+  "p3_version": "0.1.0",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "model": "sonnet",
+  "allowed_tools": [
+    "Glob",
+    "Grep",
+    "WebSearch",
+    "WebFetch"
+  ],
+  "entries": {
+    "teach": "/teach",
+    "tutor": "/teach",
+    "quiz": "/teach",
+    "grade": "/teach"
+  },
+  "only": null,
+  "ancestor_memory": [],
+  "scenarios": [
+    {
+      "id": "teach",
+      "job": "teach",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 210865,
+      "num_turns": 29,
+      "tokens": {
+        "input": 42383,
+        "output": 34808,
+        "cache_read": 545908,
+        "cache_write": 70950
+      },
+      "cost_usd_list": 0.694012,
+      "web_searches": 3,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [
+        "Bash",
+        "Write",
+        "Bash"
+      ],
+      "outputs": [
+        "NOTES.md",
+        "RESOURCES.md",
+        "cheatsheets/pipeline-hazards.html",
+        "keys/0002.json",
+        "lessons/0001-why-a-pipeline-stalls.html",
+        "quizzes/0002.json"
+      ],
+      "changed": [
+        "NOTES.md"
+      ],
+      "deleted": [],
+      "models": [
+        "claude-haiku-5-5",
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [
+        "pipeline hazards structural data control stall lecture notes university",
+        "Hennessy Patterson pipeline hazards structural data control forwarding load-use stall branch",
+        "computer architecture forum community Q&A pipeline hazards Computer Science Stack Exchange"
+      ],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "quiz",
+      "job": "quiz",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 33468,
+      "num_turns": 12,
+      "tokens": {
+        "input": 8,
+        "output": 4884,
+        "cache_read": 99922,
+        "cache_write": 27762
+      },
+      "cost_usd_list": 0.169896,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [
+        "keys/0002.json",
+        "quizzes/0002.json"
+      ],
+      "changed": [],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "grade-s1",
+      "job": "grade",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 20678,
+      "num_turns": 15,
+      "tokens": {
+        "input": 8,
+        "output": 3171,
+        "cache_read": 99507,
+        "cache_write": 26988
+      },
+      "cost_usd_list": 0.149629,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [
+        "NOTES.md",
+        "grades/0001-s1.json",
+        "learning-records/0002-pipelining-throughput-vs-latency.md"
+      ],
+      "changed": [
+        "NOTES.md"
+      ],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "submission": "s1",
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "tutor-p01",
+      "job": "tutor",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 9361,
+      "num_turns": 6,
+      "tokens": {
+        "input": 4,
+        "output": 1115,
+        "cache_read": 32362,
+        "cache_write": 16658
+      },
+      "cost_usd_list": 0.081026,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [],
+      "changed": [],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "probe": "p01",
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "tutor-p02",
+      "job": "tutor",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 12055,
+      "num_turns": 8,
+      "tokens": {
+        "input": 6,
+        "output": 1557,
+        "cache_read": 64890,
+        "cache_write": 22380
+      },
+      "cost_usd_list": 0.111591,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [
+        "NOTES.md"
+      ],
+      "changed": [
+        "NOTES.md"
+      ],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "probe": "p02",
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "tutor-p03",
+      "job": "tutor",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 14678,
+      "num_turns": 10,
+      "tokens": {
+        "input": 8,
+        "output": 1912,
+        "cache_read": 88989,
+        "cache_write": 19644
+      },
+      "cost_usd_list": 0.106611,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [
+        "NOTES.md"
+      ],
+      "changed": [
+        "NOTES.md"
+      ],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "probe": "p03",
+      "claude_version": "2.1.311"
+    },
+    {
+      "id": "tutor-p04",
+      "job": "tutor",
+      "entry": "/teach",
+      "status": "ok",
+      "duration_ms": 15530,
+      "num_turns": 10,
+      "tokens": {
+        "input": 8,
+        "output": 1987,
+        "cache_read": 91388,
+        "cache_write": 23264
+      },
+      "cost_usd_list": 0.122081,
+      "web_searches": 0,
+      "web_fetches": 0,
+      "subagents": {
+        "spawned": 0,
+        "max_depth": 0,
+        "by_type": {}
+      },
+      "permission_denials": [],
+      "outputs": [
+        "NOTES.md"
+      ],
+      "changed": [
+        "NOTES.md"
+      ],
+      "deleted": [],
+      "models": [
+        "claude-sonnet-5-5"
+      ],
+      "search_queries": [],
+      "fetch_urls": [],
+      "exit_code": 0,
+      "probe": "p04",
+      "claude_version": "2.1.311"
+    }
+  ],
+  "claude_versions": [
+    "2.1.311"
+  ]
+}

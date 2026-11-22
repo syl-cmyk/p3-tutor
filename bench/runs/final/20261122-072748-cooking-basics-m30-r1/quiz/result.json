@@ -1,0 +1,109 @@
+{
+  "duration_api_ms": 160943,
+  "stop_reason": "end_turn",
+  "session_id": "c17bffe0-2793-4de7-9a18-56850b91f4ab",
+  "total_cost_usd": 0.4423077,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 5861,
+    "cache_read_input_tokens": 98578,
+    "output_tokens": 4045,
+    "output_tokens_details": {
+      "thinking_tokens": 259
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5861
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 400,
+        "cache_read_input_tokens": 50235,
+        "cache_creation_input_tokens": 3969,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3969,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 36,
+      "outputTokens": 23852,
+      "cacheReadInputTokens": 454417,
+      "cacheCreationInputTokens": 57297,
+      "webSearchRequests": 0,
+      "costUSD": 0.4423077,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 7332,
+      "cacheCreationEphemeral5mInputTokens": 47276,
+      "cacheCreationEphemeral1hInputTokens": 10021,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrj11qn-128a5615"
+  },
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 2
+    },
+    "started_in_background": 2,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 4,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The quiz is ready: `quizzes/0002.json`, 6 items on O3. It covers:\n- what honing and sharpening each do\n- why a dull knife is riskier\n- how often to hone and sharpen\n- washing a knife\n- storing a knife\n- what to do when honing doesn't bring the edge back\n\nThere are 5 multiple-choice items and 1 short answer. It's ahead of the lessons, since there's no lesson on O3 yet. Words like \"steel\" and \"sheath\" aren't defined anywhere, so the first lesson on O3 should cover them. I left out a numeric item because this objective has no natural quantity to ask for.\n\nBoth review passes came back \"revise\". After the second pass I fixed the weak distractors and widened the accepted answers for the short item. I left the other findings, such as three items on honing versus sharpening and the longer correct options, and noted why in `review-records/0002-quiz.md`. The reviewer never reached \"done\".\n\nThe workspace named no misconception ids, so I made up M11 to M20 for the key. They could clash with ids in quiz 0001's key, which I'm not allowed to read.\n\nTry it and send me your answers. If you get stuck on one, tell me which and I'll give you a hint.",
+  "ttft_ms": 2691,
+  "type": "result",
+  "duration_ms": 25018,
+  "uuid": "6c3fa8c7-e70b-4fc2-8769-2fc5dac6331d",
+  "ttft_stream_ms": 639,
+  "time_to_request_ms": 22,
+  "first_content_frame_ms": 639,
+  "queued_turn_count": 0,
+  "result_index": 2,
+  "model_usage_since_last_result": {}
+}

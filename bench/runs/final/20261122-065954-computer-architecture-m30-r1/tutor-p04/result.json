@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 9176,
+  "stop_reason": "end_turn",
+  "session_id": "2031af3b-a88b-4c06-b076-3fa2a248f0b9",
+  "total_cost_usd": 0.0666059,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 13762,
+    "cache_read_input_tokens": 55079,
+    "output_tokens": 1181,
+    "output_tokens_details": {
+      "thinking_tokens": 126
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9914,
+      "ephemeral_5m_input_tokens": 3848
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 409,
+        "cache_read_input_tokens": 23893,
+        "cache_creation_input_tokens": 505,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 505,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1181,
+      "cacheReadInputTokens": 55079,
+      "cacheCreationInputTokens": 13762,
+      "webSearchRequests": 0,
+      "costUSD": 0.0666059,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 126,
+      "cacheCreationEphemeral5mInputTokens": 3848,
+      "cacheCreationEphemeral1hInputTokens": 9914,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite: a modern out-of-order CPU doesn't avoid every stall. It hides a lot of them, but some always remain.\n\nHere's a tiny example:\n\n```\n1: load r1, [mem]    ← cache miss, ~200 cycles\n2: add  r2, r1, r3   ← needs r1, so it waits\n3: mul  r4, r5, r6   ← needs nothing from 1 or 2\n```\n\nA simple pipeline stalls at 2 and holds 3 up behind it. An out-of-order core lets 3 run while 2 waits. Register renaming removes fake conflicts, where two instructions only reuse the same register name. Speculation guesses a branch and keeps going, so a branch doesn't stall the pipeline.\n\nWhat's left: instruction 2 truly needs the load's data, so it still waits. A wrong branch guess throws away the speculative work, and that costs roughly 15–20 cycles. This is why your branchy loop is slow when the branches are unpredictable.\n\nFor your mission, the key is to learn the basics first. You'll need the three hazard types (structural, data, control) and how to count stall cycles. Then out-of-order execution becomes \"the tricks for dodging those hazards.\" Want a lesson on hazards next?",
+  "ttft_ms": 1236,
+  "type": "result",
+  "duration_ms": 9329,
+  "uuid": "7d0947cf-d67b-43d0-b315-74d595fecc7f",
+  "ttft_stream_ms": 798,
+  "time_to_request_ms": 117,
+  "first_content_frame_ms": 798,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1181,
+      "cacheReadInputTokens": 55079,
+      "cacheCreationInputTokens": 13762,
+      "webSearchRequests": 0,
+      "costUSD": 0.0666059,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 126,
+      "cacheCreationEphemeral5mInputTokens": 3848,
+      "cacheCreationEphemeral1hInputTokens": 9914,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

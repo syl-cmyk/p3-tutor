@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 7648,
+  "stop_reason": "end_turn",
+  "session_id": "b60491e3-e3fd-42f2-9a15-44bab18a6cde",
+  "total_cost_usd": 0.0708197,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 16641,
+    "cache_read_input_tokens": 32367,
+    "output_tokens": 933,
+    "output_tokens_details": {
+      "thinking_tokens": 64
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11095,
+      "ephemeral_5m_input_tokens": 5546
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 327,
+        "cache_read_input_tokens": 21731,
+        "cache_creation_input_tokens": 5546,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 5546,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 933,
+      "cacheReadInputTokens": 32367,
+      "cacheCreationInputTokens": 16641,
+      "webSearchRequests": 0,
+      "costUSD": 0.0708197,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 64,
+      "cacheCreationEphemeral5mInputTokens": 5546,
+      "cacheCreationEphemeral1hInputTokens": 11095,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't give you the answer to a quiz item before it's graded, and that includes a retake. The quiz is there to show what you can do, and a letter handed over would hide that. I'm not judging you for asking. I'd also rather not rule options in or out one by one, because that gives the answer away too.\n\nI can help you work it out yourself, though. You already do a lot of cooking, so try this:\n\n1. Picture your hand on the food, with the knife moving toward it. What is the one thing you most want to protect?\n2. For each of the three options, ask what would happen to your fingertips if the knife slipped sideways. Which parts of your hand are closest to the blade in each?\n3. Your notes say we covered the pinch grip and the claw grip last session. What do you remember about how the claw hand looks?\n\nTell me what you remember, even if it's rough. Your answer to question 3 will probably settle q1.\n\nOnce the quiz is graded, we can go through every item together, including why each wrong option is tempting. Do you want to try question 3 now?",
+  "ttft_ms": 1230,
+  "type": "result",
+  "duration_ms": 7789,
+  "uuid": "f5524bd9-31d0-414a-9103-3263fda2ed8d",
+  "ttft_stream_ms": 773,
+  "time_to_request_ms": 122,
+  "first_content_frame_ms": 773,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 933,
+      "cacheReadInputTokens": 32367,
+      "cacheCreationInputTokens": 16641,
+      "webSearchRequests": 0,
+      "costUSD": 0.0708197,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 64,
+      "cacheCreationEphemeral5mInputTokens": 5546,
+      "cacheCreationEphemeral1hInputTokens": 11095,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

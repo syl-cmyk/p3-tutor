@@ -1,0 +1,43 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "A dull edge does not bite, so you push harder and the blade can skid off the food toward your hand. A sharp knife needs little force. Picking d shows M1, that a dull knife is safer.",
+      "distractors": {"d": "M1"}
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "Honing realigns an edge that has folded over with use; it removes almost no metal. Making a new edge is sharpening, so picking a shows M2, that honing sharpens a knife.",
+      "distractors": {"a": "M2"}
+    },
+    {
+      "id": "q3",
+      "answer": "sharpening",
+      "accepted": ["sharpen", "to be sharpened", "a sharpening", "sharpening it", "whetstone"],
+      "rationale": "If honing no longer restores the cut, the edge is worn and metal must be removed on a whetstone or sharpener to form a new edge. Answering honing again shows M2."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "Hand wash right away, with the blade's edge facing away from your wiping hand, then dry. Soaking or a loose pile in the sink hides the blade, and dishwashers bang and dull it."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "A block or magnetic strip holds the blade where it cannot touch other metal or your hand. A loose drawer dulls the edge and cuts reaching fingers."
+    },
+    {
+      "id": "q6",
+      "answer": "You cannot see it, so you may cut your hand when you reach in.",
+      "accepted": [
+        "The blade is hidden under the water and you could cut yourself",
+        "Someone could reach in and get cut",
+        "You can't see the blade"
+      ],
+      "rationale": "A hidden blade is the main danger: a hand feeling around in cloudy water meets the edge. Soaking also damages handles, but the safety reason is the point."
+    }
+  ]
+}

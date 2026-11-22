@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="p3-minutes" content="30">
+  <meta name="p3-objective" content="O2">
+  <title>Pipeline hazards: why a pipeline stalls and what each stall costs</title>
+  <style>
+    :root {
+      --bg: #fffdf8;
+      --text: #1f1d1a;
+      --muted: #6b665e;
+      --rule: #e4dfd4;
+      --accent: #9a4517;
+      --accent-soft: #f7ede4;
+      --warn: #8c2f39;
+      --warn-soft: #f9eaec;
+      --ok: #2f6b3a;
+      --ok-soft: #e7f2e9;
+      --code-bg: #f3efe6;
+      --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171614;
+        --text: #e9e5dc;
+        --muted: #a49e93;
+        --rule: #36332e;
+        --accent: #eaa77a;
+        --accent-soft: #2c231d;
+        --warn: #f0a3ac;
+        --warn-soft: #2f1f22;
+        --ok: #9fd3a8;
+        --ok-soft: #1c2a1f;
+        --code-bg: #23211e;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 19px; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.6; }
+    main { max-width: 40rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    p, li { hyphens: auto; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    h1, h2, h3 { line-height: 1.25; font-weight: 600; }
+    h1 { font-size: 2.1rem; margin: 0.25rem 0 1rem; }
+    h2 { font-size: 1.45rem; margin: 3rem 0 0.75rem; }
+    h3 { font-size: 1.1rem; margin: 2rem 0 0.5rem; }
+    .kicker, .label, .meta, .section-time, figcaption, summary, th, nav.toc, footer.closing {
+      font-family: var(--sans);
+    }
+    .kicker { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .lead { font-size: 1.15rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; color: var(--muted);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0.5rem 0; margin: 1.5rem 0; }
+    nav.toc { font-size: 0.9rem; margin: 1.5rem 0 2rem; }
+    nav.toc ol { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+    .section-time { font-size: 0.8rem; font-weight: 400; color: var(--muted); margin-left: 0.4rem; white-space: nowrap; }
+    dfn { font-style: normal; font-weight: 600; }
+    aside.note { font-size: 0.9rem; color: var(--muted); border-left: 2px solid var(--rule); padding-left: 1rem; margin: 1.25rem 0; }
+    .box { border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .box > :first-child { margin-top: 0; }
+    .box > :last-child { margin-bottom: 0; }
+    .label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .mission { background: var(--accent-soft); }
+    .mission .label { color: var(--accent); }
+    .misconception { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+    .misconception .label { color: var(--warn); }
+    .worked { border: 1px solid var(--rule); }
+    .worked ol { padding-left: 1.3rem; }
+    .summary { border: 1px solid var(--rule); }
+    figure { margin: 2rem 0; }
+    figure svg { display: block; width: 100%; height: auto; }
+    figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1.5rem 0; }
+    th, td { text-align: left; vertical-align: top; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--rule); }
+    th { font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    code, pre { font-family: var(--mono); font-size: 0.85em; background: var(--code-bg); border-radius: 4px; }
+    code { padding: 0.1em 0.3em; }
+    pre { padding: 1rem; overflow-x: auto; line-height: 1.45; }
+    pre code { padding: 0; background: none; font-size: 1em; }
+    .check { border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .check .label { color: var(--accent); }
+    .check p { margin: 0.25rem 0; }
+    .choices { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.5rem; }
+    .choices button { width: 100%; text-align: left; font: inherit; font-size: 0.95rem; color: inherit; background: transparent;
+                      border: 1px solid var(--rule); border-radius: 6px; padding: 0.55rem 0.8rem; cursor: pointer; }
+    .choices button:hover { border-color: var(--accent); }
+    .choices button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .choices button.right { border-color: var(--ok); background: var(--ok-soft); }
+    .choices button.wrong { border-color: var(--warn); background: var(--warn-soft); }
+    .feedback { font-size: 0.95rem; margin: 0.6rem 0 0; }
+    .feedback:empty { margin: 0; }
+    details { margin-top: 0.75rem; }
+    summary { font-size: 0.85rem; color: var(--accent); cursor: pointer; }
+    details > :not(summary) { margin: 0.5rem 0 0; }
+    .go-further li { margin-bottom: 0.6rem; }
+    footer.closing { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); }
+    @media (max-width: 32rem) {
+      html { font-size: 17px; }
+      h1 { font-size: 1.75rem; }
+      main { padding-top: 2rem; }
+    }
+    @media print {
+      :root { --bg: #fff; --text: #000; --muted: #444; --rule: #ccc; --accent: #000; --accent-soft: #f2f2f2;
+              --warn: #000; --warn-soft: #f2f2f2; --ok: #000; --ok-soft: #fff; --code-bg: #f2f2f2; }
+      html { font-size: 11.5pt; }
+      main { max-width: none; padding: 0; }
+      nav.toc { display: none; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+      .box, .check, figure, table, pre { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <div class="kicker">Lesson 1 &middot; 30 minutes</div>
+    <h1>Pipeline hazards: why a pipeline stalls and what each stall costs</h1>
+    <p>A <strong>hazard</strong> is anything that stops the next instruction from moving on in the next cycle. There are three kinds, and each one makes the pipeline wait for a different reason.</p>
+    <p class="lead">By the end of this lesson you can look at a short run of instructions in a 5-stage pipeline, say which kind of hazard (structural, data or control) holds each one up, and count the cycles lost.</p>
+    <div class="meta">
+      <span>Objective O2: explain why a pipeline stalls</span>
+      <span>About 30 minutes</span>
+    </div>
+    <div class="box mission">
+      <span class="label">Why this matters for you</span>
+      <p>You want to know why a loop with many branches runs slower. You also want to know if more pipeline stages are worth it. Both questions come down to counting stall cycles, and that's exactly the skill you build here.</p>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="In this lesson">
+    <strong>In this lesson</strong>
+    <ol>
+      <li><a href="#s1">Pipeline timing: one instruction is not faster, many finish sooner</a></li>
+      <li><a href="#s2">Stall and bubble: a cycle where the pipeline waits, and what it costs</a></li>
+      <li><a href="#s3">Structural hazard: two instructions need the same hardware in the same cycle</a></li>
+      <li><a href="#s4">Data hazard: an instruction needs a value an earlier one has not written yet</a></li>
+      <li><a href="#s5">Control hazard: the pipeline does not know which instruction comes next</a></li>
+      <li><a href="#s6">Hazard classification: name the cause and count the cost</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ PART 1 ============ -->
+  <section id="s1">
+    <h2>Pipeline timing: one instruction is not faster, many finish sooner <span class="section-time">6 min</span></h2>
+    <p>A pipeline doesn't make any one instruction quicker; it makes lots of them finish sooner. We start with the clock of a smooth pipeline, so you can see what a stall breaks.</p>
+
+    <div class="check">
+      <span class="label">Warm-up recall</span>
+      <p>1. Pipelining overlaps instructions. What does that raise?</p>
+      <details>
+        <summary>Check your answer</summary>
+        <p>Throughput: more instructions finish per second. Keep that word in mind, because today it gets a twist.</p>
+      </details>
+      <p>2. In a cache, how do you find out that an access is a miss?</p>
+      <details>
+        <summary>Check your answer</summary>
+        <p>The line at that index is empty, or the tag in the address differs from the tag stored there. The access then has to wait for slower memory, and waiting is today's whole theme.</p>
+      </details>
+    </div>
+
+    <p>Here are the rules of our toy machine. Every count in this lesson follows from them, so I'll say them once and reuse them.</p>
+    <ul>
+      <li><strong>Five stages:</strong> IF (fetch the instruction), ID (decode it and read registers), EX (execute), MEM (use data memory) and WB (write the result back to a register). Each stage takes one cycle, so a lone instruction takes 5 cycles. The <a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slides</a> use the same five stages.</li>
+      <li><strong>Registers:</strong> a write in WB happens in the first half of its cycle and a read in ID in the second half. So an instruction can read a register in the same cycle an earlier one writes it. That's our convention, and real designs do access registers in half cycles (<a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slides 11-12</a>).</li>
+      <li><strong>No shortcuts:</strong> a result can't be passed along early. That trick comes in a later lesson, so here a wait is plain waiting and easy to count.</li>
+      <li><strong>Memory:</strong> instructions and data have separate memories, until part 3 changes that.</li>
+      <li><strong>Branches:</strong> a branch is decided at the end of EX, and the machine stops fetching until then. That's our assumption; part 5 explains it.</li>
+    </ul>
+
+    <div class="box worked">
+      <span class="label">Worked example: 5 instructions on the clock</span>
+      <p>Say each stage needs 2 ns. An unpipelined machine does all five stages for one instruction, so 10 ns, then starts the next one. The pipelined machine adds 0.2 ns per stage to hand work from stage to stage, so its clock tick is 2.2 ns. Call the instructions I1 to I5.</p>
+      <ol>
+        <li>Cycle 1: I1 is in IF. Nothing else has started.</li>
+        <li>Cycle 2: I1 moves to ID, and I2 enters IF.</li>
+        <li>Cycle 5: I1 is in WB and is done. At the same time I2 is in MEM, I3 in EX, I4 in ID and I5 in IF. Every stage is busy.</li>
+        <li>Cycles 6 to 9: one more instruction finishes each cycle. I2 finishes in cycle 6, I3 in 7, I4 in 8 and I5 in 9.</li>
+        <li>Five instructions took 9 cycles: 9 &times; 2.2 ns = 19.8 ns. Unpipelined, they'd take 5 &times; 10 = 50 ns.</li>
+        <li>Now one instruction alone: 5 &times; 2.2 = 11 ns. That's slower than the 10 ns unpipelined.</li>
+        <li>Scale up to 1,000 instructions. The first finishes in cycle 5, and 999 more follow, one per cycle, so 4 + 1,000 = 1,004 cycles. That's 1,004 &times; 2.2 = 2,208.8 ns, against 10,000 ns unpipelined.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-1">
+      <svg viewBox="0 0 640 400" role="img" aria-labelledby="fig1-title">
+        <title id="fig1-title">Cycle chart of 5 instructions in a smooth 5-stage pipeline over 9 cycles. Instruction 1 finishes in cycle 5, and one more finishes in each of cycles 6, 7, 8 and 9.</title>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="98" y="36" width="54" height="34" rx="4"/><rect x="158" y="36" width="54" height="34" rx="4"/><rect x="218" y="36" width="54" height="34" rx="4"/><rect x="278" y="36" width="54" height="34" rx="4"/>
+          <rect x="158" y="78" width="54" height="34" rx="4"/><rect x="218" y="78" width="54" height="34" rx="4"/><rect x="278" y="78" width="54" height="34" rx="4"/><rect x="338" y="78" width="54" height="34" rx="4"/>
+          <rect x="218" y="120" width="54" height="34" rx="4"/><rect x="278" y="120" width="54" height="34" rx="4"/><rect x="338" y="120" width="54" height="34" rx="4"/><rect x="398" y="120" width="54" height="34" rx="4"/>
+          <rect x="278" y="162" width="54" height="34" rx="4"/><rect x="338" y="162" width="54" height="34" rx="4"/><rect x="398" y="162" width="54" height="34" rx="4"/><rect x="458" y="162" width="54" height="34" rx="4"/>
+          <rect x="338" y="204" width="54" height="34" rx="4"/><rect x="398" y="204" width="54" height="34" rx="4"/><rect x="458" y="204" width="54" height="34" rx="4"/><rect x="518" y="204" width="54" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3">
+          <rect x="338" y="36" width="54" height="34" rx="4"/><rect x="398" y="78" width="54" height="34" rx="4"/><rect x="458" y="120" width="54" height="34" rx="4"/><rect x="518" y="162" width="54" height="34" rx="4"/><rect x="578" y="204" width="54" height="34" rx="4"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M98,248 V256 H332 V248"/>
+          <path d="M578,248 V256 H632 V248"/>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="125" y="24">1</text><text x="185" y="24">2</text><text x="245" y="24">3</text><text x="305" y="24">4</text><text x="365" y="24">5</text><text x="425" y="24">6</text><text x="485" y="24">7</text><text x="545" y="24">8</text><text x="605" y="24">9</text>
+          <text x="125" y="60">IF</text><text x="185" y="60">ID</text><text x="245" y="60">EX</text><text x="305" y="60">MEM</text><text x="365" y="60">WB</text>
+          <text x="185" y="102">IF</text><text x="245" y="102">ID</text><text x="305" y="102">EX</text><text x="365" y="102">MEM</text><text x="425" y="102">WB</text>
+          <text x="245" y="144">IF</text><text x="305" y="144">ID</text><text x="365" y="144">EX</text><text x="425" y="144">MEM</text><text x="485" y="144">WB</text>
+          <text x="305" y="186">IF</text><text x="365" y="186">ID</text><text x="425" y="186">EX</text><text x="485" y="186">MEM</text><text x="545" y="186">WB</text>
+          <text x="365" y="228">IF</text><text x="425" y="228">ID</text><text x="485" y="228">EX</text><text x="545" y="228">MEM</text><text x="605" y="228">WB</text>
+          <text x="215" y="282">Pipeline filling: cycles 1 to 4</text>
+          <text x="215" y="304">the first result needs 5 cycles</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="end">
+          <text x="632" y="282">Last instruction</text>
+          <text x="632" y="304">finishes (cycle 9)</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="4" y="24">Cycle</text>
+          <text x="4" y="60">Instr 1</text><text x="4" y="102">Instr 2</text><text x="4" y="144">Instr 3</text><text x="4" y="186">Instr 4</text><text x="4" y="228">Instr 5</text>
+          <text x="44" y="338">Thick outline: WB, that instruction is done</text>
+          <text x="4" y="368">IF fetch, ID decode and read registers, EX execute,</text>
+          <text x="4" y="390">MEM use data memory, WB write the result back</text>
+        </g>
+        <rect x="4" y="322" width="30" height="22" rx="4" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3"/>
+      </svg>
+      <figcaption>Figure 1. Rows are instructions 1 to 5, columns are cycles 1 to 9, and each cell names the stage. Notice the staircase: from cycle 5 on, one instruction finishes every cycle, and cycles 1 to 4 are the pipeline filling.</figcaption></figure>
+
+    <p>The number to remember is the 4. The first instruction needs 5 cycles to come out, and every later one comes out one cycle after the one before. So N instructions take 4 + N cycles when nothing goes wrong.</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up</span>
+      <p>"Pipelining makes each instruction faster." It's tempting because programs do run faster. But one instruction takes 11 ns pipelined and only 10 ns unpipelined. The win is the crowd: 1,000 instructions in 2,208.8 ns instead of 10,000 ns.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>A smooth pipeline runs 3 instructions with no waiting. In which cycle does the third one finish?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="That's only the time for a single instruction, 5 cycles, so the other two are forgotten.">Cycle 5, as each stage takes one</button></li>
+        <li><button type="button" data-correct="true" data-why="The first finishes in cycle 5, and each later one finishes one cycle after the one before: 4 + 3 = 7.">Cycle 7, as 4 fill plus 3</button></li>
+        <li><button type="button" data-correct="false" data-why="That treats the instructions as if they ran one after another, 5 each. The whole point of the pipeline is that they overlap.">Cycle 15, as 5 for each</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Cycle 7. The first instruction finishes in cycle 5, the second in 6 and the third in 7, which is 4 + 3.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section id="s2">
+    <h2>Stall and bubble: a cycle where the pipeline waits, and what it costs <span class="section-time">5 min</span></h2>
+    <p>Sometimes an instruction can't move on when the clock ticks, so the pipeline waits. That wait is the thing we count, and every wait has a cause.</p>
+
+    <p>Let's make one wait happen. Take the same five instructions, I1 to I5. This time I3 isn't ready to leave ID when it should, so it has to wait one cycle there.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: one wait in a run of 5</span>
+      <ol>
+        <li>Cycles 1 to 3 are smooth: I1 is fetched in cycle 1, I2 in cycle 2, I3 in cycle 3.</li>
+        <li>Cycle 4: I3 is in ID, but it can't go on.</li>
+        <li>Cycle 5: I3 is still in ID. That repeated cycle is the <dfn>stall</dfn>, a cycle where an instruction can't move on and waits. I3 reaches EX in cycle 6.</li>
+        <li>Cycle 5, the EX stage: I2 has already left and I3 hasn't arrived, so EX has nothing to do. That empty slot is the <dfn>bubble</dfn>. It travels down the pipe behind the stall: MEM in cycle 6, WB in cycle 7.</li>
+        <li>I4 wants ID in cycle 5, but I3 is sitting there. So I4 stays in IF during cycle 5 and reaches ID in cycle 6.</li>
+        <li>I5 can't overtake I4, so it's fetched in cycle 6. It finishes in cycle 10.</li>
+        <li>Total: 10 cycles, instead of 9 for a smooth run.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-2">
+      <svg viewBox="0 0 640 456" role="img" aria-labelledby="fig2-title">
+        <title id="fig2-title">Cycle chart of 5 instructions over 10 cycles. Instruction 3 repeats its ID stage in cycle 5 (the stall), the EX stage is empty in cycle 5 (the bubble), and instructions 4 and 5 are each pushed one cycle later. Instruction 5 finishes in cycle 10.</title>
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="94" y="40" width="50" height="34" rx="4"/><rect x="148" y="40" width="50" height="34" rx="4"/><rect x="202" y="40" width="50" height="34" rx="4"/><rect x="256" y="40" width="50" height="34" rx="4"/>
+          <rect x="148" y="86" width="50" height="34" rx="4"/><rect x="202" y="86" width="50" height="34" rx="4"/><rect x="256" y="86" width="50" height="34" rx="4"/><rect x="310" y="86" width="50" height="34" rx="4"/>
+          <rect x="202" y="132" width="50" height="34" rx="4"/><rect x="256" y="132" width="50" height="34" rx="4"/><rect x="364" y="132" width="50" height="34" rx="4"/><rect x="418" y="132" width="50" height="34" rx="4"/>
+          <rect x="256" y="178" width="50" height="34" rx="4"/><rect x="364" y="178" width="50" height="34" rx="4"/><rect x="418" y="178" width="50" height="34" rx="4"/><rect x="472" y="178" width="50" height="34" rx="4"/>
+          <rect x="364" y="224" width="50" height="34" rx="4"/><rect x="418" y="224" width="50" height="34" rx="4"/><rect x="472" y="224" width="50" height="34" rx="4"/><rect x="526" y="224" width="50" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="310" y="40" width="50" height="34" rx="4"/><rect x="364" y="86" width="50" height="34" rx="4"/><rect x="472" y="132" width="50" height="34" rx="4"/><rect x="526" y="178" width="50" height="34" rx="4"/><rect x="580" y="224" width="50" height="34" rx="4"/>
+        </g>
+        <rect x="310" y="132" width="50" height="34" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:3"/>
+        <g style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3">
+          <rect x="310" y="178" width="50" height="34" rx="4"/>
+        </g>
+        <g style="fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:5 3">
+          <rect x="310" y="270" width="50" height="34" rx="4"/><rect x="364" y="270" width="50" height="34" rx="4"/><rect x="418" y="270" width="50" height="34" rx="4"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="335" y1="326" x2="335" y2="309" marker-end="url(#arrow2)"/>
+          <line x1="262" y1="238" x2="360" y2="238" marker-end="url(#arrow2)"/>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="119" y="26">1</text><text x="173" y="26">2</text><text x="227" y="26">3</text><text x="281" y="26">4</text><text x="335" y="26">5</text><text x="389" y="26">6</text><text x="443" y="26">7</text><text x="497" y="26">8</text><text x="551" y="26">9</text><text x="605" y="26">10</text>
+          <text x="119" y="64">IF</text><text x="173" y="64">ID</text><text x="227" y="64">EX</text><text x="281" y="64">MEM</text><text x="335" y="64">WB</text>
+          <text x="173" y="110">IF</text><text x="227" y="110">ID</text><text x="281" y="110">EX</text><text x="335" y="110">MEM</text><text x="389" y="110">WB</text>
+          <text x="227" y="156">IF</text><text x="281" y="156">ID</text><text x="335" y="156">ID</text><text x="389" y="156">EX</text><text x="443" y="156">MEM</text><text x="497" y="156">WB</text>
+          <text x="281" y="202">IF</text><text x="335" y="202">IF</text><text x="389" y="202">ID</text><text x="443" y="202">EX</text><text x="497" y="202">MEM</text><text x="551" y="202">WB</text>
+          <text x="389" y="248">IF</text><text x="443" y="248">ID</text><text x="497" y="248">EX</text><text x="551" y="248">MEM</text><text x="605" y="248">WB</text>
+          <g style="fill:var(--muted)"><text x="335" y="294">EX</text><text x="389" y="294">MEM</text><text x="443" y="294">WB</text></g>
+          <text x="335" y="352">Bubble: this stage does nothing in cycle 5</text>
+          <text x="335" y="374">(I2 has left EX, I3 has not arrived yet)</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="4" y="26">Cycle</text>
+          <text x="4" y="64">Instr 1</text><text x="4" y="110">Instr 2</text><text x="4" y="156">Instr 3</text><text x="4" y="202">Instr 4</text><text x="4" y="248">Instr 5</text><text x="4" y="294">Bubble</text>
+          <text x="96" y="236">Everything behind</text>
+          <text x="96" y="258">waits too: they can't</text>
+          <text x="96" y="280">overtake</text>
+          <text x="44" y="412">Stall: I3 repeats ID in cycle 5, it was not ready</text>
+          <text x="44" y="440">Dashed: waiting behind the stall (I4 stays in IF in cycle 5)</text>
+        </g>
+        <rect x="4" y="396" width="30" height="22" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:3"/>
+        <rect x="4" y="424" width="30" height="22" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3"/>
+      </svg>
+      <figcaption>Figure 2. The same chart as figure 1, but I3's ID cell is repeated in cycle 5 (the stall), with one empty cell in EX at cycle 5 (the bubble). Notice that one stall shifts I4 and I5 right by one cycle, so everything behind it waits too.</figcaption></figure>
+
+    <p>A stall puts a bubble into the pipeline, which is just the stage doing nothing for a cycle. The result is still correct, only later. The hardware does this by inserting bubbles (no-operations) so the dependent instruction waits ([<a href="https://en.wikipedia.org/wiki/Hazard_(computer_architecture)">Wikipedia</a>]).</p>
+
+    <p>A <dfn>hazard</dfn> is the cause of a stall: whatever stops the next instruction moving on. Now the formula, with this run as the example:</p>
+    <ol>
+      <li>Total cycles = 4 + N + stalls.</li>
+      <li>The 4 is the fill time from part 1. N is the number of instructions: 5. Stalls is the number of waiting cycles: 1.</li>
+      <li>4 + 5 + 1 = 10 cycles, which matches the chart.</li>
+      <li><dfn>CPI</dfn> (cycles per instruction) is total cycles divided by N: 10 / 5 = 2.0. This is a tiny run, so the fill time inflates it. A smooth run of 5 would show 9 / 5 = 1.8.</li>
+    </ol>
+
+    <p>Now a bigger case, where the fill hardly matters. A program runs 100 instructions and loses 20 cycles to stalls. That's 4 + 100 + 20 = 124 cycles, so CPI = 124 / 100 = 1.24.</p>
+    <p>With no stalls it would take 104 cycles. The 20 extra cycles are 20 / 104, about 19% more time. Over many instructions, stalls are what stops the CPI from sitting near 1.</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up</span>
+      <p>"A stall means the program got stuck or came out wrong." In the example the answer is exactly the same, it just arrives in cycle 10 instead of cycle 9. A stall costs time, never correctness.</p>
+    </div>
+
+    <p>One more thing before the check. You may be tempted to think every stall is a data problem, because data is what instructions pass around. It isn't. There are exactly three causes, and the next three parts show one each. Next up is a stall where no two instructions share a register: 9 cycles instead of 8.</p>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>A program of 50 instructions has 8 stall cycles. How many cycles does it take in total?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="That's 50 + 8 and it leaves out the 4 cycles of fill, which every run pays once.">58 cycles, as 50 plus 8</button></li>
+        <li><button type="button" data-correct="false" data-why="That counts the fill twice. The 4 is paid once per run, not once per stall.">66 cycles, fill counted twice</button></li>
+        <li><button type="button" data-correct="true" data-why="Total = 4 + N + stalls = 4 + 50 + 8 = 62.">62 cycles, as 4 + 50 + 8</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>62 cycles: 4 for the fill, 50 for the instructions and 8 for the stalls.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section id="s3">
+    <h2>Structural hazard: two instructions need the same hardware in the same cycle <span class="section-time">5 min</span></h2>
+    <p>The simplest cause of a stall is two instructions wanting one piece of hardware at the same moment. Nothing about the values matters here, only the hardware.</p>
+
+    <p>For this part only, give the machine one memory that holds both instructions and data, (<a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slides 9-10</a> show this case). Here <code>lw</code> loads a value from memory, and <code>add</code>, <code>sub</code> and <code>or</code> compute on registers. Only a load or a store touches data memory in MEM; the other instructions pass through MEM and do nothing. Here are four instructions:</p>
+    <pre><code>lw  r1, 0(r2)
+add r3, r4, r5
+sub r6, r7, r8
+or  r9, r10, r11</code></pre>
+
+    <div class="box worked">
+      <span class="label">Worked example: one memory, one access per cycle</span>
+      <ol>
+        <li>Cycle 1: <code>lw</code> is fetched from memory. Cycle 2: <code>add</code> is fetched. Cycle 3: <code>sub</code> is fetched.</li>
+        <li><code>lw</code> goes on: ID in cycle 2, EX in cycle 3, then MEM in cycle 4, where it reads its data from memory.</li>
+        <li>Cycle 4: <code>or</code> wants to be fetched, and that needs the same memory. The memory can serve one access per cycle, and the load is already in the pipe, so the load wins.</li>
+        <li><code>or</code> waits and is fetched in cycle 5. That's 1 stall.</li>
+        <li><code>or</code> then runs ID in 6, EX in 7, MEM in 8 and WB in 9.</li>
+        <li>Total: 4 + 4 + 1 = 9 cycles, instead of 8.</li>
+        <li>Look at the registers: r1, r3, r6 and r9 are all different. The instructions share no values at all, so this stall is not about data.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-3">
+      <svg viewBox="0 0 640 396" role="img" aria-labelledby="fig3-title">
+        <title id="fig3-title">Cycle chart of lw, add, sub and or over 9 cycles with one shared memory. In cycle 4, lw is in MEM and or wants to be fetched, and both need the one memory, so or is fetched in cycle 5 and finishes in cycle 9 instead of 8.</title>
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="98" y="62" width="54" height="34" rx="4"/><rect x="158" y="62" width="54" height="34" rx="4"/><rect x="218" y="62" width="54" height="34" rx="4"/>
+          <rect x="158" y="108" width="54" height="34" rx="4"/><rect x="218" y="108" width="54" height="34" rx="4"/><rect x="278" y="108" width="54" height="34" rx="4"/><rect x="338" y="108" width="54" height="34" rx="4"/>
+          <rect x="218" y="154" width="54" height="34" rx="4"/><rect x="278" y="154" width="54" height="34" rx="4"/><rect x="338" y="154" width="54" height="34" rx="4"/><rect x="398" y="154" width="54" height="34" rx="4"/>
+          <rect x="338" y="200" width="54" height="34" rx="4"/><rect x="398" y="200" width="54" height="34" rx="4"/><rect x="458" y="200" width="54" height="34" rx="4"/><rect x="518" y="200" width="54" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="338" y="62" width="54" height="34" rx="4"/><rect x="398" y="108" width="54" height="34" rx="4"/><rect x="458" y="154" width="54" height="34" rx="4"/><rect x="578" y="200" width="54" height="34" rx="4"/>
+        </g>
+        <rect x="278" y="62" width="54" height="34" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:3"/>
+        <rect x="278" y="200" width="54" height="34" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3"/>
+        <rect x="274" y="58" width="62" height="180" rx="6" style="fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:6 4"/>
+        <path d="M305,242 Q335,276 365,244" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arrow3)"/>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="320" y="20">Cycle 4: lw (MEM) and or (fetch) both want the one memory</text>
+          <text x="125" y="52">1</text><text x="185" y="52">2</text><text x="245" y="52">3</text><text x="305" y="52">4</text><text x="365" y="52">5</text><text x="425" y="52">6</text><text x="485" y="52">7</text><text x="545" y="52">8</text><text x="605" y="52">9</text>
+          <text x="125" y="86">IF</text><text x="185" y="86">ID</text><text x="245" y="86">EX</text><text x="305" y="86">MEM</text><text x="365" y="86">WB</text>
+          <text x="185" y="132">IF</text><text x="245" y="132">ID</text><text x="305" y="132">EX</text><text x="365" y="132">MEM</text><text x="425" y="132">WB</text>
+          <text x="245" y="178">IF</text><text x="305" y="178">ID</text><text x="365" y="178">EX</text><text x="425" y="178">MEM</text><text x="485" y="178">WB</text>
+          <text x="305" y="224">IF</text><text x="365" y="224">IF</text><text x="425" y="224">ID</text><text x="485" y="224">EX</text><text x="545" y="224">MEM</text><text x="605" y="224">WB</text>
+          <text x="335" y="298">Memory is busy, so fetch waits 1 cycle</text>
+          <text x="335" y="320">(or is fetched in cycle 5, not 4)</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="4" y="52">Cycle</text>
+          <text x="4" y="86">lw</text><text x="4" y="132">add</text><text x="4" y="178">sub</text><text x="4" y="224">or</text>
+          <text x="44" y="356">Dashed: or tries to fetch in cycle 4 but must wait</text>
+          <text x="4" y="386">Registers r1, r3, r6, r9 are all different: no data is shared.</text>
+        </g>
+        <rect x="4" y="340" width="30" height="22" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3"/>
+      </svg>
+      <figcaption>Figure 3. The four instructions over cycles 1 to 9. In cycle 4, <code>lw</code>'s MEM and <code>or</code>'s fetch both want the one memory, so <code>or</code> is fetched in cycle 5. Notice that no register is shared by these instructions.</figcaption></figure>
+
+    <p>That's a <dfn>structural hazard</dfn>: multiple instructions contend for the same resource ([<a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slide 6</a>]). The hardware is the problem, not the values it carries.</p>
+
+    <p>How bad can it get? Say 25% of a program's instructions are loads or stores. Each one blocks a fetch for a cycle, so CPI is about 1.25 (our own numbers).</p>
+
+    <p>The fix is more hardware: separate memories for instructions and data. With them, the same four instructions take 4 + 4 = 8 cycles and nobody waits.</p>
+
+    <p>A second case of the same idea: a register file with a single port would clash when one instruction writes in WB while another reads in ID. Our half-cycle rule (write first, read second) avoids that clash.</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up</span>
+      <p>"Every stall is a data hazard." It's tempting because instructions are all about data. But in the example r1, r3, r6 and r9 are four different registers and the pipeline still stalls: 9 cycles instead of 8.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>With one shared memory, a machine runs <code>sw r1,0(r2)</code>, <code>add r3,r4,r5</code>, <code>sub r6,r7,r8</code> and <code>xor r9,r10,r11</code>. What happens to <code>xor</code>?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="true" data-why="The store uses the memory in cycle 4, the same cycle xor wants to be fetched. xor waits 1 cycle, like or did.">It waits 1 cycle, since the store uses memory</button></li>
+        <li><button type="button" data-correct="false" data-why="The registers are all different, but that doesn't matter: this hazard is about hardware, not values. The memory clash is still there.">It never waits, since the registers all differ</button></li>
+        <li><button type="button" data-correct="false" data-why="The clash is only in cycle 4, one cycle long. Once xor is fetched in cycle 5, nothing else blocks it.">It waits 2 cycles, since the store takes two</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>It waits 1 cycle. The store's MEM is in cycle 4, the same cycle xor's fetch would use the one memory, so xor is fetched in cycle 5.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PART 4 ============ -->
+  <section id="s4">
+    <h2>Data hazard: an instruction needs a value an earlier one has not written yet <span class="section-time">7 min</span></h2>
+    <p>The next cause is about values: an instruction has to wait for a result that an earlier instruction hasn't stored yet. The hardware is free, but the answer isn't ready.</p>
+
+    <p>We're back to separate memories. Here are three instructions, where the second and third both use r1:</p>
+    <pre><code>add r1, r2, r3
+sub r4, r1, r5
+or  r6, r1, r7</code></pre>
+
+    <div class="box worked">
+      <span class="label">Worked example: waiting for r1</span>
+      <ol>
+        <li><code>add</code>: IF in cycle 1, ID in 2, EX in 3, MEM in 4, WB in 5. It writes r1 in cycle 5.</li>
+        <li><code>sub</code>: IF in cycle 2. It wants to read r1 in ID in cycle 3, but r1 won't be written until cycle 5.</li>
+        <li><code>sub</code> sits in ID in cycles 3 and 4 (two stalls) and reads r1 in cycle 5. That works because the write is in the first half of cycle 5 and the read in the second half.</li>
+        <li><code>sub</code> then runs EX in 6, MEM in 7 and WB in 8.</li>
+        <li><code>or</code>: it's fetched in cycle 3, but <code>sub</code> is stuck in ID, so <code>or</code> stays in IF during cycles 3, 4 and 5. It enters ID in 6, then EX in 7, MEM in 8 and WB in 9.</li>
+        <li>Total: 4 + 3 + 2 = 9 cycles. Smooth, it would have been 7.</li>
+        <li>Notice that <code>or</code> never waited for r1, which was long written by cycle 6. It only waited for <code>sub</code> to get out of the way.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-4">
+      <svg viewBox="0 0 640 346" role="img" aria-labelledby="fig4-title">
+        <title id="fig4-title">Cycle chart of add, sub and or over 9 cycles. add writes r1 in its WB stage in cycle 5. sub waits in ID in cycles 3 and 4 and reads r1 in cycle 5. or waits in IF behind sub and finishes in cycle 9.</title>
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="98" y="56" width="54" height="34" rx="4"/><rect x="158" y="56" width="54" height="34" rx="4"/><rect x="218" y="56" width="54" height="34" rx="4"/><rect x="278" y="56" width="54" height="34" rx="4"/>
+          <rect x="158" y="120" width="54" height="34" rx="4"/><rect x="398" y="120" width="54" height="34" rx="4"/><rect x="458" y="120" width="54" height="34" rx="4"/><rect x="518" y="120" width="54" height="34" rx="4"/>
+          <rect x="218" y="198" width="54" height="34" rx="4"/><rect x="398" y="198" width="54" height="34" rx="4"/><rect x="458" y="198" width="54" height="34" rx="4"/><rect x="518" y="198" width="54" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3">
+          <rect x="338" y="56" width="54" height="34" rx="4"/><rect x="338" y="120" width="54" height="34" rx="4"/>
+        </g>
+        <rect x="578" y="198" width="54" height="34" rx="4" style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5"/>
+        <g style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2.5">
+          <rect x="218" y="120" width="54" height="34" rx="4"/><rect x="278" y="120" width="54" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3">
+          <rect x="278" y="198" width="54" height="34" rx="4"/><rect x="338" y="198" width="54" height="34" rx="4"/>
+        </g>
+        <line x1="365" y1="92" x2="365" y2="118" stroke="currentColor" stroke-width="2" marker-end="url(#arrow4)"/>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="125" y="24">1</text><text x="185" y="24">2</text><text x="245" y="24">3</text><text x="305" y="24">4</text><text x="365" y="24">5</text><text x="425" y="24">6</text><text x="485" y="24">7</text><text x="545" y="24">8</text><text x="605" y="24">9</text>
+          <text x="125" y="80">IF</text><text x="185" y="80">ID</text><text x="245" y="80">EX</text><text x="305" y="80">MEM</text><text x="365" y="80">WB</text>
+          <text x="185" y="144">IF</text><text x="245" y="144">ID</text><text x="305" y="144">ID</text><text x="365" y="144">ID</text><text x="425" y="144">EX</text><text x="485" y="144">MEM</text><text x="545" y="144">WB</text>
+          <text x="245" y="222">IF</text><text x="305" y="222">IF</text><text x="365" y="222">IF</text><text x="425" y="222">ID</text><text x="485" y="222">EX</text><text x="545" y="222">MEM</text><text x="605" y="222">WB</text>
+          <text x="275" y="176">waiting</text>
+          <text x="365" y="176">reads r1</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="4" y="24">Cycle</text>
+          <text x="4" y="80">add</text><text x="4" y="144">sub</text><text x="4" y="222">or</text>
+          <text x="398" y="80">r1 written here</text>
+          <text x="376" y="112">r1 is ready only now</text>
+          <text x="44" y="276">Red: sub waits in ID for 2 cycles (2 stalls)</text>
+          <text x="44" y="304">Dashed: or waits in IF behind sub, not for r1</text>
+          <text x="44" y="332">Thick outline: r1 written (add's WB), r1 read (sub's ID)</text>
+        </g>
+        <rect x="4" y="260" width="30" height="22" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:3"/>
+        <rect x="4" y="288" width="30" height="22" rx="4" style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3"/>
+        <rect x="4" y="316" width="30" height="22" rx="4" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3"/>
+      </svg>
+      <figcaption>Figure 4. <code>add</code>, <code>sub</code> and <code>or</code> over 9 cycles. <code>add</code> writes r1 in cycle 5, and <code>sub</code> waits in ID during cycles 3 and 4 and reads r1 in cycle 5. Notice that the arrow runs from where the value is written to where it is needed.</figcaption></figure>
+
+    <p>That's a <dfn>data hazard</dfn>: a dependent instruction cannot proceed because it needs a value that hasn't been produced yet ([<a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slide 6</a>]). The specific shape here has a name, read after write: <code>sub</code> must read after <code>add</code> writes ([<a href="https://en.wikipedia.org/wiki/Hazard_(computer_architecture)">Wikipedia</a>]).</p>
+
+    <p>The cost depends on how far apart the two instructions sit, and the gap here means how many instructions are between them:</p>
+
+    <table>
+      <thead><tr><th>Gap between writer and reader</th><th>Stalls</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>0 (next to each other)</td><td>2</td><td>The reader wants r1 in cycle 3 and gets it in cycle 5.</td></tr>
+        <tr><td>1 instruction between</td><td>1</td><td>The reader reaches ID in cycle 4 and needs cycle 5.</td></tr>
+        <tr><td>2 or more between</td><td>0</td><td>The reader reaches ID in cycle 5 or later, and r1 is ready.</td></tr>
+      </tbody>
+    </table>
+    <p>These counts are our own, from the half-cycle rule above. A later lesson on bypassing shrinks them, but we're not touching that here.</p>
+
+    <p>What if the value comes from a load instead of an add? In this machine, both write their result in WB in cycle 5, so a load costs the same stalls: 2 for a reader right behind it. Our counts match for both because there are no shortcuts yet.</p>
+
+    <div class="box misconception">
+      <span class="label">Two common mix-ups</span>
+      <p>"Instructions only conflict when they're next to each other." The table shows a gap of 1 still costs a cycle, and only a gap of 2 or more is free.</p>
+      <p>"Any two instructions that use the same register stall." Look at <code>sub r4,r1,r5</code> followed by <code>or r6,r1,r7</code>: both only read r1, so <code>or</code> loses 0 cycles to r1 (it reads r1 in cycle 6, long after the write in cycle 5). The problem is write, then read.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>The code is <code>lw r1,0(r2)</code>, then <code>add r5,r6,r7</code>, then <code>sub r4,r1,r3</code>. How many stalls come from r1?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="That would need a gap of 2 or more. Here only one instruction sits between the load and the reader.">0 stalls, as r1 is written in time</button></li>
+        <li><button type="button" data-correct="true" data-why="One instruction sits between them, so the gap is 1 and the table says 1 stall: sub reaches ID in cycle 4 and needs cycle 5.">1 stall, as one instruction sits between</button></li>
+        <li><button type="button" data-correct="false" data-why="2 stalls is for a reader right behind the writer. The add in between already used up one cycle of the wait.">2 stalls, as sub follows the load</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>1 stall. The load writes r1 in cycle 5. The sub is fetched in cycle 3 and would reach ID in cycle 4, so it waits one cycle and reads in cycle 5.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PART 5 ============ -->
+  <section id="s5">
+    <h2>Control hazard: the pipeline does not know which instruction comes next <span class="section-time">6 min</span></h2>
+    <p>The last cause is about not knowing where to fetch from. After a branch, the machine can't tell which instruction follows until the branch is worked out.</p>
+
+    <p>A <code>beq r1,r2,L</code> jumps to the instruction at label L if r1 and r2 are equal, and carries on to the next instruction if not. Jumping is called <dfn>taken</dfn>; carrying on is called <dfn>not taken</dfn>, or falling through. Which of those two instructions to fetch is only known when the comparison is done. So the branch target is only known at the end of the branch's execution.</p>
+
+    <p>So here's our rule: after a branch, stop fetching until it's decided. Let's trace <code>beq</code> and the instruction it leads to. We assume r1 and r2 are ready, and the design is the one I stated up top.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: fetch waits for the branch</span>
+      <ol>
+        <li>Cycle 1: <code>beq</code> is fetched.</li>
+        <li>Cycle 2: <code>beq</code> is in ID, reading r1 and r2. The machine doesn't know what to fetch, so it fetches nothing useful.</li>
+        <li>Cycle 3: <code>beq</code> is in EX and compares the registers. Again nothing useful is fetched.</li>
+        <li>End of cycle 3: the outcome is known.</li>
+        <li>Cycle 4: the next instruction is fetched, the one at L (or the one after the branch, if it wasn't taken).</li>
+        <li>Cycles 2 and 3 were wasted: 2 stalls.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-5">
+      <svg viewBox="0 0 640 312" role="img" aria-labelledby="fig5-title">
+        <title id="fig5-title">Cycle chart of a beq and the instruction fetched after it, over 8 cycles. beq is fetched in cycle 1 and decided at the end of EX in cycle 3. The fetch slots in cycles 2 and 3 are empty, 2 stalls, and the next instruction is fetched in cycle 4.</title>
+        <defs>
+          <marker id="arrow5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g style="fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.5">
+          <rect x="115" y="40" width="58" height="34" rx="4"/><rect x="179" y="40" width="58" height="34" rx="4"/><rect x="307" y="40" width="58" height="34" rx="4"/><rect x="371" y="40" width="58" height="34" rx="4"/>
+          <rect x="307" y="124" width="58" height="34" rx="4"/><rect x="371" y="124" width="58" height="34" rx="4"/><rect x="435" y="124" width="58" height="34" rx="4"/><rect x="499" y="124" width="58" height="34" rx="4"/><rect x="563" y="124" width="58" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3">
+          <rect x="243" y="40" width="58" height="34" rx="4"/>
+        </g>
+        <g style="fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:5 3">
+          <rect x="179" y="124" width="58" height="34" rx="4"/><rect x="243" y="124" width="58" height="34" rx="4"/>
+        </g>
+        <line x1="272" y1="78" x2="332" y2="121" stroke="currentColor" stroke-width="2" marker-end="url(#arrow5)"/>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M181,168 V176 H299 V168"/>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="144" y="26">1</text><text x="208" y="26">2</text><text x="272" y="26">3</text><text x="336" y="26">4</text><text x="400" y="26">5</text><text x="464" y="26">6</text><text x="528" y="26">7</text><text x="592" y="26">8</text>
+          <text x="144" y="64">IF</text><text x="208" y="64">ID</text><text x="272" y="64">EX</text><text x="336" y="64">MEM</text><text x="400" y="64">WB</text>
+          <text x="336" y="148">IF</text><text x="400" y="148">ID</text><text x="464" y="148">EX</text><text x="528" y="148">MEM</text><text x="592" y="148">WB</text>
+          <g style="fill:var(--warn)"><text x="208" y="148">idle</text><text x="272" y="148">idle</text></g>
+          <text x="240" y="204">Fetch waits: next instruction unknown</text>
+          <text x="240" y="226">2 idle fetch cycles = 2 stalls</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="4" y="26">Cycle</text>
+          <text x="4" y="64">beq</text><text x="4" y="148">Next instr.</text>
+          <text x="352" y="96">End of cycle 3: outcome known,</text>
+          <text x="352" y="118">so fetch can restart</text>
+          <text x="4" y="266">Cost: stages up to and including EX (3), minus 1 = 2</text>
+          <text x="44" y="298">Thick outline: EX, where the branch is decided</text>
+        </g>
+        <rect x="4" y="282" width="30" height="22" rx="4" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:3"/>
+      </svg>
+      <figcaption>Figure 5. <code>beq</code> goes through its stages, with two shaded empty fetch cells in cycles 2 and 3, and the target's IF in cycle 4. Notice the cost: the stages up to and including EX (3), minus 1.</figcaption></figure>
+
+    <p>That's a <dfn>control hazard</dfn>: the next instruction cannot be fetched because the outcome of an earlier branch is unknown ([<a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah slide 6</a>]). The cost is the number of stages up to and including the one that decides the branch, minus the one the branch already used for fetching. Here that's 3 &minus; 1 = 2.</p>
+
+    <p>The same formula works for other designs. By it, deciding in ID would cost 2 &minus; 1 = 1, and deciding in MEM would cost 4 &minus; 1 = 3 (our own reasoning).</p>
+
+    <p>Now your mission question: why does a loop with many branches run slower? Take a loop with 5 instructions per iteration, the last one a branch, run 10 times.</p>
+    <ol>
+      <li>Each iteration takes 5 cycles of instructions + 2 stalls = 7 cycles.</li>
+      <li>Ten iterations: 4 + 50 + 20 = 74 cycles.</li>
+      <li>With no stalls it'd be 4 + 50 = 54. The branches cost about 37% more.</li>
+      <li>If 20% of all instructions are branches, CPI = 1 + 0.2 &times; 2 = 1.4.</li>
+    </ol>
+
+    <p>And the pipeline depth question. Imagine a 7-stage pipeline that decides the branch at the end of stage 5: the penalty is 5 &minus; 1 = 4 cycles, double ours. That's our own reasoning, but it points one way: the more stages before the decision, the more stalls per branch. With 20% branches, CPI would be 1 + 0.2 &times; 4 = 1.8 instead of 1.4, so extra stages only pay off if the clock gets faster by more than that slowdown.</p>
+
+    <div class="box misconception">
+      <span class="label">Two common mix-ups</span>
+      <p>"The stall only happens if the branch is taken." Here fetch waits for taken and not taken alike, 2 cycles either way, because the machine can't know which one it is until cycle 3 ends.</p>
+      <p>"A branch is a data hazard because it reads registers." Here r1 and r2 were already ready, and the cost came from not knowing the next address, not from a missing value.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>In our design a branch is decided at the end of EX and falls through, not taken. How many cycles does fetch lose?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not taken doesn't mean free. The machine stopped fetching before it knew the outcome, so the cycles are lost anyway.">0 cycles, as nothing was jumped to</button></li>
+        <li><button type="button" data-correct="false" data-why="That would match a design that decides in ID. In ours the decision comes at the end of EX, which is one stage later.">1 cycle, as only ID was waited out</button></li>
+        <li><button type="button" data-correct="true" data-why="Fetch can't restart until cycle 4, so cycles 2 and 3 are lost, taken or not.">2 cycles, whether taken or not</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>2 cycles. Fetch stops after the branch and restarts only once EX has finished, so taken and not taken cost the same.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PART 6 ============ -->
+  <section id="s6">
+    <h2>Hazard classification: name the cause and count the cost <span class="section-time">6 min</span></h2>
+    <p>Now put the three causes together: for any run of instructions, ask what is being waited for, and add up the waits.</p>
+
+    <div class="box summary">
+      <span class="label">The three-question test</span>
+      <ol>
+        <li>Is some hardware being used twice in one cycle? That's structural.</li>
+        <li>Is a value not written yet? That's data.</li>
+        <li>Is the next instruction not known? That's control.</li>
+      </ol>
+    </div>
+
+    <figure id="fig-6">
+      <svg viewBox="0 0 640 292" role="img" aria-labelledby="fig6-title">
+        <title id="fig6-title">The three questions in order. Is some hardware used twice in one cycle: structural hazard. Is a value not written yet: data hazard. Is the next instruction not known: control hazard.</title>
+        <defs>
+          <marker id="arrow6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="4" y="4" width="296" height="84" rx="8"/><rect x="4" y="104" width="296" height="84" rx="8"/><rect x="4" y="204" width="296" height="84" rx="8"/>
+        </g>
+        <g fill="none" style="stroke:var(--accent)" stroke-width="2.5">
+          <rect x="364" y="4" width="272" height="84" rx="8"/><rect x="364" y="104" width="272" height="84" rx="8"/><rect x="364" y="204" width="272" height="84" rx="8"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="304" y1="46" x2="360" y2="46" marker-end="url(#arrow6)"/>
+          <line x1="304" y1="146" x2="360" y2="146" marker-end="url(#arrow6)"/>
+          <line x1="304" y1="246" x2="360" y2="246" marker-end="url(#arrow6)"/>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="332" y="38">yes</text><text x="332" y="138">yes</text><text x="332" y="238">yes</text>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="start">
+          <text x="16" y="38">1. Is some hardware used</text>
+          <text x="16" y="62">twice in one cycle?</text>
+          <text x="16" y="152">2. Is a value not written yet?</text>
+          <text x="16" y="238">3. Is the next instruction</text>
+          <text x="16" y="262">not known?</text>
+          <text x="376" y="30" font-weight="700" style="fill:var(--accent)">Structural hazard</text>
+          <text x="376" y="52">e.g. lw and or both need</text>
+          <text x="376" y="74">the one memory: 1 stall</text>
+          <text x="376" y="130" font-weight="700" style="fill:var(--accent)">Data hazard</text>
+          <text x="376" y="152">e.g. sub waits for r1</text>
+          <text x="376" y="174">from add: 2 stalls</text>
+          <text x="376" y="230" font-weight="700" style="fill:var(--accent)">Control hazard</text>
+          <text x="376" y="252">e.g. after beq, fetch</text>
+          <text x="376" y="274">waits: 2 stalls</text>
+        </g>
+      </svg>
+      <figcaption>Figure 6. The three questions in order, each with its answer: same hardware means structural, value not written means data, next instruction unknown means control.</figcaption></figure>
+
+    <div class="box worked">
+      <span class="label">Worked example: all three kinds in one run</span>
+      <p>Separate memories, so no structural hazards. Here are four instructions, with <code>sub</code> being the one at L:</p>
+      <pre><code>lw  r1, 0(r2)
+add r3, r1, r4
+beq r3, r0, L
+sub r7, r8, r9</code></pre>
+      <ol>
+        <li><code>lw</code>: IF in 1, ID in 2, EX in 3, MEM in 4, WB in 5. It writes r1 in cycle 5.</li>
+        <li><code>add</code>: IF in 2. It needs r1, so it sits in ID in 3 and 4 and reads in 5: data, 2 stalls. Then EX in 6, MEM in 7, WB in 8.</li>
+        <li><code>beq</code>: IF in 3, and it stays in IF through cycle 5 because <code>add</code> holds ID. It enters ID in 6.</li>
+        <li><code>beq</code> needs r3, which <code>add</code> writes in cycle 8. So it sits in ID in 6 and 7 and reads in 8: data, 2 stalls. EX is in cycle 9 and the branch is decided at its end.</li>
+        <li><code>sub</code>: fetch waited, so it's fetched in cycle 10: control, 2 stalls. Then ID in 11, EX in 12, MEM in 13, WB in 14.</li>
+        <li>Total: 14 cycles = 4 + 4 + 6.</li>
+      </ol>
+      <table>
+        <thead><tr><th>Instruction</th><th>Cause</th><th>Stalls</th></tr></thead>
+        <tbody>
+          <tr><td><code>add</code></td><td>data (waits for r1)</td><td>2</td></tr>
+          <tr><td><code>beq</code></td><td>data (waits for r3)</td><td>2</td></tr>
+          <tr><td><code>sub</code></td><td>control (next unknown)</td><td>2</td></tr>
+          <tr><td>none</td><td>structural</td><td>0</td></tr>
+        </tbody>
+      </table>
+      <p>One subtlety: <code>sub</code> sat idle in fetch for 4 cycles (6 to 9) while <code>beq</code> waited and then ran. The first 2 of those are already paid for by <code>beq</code>'s data wait, so only the 2 after EX count as control.</p>
+      <p>As a check, a smooth run would end in cycle 4 + 4 = 8, and 8 + 6 stalls is 14. They agree.</p>
+    </div>
+
+    <div class="check">
+      <span class="label">Your turn: faded steps</span>
+      <p>Separate memories. Five instructions, with <code>xor</code> being the one at L:</p>
+      <pre><code>add r1, r2, r3
+or  r6, r7, r8
+sub r4, r1, r5
+beq r6, r0, L
+xor r9, r10, r11</code></pre>
+      <p><strong>Step 1 (given):</strong> a smooth run would have <code>add</code> in IF in cycle 1 and WB in cycle 5, and <code>or</code> in IF in cycle 2 and WB in cycle 6. Each later instruction enters IF one cycle after the one before.</p>
+      <p><strong>Step 2 (fill in):</strong> one of the later instructions has to wait for a register. Which instruction, which register, and which instruction writes it?</p>
+      <p><strong>Step 3 (yours):</strong> count the stalls by cause, then the total cycles and the CPI.</p>
+      <details>
+        <summary>Hint 1</summary>
+        <p>What is the gap between <code>add</code> and <code>sub</code>? Look at the table in part 4.</p>
+      </details>
+      <details>
+        <summary>Hint 2</summary>
+        <p>In which cycle does <code>add</code> write r1, and in which cycle would <code>sub</code> first want to read it?</p>
+      </details>
+      <details>
+        <summary>Hint 3</summary>
+        <p>When does <code>beq</code> finish EX? Fetch restarts the cycle after that. Also check when <code>or</code> writes r6.</p>
+      </details>
+      <details>
+        <summary>Show a solution</summary>
+        <p><code>sub</code> waits for r1 from <code>add</code>: it's in ID in cycle 4 and again in 5, so 1 data stall. <code>beq</code> is in IF in cycles 4 and 5, ID in 6 and EX in 7 (r6 was written by <code>or</code> in cycle 6, in time), so <code>xor</code> is fetched in cycle 8: 2 control stalls. Structural: none.</p>
+        <p>Total: 4 + 5 + 3 = 12 cycles, and CPI = 12 / 5 = 2.4.</p>
+      </details>
+    </div>
+
+    <div class="box summary">
+      <span class="label">Summary</span>
+      <ul>
+        <li>A stall is a cycle where the pipeline waits, and a hazard is the cause.</li>
+        <li>Three causes: the same hardware twice (structural), a value not ready (data), and the next instruction unknown (control).</li>
+        <li>Total cycles = 4 + N + stalls, and CPI = total / N.</li>
+        <li>Pipelining raises throughput, not the speed of one instruction.</li>
+        <li>Why it matters in the real world: a loop full of branches runs slower because each branch costs stall cycles, and a deeper pipeline decides branches later, so it pays more per branch. Chip designers weigh that against a faster clock.</li>
+      </ul>
+      <p><strong>Say it in your own words:</strong> in two sentences, explain why a sequence of independent instructions can still stall.</p>
+    </div>
+
+    <div class="go-further">
+      <p><strong>Go further.</strong> Read next: the <a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah CS 3810 "Pipeline Hazards" slides</a>, the best next step because they draw all three hazards on the same 5-stage pipeline.</p>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Hazard_(computer_architecture)">Hazard (computer architecture), Wikipedia</a>: a general encyclopedia article on bubbles, read after write and structural hazards. It also covers branch prediction, which comes later.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="closing">
+    <p>Anything unclear? Ask me in the chat; I can explain any part again, another way, or go deeper.</p>
+    <p>A short quiz on this lesson is ready (quiz 0002): ask me for it when you want to check what stuck.</p>
+  </footer>
+
+</main>
+<script>
+  // Practice checks: mark the chosen option and explain it at once.
+  document.querySelectorAll("[data-check]").forEach(function (box) {
+    var buttons = box.querySelectorAll("button[data-correct]");
+    var out = box.querySelector(".feedback");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        buttons.forEach(function (b) { b.classList.remove("right", "wrong"); });
+        var right = button.getAttribute("data-correct") === "true";
+        button.classList.add(right ? "right" : "wrong");
+        if (out) { out.textContent = (right ? "Yes. " : "Not quite. ") + (button.getAttribute("data-why") || ""); }
+      });
+    });
+  });
+</script>
+</body>
+</html>

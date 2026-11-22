@@ -1,0 +1,73 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Keeping a knife sharp and storing it safely",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "What is the main difference between honing and sharpening a knife?",
+      "options": [
+        {"id": "a", "text": "Honing removes metal, while sharpening only polishes the blade"},
+        {"id": "b", "text": "Honing straightens the edge, while sharpening grinds off metal"},
+        {"id": "c", "text": "Honing needs a stone, while sharpening needs only a steel"},
+        {"id": "d", "text": "Honing makes a dull edge sharp, while sharpening cleans the blade"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your knife has gone dull. What is true about cutting a carrot with it?",
+      "options": [
+        {"id": "a", "text": "It is safer, since a blunt edge cannot cut skin"},
+        {"id": "b", "text": "It is just as safe, since the grip matters most"},
+        {"id": "c", "text": "It is riskier, since you press harder and it can slip"},
+        {"id": "d", "text": "It is safer, since you cut more slowly with it"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "You cook most days with one knife. Which routine keeps it sharp?",
+      "options": [
+        {"id": "a", "text": "Sharpen it before every use and never hone it"},
+        {"id": "b", "text": "Hone it once a year and sharpen it every week"},
+        {"id": "c", "text": "Hone it every few uses and sharpen it a few times a year"},
+        {"id": "d", "text": "Do neither, since careful washing keeps it sharp"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "You have just chopped onions. How should you clean the knife properly?",
+      "options": [
+        {"id": "a", "text": "Put it in the dishwasher with the plates"},
+        {"id": "b", "text": "Leave it soaking in the sink until later"},
+        {"id": "c", "text": "Wipe the blade with a dry towel, using no water"},
+        {"id": "d", "text": "Wash it by hand with soap, then dry it at once"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Where should you keep a knife between uses so it stays sharp and nobody gets cut?",
+      "options": [
+        {"id": "a", "text": "Loose in the drawer with the other tools"},
+        {"id": "b", "text": "In a block, in a sheath, or on a magnetic strip"},
+        {"id": "c", "text": "Loose in the sink, so it is ready for washing"},
+        {"id": "d", "text": "On the counter, close to the cutting board"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O3",
+      "stem": "You have honed your knife correctly on a steel, but it still slides off a tomato's skin. What should you do next?"
+    }
+  ]
+}

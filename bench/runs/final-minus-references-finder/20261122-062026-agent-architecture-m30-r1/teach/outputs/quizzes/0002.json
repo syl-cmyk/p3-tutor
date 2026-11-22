@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your makerspace assistant on Monday and comes back on Thursday for a new session. Your program saved nothing between the two sessions. What can the model see on Thursday?",
+      "options": [
+        {"id": "a", "text": "Only the text your program sends it in the new session"},
+        {"id": "b", "text": "Monday's chat, because the model keeps what it has read"},
+        {"id": "c", "text": "A short summary of Monday that the model writes itself"},
+        {"id": "d", "text": "Monday's chat, but only the student's own messages"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Call 1 sends 1,000 tokens (instructions, tools and the question). The model replies with a 40-token tool request, and the tool returns a 300-token result. Call 2 sends everything so far, and the model replies with a 30-token tool request whose tool returns a 500-token result. Call 3 again sends everything so far. How many tokens does call 3 send?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your 150,000-token set of manuals is pasted into the system prompt, and each student question takes 4 model calls. The sponsor says the cost is too high. Which change cuts the cost the most while still answering from the manuals?",
+      "options": [
+        {"id": "a", "text": "Switch to a model with a larger window so it fits easily"},
+        {"id": "b", "text": "Summarize the whole conversation once the answer is given"},
+        {"id": "c", "text": "Give a search tool that loads only the pages it needs"},
+        {"id": "d", "text": "Save the manuals into a note file that is read every call"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your assistant saves a note for each student, such as \"soldering: trained\". Name one extra piece of information to write in every note so the assistant can tell later whether it is still trustworthy."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Which item belongs in a saved note that the assistant reads at the start of each new session, rather than in a search over the manuals?",
+      "options": [
+        {"id": "a", "text": "The 60-page operating guide for the vinyl cutter"},
+        {"id": "b", "text": "Which machines a given student has passed training on"},
+        {"id": "c", "text": "The makerspace's opening hours, which never change"},
+        {"id": "d", "text": "The text of the assistant's standing instructions"}
+      ]
+    }
+  ]
+}

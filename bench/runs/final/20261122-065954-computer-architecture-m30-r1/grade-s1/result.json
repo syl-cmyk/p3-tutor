@@ -1,0 +1,110 @@
+{
+  "duration_api_ms": 107333,
+  "stop_reason": "end_turn",
+  "session_id": "363a6eb7-2019-41ec-b9a4-963eb60dbf96",
+  "total_cost_usd": 0.4221935000000001,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 4137,
+    "cache_read_input_tokens": 133638,
+    "output_tokens": 2581,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4137
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 414,
+        "cache_read_input_tokens": 45351,
+        "cache_creation_input_tokens": 2505,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2505,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 74,
+      "outputTokens": 15201,
+      "cacheReadInputTokens": 685790,
+      "cacheCreationInputTokens": 74537,
+      "webSearchRequests": 0,
+      "costUSD": 0.4221935000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1925,
+      "cacheCreationEphemeral5mInputTokens": 64461,
+      "cacheCreationEphemeral1hInputTokens": 10076,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrid7cp-2917bbb2"
+  },
+  "subagent_stats": {
+    "spawned": 5,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 5
+    },
+    "started_in_background": 5,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 5,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "grader": 3,
+      "grade-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded quiz 0001 and wrote `grades/0001-s1.json`. You got 1 of 3 right.\n\n- **q1: wrong (M2).** You picked (a), that pipelining makes one instruction faster. It doesn't. One instruction still takes the same time, but more instructions finish in a given time.\n- **q2: wrong.** You said 100, but the answer is 103. The first instruction needs 4 cycles to go through all 4 stages, then the other 99 finish one per cycle: 4 + 99 = 103.\n- **q3: right.** Instructions overlap, so the total time shrinks.\n\nYou've got the core reason pipelining helps: instructions overlap. Next, redo q2 by drawing a 4-stage, 5-instruction timeline and counting the cycles. It should come to 8, which you can check against 4 + (5 − 1).\n\nI wrote the final file by copying the last draft, but I didn't re-parse it as JSON. I did read the draft back as valid JSON before that. The second review pass said \"fix\", and I applied its two fixes without a third review. I also added `learning-records/0002-pipelining-and-single-instruction-time.md`, updated `NOTES.md` and wrote `review-records/0001-s1-grade.md`.",
+  "ttft_ms": 1535,
+  "type": "result",
+  "duration_ms": 18433,
+  "uuid": "2cdbf888-fab7-4f40-9b82-d0d85a621762",
+  "ttft_stream_ms": 739,
+  "time_to_request_ms": 19,
+  "first_content_frame_ms": 739,
+  "queued_turn_count": 0,
+  "result_index": 5,
+  "model_usage_since_last_result": {}
+}

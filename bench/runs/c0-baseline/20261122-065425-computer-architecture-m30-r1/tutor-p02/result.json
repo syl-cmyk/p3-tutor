@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 11234,
+  "stop_reason": "end_turn",
+  "session_id": "418b4078-88ee-450b-916b-cc37c7e13d82",
+  "total_cost_usd": 0.111591,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22380,
+    "cache_read_input_tokens": 64890,
+    "output_tokens": 1557,
+    "output_tokens_details": {
+      "thinking_tokens": 97
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22380,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 610,
+        "cache_read_input_tokens": 32548,
+        "cache_creation_input_tokens": 468,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 468
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1557,
+      "cacheReadInputTokens": 64890,
+      "cacheCreationInputTokens": 22380,
+      "webSearchRequests": 0,
+      "costUSD": 0.111591,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 97,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22380,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. Both parts of that need fixing.\n\n**1. A single instruction doesn't get faster.** Pipelining raises throughput, which is how many instructions finish per unit time. Each instruction still has to pass through every stage. Its latency stays the same, and it usually gets slightly worse because of the overhead of the registers between stages.\n\nThink of a laundry room with a washer and a dryer. One load takes 2 hours either way, 1 in the washer and 1 in the dryer. Without overlap, 3 loads take 6 hours. With overlap, load 2 washes while load 1 dries, so 3 loads take 4 hours. No load got done sooner, but more loads were finished per hour.\n\n**2. \"4 stages means a quarter of the time\" is only an upper limit.** It's the ideal speedup, and you only approach it when:\n- The program is very long. With *n* instructions and *k* stages, the pipeline needs *k + n − 1* cycles instead of *k × n*. The first instruction takes *k* cycles to fill the pipeline, and after that one instruction finishes per cycle.\n- There are no stalls. Hazards insert bubbles, and each bubble costs a cycle.\n- The stages take equal time. The clock has to fit the slowest stage.\n\nExample: 5 instructions on 4 stages need 4 + 5 − 1 = 8 cycles, against 20 without pipelining. That's 2.5× faster, not 4×. At 1000 instructions it's 1003 cycles against 4000, which is close to 4×. This also ties to your mission: every stall adds cycles, so real programs land below the ideal.\n\nQuick check: how many cycles do 10 instructions need on a 5-stage pipeline with no stalls?\n\nIf you want, I can write a lesson on hazards and stalls next. That's the step toward counting the cycles a stall costs.",
+  "ttft_ms": 1449,
+  "type": "result",
+  "duration_ms": 11451,
+  "uuid": "cdbb9d46-d243-4956-b49e-97738c2b3082",
+  "ttft_stream_ms": 951,
+  "time_to_request_ms": 183,
+  "first_content_frame_ms": 951,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1557,
+      "cacheReadInputTokens": 64890,
+      "cacheCreationInputTokens": 22380,
+      "webSearchRequests": 0,
+      "costUSD": 0.111591,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 97,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22380,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

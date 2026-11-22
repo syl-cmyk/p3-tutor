@@ -1,0 +1,52 @@
+{
+  "id": "0002",
+  "objective": "O2",
+  "title": "Choosing the knife and the cut",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "You need to cut a crusty loaf of bread into slices. Which knife is the best choice?",
+      "options": [
+        {"id": "a", "text": "A paring knife, for control"},
+        {"id": "b", "text": "A serrated knife, for the crust"},
+        {"id": "c", "text": "A chef's knife, for its weight"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "A recipe says to cut an onion into a small dice. What should the pieces look like?",
+      "options": [
+        {"id": "a", "text": "Even cubes of about 1/4 inch"},
+        {"id": "b", "text": "Thin strips about 2 inches long"},
+        {"id": "c", "text": "Flat rings about 1/4 inch thick"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O2",
+      "stem": "Name the knife you would use to hull strawberries (remove the green tops) in your hand."
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "You are cutting a large, firm sweet potato into cubes to roast. Which knife and cut fit the job best?",
+      "options": [
+        {"id": "a", "text": "Paring knife, making a julienne"},
+        {"id": "b", "text": "Serrated knife, making a slice"},
+        {"id": "c", "text": "Chef's knife, making a large dice"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O2",
+      "stem": "In one sentence, why do recipes ask for pieces of the same size?"
+    }
+  ]
+}

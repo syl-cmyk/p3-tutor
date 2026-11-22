@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 6146,
+  "stop_reason": "end_turn",
+  "session_id": "922cd022-fb5f-4d35-bb6e-3f89803a7e44",
+  "total_cost_usd": 0.0563317,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 12889,
+    "cache_read_input_tokens": 31212,
+    "output_tokens": 607,
+    "output_tokens_details": {
+      "thinking_tokens": 223
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9940,
+      "ephemeral_5m_input_tokens": 2949
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 433,
+        "cache_read_input_tokens": 20576,
+        "cache_creation_input_tokens": 2949,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2949,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 607,
+      "cacheReadInputTokens": 31212,
+      "cacheCreationInputTokens": 12889,
+      "webSearchRequests": 0,
+      "costUSD": 0.0563317,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 223,
+      "cacheCreationEphemeral5mInputTokens": 2949,
+      "cacheCreationEphemeral1hInputTokens": 9940,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't give you the letter, even for a practice retake. Q1 is graded, and the answer would also rob you of the \"aha\" you're after. If you want the answer, your teacher is the one to ask.\n\nHere's a way to get unstuck that works whatever the answer is:\n\n1. Take each option and say in your own words what it claims.\n2. For each one, ask what would have to be true for it to be right. Try picturing it in your own kitchen, with a real knife and a real onion.\n3. Rule out the one you're most sure is wrong first, and say why. Then see which of the rest you lean toward.\n\nIf you want to look something up first, reread the lesson from your last session, the one on the pinch grip and the claw grip. Your notes are there too.\n\nOnce your submission is graded, we can go through Q1 together, with real examples, and I'll tell you straight where it went right or wrong.\n\nWhich two options are you torn between, and what does each one claim?",
+  "ttft_ms": 1546,
+  "type": "result",
+  "duration_ms": 6982,
+  "uuid": "5fab966d-cc0b-45f6-978d-d8970cd5b00f",
+  "ttft_stream_ms": 802,
+  "time_to_request_ms": 156,
+  "first_content_frame_ms": 803,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 607,
+      "cacheReadInputTokens": 31212,
+      "cacheCreationInputTokens": 12889,
+      "webSearchRequests": 0,
+      "costUSD": 0.0563317,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 223,
+      "cacheCreationEphemeral5mInputTokens": 2949,
+      "cacheCreationEphemeral1hInputTokens": 9940,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

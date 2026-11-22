@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls, so the program resends the earlier history plus the new result. Option a shows the belief that the model remembers by itself, and c drops the history the model needs.",
+      "distractors": {"a": "M3", "c": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 5900,
+      "tolerance": 0,
+      "rationale": "Call 1: 1,500. Call 2: 1,500 + 100 + 400 = 2,000. Call 3: 2,000 + 100 + 300 = 2,400. Total 1,500 + 2,000 + 2,400 = 5,900. An answer of 2,400 counts only the last call, which misses that every call is paid for."
+    },
+    {
+      "id": "q3",
+      "answer": "No: the window was cleared when the Monday session ended and nothing was saved, so Friday's window has no trace of it.",
+      "accepted": ["no", "no, nothing was saved", "no, the window resets between sessions", "no because it was not saved to notes"],
+      "rationale": "Only saved notes survive between sessions, and only once they are read back into the window. An answer of yes shows the belief that the model learns from chats."
+    },
+    {
+      "id": "q4",
+      "answer": "a",
+      "rationale": "Retrieval puts only the best-matching chunks in the window, which saves tokens at every step. Option b pays for the whole manual every step, and d confuses training with the window.",
+      "distractors": {"b": "M4", "d": "M5"}
+    },
+    {
+      "id": "q5",
+      "answer": "Both end up as text placed in the window; a note is something the assistant saved about a student, while a chunk is read from a document the team wrote.",
+      "accepted": ["alike: both go into the window as text; differ: notes are about a person and chunks come from a document"],
+      "rationale": "The point is that both are memory brought back into the window, with different sources: notes written by the assistant, chunks from a manual."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "0002",
+  "objective": "O2",
+  "title": "Why a pipeline stalls: structural, data and control hazards",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "A 5-stage pipeline has separate instruction and data memories, and registers are written in the first half of a cycle and read in the second half. It runs `and r8,r9,r10` immediately followed by `xor r2,r8,r3`, and the xor has to wait in ID. What kind of hazard is this?",
+      "options": [
+        {"id": "a", "text": "Structural: both want the same hardware"},
+        {"id": "b", "text": "Control: the next instruction is unknown"},
+        {"id": "c", "text": "Data: a value is not written yet"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O2",
+      "stem": "A 5-stage pipeline runs 20 instructions and loses 6 cycles to stalls in total. How many cycles does the whole run take?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O2",
+      "stem": "A branch is decided only at the end of EX, and the machine stops fetching until then. Whatever values the registers hold, the instruction after the branch has to wait. Which of the three hazard kinds (structural, data or control) is this? Answer with one word."
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O2",
+      "stem": "A 5-stage pipeline decides every branch at the end of MEM (stage 4) and stops fetching until then. A loop body has 6 instructions, the last one a branch, and runs 5 times, with no other stalls. How many cycles does the whole loop take, counting the 4 cycles of fill once?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "Separate memories, with the register rule from q1. The code is `lw r1,0(r2)`, `add r5,r6,r7`, `or r3,r4,r9`, `sub r8,r1,r9`, in that order. How many stalls does sub suffer waiting for r1?",
+      "options": [
+        {"id": "a", "text": "2 stalls, as sub reads r1 too early"},
+        {"id": "b", "text": "0 stalls, as r1 is written in time"},
+        {"id": "c", "text": "1 stall, as one cycle is still missing"}
+      ]
+    }
+  ]
+}

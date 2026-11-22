@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "The model keeps nothing between calls or sessions; it only sees the text in the current call, so without saved notes it cannot know. Options b, c and d each assume the model remembers on its own."
+    },
+    {
+      "id": "q2",
+      "answer": 4600,
+      "tolerance": 0.5,
+      "rationale": "Call 1 sends 2,000. Call 2 sends 2,000 + 100 + 500 = 2,600. Total 4,600. An answer of 2,600 counts only the last call; an answer of 2,000 or 2,100 ignores that the history is sent again."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Retrieval keeps long material outside the window and fetches only the best chunks per question. Pasting everything is resent every call and hurts attention; the model cannot memorise during a chat."    },
+    {
+      "id": "q4",
+      "answer": "Training status goes in notes because it changes slowly and must survive between visits; the printer's availability is looked up live because the calendar changes constantly.",
+      "accepted": [
+        "training status in notes, printer availability from the calendar tool",
+        "notes for training status, live lookup for printer availability",
+        "training status is saved, printer calendar is checked live because it changes"
+      ],
+      "rationale": "Slow-changing per-student facts go in notes; fast-changing facts are fetched from the tool each time or they go stale. Swapping the two is the typical error."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Clearing old tool results (leaving a pointer to search again) is the lightest form of compaction. Deleting instructions or recent turns breaks the task, and discarding the whole chat loses everything."
+    }
+  ]
+}

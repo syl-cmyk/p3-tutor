@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "The model keeps nothing between calls; it sees only the text the program sends. Without the earlier messages, \"it\" has no referent."
+    },
+    {
+      "id": "q2",
+      "answer": 100000,
+      "tolerance": 1,
+      "rationale": "20,000 manual tokens are sent on each of 5 calls: 5 x 20,000 = 100,000. The 2,000 fixed tokens are not manual tokens. An answer of 20,000 forgets the history is sent again on every call."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "Clearing an old tool result and keeping a short line frees the window and keeps what still matters. A bigger window still pays for and sifts through the stale text; deleting everything loses needed state; the model cannot remember anything that is not in its input or saved."
+    },
+    {
+      "id": "q4",
+      "answer": "It did not save the training status to storage outside the window, such as a notes file",
+      "accepted": ["it did not write a note", "it did not save it to memory", "it did not store it outside the context window", "it did not write it to a notes file", "it did not save the training status", "it did not save the information outside the window"],
+      "rationale": "A new session starts with an empty window, so only what was written to storage outside it can come back. Answers saying the model forgot or the window was too small miss that the program must write and read the notes."
+    },
+    {
+      "id": "q5",
+      "answer": "Manuals use retrieval because they are large shared documents where only a few pages are needed per question; training status uses notes because it is a small per-student fact that must last between sessions.",
+      "accepted": ["retrieval for the manuals, notes for the training", "manuals: retrieval; training: notes"],
+      "rationale": "Retrieval looks up the few relevant chunks of big shared documents per question; notes hold one person's small facts across sessions. Swapping them, or saying both are the same, is the mix-up."
+    }
+  ]
+}

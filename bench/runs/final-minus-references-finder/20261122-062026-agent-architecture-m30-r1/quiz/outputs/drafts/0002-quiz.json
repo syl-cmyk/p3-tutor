@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "The control flow is whoever decides which step runs next. Who owns it in a workflow, and who owns it in an agent?",
+      "options": [
+        {"id": "a", "text": "Workflow: the model decides. Agent: your code decides."},
+        {"id": "b", "text": "Workflow: your code decides. Agent: the model decides."},
+        {"id": "c", "text": "Both: the model decides, and only an agent uses tools."},
+        {"id": "d", "text": "Both: your code decides, and only a workflow uses tools."}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O4",
+      "stem": "An agent usually costs more per request than a fixed workflow that does the same job. What does it make more of? Answer in two or three words."
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your program runs three steps in a set order: a model call labels the question, the search_manuals tool looks up pages, and a model call writes the reply. Is this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "An agent, because it makes model calls and also runs a tool"},
+        {"id": "b", "text": "An agent, because it takes several steps for a single request"},
+        {"id": "c", "text": "A workflow, because the program chose the sequence ahead of time"},
+        {"id": "d", "text": "A workflow, because it runs a tool and an agent could not do so"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which makerspace job most needs an agent rather than a fixed workflow?",
+      "options": [
+        {"id": "a", "text": "Booking a slot after the student has chosen the machine and time"},
+        {"id": "b", "text": "Emailing a reminder to each student 24 hours before a booking"},
+        {"id": "c", "text": "Refusing a booking when the student's training record is missing"},
+        {"id": "d", "text": "Finding out why a student's prints keep failing, with no known cause"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow makes 2 model calls per request. An agent averages 5 model calls per request. If every call costs $0.002, how many more dollars does the agent cost over 100 requests?",
+      "unit": "dollars"
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your assistant must (1) answer a vague question when it is unknown which manuals are needed, then (2) always book and confirm a slot. For cost and reliability, which design fits best?",
+      "options": [
+        {"id": "a", "text": "An agent for part 1, then a fixed workflow for part 2"},
+        {"id": "b", "text": "A fixed workflow for part 1, then an agent for part 2"},
+        {"id": "c", "text": "A fixed workflow for both parts, so code controls every step"},
+        {"id": "d", "text": "An agent for both parts, so the model controls every step"}
+      ]
+    }
+  ]
+}

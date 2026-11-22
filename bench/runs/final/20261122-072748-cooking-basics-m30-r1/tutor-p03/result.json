@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 8248,
+  "stop_reason": "end_turn",
+  "session_id": "7c1ab1a6-554d-425d-af5b-ebc6e7807f19",
+  "total_cost_usd": 0.061232999999999996,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 13346,
+    "cache_read_input_tokens": 31230,
+    "output_tokens": 980,
+    "output_tokens_details": {
+      "thinking_tokens": 201
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9958,
+      "ephemeral_5m_input_tokens": 3388
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 505,
+        "cache_read_input_tokens": 20594,
+        "cache_creation_input_tokens": 3388,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3388,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 980,
+      "cacheReadInputTokens": 31230,
+      "cacheCreationInputTokens": 13346,
+      "webSearchRequests": 0,
+      "costUSD": 0.061232999999999996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 201,
+      "cacheCreationEphemeral5mInputTokens": 3388,
+      "cacheCreationEphemeral1hInputTokens": 9958,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 5,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "You need to act now, and from what you describe, stitches are likely. A plaster alone isn't enough while it's still bleeding.\n\n1. **Press hard.** Put a clean cloth or gauze on the cut and squeeze firmly. Raise your hand above your heart. Hold it for 10 minutes without peeking, because peeking restarts the bleeding.\n2. **Get it checked today** (urgent care or A&E/ER) if any of these is true:\n   - It's still bleeding after 10 minutes of firm pressure.\n   - The edges gape open, or you can see fat, yellow tissue or bone.\n   - It's deeper than about 5 mm, or it's on a joint or the fingertip pad.\n   - You've got numbness, tingling, or you can't bend the finger normally.\n   - Your tetanus shot is more than 10 years old.\n3. **Plaster only if** the bleeding stops fully, the edges sit together, and it's shallow. Rinse it under running water first.\n\nIf it's soaking through the cloth, go now. Don't drive yourself if you feel faint.\n\nOnce it's sorted, this is a good moment for our knife work. Cutting yourself while chopping onions is usually a grip problem. Next session we can go back over the claw grip. Does the bleeding slow down when you press?",
+  "ttft_ms": 1823,
+  "type": "result",
+  "duration_ms": 8454,
+  "uuid": "d8842f9b-5d9c-4793-8298-882912e88891",
+  "ttft_stream_ms": 811,
+  "time_to_request_ms": 172,
+  "first_content_frame_ms": 811,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 980,
+      "cacheReadInputTokens": 31230,
+      "cacheCreationInputTokens": 13346,
+      "webSearchRequests": 0,
+      "costUSD": 0.061232999999999996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 201,
+      "cacheCreationEphemeral5mInputTokens": 3388,
+      "cacheCreationEphemeral1hInputTokens": 9958,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

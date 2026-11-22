@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your makerspace assistant on Friday and books the soldering station. On Monday they open a brand-new chat and ask, \"What time did I book?\" The program saved no notes. What happens?",
+      "options": [
+        {"id": "a", "text": "The model recalls Friday's booking from its own earlier chat with the student"},
+        {"id": "b", "text": "The model reads Friday's window, which the program keeps open for a week"},
+        {"id": "c", "text": "The model cannot know it unless the program saved a note it can read"},
+        {"id": "d", "text": "The model searches the manuals, which hold every student's booking times"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An assistant's first call has an input of 1,500 tokens. It makes two tool calls and then writes its reply, so three model calls in all. Each tool call adds 20 tokens and each tool result adds 80 tokens to the history, and the program re-sends the whole history every time. How many input tokens are read across the three calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The makerspace has an archive of past incident reports of about 360,000 tokens. Staff look at it a few times a week, each time for one or two reports. How should the assistant make it available?",
+      "options": [
+        {"id": "a", "text": "Paste the whole archive into the system prompt so every call includes it"},
+        {"id": "b", "text": "Index it in chunks and have a search tool return only the best matches"},
+        {"id": "c", "text": "Write the whole archive into each student's notes file to read at the start"},
+        {"id": "d", "text": "Summarize it once and ask the model to trust the summary for details"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your teammate says, \"We don't need to trim old tool results, we'll just pick a model with a bigger context window.\" In one or two sentences, give one reason that this doesn't fix the problem."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your index holds chunks from 12 manuals. The chunk \"Replace the filter every 50 hours.\" never names its machine, so a search for the laser cutter's exhaust filter can miss it. What is the best fix?",
+      "options": [
+        {"id": "a", "text": "Make each chunk longer so the search reads the whole manual every time"},
+        {"id": "b", "text": "Move every chunk into the system prompt so the model always sees it"},
+        {"id": "c", "text": "Ask the student to quote the manual's page number in the question"},
+        {"id": "d", "text": "Add a line to each chunk naming its machine and manual before indexing"}
+      ]
+    }
+  ]
+}

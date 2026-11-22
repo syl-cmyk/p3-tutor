@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 29250,
+  "stop_reason": "end_turn",
+  "session_id": "3013a5b7-5767-4fac-9ddc-0dc56d36428e",
+  "total_cost_usd": 0.136913,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 26999,
+    "cache_read_input_tokens": 99690,
+    "output_tokens": 4274,
+    "output_tokens_details": {
+      "thinking_tokens": 744
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11127,
+      "ephemeral_5m_input_tokens": 15872
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 422,
+        "cache_read_input_tokens": 34330,
+        "cache_creation_input_tokens": 3305,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3305,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 4274,
+      "cacheReadInputTokens": 99690,
+      "cacheCreationInputTokens": 26999,
+      "webSearchRequests": 0,
+      "costUSD": 0.136913,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 744,
+      "cacheCreationEphemeral5mInputTokens": 15872,
+      "cacheCreationEphemeral1hInputTokens": 11127,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 13,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Quiz 0002, \"Keeping a knife sharp and storing it safely\", is ready at `quizzes/0002.json`, and its key is at `keys/0002.json`. It has six questions on O3:\n\n- **q1 (multiple choice):** why a dull knife is more dangerous.\n- **q2 (multiple choice):** what honing does.\n- **q3 (one word):** what a knife needs when honing no longer helps.\n- **q4 (multiple choice):** the safest way to wash a knife.\n- **q5 (multiple choice):** the safest place to store a knife.\n- **q6 (one sentence):** why a knife should never soak in a sink of soapy water.\n\nThe wrong options in q1–q3 are built on the two ideas your notes say you hold: that a dull knife is safer, and that honing sharpens it. I labelled them M1 and M2 in `NOTES.md`, since they had no ids yet.\n\nThis quiz comes before any lesson on O3, so it checks the objective itself. I can write a lesson on honing, sharpening, washing and storing next, if you want one.\n\nI wasn't able to check these points against a web source in this session. The content is standard knife-care practice, but it hasn't been cited.\n\nDo you want to take the quiz here in the chat? If so, send me your six answers.",
+  "ttft_ms": 1356,
+  "type": "result",
+  "duration_ms": 29559,
+  "uuid": "2e807fdb-f06c-4752-96fb-04cf994b3192",
+  "ttft_stream_ms": 964,
+  "time_to_request_ms": 270,
+  "first_content_frame_ms": 964,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 4274,
+      "cacheReadInputTokens": 99690,
+      "cacheCreationInputTokens": 26999,
+      "webSearchRequests": 0,
+      "costUSD": 0.136913,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 744,
+      "cacheCreationEphemeral5mInputTokens": 15872,
+      "cacheCreationEphemeral1hInputTokens": 11127,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

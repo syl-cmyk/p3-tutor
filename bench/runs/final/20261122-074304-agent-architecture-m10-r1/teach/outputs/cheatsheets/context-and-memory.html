@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --warn-soft:#f9eaec; --code-bg:#f3efe6;
+      --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --warn-soft:#2f1f22; --code-bg:#23211e; } }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.45; font-size:16px; }
+    main { max-width:46rem; margin:0 auto; padding:1.5rem 1.25rem 2rem; }
+    h1 { font-size:1.6rem; margin:0 0 .25rem; } h2 { font-size:1.05rem; margin:1.2rem 0 .4rem; font-family:var(--sans); color:var(--accent); }
+    a { color:var(--accent); } p { margin:.3rem 0; } ol, ul { margin:.3rem 0; padding-left:1.3rem; }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; } th, td { text-align:left; vertical-align:top; padding:.25rem .5rem; border-bottom:1px solid var(--rule); }
+    td:first-child { white-space:nowrap; font-weight:600; width:9rem; }
+    code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.85em; background:var(--code-bg); padding:.05em .25em; border-radius:3px; }
+    .mistakes { background:var(--warn-soft); border-left:4px solid var(--warn); padding:.4rem .9rem; }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --rule:#ccc; --accent:#000; --warn:#000; --warn-soft:#f2f2f2; --code-bg:#f2f2f2; } main { padding:0; max-width:none; } body { font-size:10.5pt; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p>Use this to decide where each fact lives: in the context window, in notes, or in retrieval.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><td>Token</td><td>A chunk of text; models are billed by the token, so more tokens means more cost.</td></tr>
+    <tr><td>Call</td><td>One trip to the model: text goes in, text comes out.</td></tr>
+    <tr><td>Context window</td><td>All the text the model can use on one call, including its own reply; it is working memory, not training data.</td></tr>
+    <tr><td>Context rot</td><td>The model gets worse at using the text as it gets longer.</td></tr>
+    <tr><td>Compaction</td><td>Summarizing a long conversation and carrying on with the summary.</td></tr>
+    <tr><td>Notes</td><td>Facts the program saves outside the window and loads back later.</td></tr>
+    <tr><td>Retrieval</td><td>Looking up the relevant piece of a big source and loading just that, just in time.</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>On each call the model knows about this chat only what is in the window, because nothing else is handed to it.</li>
+    <li>Every step re-sends the whole history, because each call is fresh; so context and cost grow.</li>
+    <li>Shrink the window by clearing old tool results or summarizing, because a bigger window still has context rot and costs per token.</li>
+    <li>For the next session, save a note and reload it, because the window is gone when the session ends.</li>
+    <li>For big sources, search and load only the best pages, because pasting everything costs its full size on every call.</li>
+  </ol>
+
+  <h2>Worked example (illustration numbers, not real limits)</h2>
+  <p>Fixed text 1,200 tokens, student question 30: "Is the laser cutter free Friday?"</p>
+  <ol>
+    <li>Call 1 input: 1,200 + 30 = 1,230. The model asks for <code>check_calendar</code> (60 tokens).</li>
+    <li>The program runs it; the Friday slots come back (400 tokens).</li>
+    <li>Call 2 input: 1,200 + 30 + 60 + 400 = 1,690.</li>
+    <li>Input paid across both calls: 1,230 + 1,690 = 2,920, not 1,690.</li>
+  </ol>
+  <p>Manual: 120 pages &times; 3,000 = 360,000 tokens. Two retrieved pages = 6,000, which is 1.7% of pasting it all.</p>
+
+  <h2>Where does it live?</h2>
+  <table>
+    <tr><td>Window</td><td>Small, needed every call or right now (rules, current chat).</td></tr>
+    <tr><td>Notes</td><td>Small, needed in later sessions (training status).</td></tr>
+    <tr><td>Retrieval</td><td>Big, needed rarely (a manual page).</td></tr>
+  </table>
+
+  <h2>Common mistakes</h2>
+  <ul class="mistakes">
+    <li>"The model remembers me from last time." A new call has only what it is handed.</li>
+    <li>"Earlier steps are free." Each call re-sends and pays for the history again.</li>
+    <li>"A 1M window means paste every manual." Ten 360,000-token manuals overfill it, and long contexts degrade.</li>
+    <li>"The model learned the student's status." The saved notes carry it; delete them and the next session starts blank.</li>
+    <li>"Retrieval is the model recalling." It is a program lookup, and it can return the wrong page.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p>Lesson: <a href="../lessons/0001-context-and-agent-memory.html">Context and memory</a>. Primary source: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</main>
+</body>
+</html>

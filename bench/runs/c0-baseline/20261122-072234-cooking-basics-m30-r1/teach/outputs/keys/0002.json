@@ -1,0 +1,32 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "A hard crust over a soft crumb is what a serrated knife is for: the teeth bite the crust without squashing the inside."
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "Dice means cubes, and a small dice is about 1/4 inch on each side. Strips describe julienne and rings describe slices."
+    },
+    {
+      "id": "q3",
+      "answer": "A paring knife",
+      "accepted": ["paring knife", "the paring knife", "paring", "a small knife", "a small paring knife"],
+      "rationale": "Hulling is small, close work done in the hand, which is what the short paring knife is for."
+    },
+    {
+      "id": "q4",
+      "answer": "c",
+      "rationale": "A large, firm vegetable calls for the chef's knife, and cubes for roasting are a large dice."
+    },
+    {
+      "id": "q5",
+      "answer": "So they cook at the same speed and finish at the same time.",
+      "accepted": ["So they cook evenly", "Because they cook evenly", "So they cook at the same rate", "So they finish cooking together"],
+      "rationale": "Pieces of equal size cook evenly; mixed sizes leave some pieces burnt or raw."
+    }
+  ]
+}

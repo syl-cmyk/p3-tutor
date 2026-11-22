@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: pipeline hazards and stall cycles</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --code-bg:#f3efe6;
+            --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --code-bg:#23211e; } }
+    * { box-sizing: border-box; }
+    html { font-size: 17px; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.5; }
+    main { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    h1 { font-size: 1.7rem; margin: 0 0 0.3rem; line-height: 1.25; }
+    h2 { font-size: 1.1rem; margin: 1.6rem 0 0.4rem; color: var(--accent); font-family: var(--sans); }
+    a { color: var(--accent); }
+    table { width:100%; border-collapse:collapse; font-size:0.92rem; margin: 0.4rem 0; }
+    th, td { text-align:left; vertical-align:top; padding:0.3rem 0.5rem; border-bottom:1px solid var(--rule); }
+    th { font-family:var(--sans); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:0.85em; background:var(--code-bg); padding:0.1em 0.3em; border-radius:4px; }
+    ol, ul { margin: 0.3rem 0; padding-left: 1.3rem; }
+    .sub { color: var(--muted); font-family: var(--sans); font-size: 0.9rem; margin: 0; }
+    .mistakes li { margin-bottom: 0.3rem; }
+    .mistakes strong { color: var(--warn); }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --rule:#ccc; --accent:#000; --warn:#000; --code-bg:#f2f2f2; }
+      html { font-size: 10.5pt; } main { padding: 0; max-width: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Pipeline hazards: why a pipeline stalls</h1>
+  <p class="sub">Look up the three causes of a stall and count the cycles it costs. Our machine: 5 stages (IF, ID, EX, MEM, WB), separate memories, no bypassing, registers written in the first half of a cycle and read in the second, branch decided at the end of EX.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tbody>
+      <tr><td><strong>Stall</strong></td><td>a cycle where an instruction can't move on and waits</td></tr>
+      <tr><td><strong>Bubble</strong></td><td>the empty slot a stall sends down the pipeline</td></tr>
+      <tr><td><strong>Hazard</strong></td><td>the cause of a stall</td></tr>
+      <tr><td><strong>Structural</strong></td><td>two instructions need the same hardware in the same cycle</td></tr>
+      <tr><td><strong>Data</strong></td><td>an instruction needs a value an earlier one hasn't written yet</td></tr>
+      <tr><td><strong>Control</strong></td><td>the next instruction isn't known because a branch isn't decided</td></tr>
+      <tr><td><strong>CPI</strong></td><td>cycles per instruction: total cycles divided by instructions</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li><strong>Ask three questions.</strong> Same hardware twice? Structural. Value not written yet? Data. Next instruction unknown? Control.</li>
+    <li><strong>Total cycles = 4 + N + stalls</strong>, because the first instruction needs 4 extra cycles to fill the pipe, N is the number of instructions, and each stall adds one cycle.</li>
+    <li><strong>Data gap</strong> (instructions between the writer and the reader): gap 0 costs 2 stalls, gap 1 costs 1, gap 2 or more costs 0, because the value is written in cycle 5.</li>
+    <li><strong>Branch cost = stages up to and including the deciding stage, minus 1.</strong> Decided at the end of EX (stage 3) means 3 &minus; 1 = 2 stalls, taken or not, because fetch waits either way.</li>
+  </ol>
+
+  <h2>Worked example</h2>
+  <p>A loop has 5 instructions, the last one a branch, and runs 10 times.</p>
+  <ol>
+    <li>Branch cost: 3 &minus; 1 = 2 stalls per iteration.</li>
+    <li>Stalls: 10 &times; 2 = 20. Instructions: N = 50.</li>
+    <li>Total: 4 + 50 + 20 = 74 cycles, against 54 with no stalls.</li>
+    <li>If 20% of instructions are branches, CPI = 1 + 0.2 &times; 2 = 1.4.</li>
+  </ol>
+
+  <h2>Common mistakes</h2>
+  <ul class="mistakes">
+    <li><strong>Every stall is a data hazard.</strong> No: shared hardware and unknown branches stall too, even with different registers.</li>
+    <li><strong>Pipelining makes each instruction faster.</strong> No: one instruction takes as long or longer, but many finish sooner.</li>
+    <li><strong>A stall means a wrong result.</strong> No: the answer is the same, one cycle later.</li>
+    <li><strong>A branch only stalls when taken.</strong> No: in our design it costs the same either way.</li>
+    <li><strong>Any shared register stalls.</strong> No: two instructions that only read it don't; the problem is write, then read.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p>Full lesson: <a href="../lessons/0001-pipeline-hazards.html">Pipeline hazards: why a pipeline stalls and what each stall costs</a>. Primary source: <a href="https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf">Utah CS 3810 "Pipeline Hazards" slides</a>.</p>
+</main>
+</body>
+</html>

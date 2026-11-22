@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "Honing realigns an edge that has bent over with use and removes almost no metal; sharpening grinds metal away to make a new edge. Thinking honing sharpens a dull knife is M12, and swapping how often each is done is M20.",
+      "distractors": {"a": "M12", "c": "M20", "d": "M12"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "A dull knife needs more force and slips off the food, so it cuts fingers more often than a sharp one. Believing a dull knife is safer is M11.",
+      "distractors": {"a": "M11", "b": "M11", "d": "M11"}
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Honing is light, quick upkeep to do often; sharpening removes metal, so it is done only a few times a year. Sharpening constantly wears the knife away (M15), swapping the two shows M12, and washing alone never keeps an edge (M16).",
+      "distractors": {"a": "M15", "b": "M12", "d": "M16"}
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "Hand washing right away and drying protects the edge and the blade from rust, and soap removes food residue. Dishwashers knock and dull blades, and a soaking knife hides in the water and rusts.",
+      "distractors": {"a": "M13", "b": "M13", "c": "M16"}
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "A block, sheath or magnetic strip keeps the edge covered or held in place, so it neither dulls against other tools nor catches a hand. A knife loose in a drawer, even in a cloth, can still shift, dull and cut a reaching hand (M14).",
+      "distractors": {"a": "M14", "c": "M14", "d": "M18"}
+    },
+    {
+      "id": "q6",
+      "answer": "sharpen it",
+      "accepted": ["sharpen", "sharpen the knife", "sharpening", "sharpen it on a whetstone", "use a whetstone", "whetstone", "sharpen it with a whetstone", "sharpening stone", "get it sharpened", "have it sharpened", "sharpen it on a stone", "take it to be sharpened", "grind it"],
+      "rationale": "If correct honing does not restore the bite, the edge has worn away rather than bent, so metal has to be removed by sharpening. Honing again would be M12."
+    }
+  ]
+}

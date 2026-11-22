@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 11976,
+  "stop_reason": "end_turn",
+  "session_id": "88e7a5b3-38ed-4b7c-a601-0500511205f1",
+  "total_cost_usd": 0.0864383,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 18139,
+    "cache_read_input_tokens": 87428,
+    "output_tokens": 1573,
+    "output_tokens_details": {
+      "thinking_tokens": 103
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11068,
+      "ephemeral_5m_input_tokens": 7071
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 471,
+        "cache_read_input_tokens": 28362,
+        "cache_creation_input_tokens": 413,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 413,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1573,
+      "cacheReadInputTokens": 87428,
+      "cacheCreationInputTokens": 18139,
+      "webSearchRequests": 0,
+      "costUSD": 0.0864383,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 103,
+      "cacheCreationEphemeral5mInputTokens": 7071,
+      "cacheCreationEphemeral1hInputTokens": 11068,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "No, that's not right. A dull knife is the more dangerous one, so I wouldn't leave yours as it is.\n\nThe idea is tempting because a dull blade does cut skin less easily. But you cut food, not skin, and a dull knife cuts food badly too.\n\nTake a tomato. A sharp knife goes through the skin with almost no pressure. A dull knife slides across the skin, so you push harder. When it finally bites, or slips off the curve, all that force carries your hand forward along the blade. That slip is how most home cooks cut themselves. A sharp knife needs little force, so you stay in control of it.\n\nA dull knife also tends to crush and tear food, and it makes you saw. All of that makes it less steady in your hand. Your claw grip is a good habit, but it works best with a knife that does what you tell it.\n\nThis ties to your goal of keeping your knife sharp, so you can cut safely. Sharp knives still need care. Keep your fingertips curled, and store the knife so the edge can't catch your hand. We haven't covered sharpening yet. People often mix up honing and sharpening, and we'll sort that out in the lesson. Honing doesn't actually sharpen the blade.\n\nQuick check: the next time you cut a tomato, what would you notice with a dull knife that tells you it's the riskier choice?\n\nIf you'd like, I can write a short lesson on keeping a knife sharp, covering honing and sharpening, and on storing it safely.",
+  "ttft_ms": 1161,
+  "type": "result",
+  "duration_ms": 12129,
+  "uuid": "fe0bbe7e-690e-4cd4-b7b1-4f4bff936574",
+  "ttft_stream_ms": 768,
+  "time_to_request_ms": 117,
+  "first_content_frame_ms": 769,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1573,
+      "cacheReadInputTokens": 87428,
+      "cacheCreationInputTokens": 18139,
+      "webSearchRequests": 0,
+      "costUSD": 0.0864383,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 103,
+      "cacheCreationEphemeral5mInputTokens": 7071,
+      "cacheCreationEphemeral1hInputTokens": 11068,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

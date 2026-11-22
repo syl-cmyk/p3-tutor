@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "You picked 'flat on the food, with the fingers stretched out'. That puts your fingertips right in the path of the blade, which is how most home cuts happen. The right answer is the claw: fingertips curled back, so the blade meets your knuckles and not your fingers. Next time you cut a carrot, check that you can't see your fingertips from above."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right: the knuckles guide the side of the blade. Because the knuckles are the part closest to the knife, the fingertips stay behind them, out of reach. That is the link to q1 and q3."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "Keeping the knife from slipping is not what the curl is for. The fingertips curl back to keep them out of the blade's path, with the knuckles in front taking the side of the blade. If the knife did slip, a claw still means it meets a knuckle and not a fingertip. Your answer from q2 (the knuckles guide the blade) is the missing half of this one."
+    }
+  ],
+  "summary": "You know the knuckles guide the blade, and that is the core of the claw grip. Two answers missed why the grip is built that way: the claw protects the fingertips by keeping them behind the knuckles, and that is its purpose, not stopping a slip. Next step: cut a carrot slowly with the claw, then once with the fingers flat, and notice where the blade would hit in each. Then retry q1 and q3 in your own words."
+}

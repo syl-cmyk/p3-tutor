@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 14682,
+  "stop_reason": "end_turn",
+  "session_id": "5b683f4b-c4dd-4626-83ab-ccf930924e9e",
+  "total_cost_usd": 0.1220808,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 23264,
+    "cache_read_input_tokens": 91388,
+    "output_tokens": 1987,
+    "output_tokens_details": {
+      "thinking_tokens": 185
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23264,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 690,
+        "cache_read_input_tokens": 33273,
+        "cache_creation_input_tokens": 627,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 627
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1987,
+      "cacheReadInputTokens": 91388,
+      "cacheCreationInputTokens": 23264,
+      "webSearchRequests": 0,
+      "costUSD": 0.1220808,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 185,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23264,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 10,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "No processor avoids every stall. Out-of-order execution, register renaming and speculation hide many stalls, but some always remain.\n\n**Start with an everyday example.** Say you're cooking and the pasta takes 10 minutes. You chop vegetables while you wait, because chopping doesn't depend on the pasta. That is out-of-order execution: the processor runs any later instruction whose inputs are ready, instead of waiting in program order.\n\n**Each technique removes one kind of stall:**\n- **Register renaming** removes *false* dependences. Two instructions sometimes reuse the same register name even though they share no data. The processor gives each one a hidden physical register, so neither has to wait for the other.\n- **Speculation** (guessing a branch's direction and running ahead) hides the wait for a branch to resolve. That's a control hazard, a stall caused by not yet knowing which instruction comes next.\n\n**What still stalls:**\n- **True data dependences.** If `add r3, r1, r2` needs the result of a load, nothing can run it early. Renaming can't help, because the value really isn't there yet.\n- **Wrong guesses.** A mispredicted branch means the processor throws away the speculative work and refetches, which costs roughly 15 or more cycles on modern cores. Your mission question about branchy loops comes down to this.\n- **Cache misses and limited hardware.** A miss can take hundreds of cycles, longer than the processor's window of waiting instructions can cover. Finite functional units and buffers also cause stalls.\n\nOne more caveat: out-of-order hardware adds complexity and power cost. That's part of the answer to your \"is it worth it?\" design question.\n\nI haven't taught hazards or stall counting yet, so this is the big picture without cycle counts. The next step is a lesson on the three hazard types (structural, data, control) and counting stall cycles in a simple in-order pipeline. Out-of-order only makes sense after that. Want me to write that lesson?\n\nQuick check: in the sequence `load r1, [x]` then `add r2, r1, r3`, would renaming remove the wait? Why or why not?",
+  "ttft_ms": 795,
+  "type": "result",
+  "duration_ms": 14840,
+  "uuid": "68bb5096-0cb3-4c8f-ba1e-54eb5d5dd132",
+  "ttft_stream_ms": 794,
+  "time_to_request_ms": 110,
+  "first_content_frame_ms": 794,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1987,
+      "cacheReadInputTokens": 91388,
+      "cacheCreationInputTokens": 23264,
+      "webSearchRequests": 0,
+      "costUSD": 0.1220808,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 185,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23264,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

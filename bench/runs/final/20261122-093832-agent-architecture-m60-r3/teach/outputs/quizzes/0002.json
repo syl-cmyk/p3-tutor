@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your makerspace assistant runs a 3-call request. The model is called three times, and the program sends the full history each time. Call 1's input is 1,000 tokens, the model's reply is 50 tokens, and a tool result of 300 tokens comes back. Which pieces are in call 2's input?",
+      "options": [
+        {"id": "a", "text": "Only the 300-token tool result, since the model already read the rest"},
+        {"id": "b", "text": "The 1,000-token input, the 50-token reply and the 300-token tool result"},
+        {"id": "c", "text": "The 1,000-token input and the 300-token tool result, but not the reply"},
+        {"id": "d", "text": "Only a short summary the model wrote itself while it waited for the tool"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In a 3-call run, call 1's input is 1,000 tokens. After call 1 the model writes 50 tokens and a 300-token tool result comes back; that makes call 2's input. Call 2 then writes 40 tokens and a 200-token tool result comes back. Call 3 sends the whole history again. How many input tokens does call 3 have?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant must answer from 40 manuals totaling 2 million tokens, and each student asks about one machine. Which design keeps cost per request lowest while still finding the right page?",
+      "options": [
+        {"id": "a", "text": "Put all 40 manuals in the first call and rely on the large window"},
+        {"id": "b", "text": "Summarize all 40 manuals into one page and never look at the originals"},
+        {"id": "c", "text": "Give a search tool that returns the best few chunks for each question"},
+        {"id": "d", "text": "Ask the student to paste in the manual pages that they think matter"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student, Jonas, finishes a session with the assistant. The next day he starts a new session and the assistant does not know his preferred booking times. In one sentence, why not, and what must the program do for the assistant to know them?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant's notes say \"Jonas is trained on the 3D printer\", written two months ago. Training can expire. Jonas asks to book the printer today. What should the assistant do?",
+      "options": [
+        {"id": "a", "text": "Trust the note, since the assistant wrote it and it was true then"},
+        {"id": "b", "text": "Book the slot and delete the note so that it can't mislead anyone"},
+        {"id": "c", "text": "Ask Jonas whether his training is still valid and accept his answer"},
+        {"id": "d", "text": "Look up his status in the training database, because it can change"}
+      ]
+    }
+  ]
+}

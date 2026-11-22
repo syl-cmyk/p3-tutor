@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your makerspace assistant has just answered a student's first question. The student sends a second question in the same chat. What does the program do before the model's next call?",
+      "options": [
+        {"id": "a", "text": "It sends only the new question, since the model kept the chat"},
+        {"id": "b", "text": "It sends the whole history again, with the new question added"},
+        {"id": "c", "text": "It sends only a short summary the model wrote after answering"},
+        {"id": "d", "text": "It sends the new question and asks the model to recall the rest"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Made-up numbers: a request to your assistant takes 3 model calls. Call 1 has 2,000 input tokens. Each tool result adds 500 tokens and each tool request the model writes adds 100 tokens to the history, and the program resends the whole history every call. How many input tokens are billed across the 3 calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The team's drill press manual is 40,000 tokens and the assistant must answer from it. Which design keeps the cost per question lowest while still finding the right page?",
+      "options": [
+        {"id": "a", "text": "Cut the manual into chunks, then put the best few into the window"},
+        {"id": "b", "text": "Paste the manual in the first call only, since the model keeps it"},
+        {"id": "c", "text": "Switch to a model with a bigger window and paste the manual in each call"},
+        {"id": "d", "text": "Ask the model to recite the manual from its training data when asked"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student told the assistant last week, \"I always book mornings,\" and today the assistant offers a morning slot in a brand-new session. In one or two sentences, where did that knowledge come from, given that the old window is gone?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Which fact should your assistant get by a fresh lookup each time, rather than from a saved note?",
+      "options": [
+        {"id": "a", "text": "The student's favorite machine to use"},
+        {"id": "b", "text": "The nickname the student likes to be called"},
+        {"id": "c", "text": "A tip the assistant already tried that worked"},
+        {"id": "d", "text": "Whether the student's welding certificate is still valid"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem; font-family: Georgia, serif; line-height: 1.5; color: #222; background: #fffff8; }
+    h1 { font-size: 1.5rem; margin-bottom: .2rem; }
+    h2 { font-size: 1.1rem; margin-top: 1.4rem; border-bottom: 1px solid #ccc; }
+    table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+    td, th { text-align: left; padding: .25rem .5rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    a { color: #0b5394; }
+    .warn { color: #8a3b00; }
+    @media (prefers-color-scheme: dark) { body { background: #151515; color: #e8e8e8; } a { color: #8ab4f8; } .warn { color: #f0a060; } td, th, h2 { border-color: #444; } }
+    @media print { body { font-size: 10.5pt; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>What the model sees on each call, and what survives between steps and sessions. Token counts below are illustrative.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><td>Token</td><td>A small piece of text, roughly three quarters of an English word.</td></tr>
+    <tr><td>Context window</td><td>Everything the model sees on one call: instructions, tool descriptions, messages, tool results and its reply.</td></tr>
+    <tr><td>History</td><td>The earlier messages and tool results the program sends again on every call.</td></tr>
+    <tr><td>Compaction</td><td>Trimming history by clearing old tool results or summarising.</td></tr>
+    <tr><td>Retrieval</td><td>Keeping long text outside the window and fetching only the few best chunks per question.</td></tr>
+    <tr><td>Notes (memory tool)</td><td>Files the program saves outside the window, which the model reads in later sessions.</td></tr>
+  </table>
+
+  <h2>The four places information can live</h2>
+  <ol>
+    <li><strong>Window:</strong> the model only uses what is in this call, because it remembers nothing itself.</li>
+    <li><strong>History:</strong> resent in full on every step, so each call costs more than the last.</li>
+    <li><strong>Retrieval:</strong> for long shared text such as manuals, because sending it all every call is costly and a full window is not a better one.</li>
+    <li><strong>Notes:</strong> for slow-changing facts per student, because the window is gone when the chat ends. Fast-changing facts like the calendar are looked up fresh, or they go stale.</li>
+  </ol>
+  <p>Cost rule in words: add up the input sent on every call. Total input = call 1 + call 2 + call 3, and each call holds everything before it plus the new lines.</p>
+
+  <h2>Worked example</h2>
+  <ol>
+    <li>Call 1 sends 1,225 tokens (instructions 400, tools 800, question 25). The model asks for the calendar (60 tokens).</li>
+    <li>The tool returns 350 tokens. Call 2 sends 1,225 + 60 + 350 = 1,635. The model asks for the manual (70).</li>
+    <li>The tool returns a 1,800-token page. Call 3 sends 1,635 + 70 + 1,800 = 3,505.</li>
+    <li>Total input: 1,225 + 1,635 + 3,505 = 6,365 tokens, though the final window is about 3,595.</li>
+  </ol>
+
+  <h2>Common mistakes</h2>
+  <ul>
+    <li class="warn">The model remembers last visit on its own. Not so: only saved notes read back in carry over.</li>
+    <li class="warn">You only pay for the new message each step. Not so: the whole history is sent again.</li>
+    <li class="warn">A bigger window means put everything in. Not so: a fuller window is not used better.</li>
+    <li class="warn">A summary loses nothing. Not so: it can drop a key fact, like "not yet booked".</li>
+    <li class="warn">Retrieval always finds the right page. Not so: a chunk can miss its context, so add a line saying which machine and section it is from.</li>
+    <li class="warn">Notes are always right. Not so: they can go stale, so decide which record wins.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory.html">lesson 0001</a>. Primary source: <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</body>
+</html>

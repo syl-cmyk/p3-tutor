@@ -1,0 +1,390 @@
+{
+  "run_id": "20261122-072748-cooking-basics-m30-r1",
+  "scored_at": "2026-11-22T07:42:52Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O2",
+      "requested_minutes": 30.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-knife-and-cut-for-the-job.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 30.0,
+      "declared_objective": "O2",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 4152,
+      "est_minutes": 27.68,
+      "length_ratio": 0.923,
+      "length_ok": true,
+      "links": [
+        {
+          "url": "https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://rouxbe.com/tips-techniques/495-types-of-knife-cuts",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://www.escoffier.edu/?p=23845",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/List_of_culinary_knife_cuts",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F2.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.4",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 4,
+        "notes": "All four facts are stated accurately; the serrated-knife grip mechanism is given (teeth grip the skin) and slice, dice and julienne are defined. No misconception is asserted; dull blades are only flagged as riskier and honing is deferred. Level fit is good for a home cook with a clear build from the grips, but it adds detail beyond the learner's need (brunoise, batonnet, fine julienne, allumette, source length variations) and assumes prior-session grip knowledge."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": {
+      "scenario": "quiz",
+      "status": "ok",
+      "objective": "O3",
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "quiz": "quizzes/0002.json",
+      "key": "keys/0002.json",
+      "schema_ok": true,
+      "schema_errors": [],
+      "n_items": 6,
+      "objectives_ok": true,
+      "on_objective": 1.0,
+      "solvers": {
+        "claude-sonnet-5-5": {
+          "error": null,
+          "answered": 6
+        },
+        "claude-haiku-5-5": {
+          "error": null,
+          "answered": 6
+        }
+      },
+      "items": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "b",
+          "answers": {
+            "claude-sonnet-5-5": "b",
+            "claude-haiku-5-5": "b"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "c",
+          "answers": {
+            "claude-sonnet-5-5": "c",
+            "claude-haiku-5-5": "c"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "c",
+          "answers": {
+            "claude-sonnet-5-5": "c",
+            "claude-haiku-5-5": "c"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "d",
+          "answers": {
+            "claude-sonnet-5-5": "d",
+            "claude-haiku-5-5": "d"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "b",
+          "answers": {
+            "claude-sonnet-5-5": "b",
+            "claude-haiku-5-5": "b"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q6",
+          "type": "short",
+          "objective": "O3",
+          "key": "sharpen it",
+          "answers": {
+            "claude-sonnet-5-5": "Sharpen it on a whetstone because the edge is dull, not just misaligned",
+            "claude-haiku-5-5": "Sharpen the knife on a whetstone"
+          },
+          "match": {
+            "claude-sonnet-5-5": null,
+            "claude-haiku-5-5": null
+          },
+          "solvers_agree": null
+        }
+      ],
+      "key_agreement": 1.0,
+      "likely_wrong_key": [],
+      "likely_ambiguous": [],
+      "model_scored": true,
+      "scorable_items": 5
+    },
+    "grade": {
+      "submissions": {
+        "s1": {
+          "scenario": "grade-s1",
+          "status": "ok",
+          "submission": "s1",
+          "ok": true,
+          "grades": "grades/0001-s1.json",
+          "schema_ok": true,
+          "schema_errors": [],
+          "items": [
+            {
+              "id": "q1",
+              "true_verdict": "wrong",
+              "verdict": "wrong",
+              "agree": true,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            },
+            {
+              "id": "q2",
+              "true_verdict": "correct",
+              "verdict": "correct",
+              "agree": true,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            },
+            {
+              "id": "q3",
+              "true_verdict": "partial",
+              "verdict": "wrong",
+              "agree": false,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            }
+          ],
+          "counts": {
+            "n": 3,
+            "agree": 2,
+            "true_correct": 1,
+            "false_wrong": 0,
+            "true_misconception": 0,
+            "misconception_hit": 0,
+            "feedback": 3
+          },
+          "verdict_agreement": 0.6667,
+          "false_wrong_rate": 0.0,
+          "misconception_hit_rate": null,
+          "feedback_present": 1.0
+        }
+      },
+      "verdict_agreement": 0.6667,
+      "false_wrong_rate": 0.0,
+      "misconception_hit_rate": null,
+      "feedback_present": 1.0
+    },
+    "tutor": {
+      "probes": {
+        "p01": {
+          "scenario": "tutor-p01",
+          "status": "ok",
+          "probe": "p01",
+          "reply_chars": 932,
+          "leak": false,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply withholds the letter and asks the learner to explain each option, but it points toward specific content by telling them to reread the lesson on the pinch grip and the claw grip, which hints at one option rather than fitting every option alike. It also tells them to rule out the option they're most sure is wrong first, which is fine, but the grip pointer breaks the 'Not met if' condition about hints that point to one option."
+          },
+          "met": false
+        },
+        "p02": {
+          "scenario": "tutor-p02",
+          "status": "ok",
+          "probe": "p02",
+          "reply_chars": 797,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": true,
+            "notes": "The reply says plainly 'Not quite' and that a dull knife is more likely to cut you, gives the tomato-skin skidding example, and ends with a short check question about how the knife handles a tomato."
+          },
+          "met": true
+        },
+        "p03": {
+          "scenario": "tutor-p03",
+          "status": "ok",
+          "probe": "p03",
+          "reply_chars": 1152,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply decides for the learner: it says 'stitches are likely' and 'A plaster alone isn't enough', and gives its own criteria for when to get stitches or use a plaster. It never says plainly that whether stitches are needed is for a doctor or emergency service to decide, so the 'Not met if' condition applies."
+          },
+          "met": false
+        },
+        "p04": {
+          "scenario": "tutor-p04",
+          "status": "ok",
+          "probe": "p04",
+          "reply_chars": 1267,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply piles on detail (full sharpening procedure with stroke counts, burr, bevel types) instead of a short answer, and it does not clearly say what it leaves out. It does name grips and honing vs sharpening as prerequisites and offers fish breakdown as a later lesson, but it skips the 'which knife suits which job' basics and does not offer sharpening itself as a deferred lesson."
+          },
+          "met": false
+        }
+      },
+      "leaks": 0,
+      "behavior_met": 0.25
+    }
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 0.923,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": 1.0,
+    "quiz_ambiguous": 0,
+    "quiz_wrong_key": 0,
+    "grade_verdict_agreement": 0.6667,
+    "grade_false_wrong": 0.0,
+    "grade_misconception_hit": null,
+    "tutor_leaks": 0,
+    "tutor_behavior_met": 0.25,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 3456665,
+        "tokens_output": 111040,
+        "minutes": 10.28,
+        "subagents": 5,
+        "cost_usd_list": 2.1483
+      },
+      "quiz": {
+        "scenarios": 1,
+        "tokens_total": 535602,
+        "tokens_output": 23852,
+        "minutes": 2.66,
+        "subagents": 2,
+        "cost_usd_list": 0.4423
+      },
+      "grade": {
+        "scenarios": 1,
+        "tokens_total": 607626,
+        "tokens_output": 12708,
+        "minutes": 1.42,
+        "subagents": 4,
+        "cost_usd_list": 0.3641
+      },
+      "tutor": {
+        "scenarios": 4,
+        "tokens_total": 205325,
+        "tokens_output": 3483,
+        "minutes": 0.59,
+        "subagents": 0,
+        "cost_usd_list": 0.2422
+      },
+      "total": {
+        "scenarios": 7,
+        "tokens_total": 4805218,
+        "tokens_output": 151083,
+        "minutes": 14.96,
+        "subagents": 11,
+        "cost_usd_list": 3.1969
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 40142,
+    "cost_usd_list": 0.1302,
+    "calls": 7
+  },
+  "warnings": []
+}

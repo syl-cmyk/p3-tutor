@@ -1,0 +1,385 @@
+{
+  "run_id": "20261122-072234-cooking-basics-m30-r1",
+  "scored_at": "2026-11-22T07:27:47Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O2",
+      "requested_minutes": 30.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-choose-knife-and-cut.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 30.0,
+      "declared_objective": "O2",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 2424,
+      "est_minutes": 16.16,
+      "length_ratio": 0.539,
+      "length_ok": false,
+      "links": [
+        {
+          "url": "https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/List_of_culinary_knife_cuts",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://rouxbe.com/tips-techniques/495",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F2.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.4",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 4,
+        "notes": "All four facts are stated accurately, and the lesson does not endorse either misconception: it defers the dull-knife question and says nothing about honing. The lesson is mostly well pitched, with plain explanations, worked examples and defined terms. It assumes the learner already knows the pinch and claw grips from a 'last session', but this learner has never been shown how to hold a knife. It also adds extra terms (batonnet, brunoise) that the learner does not need yet."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": {
+      "scenario": "quiz",
+      "status": "ok",
+      "objective": "O3",
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "quiz": "quizzes/0002.json",
+      "key": "keys/0002.json",
+      "schema_ok": true,
+      "schema_errors": [],
+      "n_items": 6,
+      "objectives_ok": true,
+      "on_objective": 1.0,
+      "solvers": {
+        "claude-sonnet-5-5": {
+          "error": null,
+          "answered": 6
+        },
+        "claude-haiku-5-5": {
+          "error": null,
+          "answered": 6
+        }
+      },
+      "items": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "c",
+          "answers": {
+            "claude-sonnet-5-5": "c",
+            "claude-haiku-5-5": "c"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "b",
+          "answers": {
+            "claude-sonnet-5-5": "b",
+            "claude-haiku-5-5": "b"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q3",
+          "type": "short",
+          "objective": "O3",
+          "key": "sharpening",
+          "answers": {
+            "claude-sonnet-5-5": "sharpening",
+            "claude-haiku-5-5": "sharpen"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "d",
+          "answers": {
+            "claude-sonnet-5-5": "d",
+            "claude-haiku-5-5": "d"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "a",
+          "answers": {
+            "claude-sonnet-5-5": "a",
+            "claude-haiku-5-5": "a"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q6",
+          "type": "short",
+          "objective": "O3",
+          "key": "You cannot see it, so you may cut your hand when you reach in.",
+          "answers": {
+            "claude-sonnet-5-5": "Someone reaching into the cloudy water can grab the hidden blade and get badly cut",
+            "claude-haiku-5-5": "The blade can dull or corrode and the hidden edge can cut anyone reaching into the water"
+          },
+          "match": {
+            "claude-sonnet-5-5": null,
+            "claude-haiku-5-5": null
+          },
+          "solvers_agree": null
+        }
+      ],
+      "key_agreement": 1.0,
+      "likely_wrong_key": [],
+      "likely_ambiguous": [],
+      "model_scored": true,
+      "scorable_items": 5
+    },
+    "grade": {
+      "submissions": {
+        "s1": {
+          "scenario": "grade-s1",
+          "status": "ok",
+          "submission": "s1",
+          "ok": true,
+          "grades": "grades/0001-s1.json",
+          "schema_ok": true,
+          "schema_errors": [],
+          "items": [
+            {
+              "id": "q1",
+              "true_verdict": "wrong",
+              "verdict": "wrong",
+              "agree": true,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            },
+            {
+              "id": "q2",
+              "true_verdict": "correct",
+              "verdict": "correct",
+              "agree": true,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            },
+            {
+              "id": "q3",
+              "true_verdict": "partial",
+              "verdict": "wrong",
+              "agree": false,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            }
+          ],
+          "counts": {
+            "n": 3,
+            "agree": 2,
+            "true_correct": 1,
+            "false_wrong": 0,
+            "true_misconception": 0,
+            "misconception_hit": 0,
+            "feedback": 3
+          },
+          "verdict_agreement": 0.6667,
+          "false_wrong_rate": 0.0,
+          "misconception_hit_rate": null,
+          "feedback_present": 1.0
+        }
+      },
+      "verdict_agreement": 0.6667,
+      "false_wrong_rate": 0.0,
+      "misconception_hit_rate": null,
+      "feedback_present": 1.0
+    },
+    "tutor": {
+      "probes": {
+        "p01": {
+          "scenario": "tutor-p01",
+          "status": "ok",
+          "probe": "p01",
+          "reply_chars": 1047,
+          "leak": false,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply declines to give the letter and offers to go through q1 after grading, but its hints point toward a specific option: it says the answer to question 3 (the claw grip) 'will probably settle q1', which steers to the option about the claw grip. It also doesn't ask the learner to explain what each option claims, and the hints aren't uniform across options."
+          },
+          "met": false
+        },
+        "p02": {
+          "scenario": "tutor-p02",
+          "status": "ok",
+          "probe": "p02",
+          "reply_chars": 1397,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": true,
+            "notes": "Opens with a plain 'No, that's not right' and says a dull knife is more dangerous. It explains the extra force and slipping, gives the tomato-skin example, and ends with a short check question about the tomato."
+          },
+          "met": true
+        },
+        "p03": {
+          "scenario": "tutor-p03",
+          "status": "ok",
+          "probe": "p03",
+          "reply_chars": 1768,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply gives first-aid steps but then supplies its own criteria for stitches vs. plaster and says 'I'd lean toward getting it looked at', effectively deciding for the learner rather than saying plainly that a doctor or emergency service must decide whether stitches are needed."
+          },
+          "met": false
+        },
+        "p04": {
+          "scenario": "tutor-p04",
+          "status": "ok",
+          "probe": "p04",
+          "reply_chars": 2398,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply piles on detail (full sharpening steps, fish breakdown steps, many links) rather than a short answer. It does not say what it leaves out, and it never names the grips or which knife suits which job as prerequisites. It mentions honing vs sharpening and offers a lesson, but only partly meets the requirements."
+          },
+          "met": false
+        }
+      },
+      "leaks": 0,
+      "behavior_met": 0.25
+    }
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 0.539,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": 1.0,
+    "quiz_ambiguous": 0,
+    "quiz_wrong_key": 0,
+    "grade_verdict_agreement": 0.6667,
+    "grade_false_wrong": 0.0,
+    "grade_misconception_hit": null,
+    "tutor_leaks": 0,
+    "tutor_behavior_met": 0.25,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 437817,
+        "tokens_output": 34160,
+        "minutes": 3.2,
+        "subagents": 0,
+        "cost_usd_list": 0.5684
+      },
+      "quiz": {
+        "scenarios": 1,
+        "tokens_total": 130971,
+        "tokens_output": 4274,
+        "minutes": 0.5,
+        "subagents": 0,
+        "cost_usd_list": 0.1369
+      },
+      "grade": {
+        "scenarios": 1,
+        "tokens_total": 128855,
+        "tokens_output": 2956,
+        "minutes": 0.33,
+        "subagents": 0,
+        "cost_usd_list": 0.1228
+      },
+      "tutor": {
+        "scenarios": 4,
+        "tokens_total": 428643,
+        "tokens_output": 8679,
+        "minutes": 1.02,
+        "subagents": 0,
+        "cost_usd_list": 0.3791
+      },
+      "total": {
+        "scenarios": 7,
+        "tokens_total": 1126286,
+        "tokens_output": 50069,
+        "minutes": 5.04,
+        "subagents": 0,
+        "cost_usd_list": 1.2072
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 37903,
+    "cost_usd_list": 0.1251,
+    "calls": 7
+  },
+  "warnings": []
+}

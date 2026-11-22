@@ -1,0 +1,38 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "A stall holds the dependent instruction back and puts bubbles (empty cycles) in the pipeline until the value is ready."
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "Bypassing wires the result from a pipeline register straight to the input of the stage that needs it, so the sub does not wait for write-back. Option a describes a stall, which is the other way to handle the hazard."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "The load's data comes out of memory at the end of MEM, but the add needs it at the start of its EX, so one bubble is unavoidable. Bypassing cannot send a value that does not exist yet."
+    },
+    {
+      "id": "q4",
+      "answer": "stall it",
+      "accepted": ["stall", "stalls", "stalling", "it stalls", "stalls it", "make it wait", "wait", "waits", "delay it", "delays it", "hold it back", "holds it back", "stall the second instruction", "stall the pipeline"],
+      "rationale": "A structural hazard is a resource conflict, not a missing value, so there is nothing to forward: the second instruction waits a cycle. Naming bypassing shows the idea that every stall is a data hazard (M1)."
+    },
+    {
+      "id": "q5",
+      "answer": 2,
+      "tolerance": 0,
+      "rationale": "The add writes in WB in cycle 5, so the sub can read in ID in cycle 5 instead of cycle 3: 2 stall cycles."
+    },
+    {
+      "id": "q6",
+      "answer": 10,
+      "tolerance": 0,
+      "rationale": "5 instructions in a 5-stage pipeline take 5 + 4 = 9 cycles with no hazards, and the one load-use stall adds 1 cycle: 10. An answer of 9 forgets that bypassing cannot remove a load-use stall."
+    }
+  ]
+}

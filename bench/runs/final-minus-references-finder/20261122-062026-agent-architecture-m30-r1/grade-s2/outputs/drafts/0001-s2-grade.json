@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The loop is what makes it an agent: the model picks an action, the program runs it, and the result comes back for the next step. A longer prompt or a bigger model still only gives you one call."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only writes a request, like check_calendar(laser cutter, tomorrow's date), and the program is the one that actually runs it."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Not quite. You picked 'left to run longer, it will eventually fix the bug', but if it's made the same edit and hit the same failing test 40 times, step 41 will do the same thing. The answer is b, a step limit: at step 20 the program stops the loop and reports \"same edit, same failing test\", so a person can look at what's stuck instead of it burning through more steps."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Partly right. Your count of 4 is correct (three tool requests plus the final answer), and only your reasoning is off, because the model doesn't run the tools. In Riley's run the model just writes \"check_calendar(laser cutter, tomorrow 3 pm)\", then the program runs it and hands the result back."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The result goes back to the model as its next input, so the model can use it to decide its next step. You covered both what happens and why."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Partly right. The name helps, but the model relies on the whole description the program hands it: the name, what the tool does, and its parameters. For example, if the tools are check_calendar and search_manuals, the description (\"checks booked slots for a machine on a date\") is what confirms check_calendar fits 'is the laser cutter free tomorrow?'."
+    }
+  ],
+  "summary": "You've got the agent loop down, including that the model asks and the program carries out the result and feeds it back. The thing to work on is the model versus the program: the model never runs tools, and a loop needs a stopping condition like a step limit. Next, write out one run of the makerspace question as a list of who does what at each step (model writes, program runs) and mark where a step limit would stop it."
+}

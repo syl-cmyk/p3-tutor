@@ -1,0 +1,110 @@
+{
+  "duration_api_ms": 87104,
+  "stop_reason": "end_turn",
+  "session_id": "7ecb6a6a-4a8f-4c3c-a7c4-da913e057d77",
+  "total_cost_usd": 0.3641250000000001,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 3131,
+    "cache_read_input_tokens": 82756,
+    "output_tokens": 2458,
+    "output_tokens_details": {
+      "thinking_tokens": 122
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3131
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 475,
+        "cache_read_input_tokens": 41672,
+        "cache_creation_input_tokens": 2543,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2543,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 60,
+      "outputTokens": 12708,
+      "cacheReadInputTokens": 527225,
+      "cacheCreationInputTokens": 67633,
+      "webSearchRequests": 0,
+      "costUSD": 0.3641250000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1853,
+      "cacheCreationEphemeral5mInputTokens": 57553,
+      "cacheCreationEphemeral1hInputTokens": 10080,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrj3fsn-b9c61f6a"
+  },
+  "subagent_stats": {
+    "spawned": 4,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 4
+    },
+    "started_in_background": 4,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 4,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "grader": 2,
+      "grade-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded quiz 0001: you got 1 of 3 right (q2).\n\n- **q1, wrong:** you picked the flat hand with stretched-out fingers. The answer is b, a claw with the fingertips curled back. A slip with flat fingers puts the edge on a fingertip, and with a claw it meets a knuckle first.\n- **q2, correct:** the knuckles guide the side of the blade.\n- **q3, wrong:** \"So the knife does not slip\" is about the knife. The fingertips curl back to stay out of the blade's path.\n\nI didn't name a misconception on either wrong item, because none of the workspace's existing misconception ids fit.\n\nYou've got the knuckles guiding the blade. What to work on is why the claw grip works: it keeps your fingertips out of the blade's path, and it doesn't stop the knife slipping. Next time you cut a carrot, curl your fingertips back and say out loud which part of your hand the blade is touching.\n\nTwo review passes ran. The reviewer wanted the feedback to open more bluntly and to put the example first. I kept \"Not quite.\" and the verdict-first order because the grade skill requires them.\n\nI wrote `grades/0001-s1.json`, `review-records/0001-s1-grade.md` and `learning-records/0002-claw-grip-purpose-shaky.md`. I also updated `NOTES.md`. The new record softens the first-session record, which said you had explained why the fingertips curl.",
+  "ttft_ms": 1622,
+  "type": "result",
+  "duration_ms": 14482,
+  "uuid": "d939e4ca-c82e-40b3-8fe0-e84e7cb4e862",
+  "ttft_stream_ms": 753,
+  "time_to_request_ms": 10,
+  "first_content_frame_ms": 753,
+  "queued_turn_count": 0,
+  "result_index": 4,
+  "model_usage_since_last_result": {}
+}

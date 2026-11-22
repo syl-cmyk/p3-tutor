@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls; the program builds the full message list and sends it again with the new question. Picking a means believing the model remembers the chat by itself."
+    },
+    {
+      "id": "q2",
+      "answer": 7800,
+      "tolerance": 1,
+      "rationale": "Call 1 is 2,000. Call 2 is 2,000 + 100 + 500 = 2,600. Call 3 is 2,600 + 100 + 500 = 3,200. Total 2,000 + 2,600 + 3,200 = 7,800. An answer of 3,200 counts only the last call; 2,000 x 3 = 6,000 forgets the history grows."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Retrieval keeps the big text outside and sends only the best few chunks, so each call carries a small part of the manual. Pasting the manual in every call (b, c) pays for 40,000 tokens each time, and the model does not keep it between calls; training data does not hold the team's own manual (d)."
+    },
+    {
+      "id": "q4",
+      "answer": "It was saved in a note or file outside the window and read back into the new window.",
+      "accepted": [
+        "from a saved note",
+        "a note saved outside the window",
+        "memory file",
+        "it was saved in memory and read at the start of the session",
+        "a file or database that persists between sessions",
+        "notes it wrote last week"
+      ],
+      "rationale": "The window is discarded when a session ends, so the preference must have been written to storage outside it (a note or record) and loaded into today's window. An answer that says the model learned or remembered it by itself shows the belief that memory means the model changed."
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "A certificate can expire and gates safe use of a machine, so it is looked up fresh from the record. Preferences, nicknames and tips tried are soft, low-risk facts that suit notes."
+    }
+  ]
+}

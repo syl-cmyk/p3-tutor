@@ -1,0 +1,67 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Keeping a knife sharp and storing it safely",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Why is a dull knife more dangerous than a sharp one when you cut a tomato?",
+      "options": [
+        {"id": "a", "text": "It cuts skin worse, so cuts need longer to heal"},
+        {"id": "b", "text": "It is lighter, so it is harder to control well"},
+        {"id": "c", "text": "It needs more force, so it slips off more easily"},
+        {"id": "d", "text": "It cannot cut skin, so you feel safe and relax"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "You run a knife along a honing steel a few times. What does this do to the knife?",
+      "options": [
+        {"id": "a", "text": "It grinds off metal to form a brand new edge"},
+        {"id": "b", "text": "It straightens the edge that has bent over slightly"},
+        {"id": "c", "text": "It cleans off food and oil that dulls the edge"},
+        {"id": "d", "text": "It hardens the steel so the edge stays sharp longer"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A knife still slides off a tomato's skin after you hone it well. What does the knife now need, in one word?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Which is the safest way to clean a kitchen knife after use?",
+      "options": [
+        {"id": "a", "text": "Drop it in the sink and wash it with the dishes"},
+        {"id": "b", "text": "Soak it in hot soapy water until the food loosens"},
+        {"id": "c", "text": "Put it in the dishwasher, loose in the cutlery basket"},
+        {"id": "d", "text": "Wash it by hand, wiping with the edge facing away"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "You have dried a clean knife. Which place is the safest to store it?",
+      "options": [
+        {"id": "a", "text": "In a knife block, or on a wall magnet strip"},
+        {"id": "b", "text": "Loose in the drawer, together with the spoons"},
+        {"id": "c", "text": "On the counter, with the blade pointing away"},
+        {"id": "d", "text": "In the dish rack, so that it stays dry longer"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Why should you never leave a knife soaking in a sink full of soapy water? Answer in one sentence."
+    }
+  ]
+}

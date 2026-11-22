@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 13807,
+  "stop_reason": "end_turn",
+  "session_id": "870e42e5-b302-44dd-86ad-350ee6efb561",
+  "total_cost_usd": 0.1066109,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 19644,
+    "cache_read_input_tokens": 88989,
+    "output_tokens": 1912,
+    "output_tokens_details": {
+      "thinking_tokens": 219
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 19644,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 519,
+        "cache_read_input_tokens": 29884,
+        "cache_creation_input_tokens": 396,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 396
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1912,
+      "cacheReadInputTokens": 88989,
+      "cacheCreationInputTokens": 19644,
+      "webSearchRequests": 0,
+      "costUSD": 0.1066109,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 219,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 19644,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 10,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. Overlapping instructions is the goal of a pipeline, but it doesn't guarantee that nothing waits. Sometimes an instruction has to wait, and that wait is called a **stall**.\n\nHere is an everyday example. You and a friend wash and dry dishes in a line, so you wash plate 2 while your friend dries plate 1. That overlap works because the plates are independent. Now suppose your friend needs a plate you haven't finished washing yet. They have to stand idle until it's clean.\n\nA CPU does the same thing:\n\n```\nadd r1, r2, r3    # computes r1\nsub r4, r1, r5    # needs r1 from the add\n```\n\nThe `sub` is right behind the `add` in the pipeline. It needs `r1` before the `add` has produced it, so the `sub` has to wait. That waiting is a stall, and each stalled cycle is a cycle lost.\n\nStalls aren't only about data like this. Two instructions can also want the same hardware at the same moment, or the CPU can fetch the wrong instruction after a branch it hasn't resolved yet. We'll cover all of these in a lesson.\n\nThis connects to your mission. Counting a program's cycles means counting the stalls too. It's also why a loop with many branches runs slower, and why adding stages isn't automatically a win.\n\nQuick check: in the example above, why can't the `sub` just run in parallel with the `add`, the way two independent plates can?\n\nIf you'd like, I can write a lesson on the three kinds of hazards and how a pipeline handles them. Just tell me how many minutes you want it to take.",
+  "ttft_ms": 1224,
+  "type": "result",
+  "duration_ms": 14015,
+  "uuid": "5a4172be-f05c-4642-9960-4c5584538fec",
+  "ttft_stream_ms": 876,
+  "time_to_request_ms": 167,
+  "first_content_frame_ms": 876,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1912,
+      "cacheReadInputTokens": 88989,
+      "cacheCreationInputTokens": 19644,
+      "webSearchRequests": 0,
+      "costUSD": 0.1066109,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 219,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 19644,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "duration_api_ms": 721476,
+  "stop_reason": "end_turn",
+  "session_id": "90a29a20-ee67-4a8a-9561-aec00f228500",
+  "total_cost_usd": 2.1483223000000002,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 34693,
+    "cache_read_input_tokens": 680341,
+    "output_tokens": 10685,
+    "output_tokens_details": {
+      "thinking_tokens": 813
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 34693
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 631,
+        "cache_read_input_tokens": 109402,
+        "cache_creation_input_tokens": 2562,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2562,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 130,
+      "outputTokens": 100329,
+      "cacheReadInputTokens": 2926787,
+      "cacheCreationInputTokens": 314337,
+      "webSearchRequests": 0,
+      "costUSD": 2.1025297,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 20147,
+      "cacheCreationEphemeral5mInputTokens": 300698,
+      "cacheCreationEphemeral1hInputTokens": 13639,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 104371,
+      "outputTokens": 10711,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0457926,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 6176,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwriv739-f696e3da"
+  },
+  "subagent_stats": {
+    "spawned": 5,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 5
+    },
+    "started_in_background": 5,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 5,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 1
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 28,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The lesson is written and checked, and the quiz and cheat sheet are ready.\n\n- **Lesson:** `lessons/0001-knife-and-cut-for-the-job.html` is a 30-minute lesson on O2. It covers when to use the chef's, paring and serrated knives, and what slice, dice and julienne mean, with sizes. It has a warm-up on your claw and pinch grips, examples with step-by-step traces, practice checks, and a stir-fry worked example. Two practice tasks follow, then a summary and sources.\n- **Quiz:** quiz `0002` (five items) is ready whenever you want it. Just ask.\n- **Cheat sheet:** `cheatsheets/knife-and-cut-for-the-job.html` is a one-page version: the knife table, the cut sizes and the common mistakes.\n\n- **Review:** the reviewer asked for a revision. I fixed its concrete findings, including a feedback bug, a wrong knife in the salsa solution and the section times, which added up to 41 minutes. I did not run a second review pass, so the fixed version hasn't been re-reviewed.\n- **Not changed:** a few style points are still open. The pages have two examples in some parts and several sub-headings, and the right answer is often the third option in the practice checks.\n- **Length:** it should read as roughly 30 minutes (about 4,100 to 4,700 words by estimate), but I had no word counter to check.\n- **Not rendered:** I haven't opened the page, so I haven't seen the figures on screen.\n- **Community link:** there isn't one in \"Go further\". I couldn't open Reddit to check a community, so it's listed as a gap in `RESOURCES.md`.\n\nThe lesson only points to the next topic: sharpening, honing and storing your knife. That one also covers the \"a dull knife is safer\" idea.\n\nIf anything in the lesson is unclear, ask me and I'll explain it again.",
+  "ttft_ms": 1147,
+  "type": "result",
+  "duration_ms": 80607,
+  "uuid": "496db585-f7d2-4bab-8fdc-0f5562e1f698",
+  "ttft_stream_ms": 794,
+  "time_to_request_ms": 38,
+  "first_content_frame_ms": 794,
+  "queued_turn_count": 0,
+  "result_index": 4,
+  "model_usage_since_last_result": {}
+}

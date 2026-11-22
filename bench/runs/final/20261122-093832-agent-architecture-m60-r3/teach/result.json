@@ -1,0 +1,129 @@
+{
+  "duration_api_ms": 1018513,
+  "stop_reason": "end_turn",
+  "session_id": "2d656170-4178-44e5-bac3-370ef8d791f4",
+  "total_cost_usd": 3.2798127999999998,
+  "usage": {
+    "input_tokens": 14,
+    "cache_creation_input_tokens": 9534,
+    "cache_read_input_tokens": 518063,
+    "output_tokens": 4921,
+    "output_tokens_details": {
+      "thinking_tokens": 214
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 9534
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 506,
+        "cache_read_input_tokens": 90571,
+        "cache_creation_input_tokens": 457,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 457,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 126,
+      "outputTokens": 145575,
+      "cacheReadInputTokens": 2709885,
+      "cacheCreationInputTokens": 604916,
+      "webSearchRequests": 0,
+      "costUSD": 3.2597554999999994,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 50648,
+      "cacheCreationEphemeral5mInputTokens": 591266,
+      "cacheCreationEphemeral1hInputTokens": 13650,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 61008,
+      "outputTokens": 7913,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 1,
+      "costUSD": 0.0200573,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 4816,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrnsgow-5d8619a0"
+  },
+  "subagent_stats": {
+    "spawned": 6,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 6
+    },
+    "started_in_background": 6,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 6,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 11,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The O3 lesson is written, with a short quiz ready. Both review passes ended on \"revise\", so it still has known problems.\n\n- **Lesson:** `lessons/0001-context-and-memory.html`, 60 minutes. It runs one makerspace request through the context window, keeping the window small, retrieval from long manuals, notes that last between sessions, and pricing a design on paper.\n- **Quiz:** `quizzes/0002.json` has five items on O3, with its key in `keys/0002.json`. Ask me when you want to take it.\n\n**Problems still in the lesson:**\n- **Too dense for you.** It's heavier than your preferences ask for. Most parts define terms before showing the example, and there are seven headed sections instead of six.\n- **Review items I didn't fix.** Some misconception boxes lack a concrete case. Part 3 has two worked examples. A few practice items give no feedback on your own attempt.\n- **What I did fix.** I corrected the price and token-rule wording and the cost-ratio claim, and I added a citation.\n- **Community link.** The only link is Anthropic's community page, and I didn't open the Discord or subreddit it lists.\n\nI didn't write a cheat sheet this time. `NOTES.md` is updated, and the review details are in `review-records/0001-lesson.md`.\n\nShould I rewrite the lesson shorter and example-first? I think that fits how you learn better.",
+  "ttft_ms": 1197,
+  "type": "result",
+  "duration_ms": 41093,
+  "uuid": "01bbe1e0-acbc-4f18-8cd8-eed3826af4db",
+  "ttft_stream_ms": 787,
+  "time_to_request_ms": 45,
+  "first_content_frame_ms": 787,
+  "queued_turn_count": 0,
+  "result_index": 7,
+  "model_usage_since_last_result": {}
+}

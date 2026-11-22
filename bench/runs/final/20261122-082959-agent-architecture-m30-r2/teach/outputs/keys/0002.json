@@ -1,0 +1,43 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model has no memory between calls; it sees only the text the program sends, which normally includes the earlier turns. Options c and d wrongly give the model its own storage; option a wrongly says nothing is carried over."
+    },
+    {
+      "id": "q2",
+      "answer": 20000,
+      "tolerance": 0,
+      "rationale": "4 calls x 5,000 tokens = 20,000 input tokens, because the whole context is re-sent on every call. An answer of 5,000 treats the context as counted once."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "The window is thrown away when the session ends, so the fact has to be saved outside it (a note or database) and read back next session. A bigger window does not outlive the session, the model keeps nothing on its own, and instructions are not training."
+    },
+    {
+      "id": "q4",
+      "answer": "Because retrieval only changes the text handed to the model on each call; the model reads the newly retrieved pages and has not learned the manual.",
+      "accepted": [
+        "the model only reads what is retrieved",
+        "the new pages are retrieved and put in the context",
+        "retrieval hands the model the new text, it does not rely on training",
+        "the model never learned the manual, it reads the retrieved pages"
+      ],
+      "rationale": "Retrieval searches an index of the current text and appends the best chunks to the window. The model's knowledge is not changed, so only the index needs updating. A reply saying the model learned or was updated has the mechanism wrong."
+    },
+    {
+      "id": "q5",
+      "answer": "It costs input tokens on every call, and accuracy can drop as the window fills (context rot); retrieving only the right pages is cheaper and more accurate.",
+      "accepted": [
+        "it is expensive because the whole pile is re-sent every call",
+        "context rot, the model recalls less well as the context grows",
+        "too many tokens per call, which costs more and lowers accuracy",
+        "fitting is not the same as working well"
+      ],
+      "rationale": "Either reason is fully correct: cost (the pile is re-sent and counted on every call) or accuracy (context rot). An answer that only says it will not fit treats the window size as the only limit."
+    }
+  ]
+}

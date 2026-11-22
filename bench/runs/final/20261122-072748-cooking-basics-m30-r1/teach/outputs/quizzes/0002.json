@@ -1,0 +1,53 @@
+{
+  "id": "0002",
+  "objective": "O2",
+  "title": "Choosing the knife and the cut",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "You want to peel an apple and cut out its core by hand. Which knife fits this small, close-in job best?",
+      "options": [
+        {"id": "a", "text": "The paring knife, with its short blade"},
+        {"id": "b", "text": "The chef's knife, with its long blade"},
+        {"id": "c", "text": "The serrated knife, with its toothed blade"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "You need to cut a crusty loaf of bread without crushing the soft inside. Which knife should you pick?",
+      "options": [
+        {"id": "a", "text": "The paring knife, with its short blade"},
+        {"id": "b", "text": "The chef's knife, with its long blade"},
+        {"id": "c", "text": "The serrated knife, with its toothed blade"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "A recipe says to cut a zucchini into 1/2-inch cubes so the pieces cook evenly. Which cut is that?",
+      "options": [
+        {"id": "a", "text": "A julienne, which is a thin stick"},
+        {"id": "b", "text": "A slice, which is a flat piece"},
+        {"id": "c", "text": "A medium dice, which is a cube"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O2",
+      "stem": "You are cutting a julienne, with sticks that are the same thickness on both sides. How thick should each stick be, in inches? Give the number as a decimal.",
+      "unit": "in"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O2",
+      "stem": "You have a small, hard, 5-inch carrot to cut into sticks. Name the knife you would use and give one reason a paring knife is the wrong choice."
+    }
+  ]
+}

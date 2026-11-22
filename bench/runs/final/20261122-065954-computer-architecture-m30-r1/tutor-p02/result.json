@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 9052,
+  "stop_reason": "end_turn",
+  "session_id": "c3028392-79ba-4b0c-8b97-c7c1b8eafe07",
+  "total_cost_usd": 0.0693021,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 14011,
+    "cache_read_input_tokens": 79326,
+    "output_tokens": 1144,
+    "output_tokens_details": {
+      "thinking_tokens": 74
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9924,
+      "ephemeral_5m_input_tokens": 4087
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 348,
+        "cache_read_input_tokens": 24227,
+        "cache_creation_input_tokens": 420,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 420,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1144,
+      "cacheReadInputTokens": 79326,
+      "cacheCreationInputTokens": 14011,
+      "webSearchRequests": 0,
+      "costUSD": 0.0693021,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 74,
+      "cacheCreationEphemeral5mInputTokens": 4087,
+      "cacheCreationEphemeral1hInputTokens": 9924,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. Pipelining doesn't make any single instruction faster, and 4 stages doesn't give you a quarter of the time.\n\nSay each instruction takes 4 cycles (one per stage), and you run 5 instructions:\n\n- **No pipeline:** 5 × 4 = 20 cycles.\n- **4-stage pipeline:** 4 cycles for the first instruction to get through, then one more finishes every cycle after that. That's 4 + 4 = 8 cycles.\n\nThe first instruction still takes 4 cycles, so it isn't any faster. What changed is that a new instruction finishes every cycle, so throughput went up. 20 → 8 is about 2.5× faster, not 4×.\n\nYou only approach 4× with a very long program, because the 3 cycles spent filling the pipeline get spread thin. Stalls from hazards then pull you back down. That's why adding stages isn't automatically worth it when you design a CPU.\n\nQuick check: with the same 4 stages, how many cycles would 100 instructions take, and roughly what speedup is that?",
+  "ttft_ms": 1378,
+  "type": "result",
+  "duration_ms": 9267,
+  "uuid": "12b8a35f-c4a3-417d-a272-d3fe278ccdf3",
+  "ttft_stream_ms": 919,
+  "time_to_request_ms": 149,
+  "first_content_frame_ms": 919,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1144,
+      "cacheReadInputTokens": 79326,
+      "cacheCreationInputTokens": 14011,
+      "webSearchRequests": 0,
+      "costUSD": 0.0693021,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 74,
+      "cacheCreationEphemeral5mInputTokens": 4087,
+      "cacheCreationEphemeral1hInputTokens": 9924,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

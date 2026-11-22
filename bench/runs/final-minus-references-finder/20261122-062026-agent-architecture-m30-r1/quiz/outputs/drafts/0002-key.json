@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "In a workflow your code fixes the order of steps; in an agent the model picks the next step each time around the loop. Both can use tools.",
+      "distractors": {"a": "M12", "c": "M11", "d": "M11"}
+    },
+    {
+      "id": "q2",
+      "answer": "model calls",
+      "accepted": ["more model calls", "calls", "more calls", "llm calls", "more llm calls", "model requests", "extra model calls", "tokens", "more tokens"],
+      "rationale": "The agent loop calls the model once per step and the number of steps is open, so it makes more model calls and uses more tokens than a fixed sequence."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "The order is fixed in code, so this is a workflow even though it makes model calls and uses a tool. Using a model, using a tool or taking several steps does not make a system an agent.",
+      "distractors": {"a": "M11", "b": "M11", "d": "M11"}
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "Only the failing-print job has steps nobody can list in advance, so the model must choose them as results come back. The other three have known steps in a known order, which a fixed workflow handles more cheaply.",
+      "distractors": {"a": "M13", "b": "M13", "c": "M13"}
+    },
+    {
+      "id": "q5",
+      "answer": 0.6,
+      "tolerance": 0.01,
+      "rationale": "The agent makes 5 - 2 = 3 extra calls per request; 3 x $0.002 x 100 requests = $0.60."
+    },
+    {
+      "id": "q6",
+      "answer": "a",
+      "rationale": "Part 1 has steps that cannot be listed in advance, so the model should choose them; part 2 is the same steps every time, so code can run them cheaply and reliably.",
+      "distractors": {"b": "M12", "c": "M14", "d": "M13"}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "A new session starts with an empty window, and nothing was saved, so the model has only the text of this call. Options b, c and d each assume the model carries something over by itself.",
+      "distractors": {"b": "M11", "c": "M11"}
+    },
+    {
+      "id": "q2",
+      "answer": 1650,
+      "tolerance": 0,
+      "rationale": "Call 2 re-sends the fixed text, the question, the model's request and the tool result: 1,000 + 50 + 100 + 500 = 1,650. An answer of 500 or 600 forgets that the history is re-sent (M12)."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Retrieval loads only the relevant pages just in time, so the call stays small and cheap. Pasting the whole manual or loading it as a note costs its full size on every call.",
+      "distractors": {"b": "M13", "c": "M13"}
+    },
+    {
+      "id": "q4",
+      "answer": "Notes the program saves and loads back into the context; the program, not the model, does it.",
+      "accepted": ["saved notes loaded by the program", "notes stored outside the window and reloaded by the program", "a notes file the program reads back in", "the program saves notes and loads them into the next session's context"],
+      "rationale": "The model is not changed by a chat; only what is stored outside the window and loaded back in carries over, and the program does the storing and loading. An answer that says the model remembers or learns shows M11."
+    },
+    {
+      "id": "q5",
+      "answer": "Clear the old tool results or summarize the chat; a bigger window still degrades with length and costs every token on every call.",
+      "accepted": ["clear old tool results", "summarize the conversation", "compact the conversation", "compaction", "clear old results, because long contexts get worse and cost more"],
+      "rationale": "Clearing or summarizing shrinks the context. A bigger window does not fix context rot or the cost of re-sending every token each call; an answer saying a bigger window is enough shows M13."
+    }
+  ]
+}

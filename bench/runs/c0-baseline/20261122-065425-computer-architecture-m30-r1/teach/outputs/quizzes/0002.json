@@ -1,0 +1,49 @@
+{
+  "id": "0002",
+  "objective": "O2",
+  "title": "Why a pipeline stalls: the three hazards",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "A processor has one divider unit that cannot start a new division until the last one finishes. Two divide instructions come back to back, and the second has to wait. Which kind of hazard is this?",
+      "options": [
+        {"id": "a", "text": "A data hazard, because both divide numbers"},
+        {"id": "b", "text": "A structural hazard, because one unit is shared"},
+        {"id": "c", "text": "A control hazard, because the second one waits"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O2",
+      "stem": "A pipeline fetches the two instructions after a conditional branch, then finds out the branch is taken and throws them away. Which kind of hazard caused the wasted cycles?",
+      "options": [
+        {"id": "a", "text": "A data hazard, because the branch reads registers"},
+        {"id": "b", "text": "A structural hazard, because fetch and branch collide"},
+        {"id": "c", "text": "A control hazard, because the next address was unknown"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O2",
+      "stem": "A 5-stage pipeline would finish 6 instructions in the ideal number of cycles with no hazards. In this program, hazards cost 3 stall cycles in total. How many cycles does the program take?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O2",
+      "stem": "In a program, 25% of the instructions are branches, and each branch costs 2 stall cycles. There are no other stalls. What is the average number of cycles per instruction (CPI)?",
+      "unit": "cycles per instruction"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O2",
+      "stem": "A student says: \"A pipeline stalls only when an instruction needs a result that an earlier instruction has not produced yet.\" In one sentence, say what is wrong with this."
+    }
+  ]
+}

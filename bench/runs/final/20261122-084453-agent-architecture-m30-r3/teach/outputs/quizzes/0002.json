@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with the assistant about the CNC router. A day later they open a new chat and ask, \"Which bit did you recommend yesterday?\" Nothing was saved. What does the model have to go on?",
+      "options": [
+        {"id": "a", "text": "Only what this new call contains, so it cannot know"},
+        {"id": "b", "text": "A hidden copy of yesterday's chat kept by the model"},
+        {"id": "c", "text": "The student's habits, learned from yesterday's chat"},
+        {"id": "d", "text": "Yesterday's answers, stored inside the model's weights"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An agent makes two model calls. Call 1 sends 2,000 tokens of instructions and question. The model writes a 100-token tool request, and the tool returns a 500-token result. Call 2 sends everything from call 1, plus the request and the result. How many input tokens are sent across both calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant must answer from 30 long manuals, far too long to send on every call. Which design fits best?",
+      "options": [
+        {"id": "a", "text": "Split manuals ahead of time, then fetch the best pieces"},
+        {"id": "b", "text": "Paste all manuals into the first call, then trust the model"},
+        {"id": "c", "text": "Ask the model to memorise the manuals during the chat"},
+        {"id": "d", "text": "Keep the manuals out and let the model guess answers"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "The assistant should know a student's laser training status on their next visit, and also whether the 3D printer is free on Saturday. Which of these two facts belongs in saved notes, and which should be looked up fresh each time? Say why in one sentence."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A long chat is nearly filling the window, and most of it is old tool results. Which step shrinks the window with the least risk of losing something still needed?",
+      "options": [
+        {"id": "a", "text": "Delete the instructions so the chat gets more room"},
+        {"id": "b", "text": "Replace old results with short pointers, keep recent turns"},
+        {"id": "c", "text": "Delete the newest messages, since they are unfinished"},
+        {"id": "d", "text": "Switch the program to start fresh and forget the chat"}
+      ]
+    }
+  ]
+}

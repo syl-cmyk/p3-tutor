@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="p3-minutes" content="30">
+  <meta name="p3-objective" content="O2">
+  <title>Knife and cut selection: matching the blade and the cut size to the job</title>
+  <style>
+    :root {
+      --bg: #fffdf8;
+      --text: #1f1d1a;
+      --muted: #6b665e;
+      --rule: #e4dfd4;
+      --accent: #9a4517;
+      --accent-soft: #f7ede4;
+      --warn: #8c2f39;
+      --warn-soft: #f9eaec;
+      --ok: #2f6b3a;
+      --ok-soft: #e7f2e9;
+      --code-bg: #f3efe6;
+      --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171614;
+        --text: #e9e5dc;
+        --muted: #a49e93;
+        --rule: #36332e;
+        --accent: #eaa77a;
+        --accent-soft: #2c231d;
+        --warn: #f0a3ac;
+        --warn-soft: #2f1f22;
+        --ok: #9fd3a8;
+        --ok-soft: #1c2a1f;
+        --code-bg: #23211e;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 19px; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.6; }
+    main { max-width: 40rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    p, li { hyphens: auto; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    h1, h2, h3 { line-height: 1.25; font-weight: 600; }
+    h1 { font-size: 2.1rem; margin: 0.25rem 0 1rem; }
+    h2 { font-size: 1.45rem; margin: 3rem 0 0.75rem; }
+    h3 { font-size: 1.1rem; margin: 2rem 0 0.5rem; }
+    .kicker, .label, .meta, .section-time, figcaption, summary, th, caption, nav.toc, footer.closing {
+      font-family: var(--sans);
+    }
+    .kicker { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .lead { font-size: 1.15rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; color: var(--muted);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0.5rem 0; margin: 1.5rem 0; }
+    nav.toc { font-size: 0.9rem; margin: 1.5rem 0 2rem; }
+    nav.toc ol { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+    .section-time { font-size: 0.8rem; font-weight: 400; color: var(--muted); margin-left: 0.4rem; white-space: nowrap; }
+    dfn { font-style: normal; font-weight: 600; }
+    aside.note { font-size: 0.9rem; color: var(--muted); border-left: 2px solid var(--rule); padding-left: 1rem; margin: 1.25rem 0; }
+    .box { border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .box > :first-child { margin-top: 0; }
+    .box > :last-child { margin-bottom: 0; }
+    .label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .mission { background: var(--accent-soft); }
+    .mission .label { color: var(--accent); }
+    .misconception { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+    .misconception .label { color: var(--warn); }
+    .worked { border: 1px solid var(--rule); }
+    .worked ol { padding-left: 1.3rem; }
+    .summary { border: 1px solid var(--rule); }
+    figure { margin: 2rem 0; }
+    figure svg { display: block; width: 100%; height: auto; }
+    figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1.5rem 0; }
+    caption { text-align: left; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--rule); }
+    th { font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    code, pre { font-family: var(--mono); font-size: 0.85em; background: var(--code-bg); border-radius: 4px; }
+    code { padding: 0.1em 0.3em; }
+    pre { padding: 1rem; overflow-x: auto; line-height: 1.45; }
+    pre code { padding: 0; background: none; font-size: 1em; }
+    .check { border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .check .label { color: var(--accent); }
+    .check p { margin: 0.25rem 0; }
+    .choices { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.5rem; }
+    .choices button { width: 100%; text-align: left; font: inherit; font-size: 0.95rem; color: inherit; background: transparent;
+                      border: 1px solid var(--rule); border-radius: 6px; padding: 0.55rem 0.8rem; cursor: pointer; }
+    .choices button:hover { border-color: var(--accent); }
+    .choices button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .choices button.right { border-color: var(--ok); background: var(--ok-soft); }
+    .choices button.wrong { border-color: var(--warn); background: var(--warn-soft); }
+    .feedback { font-size: 0.95rem; margin: 0.6rem 0 0; }
+    .feedback:empty { margin: 0; }
+    details { margin-top: 0.75rem; }
+    summary { font-size: 0.85rem; color: var(--accent); cursor: pointer; }
+    details > :not(summary) { margin: 0.5rem 0 0; }
+    .go-further li { margin-bottom: 0.6rem; }
+    footer.closing { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); }
+    @media (max-width: 32rem) {
+      html { font-size: 17px; }
+      h1 { font-size: 1.75rem; }
+      main { padding-top: 2rem; }
+    }
+    @media print {
+      :root { --bg: #fff; --text: #000; --muted: #444; --rule: #ccc; --accent: #000; --accent-soft: #f2f2f2;
+              --warn: #000; --warn-soft: #f2f2f2; --ok: #000; --ok-soft: #fff; --code-bg: #f2f2f2; }
+      html { font-size: 11.5pt; }
+      main { max-width: none; padding: 0; }
+      nav.toc { display: none; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+      .box, .check, figure, table, pre { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <div class="kicker">Lesson 1 &middot; 30 minutes</div>
+    <h1>Knife and cut selection: matching the blade and the cut size to the job</h1>
+    <p class="lead">By the end of this lesson you can look at a food and a job, name the knife whose blade fits it, and name the cut (slice, dice or julienne) that gives pieces of the right shape and size.</p>
+    <div class="meta">
+      <span>Objective O2: choose the right knife and cut for a job</span>
+      <span>About 30 minutes</span>
+      <span>Builds on your last session: the pinch grip and the claw grip</span>
+    </div>
+    <div class="box mission">
+      <span class="label">Why this matters for you</span>
+      <p>You cook at home most days and keep cutting yourself or fighting the knife. A lot of that fight is a blade or a cut that doesn't fit the food, so choosing well makes every cut easier and safer.</p>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="In this lesson">
+    <strong>In this lesson</strong>
+    <ol>
+      <li><a href="#s1">Task fit: why the job picks the knife</a></li>
+      <li><a href="#s2">Chef's knife: the all-purpose blade for big jobs</a></li>
+      <li><a href="#s3">Paring and serrated knives: the two special-purpose blades</a></li>
+      <li><a href="#s4">Slice and dice: cutting into flat pieces or into cubes</a></li>
+      <li><a href="#s5">Julienne: cutting into thin matchsticks</a></li>
+      <li><a href="#s6">Putting it together: choosing the knife and the cut</a></li>
+      <li><a href="#further">Go further</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section id="s1">
+    <h2>Part 1: Task fit: why the job picks the knife <span class="section-time">3 min</span></h2>
+    <p>A knife slips when it is the wrong size or shape for the food, so before you cut you ask what the job is. This comes first because the rest of the lesson is just answers to that one question.</p>
+
+    <div class="check" id="warm-up">
+      <span class="label">Warm-up recall</span>
+      <p>Two quick ones from your last session. First: which hand pinches the blade, and which hand curls its fingertips? Second: what do the knuckles of the curled hand do in the claw grip?</p>
+      <p>Say your answers out loud or jot them down, then open the box.</p>
+      <details>
+        <summary>Check your answers</summary>
+        <p>The knife hand pinches the blade between the thumb and the side of the first finger. The other hand curls its fingertips back, and its knuckles rest against the flat side of the blade, so they guide the blade while the fingertips stay out of its way. You'll use that again in Part 5.</p>
+      </details>
+    </div>
+
+    <div class="box worked">
+      <span class="label">Worked example: a ripe tomato and the wrong knife</span>
+      <p>Here's what happens when a home cook slices a ripe tomato with the small knife from the drawer.</p>
+      <ol>
+        <li>The tomato has a slippery skin and a soft middle.</li>
+        <li>The thin edge skids on the skin instead of biting into it.</li>
+        <li>The cook pushes harder to make it go.</li>
+        <li>The blade breaks through all at once, and the push has nowhere to go except into the holding hand.</li>
+        <li>Result: a cut fingertip and a squashed tomato.</li>
+      </ol>
+      <p>Now the same tomato with a <dfn>serrated knife</dfn>, which is a knife with a toothed, saw-like edge. The teeth grip the skin, so no hard push is needed. Part 3 explains why in full.</p>
+    </div>
+
+    <p>That's the idea. My own rule of thumb: a good match between knife and food means less force, and less force usually means fewer slips. The tomato didn't change; only the knife did.</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "the small knife is the safe one"</span>
+      <p>A small knife feels safer because it looks harmless. But a <dfn>paring knife</dfn>, the small knife with a short blade, is made for small, soft jobs, and you never want to apply force with it (<a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">Escoffier culinary-school blog</a>). Put it on a raw carrot and you're forced to push, which is the same slip as the tomato.</p>
+      <p>My own advice: if you feel yourself straining, stop and pick a heavier blade. One pointer for later: dull blades also raise the risk of injury (same source), and the next lesson shows why.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>What should you ask before you pick up any knife?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not quite. Brand has nothing to do with whether the blade fits the food.">Which brand is the best one?</button></li>
+        <li><button type="button" data-correct="false" data-why="Not quite. Size matters, but it is only one answer to the real question about the job.">Which knife is the smallest?</button></li>
+        <li><button type="button" data-correct="true" data-why="Yes. The job (the food and what you want from it) decides the knife and then the cut.">What is the job I'm cutting for?</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>The third one. The food and the job come first; the knife and the cut are answers to them.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section id="s2">
+    <h2>Part 2: Chef's knife: the all-purpose blade for big jobs <span class="section-time">5 min</span></h2>
+    <p>One knife covers most of what you do, so start by learning it well. It comes second because the other two knives are exceptions to it.</p>
+
+    <p>You now have three names to keep straight: the chef's knife, the paring knife and the serrated knife. Here's how they compare in size.</p>
+
+    <figure id="fig-1">
+      <svg viewBox="0 0 640 290" role="img" aria-labelledby="fig1-title">
+        <title id="fig1-title">Three knife blades drawn to the same scale: chef's knife 8 inches, paring knife 3.5 inches or less, serrated knife long and toothed with no length given</title>
+        <g font-family="system-ui, sans-serif" font-size="18" fill="currentColor">
+          <text x="20" y="28" font-weight="700">Chef's knife: the big blade</text>
+          <text x="20" y="126" font-weight="700">Paring knife: the small blade</text>
+          <text x="20" y="216" font-weight="700">Serrated knife: the saw-edged blade</text>
+          <text x="432" y="64" style="fill: var(--accent)">8 in blade</text>
+          <text x="207" y="158" style="fill: var(--accent)">3.5 in or less</text>
+          <text x="395" y="244">long, toothed</text>
+          <text x="395" y="268" style="fill: var(--muted)">length not given</text>
+        </g>
+        <g stroke="currentColor" stroke-width="1.5" style="fill: var(--code-bg)">
+          <path d="M20,40 H380 Q412,44 420,76 H20 Z"/>
+          <path d="M20,138 H165 Q188,142 195,162 H20 Z"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.5" fill="none">
+          <path d="M380,228 H20 V252 H380"/>
+          <path d="M20,252 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10 l6,10 l6,-10"/>
+        </g>
+      </svg>
+      <figcaption>Figure 1. Three knives drawn to the same scale: a chef's knife with an 8-inch blade (the big blade), a paring knife with a blade of 3.5 inches or less (the small blade), and a serrated knife with a long, toothed blade (the saw-edged blade; no length is claimed). Notice how much longer the chef's blade is than the paring blade.</figcaption></figure>
+
+    <div class="box worked">
+      <span class="label">Worked example: an onion for soup</span>
+      <p>You're cutting a firm onion, about 3 inches across, with an 8-inch chef's knife.</p>
+      <ol>
+        <li>The onion is wide and firm, so the blade has to travel a long way through it.</li>
+        <li>The 8-inch blade is longer than the onion is wide, so it can go all the way through in one pass.</li>
+        <li>The wide, flat side of the blade gives the knuckles of your claw hand something flat to guide against, just like in your grip lesson.</li>
+        <li>The weight of the blade does the cutting, so your hand presses very little.</li>
+        <li>Result: a clean, controlled cut at a steady rhythm.</li>
+      </ol>
+    </div>
+
+    <p>That's the <dfn>chef's knife</dfn>, the all-purpose blade. Its blade is typically 8 to 10 inches long, though it can be as short as 6 or as long as 14 (<a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">Escoffier culinary-school blog</a>). The same page lists its jobs as rock chopping, slicing, dicing, julienning and chiffonade.</p>
+
+    <p>You'll learn slicing, dicing and julienning in the next parts. For now, just remember that one knife does all three. In a home kitchen that means onions, carrots, cabbage, herbs and chicken all go under it; that food list is my own, not the source's.</p>
+
+    <p>Comfort matters too. The more comfortable you feel with the knife's weight and balance, the easier it is to work at a smooth, steady pace (<a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">same source</a>). If a knife feels like a brick or a toy in your hand, try another before you decide you're bad at cutting.</p>
+
+    <div class="box worked">
+      <span class="label">A second case, same idea: a carrot</span>
+      <p>A carrot is about 6 inches long and firm all the way through.</p>
+      <ol>
+        <li>The carrot is hard, so it needs a blade with some weight behind it.</li>
+        <li>The 8-inch blade is longer than the carrot, so it crosses it in one stroke.</li>
+        <li>The weight of the blade sinks in, so you guide and don't push.</li>
+        <li>Your fingertips stay tucked behind the knuckles of the claw hand.</li>
+        <li>Result: even coins and a calm hand.</li>
+      </ol>
+    </div>
+
+    <p>Quick recap: wide or firm food, long blade, weight does the work. Whenever the food is bigger than your palm or harder than a ripe tomato, start by reaching for the chef's knife.</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "a bigger knife is more dangerous"</span>
+      <p>It feels that way because a long blade looks scary. But take the 3-inch onion again. A 3-inch blade barely spans it, so you have to push it through, and pushing is what makes it slip. The 8-inch blade glides through under its own weight, so the bigger knife is the calmer one (this is my own reasoning, not a quote).</p>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "the chef's knife is just for chefs"</span>
+      <p>Look at the foods above: onions, carrots, chicken, cabbage. That's your weekly shopping list, not a restaurant's. The name comes from the professional kitchen, but the job is yours too.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>You need to cut a whole head of cabbage, which is wide and firm. Which knife is the best fit?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not quite. A short blade can't cross a wide, firm cabbage, so you'd push hard and risk a slip.">The paring knife, because it is small</button></li>
+        <li><button type="button" data-correct="true" data-why="Yes. The long, heavy blade crosses the cabbage in one pass and does the work for you.">The chef's knife, because it is long</button></li>
+        <li><button type="button" data-correct="false" data-why="Not quite. Teeth are for a tough or slippery skin over a soft inside, and cabbage is firm all the way through.">The serrated knife, because it has teeth</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>The chef's knife. The cabbage is wide and firm, which is exactly the big-blade job.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== PART 3 ===================== -->
+  <section id="s3">
+    <h2>Part 3: Paring and serrated knives: the two special-purpose blades <span class="section-time">5 min</span></h2>
+    <p>Two jobs the chef's knife does badly, tiny detail work and slippery or crusty foods, each get their own knife. They come after the chef's knife because you pick them only when the chef's knife is the wrong fit.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: one tomato, two knives</span>
+      <p>It's the same tomato from Part 1, this time with the right tools.</p>
+      <ol>
+        <li>Pick up the paring knife. Its blade is no longer than 3.5 inches, so it works close to your fingertips.</li>
+        <li>Core the stem end by cutting a small cone around it and lifting it out.</li>
+        <li>Put the paring knife down and pick up the serrated knife. Set the teeth on the skin.</li>
+        <li>Use a light back-and-forth saw, and don't shove downward.</li>
+        <li>The teeth bite the skin, so the skin parts and the soft inside isn't crushed.</li>
+        <li>The slice falls away whole. Repeat for the rest.</li>
+      </ol>
+      <p>A sharp chef's knife can slice a tomato too, but a dull one tends to squash it (my own advice, and the next lesson explains sharpness). The serrated knife is the easy, low-force option.</p>
+    </div>
+
+    <h3>The paring knife</h3>
+    <p>The paring knife is the small one: its blade is no longer than 3.5 inches. It's great for peeling apples and potatoes, mincing small amounts of garlic and onions, and coring tomatoes (<a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">Escoffier culinary-school blog</a>).</p>
+    <p>Think of it as a knife that works in your hand, close to what it's cutting, on small and tender food. Garlic is the classic case: one clove is about an inch long, so a short blade gives you control.</p>
+    <p>A second case is peeling an apple. The small blade follows the curve of the apple in your hand, which a long blade can't do.</p>
+    <p>Where it fails: it isn't suited for harder vegetables such as carrots, beets and squash (same source), and you never want to apply force with it.</p>
+
+    <h3>The serrated knife</h3>
+    <p>The serrated knife has teeth along its edge. My rule of thumb is that it's for food with a tough or slippery outside and a soft inside, and it matches what the source lists: it cuts through the surface of a tomato, orange or strawberry, and it slices bread without ruining the crumb structure (<a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">Escoffier culinary-school blog</a>).</p>
+    <p>You use it with a gentle sawing motion (same source). Let the teeth do the work, and don't press down.</p>
+    <p>Bread is the second case. A crusty loaf is hard outside and fluffy inside, so a plain edge tends to crush the loaf before it gets through the crust (my own advice), and teeth fix that.</p>
+    <p>The trade-off: the cut won't necessarily look as clean as one from a chef's knife (same source). That's fine for a tomato or a loaf, but you wouldn't choose it to dice an onion.</p>
+
+    <aside class="note">One flag for later: a honing rod works with all your knives except the serrated ones (same source). The next lesson covers honing, sharpening and storage, so just remember the exception for now.</aside>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "a serrated knife is only for bread"</span>
+      <p>The name "bread knife" makes it sound that way. But the same teeth that get through a crust also get through the skin of a tomato or an orange, so it's the right pick for those too.</p>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "the paring knife can handle a carrot because the carrot is small"</span>
+      <p>It's tempting because a 6-inch carrot is a small thing. But small is not soft, and a carrot is hard all the way through. That's why the source says the paring knife isn't for carrots, beets or squash.</p>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "serrated knives get honed like the others"</span>
+      <p>They don't go on a honing rod. That's all you need today; the sharpening lesson explains why and what to do instead.</p>
+    </div>
+
+    <p>Here's the whole comparison in one place.</p>
+
+    <table>
+      <caption>Figure 2. Which knife for which job</caption>
+      <thead>
+        <tr><th>Knife</th><th>Best for</th><th>Not for</th><th>Home example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Chef's</td><td>Big, firm foods: slicing, dicing, julienning</td><td>Tiny peeling work</td><td>Onion, carrot, chicken</td></tr>
+        <tr><td>Paring</td><td>Small, tender detail work</td><td>Hard vegetables such as carrots or squash</td><td>Garlic, coring a tomato, peeling an apple</td></tr>
+        <tr><td>Serrated</td><td>Tough or slippery outside, soft inside</td><td>Chopping an onion</td><td>Bread, tomato, orange</td></tr>
+      </tbody>
+    </table>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>You want to peel one apple and then slice a loaf of crusty bread. Which pair of knives fits?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not quite. The serrated knife is right for the bread, but a chef's knife is too big to peel an apple in your hand.">Chef's for apple, serrated for bread</button></li>
+        <li><button type="button" data-correct="false" data-why="Not quite. The paring knife is right for the apple, but a plain edge crushes a crusty loaf.">Paring for apple, chef's for bread</button></li>
+        <li><button type="button" data-correct="true" data-why="Yes. A small blade follows the apple in your hand, and teeth bite through the crust.">Paring for apple, serrated for bread</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Paring for the apple, serrated for the bread. Small and tender calls for the small blade; a tough outside with a soft inside calls for teeth.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== PART 4 ===================== -->
+  <section id="s4">
+    <h2>Part 4: Slice and dice: cutting into flat pieces or into cubes <span class="section-time">5 min</span></h2>
+    <p>Once you have the knife, the next question is what shape and size you want the food in, and the two most common answers are flat pieces or small cubes. This comes before julienne because julienne is a thinner version of the same steps.</p>
+
+    <h3>Slice</h3>
+    <p>A <dfn>slice</dfn> is a flat piece cut across the food. It has no fixed size: the cooking-school chart used in this lesson (<a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe</a>) gives no dimension for it.</p>
+    <p>As my own rough guide, a slice of tomato for a sandwich is about as thick as a coin or two, and you adjust from there. Think of a slice as the shape you get when you only cut in one direction.</p>
+
+    <h3>Dice</h3>
+    <p>A <dfn>dice</dfn> is a cube. Unlike slice, it comes with sizes, and the Rouxbe chart gives them as inches on every side:</p>
+    <ul>
+      <li>Large dice: 3/4 in</li>
+      <li>Medium dice: 1/2 in</li>
+      <li>Small dice: 1/4 in</li>
+    </ul>
+    <p>The chart also lists brunoise as a cut of its own, at 1/8 in (<a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe</a>). I'll treat it as the next rung down the ladder.</p>
+    <p>Why bother with sizes? Uniform cuts promote even cooking and look good (same source). The same tomato in slices fits a sandwich, and in cubes goes into a salsa: same food, different cut, different job.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: a potato for roast potatoes</span>
+      <ol>
+        <li>Goal: pieces that finish cooking at the same time.</li>
+        <li>Decision: dice, not slice, and I'd pick medium dice for this, which is 1/2-inch cubes (<a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe</a> gives the size; the choice is my own).</li>
+        <li>Cut the potato into 1/2-inch slabs. That's a slice.</li>
+        <li>Stack the slabs and cut 1/2-inch sticks.</li>
+        <li>Turn the sticks and cut across every 1/2 inch.</li>
+        <li>Result: 1/2-inch cubes. A 3/4-inch cube takes longer to cook than a 1/4-inch one, so mixing sizes on one tray gives you some burnt pieces and some raw ones.</li>
+      </ol>
+      <p>The slab, stick, cube order is my way of showing the steps, not something the chart spells out, but it's how most people do it.</p>
+    </div>
+
+    <figure id="fig-3">
+      <svg viewBox="0 0 640 500" role="img" aria-labelledby="fig3-title">
+        <title id="fig3-title">From slab to stick to cube: a slab 1/2 inch thick, cut lengthwise into a stick 1/2 inch square, cut across every 1/2 inch into a cube 1/2 inch on every side</title>
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g stroke="currentColor" stroke-width="1.5">
+          <polygon points="30,70 80,20 240,20 190,70" style="fill: var(--code-bg)"/>
+          <polygon points="190,70 240,20 240,60 190,110" style="fill: var(--code-bg)"/>
+          <rect x="30" y="70" width="160" height="40" style="fill: var(--accent-soft)"/>
+          <polygon points="30,230 50,210 210,210 190,230" style="fill: var(--code-bg)"/>
+          <polygon points="190,230 210,210 210,250 190,270" style="fill: var(--code-bg)"/>
+          <rect x="30" y="230" width="160" height="40" style="fill: var(--accent-soft)"/>
+          <polygon points="30,390 50,370 90,370 70,390" style="fill: var(--code-bg)"/>
+          <polygon points="70,390 90,370 90,410 70,430" style="fill: var(--code-bg)"/>
+          <rect x="30" y="390" width="40" height="40" style="fill: var(--accent-soft)"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.5" fill="none">
+          <line x1="110" y1="125" x2="110" y2="190" marker-end="url(#arrow3)"/>
+          <line x1="110" y1="285" x2="110" y2="350" marker-end="url(#arrow3)"/>
+        </g>
+        <g font-family="system-ui, sans-serif" font-size="18" fill="currentColor">
+          <text x="270" y="58" font-weight="700">Slab: 1/2 in thick</text>
+          <text x="270" y="84" style="fill: var(--muted)">a flat piece cut across the food</text>
+          <text x="130" y="163" style="fill: var(--accent)">cut lengthwise</text>
+          <text x="270" y="244" font-weight="700">Stick: 1/2 in square</text>
+          <text x="130" y="323" style="fill: var(--accent)">cut across every 1/2 in</text>
+          <text x="270" y="396" font-weight="700">Cube: 1/2 in on every side</text>
+          <text x="270" y="422" style="fill: var(--muted)">this is medium dice</text>
+          <text x="20" y="478">Same size every step: 1/2 in, so pieces cook evenly.</text>
+        </g>
+      </svg>
+      <figcaption>Figure 3. From slab to stick to cube. Three steps from left to right: a slab 1/2 in thick, cut lengthwise into a stick 1/2 in square, then cut across every 1/2 in into a cube 1/2 in on every side. Notice that the same 1/2 in number carries through every step.</figcaption>
+    </figure>
+
+    <p>The full dice ladder, biggest to smallest, is 3/4, 1/2, 1/4 and then brunoise at 1/8 inch. You pick a rung by how long the food cooks: bigger for a long roast, smaller for fast cooking or for something served raw.</p>
+
+    <p>Here's a second case. You're making a quick potato soup and the potato has about 10 minutes in the pot. Cut small dice, 1/4 inch, and they'll be soft in time, while 3/4-inch cubes would still be hard in the middle (my own rule of thumb).</p>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "dice means chop it any way, small"</span>
+      <p>That sounds right because "dice" is a casual word. But picture a pot with 10 minutes on the clock. If one carrot piece is 1/4 inch and another is 3/4 inch, the small ones go soft long before the big ones are cooked through (my own illustration of the uniform-cuts idea).</p>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "slice and dice are the same thing"</span>
+      <p>They sound like a pair, but they make different shapes. A sliced tomato is flat and fits a sandwich. A diced tomato is a pile of cubes and goes in a salsa.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>You want cubes that are 1/2 inch on every side. What is that cut called?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not quite. Large dice is the 3/4 inch cube, which is a bit bigger.">Large dice, 3/4 in</button></li>
+        <li><button type="button" data-correct="false" data-why="Not quite. Small dice is 1/4 inch, half as wide as your target.">Small dice, 1/4 in</button></li>
+        <li><button type="button" data-correct="true" data-why="Yes. 1/2 inch on every side is medium dice.">Medium dice, 1/2 in</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Medium dice, 1/2 inch. The sizes go 3/4, 1/2 and 1/4 inch, then brunoise at 1/8.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== PART 5 ===================== -->
+  <section id="s5">
+    <h2>Part 5: Julienne: cutting into thin matchsticks <span class="section-time">5 min</span></h2>
+    <p>When you want thin even strips instead of cubes, you cut julienne, which is the same slab-then-stick steps as dice with thinner pieces. It comes last of the three cuts because it is thin and needs steady hands.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: a carrot cut into matchsticks</span>
+      <p>You want thin sticks that cook in under two minutes in a hot pan.</p>
+      <ol>
+        <li>Goal: thin sticks that soften fast.</li>
+        <li>Decision: julienne, which is 1/8 in by 1/8 in by about 2 in long (<a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe</a>). Sources differ a little on the length: the Escoffier culinary school teaches 2 1/2 in (<a href="https://www.escoffier.edu/?p=23845">Escoffier</a>), so think of it as about 2 to 2 1/2 in.</li>
+        <li>Trim the carrot to 2-inch lengths.</li>
+        <li>Cut one flat side so the carrot sits still. A round carrot rolls, so this is the real safety step.</li>
+        <li>Slice 1/8-inch planks from the flat side, stack them, and cut 1/8-inch sticks.</li>
+        <li>Use the claw grip, with your knuckles guiding the blade as in your last session.</li>
+        <li>Result: a pile of matchsticks. Cut those across and you get brunoise, which is 1/8-inch cubes.</li>
+      </ol>
+    </div>
+
+    <p>That stick is <dfn>julienne</dfn>: 1/8 inch square. The next size up is the <dfn>batonnet</dfn>, 1/4 inch square and 2 inches long, and the next size down is fine julienne at 1/16 inch (<a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe</a>).</p>
+
+    <figure id="fig-4">
+      <svg viewBox="0 0 640 380" role="img" aria-labelledby="fig4-title">
+        <title id="fig4-title">The stick ladder: a batonnet 1/4 inch square, cut thinner into a julienne 1/8 inch square, cut across into a brunoise 1/8 inch cube</title>
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g stroke="currentColor" stroke-width="1.5">
+          <polygon points="30,100 50,80 290,80 270,100" style="fill: var(--code-bg)"/>
+          <polygon points="270,100 290,80 290,120 270,140" style="fill: var(--code-bg)"/>
+          <rect x="30" y="100" width="240" height="40" style="fill: var(--accent-soft)"/>
+          <polygon points="30,220 40,210 280,210 270,220" style="fill: var(--code-bg)"/>
+          <polygon points="270,220 280,210 280,230 270,240" style="fill: var(--code-bg)"/>
+          <rect x="30" y="220" width="240" height="20" style="fill: var(--accent-soft)"/>
+          <polygon points="30,330 40,320 60,320 50,330" style="fill: var(--code-bg)"/>
+          <polygon points="50,330 60,320 60,340 50,350" style="fill: var(--code-bg)"/>
+          <rect x="30" y="330" width="20" height="20" style="fill: var(--accent-soft)"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.5" fill="none">
+          <line x1="100" y1="155" x2="100" y2="200" marker-end="url(#arrow4)"/>
+          <line x1="100" y1="255" x2="100" y2="310" marker-end="url(#arrow4)"/>
+        </g>
+        <g font-family="system-ui, sans-serif" font-size="18" fill="currentColor">
+          <text x="320" y="116" font-weight="700">Batonnet: 1/4 in square</text>
+          <text x="120" y="184" style="fill: var(--accent)">cut thinner: thin sticks soften fast</text>
+          <text x="320" y="232" font-weight="700">Julienne: 1/8 in square</text>
+          <text x="120" y="288" style="fill: var(--accent)">cut across the matchsticks</text>
+          <text x="320" y="346" font-weight="700">Brunoise: 1/8 in cube</text>
+        </g>
+      </svg>
+      <figcaption>Figure 4. The stick ladder. A batonnet at 1/4 in square, cut thinner, gives a julienne at 1/8 in square; cut across, the julienne gives a brunoise at 1/8 in cube. Notice that only these three sizes appear, and that brunoise matches the julienne's thickness.</figcaption>
+    </figure>
+
+    <p>One more fact: julienne cut from potatoes is also called allumette, which means matchstick (<a href="https://en.wikipedia.org/wiki/List_of_culinary_knife_cuts">Wikipedia</a>). Sizes shift a little between references, so treat the numbers as a target, not a law.</p>
+
+    <h3>Why this ties to your grips</h3>
+    <p>Julienne is where the claw grip pays off. The sticks are thin, so your fingers are close to the blade, and the knuckles keep the fingertips out of its way.</p>
+    <p>The flat side matters even more. If the food rolls, your hand jumps to catch it, and that's when slips happen. So flatten one side, set it down, then cut.</p>
+
+    <div class="box worked">
+      <span class="label">A second case, same idea: a bell pepper</span>
+      <ol>
+        <li>Cut the pepper into flat panels, skin side down, so each one sits still.</li>
+        <li>Slice each panel into 1/8-inch strips with the claw grip.</li>
+        <li>For fine julienne, aim for 1/16 inch, which is half as thin again and a lot harder to keep even.</li>
+        <li>Result: thin strips that cook in seconds.</li>
+      </ol>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "julienne is any thin strip"</span>
+      <p>It's easy to call any strip julienne. But a 1/2-inch strip of pepper is much thicker than a julienne, which is 1/8 inch. That's four times thinner.</p>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up: "cutting a round carrot as it is is fine"</span>
+      <p>It's tempting because it saves a step. But a round carrot rolls under the blade, and one roll can put your hand in the knife's path. Flatten one side first.</p>
+    </div>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>What is the very first cutting step before you julienne a round carrot?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="Not quite. You can't cut planks until the carrot is steady, and a rolling carrot is the main danger.">Slice 1/8 inch planks right away</button></li>
+        <li><button type="button" data-correct="false" data-why="Not quite. Trimming the length helps, but it doesn't stop the carrot from rolling.">Trim the carrot to short lengths</button></li>
+        <li><button type="button" data-correct="true" data-why="Yes. A flat side lets the carrot sit still, so it can't roll into your hand.">Cut one flat side so it sits still</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Cut one flat side. Trimming to length is useful, but stability comes first.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== PART 6 ===================== -->
+  <section id="s6">
+    <h2>Part 6: Putting it together: choosing the knife and the cut <span class="section-time">6 min</span></h2>
+    <p>Now you do the whole choice yourself: first the job, then the knife, then the cut. It comes last because it uses every earlier part together.</p>
+
+    <div class="box worked">
+      <span class="label">Worked example: dinner is a stir-fry with a crusty loaf</span>
+      <p>The plan: chicken, carrot and garlic in a hot pan, plus a crusty loaf on the side.</p>
+      <ol>
+        <li>Chicken breast: big and firm, so use the chef's knife. Dice it into 1-inch cubes, a touch bigger than the 3/4 inch large dice; that size is my choice for a stir-fry.</li>
+        <li>Carrot: firm all the way through, so the chef's knife again, with julienne, 1/8 inch sticks. Flatten one side first.</li>
+        <li>Garlic: small and tender, so the paring knife, with a small dice. A short blade gives you control near your fingertips.</li>
+        <li>Bread: crusty outside and soft inside, so the serrated knife, cutting slices with a gentle saw.</li>
+      </ol>
+      <p>Every line asks the same three questions: what is the job, which knife fits, and which cut gives the right size.</p>
+    </div>
+
+    <p>Notice how the reasons are always about the food. The chicken and the carrot are big and firm. The garlic is small and tender. The bread is tough outside and soft inside.</p>
+
+    <p>Now it's your turn. In the first task the steps are partly given, and in the second you do it all.</p>
+
+    <div class="check">
+      <span class="label">Task 1: steps with blanks</span>
+      <p>Make a salsa from a tomato, an onion and a jalapeno. Fill in the knife and the cut for each:</p>
+      <ol>
+        <li>Tomato: knife for the core = ___; knife for the pieces = ___; cut = ___.</li>
+        <li>Onion: knife = ___; cut = ___.</li>
+        <li>Jalapeno: knife = ___; cut = ___.</li>
+      </ol>
+      <details>
+        <summary>Hint 1</summary>
+        <p>What is the outside like, and what is the inside like? And how big is the piece you want at the end?</p>
+      </details>
+      <details>
+        <summary>Hint 2</summary>
+        <p>A salsa wants small, even pieces, so think dice and pick a size from the ladder. For the tomato, look back at the one-tomato, two-knives example in Part 3.</p>
+      </details>
+      <details>
+        <summary>Show a solution</summary>
+        <p>Tomato: paring knife to core the stem, then the serrated knife to slice it, then the chef's knife to dice the slices (medium, 1/2 inch, or small, 1/4 inch for a finer salsa). Onion: chef's knife, small dice, 1/4 inch. Jalapeno: chef's knife, small dice, 1/4 inch. The reason for the same size throughout: uniform pieces mean every bite tastes alike.</p>
+      </details>
+    </div>
+
+    <div class="check">
+      <span class="label">Task 2: all steps faded</span>
+      <p>Make an apple slaw from an apple and a cabbage, with a bread roll to serve. For each food, write the knife, the cut and one reason.</p>
+      <details>
+        <summary>Hint</summary>
+        <p>Slaw wants thin pieces, so think about which cut is the thinnest. Then check each food against the table in Part 3: is it big and firm, small and tender, or tough outside and soft inside?</p>
+      </details>
+      <details>
+        <summary>Show a solution</summary>
+        <p>Apple: chef's knife, julienne, because it's firm and you want thin sticks (use the paring knife first if you want to peel it). Cabbage: chef's knife, thin slices, because it's wide and firm and the long blade crosses it in one pass. Bread roll: serrated knife, slices, because the crust is tough and the inside is soft.</p>
+      </details>
+    </div>
+
+    <p>One habit to build: say the three questions as you cut. "Job, knife, cut" takes two seconds, and it stops you grabbing whatever is nearest.</p>
+
+    <div class="box mission">
+      <span class="label">Why this matters in the real world</span>
+      <p>A well-matched knife needs less force, and a hard push is how a small skid turns into a cut finger (my own advice, though Escoffier agrees you should never force a paring knife). So choosing well isn't fussy; it's the cheapest safety step in your kitchen.</p>
+    </div>
+  </section>
+
+  <section id="summary">
+    <h2>Summary <span class="section-time">1 min</span></h2>
+    <div class="box summary">
+      <ul>
+        <li>Pick the job first, the knife second, the cut third.</li>
+        <li>Chef's knife for big, firm foods; paring for small, tender detail work; serrated for tough or slippery outside, soft inside.</li>
+        <li>Slice is a flat piece; dice is a cube (1/2 in is medium); julienne is a thin stick (1/8 in square).</li>
+        <li>Uniform pieces cook evenly.</li>
+      </ul>
+      <p><strong>Say it in your own words:</strong> Explain to a friend why you would not use a paring knife on a carrot.</p>
+    </div>
+  </section>
+
+  <section id="further" class="go-further">
+    <h2>Go further</h2>
+    <p><strong>Read next:</strong> <a href="https://escoffier.edu/blog/culinary-arts/different-knives-and-the-best-uses-for-each">Different Knives and the Best Uses for Each One</a>, a culinary-school blog that covers each knife's blade length, jobs and cautions in one place.</p>
+    <ul>
+      <li><a href="https://rouxbe.com/tips-techniques/495-types-of-knife-cuts">Rouxbe, Types of Knife Cuts</a>: a cooking-school chart with the dice, batonnet and julienne sizes used in this lesson.</li>
+      <li><a href="https://www.escoffier.edu/?p=23845">Escoffier, Knife Skills: 10 Knife Cuts Every Professional Cook Should Know</a>: the source for the 2 1/2 inch julienne length.</li>
+      <li><a href="https://en.wikipedia.org/wiki/List_of_culinary_knife_cuts">Wikipedia, List of culinary knife cuts</a>: a reference list that shows how sizes vary a little between sources.</li>
+    </ul>
+    <p><strong>Next lesson:</strong> sharpening, honing and storing your knife, which is where the question of dull blades gets its full answer.</p>
+  </section>
+
+  <footer class="closing">
+    <p>Anything unclear? Ask me in the chat; I can explain any part again, another way, or go deeper.</p>
+    <p>A short quiz on this lesson is ready (quiz 0002): ask me for it when you want to check what stuck.</p>
+  </footer>
+
+</main>
+<script>
+  // Practice checks: mark the chosen option and explain it at once.
+  document.querySelectorAll("[data-check]").forEach(function (box) {
+    var buttons = box.querySelectorAll("button[data-correct]");
+    var out = box.querySelector(".feedback");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        buttons.forEach(function (b) { b.classList.remove("right", "wrong"); });
+        var right = button.getAttribute("data-correct") === "true";
+        button.classList.add(right ? "right" : "wrong");
+        if (out) { out.textContent = button.getAttribute("data-why") || ""; }
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 810202,
+  "stop_reason": "end_turn",
+  "session_id": "6ebb7452-a6e0-4ac8-afc9-2c893dc50657",
+  "total_cost_usd": 2.3204474,
+  "usage": {
+    "input_tokens": 28,
+    "cache_creation_input_tokens": 20179,
+    "cache_read_input_tokens": 856582,
+    "output_tokens": 10560,
+    "output_tokens_details": {
+      "thinking_tokens": 460
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 20179
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 676,
+        "cache_read_input_tokens": 79641,
+        "cache_creation_input_tokens": 2393,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2393,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 116,
+      "outputTokens": 108911,
+      "cacheReadInputTokens": 2255782,
+      "cacheCreationInputTokens": 361838,
+      "webSearchRequests": 0,
+      "costUSD": 2.2399827000000005,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 29743,
+      "cacheCreationEphemeral5mInputTokens": 348193,
+      "cacheCreationEphemeral1hInputTokens": 13645,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 129832,
+      "outputTokens": 14963,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 6,
+      "costUSD": 0.08046469999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 7266,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01QHEapDYi731LqcQzFURPrc",
+      "tool_input": {
+        "command": "python3 - <<'E'\np='0001-context-and-memory.html'\ns=open(p).read()\nR=[\n(\" This comes first because everything else, history, retrieval and notes, is a way of filling that one space.\",\"\"),\n(\", which is why it comes right after the window itself.\",\".\"),\n(\", which is the next step after seeing what history costs.\",\".\"),\n(\"As a rough rule, a token is about three quarters of an English word, so the 25-token question is a bit under 20 words.\",\"As a rough planning figure for English (the real count depends on the model), a token is about three quarters of a word, so the 25-token question is a bit under 20 words.\"),\n(\"Anthropic defines context as the set of tokens included when the model is sampled (\",\"Context is just the set of tokens the model is given when it writes (\",),\n(\"The total of 6,365 is my own arithmetic from that rule: the input sent over all three calls, which is what you pay for as input.\",\"The total of 6,365 is the lesson's own arithmetic from that rule: the input sent over all three calls, before any caching discount.\"),\n(\"The docs name both compaction and clearing old tool results as ways to manage a growing window (\",\"Both compaction and clearing old tool results are standard ways to manage a growing window (\"),\n(\"<li>The call starts with 1,225 tokens and knows\",\"<li>The call starts with about 1,225 tokens and knows\"),\n(\"The docs tell the model to view its memory directory before doing anything else, and a progress-file pattern has each new session open by reading those files (\",\"The model is told to view its memory directory before doing anything else, and a progress-file pattern has each new session open by reading those files (\"),\n(\"Anthropic reports that, on an internal evaluation set for agentic search, combining the memory tool with context editing improved performance by 39% over baseline, and context editing alone by 29% (\",\"Anthropic's own test (an internal evaluation set for agentic search) found that memory plus context editing beat the baseline by 39%, and context editing alone by 29% (\"),\n('<section id=\"s1\">','<section id=\"s1\">\\n    <p>An agent has no memory of its own. Everything it uses is text placed in its window on each call, and anything lasting has to be stored outside it.</p>'),\n]\nfor a,b in R:\n    assert a in s,a[:40]\n    s=s.replace(a,b,1)\nopen(p,'w').write(s)\nE\nsed -n '150,153p' 0001-context-and-memory.html | cut -c1-200"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_014x46eK73D9EKTH5JWmtCCR",
+      "tool_input": {
+        "command": "cd /private/var/folders/mc/rj708cb13vv9x7hm9rptcwqc0000gn/T/p3-do4suj9w && mkdir -p lessons review-records && cp drafts/0001-context-and-memory.html lessons/0001-context-and-memory.html && grep -c 'p3-minutes\\|p3-objective' lessons/0001-context-and-memory.html && cat quizzes/0001.json | head -c 600 && ls lessons quizzes keys"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrlpyzu-a8f70cd8"
+  },
+  "subagent_stats": {
+    "spawned": 5,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 5
+    },
+    "started_in_background": 5,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 5,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 1
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 28,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The lesson is written at `lessons/0001-context-and-memory.html`, and it's ready for you to read. It's a 30-minute lesson on objective O3, built on makerspace examples. It covers five things:\n- what the model sees in the context window on one call\n- why each step resends the whole history and costs more\n- context rot and trimming\n- retrieval for finding the right page in a long manual\n- notes that carry a student's training status between visits\n\nIt has five figures. All the token counts in it are made up for teaching. The 39% and 29% context-management figures are from Anthropic's own internal test, and the lesson says so.\n\nThe lesson probably runs long and dense for how you like to learn. I estimate about 5,000 words, which is roughly 33 minutes.\n\nI only ran one review pass, and a few of its findings are still open:\n- Part 4 argues for retrieval, then says you could paste everything in if the manuals are under about 200,000 tokens. It doesn't say clearly why retrieval still wins here.\n- Parts 4 and 5 carry detail you may not need, such as the benchmark numbers and the memory tool's security rules.\n- Some worked examples use terms before they're defined.\n- A few misconceptions have no concrete case.\n- The practice answers show on one click with no hint first, which isn't how you asked for quizzes to work.\n\nI kept the plan's part titles as they were, so the last one is still a list of formats.\n\nI also wrote:\n- `quizzes/0002.json` and its key: five items, on fresh numbers and a different machine from the lesson's examples.\n- `cheatsheets/context-and-memory.html`: terms, rules, the cost sum and common mistakes.\n- `review-records/0001-lesson.md`: the review findings and what I changed.\n- `RESOURCES.md`, with five sources.\n- `NOTES.md`, updated with this session.\n\nQuiz 0001 is still ungraded.\n\nThe community link in \"Go further\" points to a subreddit and a Discord that I didn't open myself. Ask me anything about the lesson, and say if you'd like a shorter version.",
+  "ttft_ms": 1154,
+  "type": "result",
+  "duration_ms": 83776,
+  "uuid": "0e047761-546f-4dbd-9250-a0b6ae7bfa8e",
+  "ttft_stream_ms": 669,
+  "time_to_request_ms": 19,
+  "first_content_frame_ms": 669,
+  "queued_turn_count": 0,
+  "result_index": 5,
+  "model_usage_since_last_result": {}
+}

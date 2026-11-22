@@ -1,0 +1,37 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The window is thrown away when a session ends and the model keeps nothing on its own, so only something the program wrote down outside the window can carry the booking into the new chat. Picking a or b shows the belief that the model remembers earlier chats."
+    },
+    {
+      "id": "q2",
+      "answer": 4800,
+      "tolerance": 0.5,
+      "rationale": "Call 1 reads 1,500. Call 2 reads 1,500 + 20 + 80 = 1,600. Call 3 reads 1,600 + 20 + 80 = 1,700. The total is 1,500 + 1,600 + 1,700 = 4,800. An answer of 1,700 counts only the last call and forgets that every call re-sends the history."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "360,000 tokens is well above the size that fits comfortably in a prompt, and it is only needed occasionally, so it is indexed and searched, with only the best chunks pulled in. Pasting it in (a) would re-read it on every call."
+    },
+    {
+      "id": "q4",
+      "answer": "Old results still clutter the window and are re-read on every call, so cost and the chance of missing the important part stay high at any window size.",
+      "accepted": [
+        "Windows of every size get cluttered with old results, which still cost tokens on every call",
+        "The model recalls the contents less accurately as the window fills, however big it is",
+        "Old results still get re-sent each call so cost grows",
+        "A bigger window still fills with irrelevant old results and the model gets worse at finding the useful part"
+      ],
+      "rationale": "Any one valid reason is enough: clutter and context rot happen at every window size, and every call re-reads the old results, so cost grows. An answer that says only 'bigger windows are expensive' without the re-reading or clutter point is partial."
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "A chunk that does not say where it came from is easy to miss. Adding a line that names the machine and manual before indexing lets the search match it. Moving all chunks into the system prompt (b) throws away the point of retrieval."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The program resends the whole history: 900 + 500 + 30 = 1,430 for the first call, plus the model's 50-token request and the 700-token result gives 2,180. Answers a and b treat the call as only the new part.",
+      "distractors": {}
+    },
+    {
+      "id": "q2",
+      "answer": "Save the facts it needs, such as a note file or database record, outside the window so they can be loaded in the next session.",
+      "accepted": ["write notes", "write a note to storage", "save notes outside the context window", "store the student's info in a file or database and load it next session", "save a memory file"],
+      "rationale": "The window is gone when the session ends, so only something stored outside it, then loaded again, survives. An answer that the model remembers the student by itself is wrong."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "About 3 x 300 = 900 tokens are sent instead of 8,000, and every call is billed for what is in the window. Pieces still count toward the window, and a bigger window does not make tokens free.",
+      "distractors": {}
+    },
+    {
+      "id": "q4",
+      "answer": 2060,
+      "tolerance": 0.5,
+      "rationale": "2,000 + 40 + 20 = 2,060. The chapter's 3,000 tokens are gone, replaced by the 20-token stub. An answer of 5,040 forgets to clear, and 60 forgets the rules and tools."
+    },
+    {
+      "id": "q5",
+      "answer": "Re-check the training status with the booking system, because the note may be out of date.",
+      "accepted": ["check the booking system first", "re-check with the tool, the note may be stale", "verify the training status with a tool before booking", "do not trust the old note, confirm with the system of record"],
+      "rationale": "A note is a dated hint, not the source of truth, so the assistant confirms with the booking system before acting. Booking or refusing based only on the old note is the error."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --code-bg:#f3efe6;
+            --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --code-bg:#23211e; } }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.45; font-size:16px; }
+    main { max-width:46rem; margin:0 auto; padding:1.5rem 1.25rem 2rem; }
+    h1 { font-size:1.6rem; margin:0 0 .25rem; } h2 { font-size:1.05rem; margin:1.2rem 0 .4rem; font-family:var(--sans); color:var(--accent); }
+    p, li { margin:.25rem 0; } a { color:var(--accent); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; }
+    th, td { text-align:left; vertical-align:top; padding:.3rem .5rem; border-bottom:1px solid var(--rule); }
+    th { font-family:var(--sans); font-size:.75rem; text-transform:uppercase; color:var(--muted); }
+    code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.85em; background:var(--code-bg); padding:.1em .3em; border-radius:3px; }
+    .warn { color:var(--warn); font-weight:600; }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --rule:#ccc; --accent:#000; --warn:#000; } main { padding:0; } body { font-size:11pt; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p>Look up what the model sees, what survives, and where each fact should live.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><th>Term</th><th>Plain meaning</th></tr>
+    <tr><td>Token</td><td>A small chunk of text; a manual page is about 400.</td></tr>
+    <tr><td>Context window</td><td>All the text the model can read for one reply, the reply included.</td></tr>
+    <tr><td>Context rot</td><td>The more tokens in the window, the worse the model recalls from them.</td></tr>
+    <tr><td>Compaction</td><td>Replacing a long chat with a short summary.</td></tr>
+    <tr><td>Tool result clearing</td><td>Removing old tool output from the window.</td></tr>
+    <tr><td>Note / memory tool</td><td>A file your program stores outside the window; the model asks to write or read it.</td></tr>
+    <tr><td>Chunk, embedding</td><td>A piece of a manual; a list of numbers that captures its meaning.</td></tr>
+    <tr><td>Retrieval</td><td>Find the best chunks and add them to the prompt.</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>The program re-sends the whole pile on every call, because the model keeps nothing between calls.</li>
+    <li>Instructions, tool descriptions, history and results all count, because everything in the request is input.</li>
+    <li>Put in the smallest set of facts that makes the right answer likely, because more tokens cost more and can recall worse.</li>
+    <li>To shrink the pile, clear stale tool results or summarize, and say what must survive, because the model sees only what is left.</li>
+    <li>Across sessions, save a short note outside the window and read it back, because the window is thrown away.</li>
+    <li>For long manuals, retrieve only the closest chunks, because pasting everything is costly.</li>
+  </ol>
+  <p><strong>Where does it go?</strong> Needed on the next call: window. Needed in a later session: note (or database if it must be exact). Needed now and then from a big pile: retrieve.</p>
+
+  <h2>Worked example</h2>
+  <p>Illustrative numbers. Five calls, all manuals pasted in: 10 manuals &times; 120 pages &times; 400 tokens = 480,000 per call, so 5 &times; 480,000 = 2,400,000 input tokens.</p>
+  <p>Retrieve 3 pages (1,200) plus 1,800 for instructions, tools and question: 3,000 per call, 5 &times; 3,000 = 15,000. That is 160 times less.</p>
+
+  <h2>Common mistakes</h2>
+  <ul>
+    <li><span class="warn">The model remembers earlier calls.</span> It only sees what the program sends.</li>
+    <li><span class="warn">If it fits, it is fine.</span> It still counts as input every call, and recall can drop.</li>
+    <li><span class="warn">A summary keeps the important bits.</span> Only what the summary says survives.</li>
+    <li><span class="warn">Notes are always in the window.</span> They count only once read.</li>
+    <li><span class="warn">Retrieval means the model learned the manuals.</span> It only reads what came back, and it can miss.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory.html">the lesson</a>. Primary source: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</main>
+</body>
+</html>

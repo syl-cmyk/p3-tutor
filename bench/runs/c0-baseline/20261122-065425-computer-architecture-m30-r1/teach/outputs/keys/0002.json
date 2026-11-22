@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "Two instructions need the same hardware unit and it can serve only one, which is a structural hazard. The second divide would wait even if it needed nothing from the first. Choosing a data hazard shows M3, that every stall is a data hazard.",
+      "distractors": {"a": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The pipeline fetched before it knew the next address, because the branch outcome was not known yet: a control hazard. Choosing data hazard shows M3.",
+      "distractors": {"a": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": 13,
+      "tolerance": 0.5,
+      "rationale": "Ideal cycles are 5 + 6 - 1 = 10, and the 3 stall cycles add to 13. An answer of 10 forgets the stalls; 33 uses no overlap."
+    },
+    {
+      "id": "q4",
+      "answer": 1.5,
+      "tolerance": 0.02,
+      "rationale": "CPI = 1 + 0.25 x 2 = 1.5. An answer of 2.25 or 3 applies the penalty to every instruction, or forgets the base CPI of 1."
+    },
+    {
+      "id": "q5",
+      "answer": "Stalls also come from structural hazards (a shared resource) and control hazards (an unknown next instruction after a branch), not only data hazards.",
+      "accepted": [
+        "There are also structural and control hazards",
+        "Stalls can also be caused by branches or by two instructions needing the same hardware",
+        "It ignores structural and control hazards"
+      ],
+      "rationale": "A full answer names at least one other cause, structural or control. A learner who defends the statement or adds only more data-hazard detail shows M3."
+    }
+  ]
+}

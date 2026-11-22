@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 6436,
+  "stop_reason": "end_turn",
+  "session_id": "85c1f124-1ab2-41af-9b9b-e527f4cc0758",
+  "total_cost_usd": 0.0580668,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 13196,
+    "cache_read_input_tokens": 31198,
+    "output_tokens": 706,
+    "output_tokens_details": {
+      "thinking_tokens": 87
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9926,
+      "ephemeral_5m_input_tokens": 3270
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 349,
+        "cache_read_input_tokens": 20562,
+        "cache_creation_input_tokens": 3270,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3270,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 706,
+      "cacheReadInputTokens": 31198,
+      "cacheCreationInputTokens": 13196,
+      "webSearchRequests": 0,
+      "costUSD": 0.0580668,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 87,
+      "cacheCreationEphemeral5mInputTokens": 3270,
+      "cacheCreationEphemeral1hInputTokens": 9926,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 5,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite, and the \"leave it as is\" part is the risky bit. A dull knife is *more* likely to cut you.\n\nPicture a tomato. A sharp knife bites into the skin and goes through with light pressure. A dull one just slides over the skin, so you push harder. Then it suddenly gives, and your hand is going fast and has no control. The blade skids off the tomato and into your finger or the hand holding it.\n\nSharp knives cut deeper when they do slip. But they slip far less often, because you barely have to push. It's the force and the skidding that cause most home cuts.\n\nFor you that means your knife is probably part of why you keep cutting yourself. Sharpening it is one of the safest things you can do.\n\nQuick check: how does your knife do on a tomato right now? Does it bite in, or slide and squash?",
+  "ttft_ms": 1283,
+  "type": "result",
+  "duration_ms": 6590,
+  "uuid": "96898fc2-6925-420f-9f36-5b37a20c8714",
+  "ttft_stream_ms": 828,
+  "time_to_request_ms": 122,
+  "first_content_frame_ms": 828,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 706,
+      "cacheReadInputTokens": 31198,
+      "cacheCreationInputTokens": 13196,
+      "webSearchRequests": 0,
+      "costUSD": 0.0580668,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 87,
+      "cacheCreationEphemeral5mInputTokens": 3270,
+      "cacheCreationEphemeral1hInputTokens": 9926,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "run_id": "20261122-074304-agent-architecture-m10-r1",
+  "scored_at": "2026-11-22T07:53:27Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O3",
+      "requested_minutes": 10.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-context-and-agent-memory.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 10.0,
+      "declared_objective": "O3",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 1947,
+      "est_minutes": 12.98,
+      "length_ratio": 1.298,
+      "length_ok": true,
+      "links": [
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F3.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.4",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.5",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.6",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 4,
+        "notes": "All facts are stated and accurate. F3.4 omits the caching nuance, but that is an aside in parentheses. Level: it builds on the prior sessions, defines token and context window, and uses concrete token arithmetic and makerspace examples. It is dense for 10 minutes, and 'index' and 'context rot' are introduced quickly."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": null,
+    "grade": null,
+    "tutor": null
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 1.298,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": null,
+    "quiz_ambiguous": null,
+    "quiz_wrong_key": null,
+    "grade_verdict_agreement": null,
+    "grade_false_wrong": null,
+    "grade_misconception_hit": null,
+    "tutor_leaks": null,
+    "tutor_behavior_met": null,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 2485177,
+        "tokens_output": 94222,
+        "minutes": 10.31,
+        "subagents": 6,
+        "cost_usd_list": 1.8769
+      },
+      "quiz": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "grade": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "tutor": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "total": {
+        "scenarios": 1,
+        "tokens_total": 2485177,
+        "tokens_output": 94222,
+        "minutes": 10.31,
+        "subagents": 6,
+        "cost_usd_list": 1.8769
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 9853,
+    "cost_usd_list": 0.0385,
+    "calls": 1
+  },
+  "warnings": []
+}

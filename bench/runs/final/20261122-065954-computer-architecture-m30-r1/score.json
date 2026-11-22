@@ -1,0 +1,380 @@
+{
+  "run_id": "20261122-065954-computer-architecture-m30-r1",
+  "scored_at": "2026-11-22T07:22:34Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O2",
+      "requested_minutes": 30.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-pipeline-hazards.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 30.0,
+      "declared_objective": "O2",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 4489,
+      "est_minutes": 29.93,
+      "length_ratio": 0.998,
+      "length_ok": true,
+      "links": [
+        {
+          "url": "https://users.cs.utah.edu/~aburtsev/3810/lectures/lecture12-hazards/lecture12-hazards.pdf",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hazard_(computer_architecture)",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F2.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.2",
+            "present": false,
+            "correct": true
+          },
+          {
+            "id": "F2.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F2.4",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 3,
+        "notes": "F2.2 is not stated: the lesson uses add r1/sub r4,r1,r5 and lw/add examples, but never the ADDI R1,R0,#10 / ADDI R4,R1,#17 pair, so the specific example is absent. The lesson is thorough but pitched too high for someone who has not yet learned pipelining: it packs in timing math, CPI, half-cycle register access, gap tables, a 7-stage depth discussion and a cache warm-up question the learner may not know, at 30 minutes with a lot of material."
+      },
+      "model_scored": true,
+      "facts_present": 0.75,
+      "facts_correct": 0.75
+    },
+    "quiz": {
+      "scenario": "quiz",
+      "status": "ok",
+      "objective": "O3",
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "quiz": "quizzes/0002.json",
+      "key": "keys/0002.json",
+      "schema_ok": true,
+      "schema_errors": [],
+      "n_items": 6,
+      "objectives_ok": true,
+      "on_objective": 1.0,
+      "solvers": {
+        "claude-sonnet-5-5": {
+          "error": null,
+          "answered": 6
+        },
+        "claude-haiku-5-5": {
+          "error": null,
+          "answered": 6
+        }
+      },
+      "items": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "c",
+          "answers": {
+            "claude-sonnet-5-5": "c",
+            "claude-haiku-5-5": "c"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "b",
+          "answers": {
+            "claude-sonnet-5-5": "b",
+            "claude-haiku-5-5": "b"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q3",
+          "type": "short",
+          "objective": "O3",
+          "key": "stall it",
+          "answers": {
+            "claude-sonnet-5-5": "It stalls the second instruction until the memory is free (structural hazard)",
+            "claude-haiku-5-5": "stalls it"
+          },
+          "match": {
+            "claude-sonnet-5-5": null,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": null
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "objective": "O3",
+          "key": "d",
+          "answers": {
+            "claude-sonnet-5-5": "d",
+            "claude-haiku-5-5": "d"
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q5",
+          "type": "numeric",
+          "objective": "O3",
+          "key": 2,
+          "answers": {
+            "claude-sonnet-5-5": 2,
+            "claude-haiku-5-5": 2
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        },
+        {
+          "id": "q6",
+          "type": "numeric",
+          "objective": "O3",
+          "key": 10,
+          "answers": {
+            "claude-sonnet-5-5": 10,
+            "claude-haiku-5-5": 10
+          },
+          "match": {
+            "claude-sonnet-5-5": true,
+            "claude-haiku-5-5": true
+          },
+          "solvers_agree": true
+        }
+      ],
+      "key_agreement": 1.0,
+      "likely_wrong_key": [],
+      "likely_ambiguous": [],
+      "model_scored": true,
+      "scorable_items": 5
+    },
+    "grade": {
+      "submissions": {
+        "s1": {
+          "scenario": "grade-s1",
+          "status": "ok",
+          "submission": "s1",
+          "ok": true,
+          "grades": "grades/0001-s1.json",
+          "schema_ok": true,
+          "schema_errors": [],
+          "items": [
+            {
+              "id": "q1",
+              "true_verdict": "wrong",
+              "verdict": "wrong",
+              "agree": true,
+              "true_misconception": "M2",
+              "misconception": "M2",
+              "feedback_present": true
+            },
+            {
+              "id": "q2",
+              "true_verdict": "wrong",
+              "verdict": "wrong",
+              "agree": true,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            },
+            {
+              "id": "q3",
+              "true_verdict": "partial",
+              "verdict": "correct",
+              "agree": false,
+              "true_misconception": null,
+              "misconception": null,
+              "feedback_present": true
+            }
+          ],
+          "counts": {
+            "n": 3,
+            "agree": 2,
+            "true_correct": 0,
+            "false_wrong": 0,
+            "true_misconception": 1,
+            "misconception_hit": 1,
+            "feedback": 3
+          },
+          "verdict_agreement": 0.6667,
+          "false_wrong_rate": null,
+          "misconception_hit_rate": 1.0,
+          "feedback_present": 1.0
+        }
+      },
+      "verdict_agreement": 0.6667,
+      "false_wrong_rate": null,
+      "misconception_hit_rate": 1.0,
+      "feedback_present": 1.0
+    },
+    "tutor": {
+      "probes": {
+        "p01": {
+          "scenario": "tutor-p01",
+          "status": "ok",
+          "probe": "p01",
+          "reply_chars": 888,
+          "leak": false,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply withholds the letter and offers to go through q1 after grading, but its hint is a generic procedure rather than a hint that fits every option alike. It also never asks the learner to explain what each option claims in a way tied to the content, and it adds a promise to evaluate their reasoning and a suggestion to ask the teacher, which stray from the expected behavior."
+          },
+          "met": false
+        },
+        "p02": {
+          "scenario": "tutor-p02",
+          "status": "ok",
+          "probe": "p02",
+          "reply_chars": 928,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply correctly says plainly it's not right and ends with a check question, but it uses a 5-instruction example (20 vs 8 cycles) instead of the required 100 instructions example (400 vs 103 cycles); it even defers the 100-instruction case to the check question."
+          },
+          "met": false
+        },
+        "p03": {
+          "scenario": "tutor-p03",
+          "status": "ok",
+          "probe": "p03",
+          "reply_chars": 959,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": false,
+            "notes": "The reply points out the false premise first and gives a short hazard example, but it does not answer the question the learner should be asking; it ends with a quiz question about which instruction waits. It also refers to 'your branchy loop' and 'your CPU design question', which the learner never mentioned."
+          },
+          "met": false
+        },
+        "p04": {
+          "scenario": "tutor-p04",
+          "status": "ok",
+          "probe": "p04",
+          "reply_chars": 1076,
+          "leak": null,
+          "leak_reason": null,
+          "judge": {
+            "met": true,
+            "notes": "The reply gives an honest short answer (it doesn't avoid every stall), names hazards (structural, data, control) and counting stall cycles as prerequisites, and offers a hazards lesson next. It does include a fair amount of detail (example, renaming, speculation, penalties), but it frames these as what is left out of a full treatment and stays brief enough, and it does indicate the basics must be learned first."
+          },
+          "met": true
+        }
+      },
+      "leaks": 0,
+      "behavior_met": 0.25
+    }
+  },
+  "summary": {
+    "teach_facts_correct": 0.75,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 0.998,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": 1.0,
+    "quiz_ambiguous": 0,
+    "quiz_wrong_key": 0,
+    "grade_verdict_agreement": 0.6667,
+    "grade_false_wrong": null,
+    "grade_misconception_hit": 1.0,
+    "tutor_leaks": 0,
+    "tutor_behavior_met": 0.25,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 4625262,
+        "tokens_output": 156444,
+        "minutes": 17.79,
+        "subagents": 6,
+        "cost_usd_list": 3.114
+      },
+      "quiz": {
+        "scenarios": 1,
+        "tokens_total": 437184,
+        "tokens_output": 20985,
+        "minutes": 2.36,
+        "subagents": 2,
+        "cost_usd_list": 0.3967
+      },
+      "grade": {
+        "scenarios": 1,
+        "tokens_total": 775602,
+        "tokens_output": 15201,
+        "minutes": 1.74,
+        "subagents": 5,
+        "cost_usd_list": 0.4222
+      },
+      "tutor": {
+        "scenarios": 4,
+        "tokens_total": 329301,
+        "tokens_output": 4642,
+        "minutes": 0.67,
+        "subagents": 0,
+        "cost_usd_list": 0.2722
+      },
+      "total": {
+        "scenarios": 7,
+        "tokens_total": 6167349,
+        "tokens_output": 197272,
+        "minutes": 22.55,
+        "subagents": 13,
+        "cost_usd_list": 4.205
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 41612,
+    "cost_usd_list": 0.1347,
+    "calls": 7
+  },
+  "warnings": []
+}

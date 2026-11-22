@@ -1,0 +1,151 @@
+{
+  "duration_api_ms": 31968,
+  "stop_reason": "end_turn",
+  "session_id": "db40f314-1d37-46b4-b056-b878d6e9c8e1",
+  "total_cost_usd": 0.1459203,
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 27015,
+    "cache_read_input_tokens": 135529,
+    "output_tokens": 2406,
+    "output_tokens_details": {
+      "thinking_tokens": 323
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11090,
+      "ephemeral_5m_input_tokens": 15925
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 892,
+        "cache_read_input_tokens": 37211,
+        "cache_creation_input_tokens": 440,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 440,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 2406,
+      "cacheReadInputTokens": 135529,
+      "cacheCreationInputTokens": 27015,
+      "webSearchRequests": 0,
+      "costUSD": 0.1218094,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 323,
+      "cacheCreationEphemeral5mInputTokens": 15925,
+      "cacheCreationEphemeral1hInputTokens": 11090,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 30129,
+      "outputTokens": 2196,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 2,
+      "costUSD": 0.0241109,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 519,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 11,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "There is no single \"exact right angle\" for a whetstone. Sources give a range, and the angle you can hold steady matters more than the number.\n\n**Sharpening a Japanese knife**\n\nJapanese kitchen knives are usually sharpened at about 10–15° per side on waterstones. Some sources say 15–17°, and Western knives are often wider. Your stroke should hold whatever angle you pick, and the same angle on both sides. [GearJunkie](https://gearjunkie.com/how-to-sharpen-knife-whetstone) says consistency matters more than chasing an exact number.\n\nHere is a worked example:\n1. Soak the stone if it needs it, then start on the coarser side (around #1000).\n2. Rest the blade on the stone and lift the spine until it's only a little above the stone. Think of the thickness of two or three coins, not a steep tilt.\n3. Push heel to tip with light pressure until a thin \"burr\" (a tiny ridge of metal) forms along the opposite edge.\n4. Flip the knife and repeat on the other side.\n5. Alternate with fewer strokes each time, then finish on the finer stone.\n\nThis is sharpening, which removes metal to make a new edge. It isn't honing, which only realigns an edge that has bent. Sharpening is also the harder skill, and one guide suggests taking a Japanese knife to a professional until you're confident. That fits your goal of keeping a knife sharp safely. More sources: [Knifewear](https://knifewear.com/blogs/articles/how-to-sharpen-kitchen-knives-with-japanese-whetstones) and [Cook's Illustrated](https://www.americastestkitchen.com/cooksillustrated/articles/275-how-to-use-a-whetstone).\n\n**Breaking down a round fish**\n\nChefs agree on the core method, though the order varies:\n1. Scale the fish, ideally in water or a bag.\n2. Cut at an angle just behind the gills or fin, down to the backbone.\n3. Turn the blade flat and run it along the backbone to the tail, always cutting away from your fingers.\n4. Flip the fish and repeat on the other side.\n5. Pull out the pin bones with tweezers and trim the belly.\n\nSee [Great British Chefs](https://www.greatbritishchefs.com/how-to-cook/how-to-fillet-a-round-fish) and [Rick Stein's school](https://shop.rickstein.com/pages/how-to-fillet-a-round-fish?page=9).\n\nQuick check: why does holding the same angle on every stroke matter more than which exact angle you choose?\n\nIf you'd like, I can turn the sharpening steps into a lesson, starting with honing versus sharpening.",
+  "ttft_ms": 853,
+  "type": "result",
+  "duration_ms": 25871,
+  "uuid": "db9bbb77-0f65-46d0-9d44-1a69e90d6783",
+  "ttft_stream_ms": 800,
+  "time_to_request_ms": 162,
+  "first_content_frame_ms": 801,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 12,
+      "outputTokens": 2406,
+      "cacheReadInputTokens": 135529,
+      "cacheCreationInputTokens": 27015,
+      "webSearchRequests": 0,
+      "costUSD": 0.1218094,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 323,
+      "cacheCreationEphemeral5mInputTokens": 15925,
+      "cacheCreationEphemeral1hInputTokens": 11090,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 30129,
+      "outputTokens": 2196,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 2,
+      "costUSD": 0.0241109,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 519,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

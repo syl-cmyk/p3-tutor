@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 10741,
+  "stop_reason": "end_turn",
+  "session_id": "e21439d5-7e07-4319-bd99-cf3c28593e26",
+  "total_cost_usd": 0.06655929999999999,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 13690,
+    "cache_read_input_tokens": 55063,
+    "output_tokens": 1190,
+    "output_tokens_details": {
+      "thinking_tokens": 165
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9944,
+      "ephemeral_5m_input_tokens": 3746
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 444,
+        "cache_read_input_tokens": 23847,
+        "cache_creation_input_tokens": 479,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 479,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1190,
+      "cacheReadInputTokens": 55063,
+      "cacheCreationInputTokens": 13690,
+      "webSearchRequests": 0,
+      "costUSD": 0.06655929999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 165,
+      "cacheCreationEphemeral5mInputTokens": 3746,
+      "cacheCreationEphemeral1hInputTokens": 9944,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Short version: for a Japanese knife you hold the blade at about 15° to the stone. Nobody hits that angle exactly. What matters is keeping the same angle on every stroke.\n\nHere's how to see 15°. Stand the knife straight up at 90°, tilt it to half that (45°), then half again (about 22°), then a bit lower, so the spine sits about two stacked coins off the stone. Wet the stone, rest the edge on it, and push away from you with light pressure, edge first. Do about 10 strokes, flip the knife, and do 10 on the other side. Feel for a tiny burr (a thin metal lip) on the far side. That tells you you've reached the edge. Most Western knives sit at 20°, and single-bevel Japanese knives like a yanagiba are sharpened on one side only.\n\nThat's also a good reason to sharpen. A dull knife slips off food and cuts you, so it's actually the riskier one.\n\nBreaking down a whole fish is a bigger topic: scale it, gut it, take off the fillets, then pull the pin bones. It needs a flexible fillet knife, which is a different tool from the knife you've been using. It isn't part of your mission yet. Once your grips and sharpening feel solid, I can do it as a later lesson.\n\nNext step: do you know the difference between honing and sharpening? Tell me what you think each one does.",
+  "ttft_ms": 1405,
+  "type": "result",
+  "duration_ms": 11054,
+  "uuid": "3704d578-eb51-4057-86fd-33874621e01b",
+  "ttft_stream_ms": 956,
+  "time_to_request_ms": 263,
+  "first_content_frame_ms": 956,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1190,
+      "cacheReadInputTokens": 55063,
+      "cacheCreationInputTokens": 13690,
+      "webSearchRequests": 0,
+      "costUSD": 0.06655929999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 165,
+      "cacheCreationEphemeral5mInputTokens": 3746,
+      "cacheCreationEphemeral1hInputTokens": 9944,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

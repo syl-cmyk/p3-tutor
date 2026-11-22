@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant answers a student's first question, and the student then types \"Book it for 2 pm.\" The program sends the model only that new message, with no earlier messages. What happens?",
+      "options": [
+        {"id": "a", "text": "The model has no way to tell what \"it\" refers to"},
+        {"id": "b", "text": "The model recalls the first question from its own memory"},
+        {"id": "c", "text": "The model looks the earlier chat up in its training data"},
+        {"id": "d", "text": "The model books the machine that was used most recently"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In a made-up setup, each model call includes 2,000 tokens of fixed instructions and tool descriptions, plus one manual excerpt. Pasting a whole 20,000-token manual into all 5 calls of a chat sends how many manual tokens in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A run has grown long, and its history holds a 3,000-token printer manual page that was needed only for the first question. Which move keeps the run going and loses the least that still matters?",
+      "options": [
+        {"id": "a", "text": "Switch to a model with a bigger window and keep every token"},
+        {"id": "b", "text": "Clear that page and keep one line noting the answer it gave"},
+        {"id": "c", "text": "Delete the whole history and start the next step from nothing"},
+        {"id": "d", "text": "Ask the model to remember the page without saving it anywhere"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student tells your assistant on Monday that they finished mill training. On Thursday they open a new chat and the assistant knows nothing about it. In one sentence, what did the program fail to do on Monday?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your assistant must answer from 4 long machine manuals and also remember each student's training. In one or two sentences, which of the two should use retrieval and which should use saved notes, and why?"
+    }
+  ]
+}

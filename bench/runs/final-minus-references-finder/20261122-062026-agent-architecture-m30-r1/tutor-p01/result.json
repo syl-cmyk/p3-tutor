@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 8502,
+  "stop_reason": "end_turn",
+  "session_id": "d946ac9f-f954-45eb-82b5-eb58bdee0c32",
+  "total_cost_usd": 0.0690858,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 13951,
+    "cache_read_input_tokens": 31138,
+    "output_tokens": 1016,
+    "output_tokens_details": {
+      "thinking_tokens": 285
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13951,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 551,
+        "cache_read_input_tokens": 20502,
+        "cache_creation_input_tokens": 4085,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4085
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 1016,
+      "cacheReadInputTokens": 31138,
+      "cacheCreationInputTokens": 13951,
+      "webSearchRequests": 0,
+      "costUSD": 0.0690858,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 285,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13951,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't tell you the letter, even for a practice retake. A quiz is only useful if you work out the answer yourself. You also asked me for a hint, and I can't give you one for q3 that favors some options over others. You could ask your teacher if they're okay with giving answers on retakes.\n\nHere's a way to attack it that works whichever letter is right:\n\n1. For each option, write one line on what it claims.\n2. Under each line, write what would have to be true for that option to be correct.\n3. Pick the option you'd rule out first and say why. Then pick the one you lean toward and say why.\n\nIf you're still stuck after that, paste your one-line reasons here. I'll tell you straight whether your reasoning holds up, and you can try again.\n\nYour notes say neither attempt at quiz 0001 has been graded yet. If you want the real answer with a full walkthrough, hand in your retake for grading. Once it's graded, q3 is open and we can go through it together.\n\nWhich option would you rule out first?",
+  "ttft_ms": 1161,
+  "type": "result",
+  "duration_ms": 8662,
+  "uuid": "3d840b78-7186-469e-8ae6-9a1ad9f269ad",
+  "ttft_stream_ms": 820,
+  "time_to_request_ms": 115,
+  "first_content_frame_ms": 821,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 1016,
+      "cacheReadInputTokens": 31138,
+      "cacheCreationInputTokens": 13951,
+      "webSearchRequests": 0,
+      "costUSD": 0.0690858,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 285,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 13951,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your makerspace assistant for twenty turns. On turn 21, what does the model actually have available to read?",
+      "options": [
+        {"id": "a", "text": "Only turn 21's message, because each model call starts completely fresh"},
+        {"id": "b", "text": "Whatever the program sends in that call, which may include earlier turns"},
+        {"id": "c", "text": "All twenty turns, which the model itself stores between its own calls"},
+        {"id": "d", "text": "A summary of the chat that the model keeps privately inside itself"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Each model call in a 4-step agent run carries a context of 5,000 tokens, and the same 5,000 tokens are re-sent on every call. How many input tokens does the whole run use?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant must know next week that a student finished the band saw training. Which design lets it know?",
+      "options": [
+        {"id": "a", "text": "Enlarge the context window so this chat can last for a week"},
+        {"id": "b", "text": "Save the status outside the window, then load it next session"},
+        {"id": "c", "text": "Trust the model to remember it from this session's conversation"},
+        {"id": "d", "text": "Add the status to the instructions the model was trained with"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "You swap a machine's manual for a new edition. In one sentence, why does a retrieval setup answer from the new edition on the very next question without any retraining of the model?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate says: \"The window holds 1M tokens, so we'll paste every manual into each call.\" In one or two sentences, give one reason this is still a bad design."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "Forwarding copies a result from the EX/MEM or MEM/WB pipeline register to the ALU input that needs it, so the instruction does not wait for the register write. Option b describes stalling."
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "A stall holds the dependent instruction (and those behind it) in its stage and lets bubbles, which do nothing, move down the pipeline until the operand is ready."
+    },
+    {
+      "id": "q3",
+      "answer": 1,
+      "tolerance": 0,
+      "rationale": "The loaded value exists only at the end of the load's MEM stage, which is too late for the add's EX in the next cycle. One bubble moves the add back a cycle so the value can be forwarded from MEM/WB. An answer of 0 shows the belief that forwarding always removes the stall."
+    },
+    {
+      "id": "q4",
+      "answer": 2,
+      "tolerance": 0,
+      "rationale": "Without forwarding, the sub's ID must come in the same cycle as the add's WB, which is when the register is written and then read. That puts the sub's ID two cycles later than normal, so 2 stalls."
+    },
+    {
+      "id": "q5",
+      "answer": "An add has its result at the end of EX, so it can be forwarded to the next EX, but a load only has its data at the end of MEM, too late for the next instruction's EX in the following cycle.",
+      "accepted": [
+        "The load's data is not available until after MEM, so it cannot be forwarded in time for the next instruction's EX",
+        "An ALU result is ready after EX and the load value only after MEM",
+        "Load data comes out of memory a stage later than an ALU result, so forwarding cannot reach the next EX in time"
+      ],
+      "rationale": "A right answer says when the value is ready: the end of EX for the add, the end of MEM for the load. An answer that only says loads are slower or that memory is slow does not explain the timing."
+    },
+    {
+      "id": "q6",
+      "answer": 9,
+      "tolerance": 0,
+      "rationale": "Four instructions in a 5-stage pipeline take 5 + 3 = 8 cycles with no stalls. The add must wait one cycle for the load (load-use), while sub and or get their operands by forwarding from ALU results with no stall. 8 + 1 = 9. An answer of 8 misses the load-use stall, and 11 or 12 treats every dependence as a stall."
+    }
+  ]
+}

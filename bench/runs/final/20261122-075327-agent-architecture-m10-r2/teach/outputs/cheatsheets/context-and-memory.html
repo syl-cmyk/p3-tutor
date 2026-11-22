@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --warn-soft:#f9eaec; --code-bg:#f3efe6;
+            --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --warn-soft:#2f1f22; --code-bg:#23211e; } }
+    * { box-sizing: border-box; }
+    html { font-size: 17px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.5; }
+    main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; }
+    a { color: var(--accent); }
+    h1 { font-size: 1.7rem; margin: 0 0 0.25rem; }
+    h2 { font-size: 1.1rem; margin: 1.5rem 0 0.4rem; font-family: var(--sans); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--rule); }
+    th { font-family: var(--sans); font-size: 0.75rem; text-transform: uppercase; color: var(--muted); }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 4px; }
+    .mistakes { background: var(--warn-soft); border-left: 4px solid var(--warn); padding: 0.5rem 1rem; }
+    @media print { html { font-size: 11pt; } main { padding: 0; max-width: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p>Look here to decide where a piece of information goes: the context window, notes between sessions, or retrieval.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><th>Term</th><th>Plain meaning</th></tr>
+    <tr><td>Token</td><td>A small chunk of text, roughly three-quarters of a word; windows are counted in it.</td></tr>
+    <tr><td>Context window</td><td>Everything the model sees on one call, with a size ceiling.</td></tr>
+    <tr><td>Context rot</td><td>The model recalls the contents less well as the window fills.</td></tr>
+    <tr><td>Compaction</td><td>Summarizing the history and starting a fresh window from the summary.</td></tr>
+    <tr><td>Notes (memory tool)</td><td>Files the program stores outside the window, so they survive between sessions.</td></tr>
+    <tr><td>Chunks, retrieval</td><td>Short pieces of big documents; a search returns only the best few.</td></tr>
+  </table>
+
+  <h2>Rules</h2>
+  <ol>
+    <li>The model only uses the text in the window, so a tool result must be added to it to be used.</li>
+    <li>The model keeps nothing between steps; the program re-sends the whole history each call, so the input tokens you pay for add up.</li>
+    <li>Old results clutter the window at any size, so clear or summarize them.</li>
+    <li>A session's window is thrown away when it ends, so small facts to keep go in notes.</li>
+    <li>Big documents go in a search, because pasting them in re-reads them on every call.</li>
+  </ol>
+  <p>Two questions place anything: does it matter after this session, and how big is it?</p>
+
+  <h2>Worked example</h2>
+  <p>Booking, three calls: call 1 reads 1,418 tokens. Call 2 reads 1,418 + 30 + 120 = 1,568. Call 3 reads 1,568 + 30 + 40 = 1,638. Total read: 1,418 + 1,568 + 1,638 = 4,624, against 1,638 at the end. (Counts are made up for the arithmetic.)</p>
+
+  <h2>Common mistakes</h2>
+  <div class="mistakes">
+    <ul>
+      <li>"The model looks things up itself." No: a tool result has to be added to the window.</li>
+      <li>"It remembers step 1 because it was just there." No: the program re-sends it.</li>
+      <li>"A bigger window fixes clutter." No: windows of every size get cluttered.</li>
+      <li>"It remembers students from earlier chats." No: only what was written down survives.</li>
+      <li>"Retrieval always beats pasting in." No: it pays off most when the text is big, and pasting re-reads it each call.</li>
+    </ul>
+  </div>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory.html">the lesson</a>. Primary source: <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</main>
+</body>
+</html>

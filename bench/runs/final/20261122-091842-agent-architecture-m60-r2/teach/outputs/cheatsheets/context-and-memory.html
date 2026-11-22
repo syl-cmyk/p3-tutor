@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: what goes in the context window (keep, clear, fetch, save)</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --warn:#8c2f39; --warn-soft:#f9eaec; --code-bg:#f3efe6;
+      --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --mono: ui-monospace, Menlo, Consolas, monospace; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --warn:#f0a3ac; --warn-soft:#2e1d20; --code-bg:#24221e; } }
+    body { background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.45; max-width:46rem; margin:0 auto; padding:1.5rem 1rem; font-size:15px; }
+    h1 { font-size:1.4rem; margin:0 0 .2rem; }
+    h2 { font-size:1rem; color:var(--accent); margin:1.1rem 0 .3rem; border-bottom:1px solid var(--rule); }
+    p, li { margin:.25rem 0; }
+    table { border-collapse:collapse; width:100%; }
+    td, th { border-bottom:1px solid var(--rule); padding:.25rem .4rem; text-align:left; vertical-align:top; }
+    code { font-family:var(--mono); background:var(--code-bg); padding:0 .2em; }
+    a { color:var(--accent); }
+    .sub { color:var(--muted); }
+    .wrong { background:var(--warn-soft); }
+    @media print { body { font-size:11px; padding:0; } }
+  </style>
+</head>
+<body>
+  <h1>What goes in the context window: keep, clear, fetch, save</h1>
+  <p class="sub">A look-up page for deciding what an agent sees, remembers and looks up. Every number is made up for the example.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><td>Token</td><td>A small chunk of text the model counts; a word is not one token, and counts differ by model.</td></tr>
+    <tr><td>Context window</td><td>Everything the model can see on one call, including its own reply.</td></tr>
+    <tr><td>Call</td><td>One round trip: your program sends a request, the model sends text back.</td></tr>
+    <tr><td>Context rot</td><td>The model uses a fuller window worse, so more is not better.</td></tr>
+    <tr><td>Compaction</td><td>Swapping old messages for a short summary when the history gets long.</td></tr>
+    <tr><td>Retrieval (RAG)</td><td>Looking up only the few manual pieces that match the question.</td></tr>
+    <tr><td>Session / memory file</td><td>One visit, and a small file your program stores outside the window to load next visit.</td></tr>
+  </table>
+
+  <h2>The rules</h2>
+  <ol>
+    <li>Everything sent counts toward the window and the bill, because the model sees only this one call.</li>
+    <li>Your program resends the whole history every call, because the model keeps nothing between steps.</li>
+    <li>Clear big results once used and leave a short stub, because they are billed on every later call.</li>
+    <li>Retrieve a few pieces of a long manual instead of carrying it, because you pay for every token each call.</li>
+    <li>Save notes outside the window to survive a session, and re-check them with the real system before acting, because notes go stale.</li>
+  </ol>
+
+  <h2>Worked example</h2>
+  <p>Rules 800 + tools 600 + question 20 = 1,420 tokens in on call 1. The model asks for a calendar check (40 tokens), and the result is 300 tokens.</p>
+  <p>Call 2 input = 1,420 + 40 + 300 = 1,760. Total input over both calls = 1,420 + 1,760 = 3,180, not 1,760.</p>
+
+  <h2>Common mistakes</h2>
+  <table class="wrong">
+    <tr><td>"A token is a word."</td><td>Tokens are chunks the model's tokenizer picks; counts vary by model.</td></tr>
+    <tr><td>"Only my message counts."</td><td>Rules and tool descriptions are sent and counted on every call.</td></tr>
+    <tr><td>"The model remembers earlier steps itself."</td><td>Your program resends the message list; leave a result out and it is gone.</td></tr>
+    <tr><td>"A bigger window means I can stop choosing."</td><td>Old results still cost every call, and context rot hurts.</td></tr>
+    <tr><td>"The model learned the student."</td><td>Nothing in it changes; only the note file you load tells it.</td></tr>
+    <tr><td>"A note is always true."</td><td>It is a dated hint; confirm with the booking system.</td></tr>
+  </table>
+
+  <h2>Go deeper</h2>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">the lesson on context and memory</a>. Primary source: <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</body>
+</html>

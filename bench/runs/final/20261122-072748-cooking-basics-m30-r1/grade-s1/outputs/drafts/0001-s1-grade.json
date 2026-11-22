@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "Not quite. You picked 'Flat on the food, with the fingers stretched out', which leaves your fingertips in the blade's path; the right answer is b, a claw with the fingertips curled back. Say you slice a carrot into 5 mm rounds: with flat fingers, a slip puts the edge on a fingertip, but with a claw the first thing it meets is a knuckle."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The knuckles guide the side of the blade, so the fingertips never meet it. Keep your knuckles forward and the blade rides along them as you slice."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "Not quite. 'So the knife does not slip' is about the knife, but the curl is about your fingers: it tucks the fingertips back so the knuckles take the side of the blade. Say the blade skids while you cut a carrot into 5 mm rounds: the knife can still slip, but it hits a knuckle and not a fingertip."
+    }
+  ],
+  "summary": "You know the knuckles guide the side of the blade. The thing to fix is why the claw grip works: it keeps your fingertips out of the blade's path, and it isn't there to stop the knife slipping. Next time you cut a carrot, curl your fingertips back and say out loud which part of your hand the blade is touching."
+}

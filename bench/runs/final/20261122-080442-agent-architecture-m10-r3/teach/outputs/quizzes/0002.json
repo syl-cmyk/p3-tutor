@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "An agent makes 4 model calls to finish a request. The tool results are added to the history after each call. Which statement about the second call is true?",
+      "options": [
+        {"id": "a", "text": "The model recalls call 1 without being sent it"},
+        {"id": "b", "text": "The program sends the earlier history again, plus the new result"},
+        {"id": "c", "text": "Only the newest tool result is sent to the model"},
+        {"id": "d", "text": "The history is stored in the model's trained weights"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A loop has 3 calls. Call 1 sends 1,500 input tokens. The model replies with 100 tokens and a tool returns 400 tokens, so call 2 sends the call 1 input, that reply and that result. Call 2 then produces 100 tokens and a tool returns 300 tokens, which go into call 3 the same way. How many input tokens are sent across all 3 calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O3",
+      "stem": "On Monday a student tells the assistant they prefer evening slots, and the assistant saves nothing. On Friday the student starts a new chat. Does the assistant know the preference, and why or why not?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The makerspace has a 60-page vinyl cutter manual. A student asks about blade depth for thick vinyl. What should go into the window for that question?",
+      "options": [
+        {"id": "a", "text": "The few chunks that best match the question"},
+        {"id": "b", "text": "The whole manual, so nothing is missed"},
+        {"id": "c", "text": "Only the page numbers of the manual"},
+        {"id": "d", "text": "Nothing, since the model already learned it"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Name one way that a saved note and a retrieved manual chunk are alike, and one way they differ."
+    }
+  ]
+}

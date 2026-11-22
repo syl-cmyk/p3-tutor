@@ -1,0 +1,137 @@
+{
+  "duration_api_ms": 697574,
+  "stop_reason": "end_turn",
+  "session_id": "75e28b26-a212-4f55-869e-8df9e0e564a2",
+  "total_cost_usd": 2.0330144,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 31907,
+    "cache_read_input_tokens": 718993,
+    "output_tokens": 10885,
+    "output_tokens_details": {
+      "thinking_tokens": 1776
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 31907
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 479,
+        "cache_read_input_tokens": 114583,
+        "cache_creation_input_tokens": 3373,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3373,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 112,
+      "outputTokens": 90560,
+      "cacheReadInputTokens": 2170661,
+      "cacheCreationInputTokens": 336570,
+      "webSearchRequests": 0,
+      "costUSD": 1.9847810999999995,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 37365,
+      "cacheCreationEphemeral5mInputTokens": 322926,
+      "cacheCreationEphemeral1hInputTokens": 13644,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 127463,
+      "outputTokens": 10974,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0482333,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5619,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01TDmX82gMZ2ZD12KxuNFwn8",
+      "tool_input": {
+        "command": "mkdir -p lessons review-records && cp drafts/0001-context-and-memory.html lessons/0001-context-and-memory.html && grep -c 'p3-' lessons/0001-context-and-memory.html && ls lessons quizzes keys && cat quizzes/0001.json | head -50"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrjsxt2-422aecef"
+  },
+  "subagent_stats": {
+    "spawned": 6,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 6
+    },
+    "started_in_background": 6,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 6,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 22,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The lesson is ready: `lessons/0001-context-and-memory.html` (objective O3). It runs about 13 minutes by my estimate, not the 10 you asked for. That's inside the checker's range, but I'd cut harder next time.\n\nIt follows one makerspace assistant through four parts, each with a step-by-step trace using made-up token counts:\n- **Context window:** what the model sees on one call.\n- **History:** why the program re-sends everything on each step.\n- **Trimming:** how to clear or summarize old results.\n- **Notes and retrieval:** notes carry small facts between sessions, and search brings in big manuals.\n\nThe last part has a \"where does this live?\" exercise, with hints before solutions.\n\nThe lesson went through two review passes. Both ended with \"fix\" and I applied their fixes, but the second round of fixes wasn't re-reviewed. The review record is `review-records/0001-lesson.md`.\n\nI also wrote:\n- **Quiz:** `quizzes/0002.json` is ready when you want it. I'll show you the questions and hold the answers back.\n- **Cheat sheet:** `cheatsheets/context-and-memory.html`.\n- **Resources:** `RESOURCES.md`, and I updated `NOTES.md`.\n\nAnything in the lesson unclear? Ask me and I'll make it shorter and simpler.\n\nDo you want to join a community to test these design choices with other people? I couldn't verify one yet, so none is listed.",
+  "ttft_ms": 1394,
+  "type": "result",
+  "duration_ms": 83225,
+  "uuid": "1792f591-56eb-43c1-943d-7ea26ea743cb",
+  "ttft_stream_ms": 781,
+  "time_to_request_ms": 37,
+  "first_content_frame_ms": 781,
+  "queued_turn_count": 0,
+  "result_index": 6,
+  "model_usage_since_last_result": {}
+}

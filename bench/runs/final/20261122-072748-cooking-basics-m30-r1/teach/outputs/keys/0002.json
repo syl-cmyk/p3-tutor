@@ -1,0 +1,40 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "A paring knife is the small blade for peeling apples and coring, working close to the fingertips. The chef's knife is too big for close-in work, and the serrated knife is for tough or slippery skins, not peeling.",
+      "distractors": {"b": "M3", "c": "M4"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The teeth of a serrated knife cut through a crusty outside with a gentle sawing motion without crushing the crumb. A paring knife is too short and a chef's knife presses down and squashes the soft inside.",
+      "distractors": {"a": "M3", "b": "M5"}
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "A dice is a cube, and 1/2 inch on each side is a medium dice. A julienne is a thin stick (1/8 inch), and a slice is a flat piece.",
+      "distractors": {"a": "M6", "b": "M6"}
+    },
+    {
+      "id": "q4",
+      "answer": 0.125,
+      "tolerance": 0.001,
+      "rationale": "A julienne is 1/8 inch square, which is 0.125 in. An answer of 0.25 is a batonnet, the thicker stick. An answer of 0.0625 is a fine julienne."
+    },
+    {
+      "id": "q5",
+      "answer": "Use the chef's knife, because a paring knife is not suited to hard vegetables like carrots and would have to be forced, which makes it slip",
+      "accepted": [
+        "chef's knife, the paring knife is not for hard vegetables",
+        "chefs knife, a paring knife would need force and could slip",
+        "chef's knife; paring knife is too small and weak for a hard carrot",
+        "chef's knife because paring knives shouldn't be forced through hard vegetables"
+      ],
+      "rationale": "The chef's knife is the right choice for a firm vegetable like a carrot. The paring knife is not suited to hard vegetables such as carrots, beets and squash, and forcing it risks a slip. A learner who picks the paring knife because the carrot is small shows M3 (small knife for small food is the safe choice)."
+    }
+  ]
+}

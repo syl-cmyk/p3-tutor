@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "xor reads r8, which and has not written yet (it writes in WB), so it waits for a value: a data hazard. Memories are separate, so there is no shared hardware, and no branch is involved. Choosing structural or control shows the learner is not asking what the instruction is waiting for."
+    },
+    {
+      "id": "q2",
+      "answer": 30,
+      "tolerance": 0,
+      "rationale": "Total cycles = 4 + N + stalls = 4 + 20 + 6 = 30. An answer of 26 leaves out the 4 fill cycles; 34 counts them twice or adds them to something else."
+    },
+    {
+      "id": "q3",
+      "answer": "control",
+      "accepted": ["control hazard", "a control hazard", "control."],
+      "rationale": "The instruction cannot be fetched because the outcome of the branch is not known yet. Register values are not what is being waited for, so it is not a data hazard; a typical wrong answer of data shows the tendency to think every stall is a data hazard."
+    },
+    {
+      "id": "q4",
+      "answer": 49,
+      "tolerance": 0,
+      "rationale": "Deciding at the end of stage 4 costs 4 - 1 = 3 stalls per branch. Each iteration is 6 + 3 = 9 cycles, so 4 + 30 + 15 = 49 cycles. An answer of 44 uses 2 stalls per branch (the EX design from the lesson) and 34 ignores the stalls."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "lw writes r1 in cycle 5. sub is the fourth instruction, so it is fetched in cycle 4 and reaches ID in cycle 5, where it reads r1 in the second half of the cycle: 0 stalls (two instructions sit between writer and reader). Answering 2 forgets that the instructions in between use up the wait; answering 1 is the gap-of-one case."
+    }
+  ]
+}

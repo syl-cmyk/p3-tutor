@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem; font-family: Georgia, serif; line-height: 1.5; color: #222; background: #fffff8; }
+    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    h2 { font-size: 1.1rem; margin: 1.2rem 0 0.4rem; border-bottom: 1px solid #ccc; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+    th, td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+    .warn { color: #8a3a00; }
+    a { color: #0b5394; }
+    @media (prefers-color-scheme: dark) { body { background: #151515; color: #e6e6e6; } th, td { border-color: #444; } a { color: #8ab4f8; } .warn { color: #ffb070; } }
+    @media print { body { background: #fff; color: #000; font-size: 11pt; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>Use this to decide where each piece of the makerspace assistant's information lives: in the window, in a search, or in a saved note.</p>
+
+  <h2>Key terms</h2>
+  <table>
+    <tr><th>Term</th><th>Plain meaning</th></tr>
+    <tr><td>Token</td><td>The unit the model reads and writes in; cost and limits are counted in it.</td></tr>
+    <tr><td>Context window</td><td>All the text the model can see on one call, including its own reply.</td></tr>
+    <tr><td>History</td><td>The list your program keeps and resends on every call.</td></tr>
+    <tr><td>Compaction</td><td>Summarizing a long conversation and starting a new window from the summary.</td></tr>
+    <tr><td>Retrieval</td><td>Finding the right pieces in a store outside the window and loading only those.</td></tr>
+    <tr><td>Notes (memory)</td><td>Text saved outside the window so a later session can read it back.</td></tr>
+  </table>
+
+  <h2>The rules</h2>
+  <ol>
+    <li>The model sees only the text sent on this call, because it keeps nothing itself.</li>
+    <li>Every step is a new call that resends the whole history, so the window and the bill grow each step.</li>
+    <li>A fuller window is not better, because accuracy degrades as it fills; trim old results or compact.</li>
+    <li>Long, fixed material is retrieved, because pasting it in would resend it on every call.</li>
+    <li>Anything needed next session is written to notes and read back, because the window is gone when the session ends.</li>
+  </ol>
+  <p><strong>Where does it go?</strong> Does it change between sessions? Then a note, with a date. Is it big and only sometimes needed? Then retrieval. Needed on every step? Then the window, kept short.</p>
+
+  <h2>Worked example</h2>
+  <p>Call 1 sends 1,440 tokens. The model asks for the calendar (60 tokens) and the result is 160 tokens. Call 2 sends 1,440 + 60 + 160 = 1,660. It asks for a manual search (50), and a 1,500-token page comes back. Call 3 sends 1,660 + 50 + 1,500 = 3,210. Total sent: 1,440 + 1,660 + 3,210 = 6,310 tokens (round numbers made up for the lesson).</p>
+
+  <h2>Common mistakes</h2>
+  <ul>
+    <li class="warn">"The model remembers earlier chats." Only the text sent on this call exists for it.</li>
+    <li class="warn">"A bigger window solves it." Accuracy degrades as the window fills, and every call resends it all.</li>
+    <li class="warn">"Compaction keeps everything." A summary can drop the exact detail, so save must-keep facts as notes.</li>
+    <li class="warn">"Memory stores itself." Your program has to write and reload the notes.</li>
+  </ul>
+
+  <h2>Go deeper</h2>
+  <p>The lesson: <a href="../lessons/0001-context-and-agent-memory.html">Context management: what an agent sees, keeps and looks up</a>. Primary source: <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a>.</p>
+</body>
+</html>

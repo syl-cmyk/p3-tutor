@@ -1,0 +1,63 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Stalling or bypassing: handling a hazard",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A sub needs the result of the add right before it, but that result is not ready yet. What does the pipeline do when it stalls?",
+      "options": [
+        {"id": "a", "text": "Runs the next instruction first and skips the sub"},
+        {"id": "b", "text": "Runs the sub with the old value and fixes it later"},
+        {"id": "c", "text": "Holds the sub back by inserting empty cycles"},
+        {"id": "d", "text": "Restarts the whole pipeline from the add instruction"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A pipeline has bypassing (also called forwarding). What does it do when a sub needs the add's result?",
+      "options": [
+        {"id": "a", "text": "Holds the sub back until the add finishes write-back"},
+        {"id": "b", "text": "Sends the value straight to the sub's input, skipping write-back"},
+        {"id": "c", "text": "Writes the value into the register file one stage earlier"},
+        {"id": "d", "text": "Guesses the value so the sub can start without waiting"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A 5-stage pipeline (IF, ID, EX, MEM, WB) has full bypassing. Why can `lw r1,0(r2)` followed by `add r3,r1,r4` not run without a delay?",
+      "options": [
+        {"id": "a", "text": "The add must wait for the load to finish its write-back"},
+        {"id": "b", "text": "Bypass wires cannot serve an add that uses two registers"},
+        {"id": "c", "text": "Bypassing only works when instructions are two cycles apart"},
+        {"id": "d", "text": "The loaded value exists only after MEM, but the add needs it earlier"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Two instructions need the same memory in the same cycle, and that memory can serve only one per cycle. There is no extra hardware, so what does the pipeline do to the second instruction?"
+    },
+    {
+      "id": "q5",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A 5-stage pipeline (IF, ID, EX, MEM, WB) has no bypassing; a register is written in the first half of WB and read in the second half of ID. `add r1,r2,r3` is directly followed by `sub r4,r1,r5`: how many stall cycles does the sub need?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q6",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A 5-stage pipeline with full bypassing runs 5 instructions, one cycle per stage, and the only hazard is one load followed by an instruction that uses it. How many cycles pass from the first fetch until the last write-back?",
+      "unit": "cycles"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "duration_api_ms": 142616,
+  "stop_reason": "end_turn",
+  "session_id": "7f3f2493-25e7-4d8a-aa66-2b2a7b96b86a",
+  "total_cost_usd": 0.39665760000000005,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 10021,
+    "cache_read_input_tokens": 131897,
+    "output_tokens": 6632,
+    "output_tokens_details": {
+      "thinking_tokens": 1150
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 10021
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 405,
+        "cache_read_input_tokens": 47915,
+        "cache_creation_input_tokens": 3188,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3188,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 30,
+      "outputTokens": 20985,
+      "cacheReadInputTokens": 361956,
+      "cacheCreationInputTokens": 54213,
+      "webSearchRequests": 0,
+      "costUSD": 0.39665760000000005,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 6976,
+      "cacheCreationEphemeral5mInputTokens": 44200,
+      "cacheCreationEphemeral1hInputTokens": 10013,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwri9nhy-f7327942"
+  },
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 1,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Your quiz is ready at `quizzes/0002.json`, with six questions on O3 (stalling or bypassing). The reviewer's verdict was still \"revise\" after the second pass, which is the limit. I fixed most of its findings and left a few minor ones, which `review-records/0002-quiz.md` lists.\n\n- **What a stall does** (q1, multiple choice).\n- **What bypassing does** (q2, multiple choice).\n- **A hazard with nothing to forward** (q3, short answer): two instructions need the same memory in one cycle. This is the one that tests your \"a stall is always a data hazard\" habit.\n- **Why a load followed by its user still has to wait, even with bypassing** (q4, multiple choice).\n- **Counting stall cycles** (q5, numeric): a dependent pair of instructions with no bypassing.\n- **Total cycles with one unavoidable stall** (q6, numeric).\n\nThere's no lesson on O3 yet, so this quiz is ahead of the lessons. The hardest items are q4 to q6, and q5 and q6 are the ones to take your time on. Since you like to work things out first, here's a hint for them: draw the pipeline stages as a grid and mark when each value is actually ready.",
+  "ttft_ms": 8600,
+  "type": "result",
+  "duration_ms": 63599,
+  "uuid": "5e56d246-7d8c-44a0-bdfe-56d0666a5ac0",
+  "ttft_stream_ms": 594,
+  "time_to_request_ms": 26,
+  "first_content_frame_ms": 594,
+  "queued_turn_count": 0,
+  "result_index": 1,
+  "model_usage_since_last_result": {}
+}

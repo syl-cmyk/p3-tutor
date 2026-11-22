@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your assistant on Monday and the session ends. On Wednesday they open a new session and ask, \"Did my safety training go through?\" Nothing was saved anywhere. What does the model have to go on?",
+      "options": [
+        {"id": "a", "text": "Only the text in the new call, which has nothing about Monday"},
+        {"id": "b", "text": "The model's own memory of Monday's chat, stored inside the model"},
+        {"id": "c", "text": "A summary the model wrote itself at the end of Monday's session"},
+        {"id": "d", "text": "The student's training data, which the model picked up in training"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Your assistant sends 1,000 tokens of fixed text plus a 50-token question in call 1. The model replies with a 100-token tool request, and the tool returns 500 tokens. Call 2 re-sends everything so far. How many input tokens does call 2 contain?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student asks which glue is safe in the 3D printer enclosure. The only place that answer lives is a 90-page manual. Which design is best for a small model budget?",
+      "options": [
+        {"id": "a", "text": "Search an index of the manual and load only the best pages"},
+        {"id": "b", "text": "Paste the whole manual into every call so nothing is missed"},
+        {"id": "c", "text": "Save the whole manual as a note and load it at every start"},
+        {"id": "d", "text": "Rely on the model to recall the manual from its training"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two sentences: a teammate says the model \"learns\" each student's booking habits by chatting with them. What really carries those habits from one session to the next, and who handles it?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A long chat has filled most of the context window with old tool results the assistant no longer needs. Name one action that reduces the context, and say why a larger window is not the better fix."
+    }
+  ]
+}

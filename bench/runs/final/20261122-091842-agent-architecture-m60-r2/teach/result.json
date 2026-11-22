@@ -1,0 +1,129 @@
+{
+  "duration_api_ms": 1236282,
+  "stop_reason": "end_turn",
+  "session_id": "ba8e5ffc-fdcb-404a-9e9b-19ce4d84a5d2",
+  "total_cost_usd": 3.6843262999999995,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 13309,
+    "cache_read_input_tokens": 637597,
+    "output_tokens": 7391,
+    "output_tokens_details": {
+      "thinking_tokens": 453
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 13309
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 557,
+        "cache_read_input_tokens": 96174,
+        "cache_creation_input_tokens": 2702,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2702,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 156,
+      "outputTokens": 167583,
+      "cacheReadInputTokens": 3645552,
+      "cacheCreationInputTokens": 621272,
+      "webSearchRequests": 0,
+      "costUSD": 3.6143521999999995,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 61889,
+      "cacheCreationEphemeral5mInputTokens": 607622,
+      "cacheCreationEphemeral1hInputTokens": 13650,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 116791,
+      "outputTokens": 16590,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 5,
+      "costUSD": 0.0699741,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 9376,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwrn683i-c3cc533e"
+  },
+  "subagent_stats": {
+    "spawned": 6,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 6
+    },
+    "started_in_background": 6,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 6,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-planner": 1,
+      "references-finder": 1,
+      "lesson-writer": 1,
+      "figure-designer": 1,
+      "lesson-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 13,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The O3 lesson is written, along with a quiz, a cheat sheet and updated notes.\n\n- **Lesson:** `lessons/0001-context-and-memory-in-an-agent.html` is a 60-minute lesson in six parts. It covers:\n  - what the context window holds on one call;\n  - how history is resent between steps, and what that costs;\n  - why a fuller window isn't better, and how to clear old results;\n  - retrieval for finding the right page in a long manual;\n  - notes that survive between sessions, using a student named Dana;\n  - a design table you can defend at the review, plus a practice task.\n\n  It has five figures. The token counts and prices in it are made up so the arithmetic is easy, and the lesson says so.\n- **Quiz:** `quizzes/0002.json` has five items, and the key is in `keys/0002.json`. It's ready whenever you are.\n- **Cheat sheet:** `cheatsheets/context-and-memory.html` is a one-page look-up of terms, rules, a worked example and common mistakes.\n- **Review:** the lesson went through two review passes, and the reviewer's last verdict on each was \"revise\". I fixed the factual and arithmetic findings but left some style findings unfixed, and `review-records/0001-lesson.md` lists them. The lesson still has several traces per part, which may feel long against your \"keep it short\" preference.\n- **Sources:** the sources are in `RESOURCES.md`. The one community link is the official LangChain forum, and I couldn't confirm its moderation rules.\n\nI haven't opened the lesson in a browser, so I haven't seen the figures rendered. Ask me anything about the lesson, and tell me if any part was too much.",
+  "ttft_ms": 1526,
+  "type": "result",
+  "duration_ms": 55299,
+  "uuid": "e2ef323b-0df5-464c-8bc4-a1680e9f374b",
+  "ttft_stream_ms": 689,
+  "time_to_request_ms": 47,
+  "first_content_frame_ms": 689,
+  "queued_turn_count": 0,
+  "result_index": 7,
+  "model_usage_since_last_result": {}
+}

@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "wrong",
+      "misconception": "M2",
+      "feedback": "You picked 'the time one instruction takes by itself'. That is a tempting idea, but pipelining does not shorten one instruction: it still passes through every stage. What improves is how many instructions finish in a given time (throughput), because instructions overlap. Think of a laundry line: each load still takes the same time, but loads finish more often. The answer is b."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "You answered 100, which counts one cycle per instruction. That is the right rate once the pipeline is running, but you left out the start-up time. The first instruction needs all 4 cycles to get through, and then each of the other 99 finishes one cycle after the one before: 4 + 99 = 103 cycles. Next time, count the cycles to fill the pipeline first, then add one per remaining instruction."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right: several instructions are in different stages at the same time. That overlap is why the total shrinks while each instruction still takes the same time. Notice how this contradicts your answer to q1, which is worth a second look."
+    }
+  ],
+  "summary": "You understand the core mechanism: instructions overlap, so several are in progress at once (q3). Two things to fix. First, pipelining raises throughput and does not make a single instruction faster (q1). Second, the cycle count is the fill time plus one cycle per remaining instruction, so 4 + 99 = 103, not 100 (q2). Next step: redo q2 with a 5-stage pipeline and 20 instructions, and write down the fill time before you add the rest. This cycle counting is the base for working out what a stall costs."
+}

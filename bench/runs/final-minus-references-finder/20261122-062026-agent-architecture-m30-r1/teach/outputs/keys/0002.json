@@ -1,0 +1,32 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "Every call starts from the text the program sends; the model does not keep anything between sessions. Choosing b, c or d assumes the model stores Monday itself."
+    },
+    {
+      "id": "q2",
+      "answer": 1870,
+      "tolerance": 0.5,
+      "rationale": "Call 2 sends 1,000 + 40 + 300 = 1,340. Call 3 sends 1,340 + 30 + 500 = 1,870. An answer of 530 counts only the new pieces; 1,340 is call 2's size."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Retrieval loads only the needed pages instead of resending 150,000 tokens on all 4 calls. A larger window does not cut the tokens sent; summarizing afterwards does not shrink the earlier calls; a note read every call still sends the manuals every call."
+    },
+    {
+      "id": "q4",
+      "answer": "the date it was written",
+      "accepted": ["date", "a date", "when it was saved", "the date", "when it was written", "a timestamp", "expiry date", "the date of the training", "date of training"],
+      "rationale": "A note can go stale, for example if training expires, so a date lets the assistant judge whether to trust it."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "A student's training status changes and differs per student, so it must be written down and read back. Manuals and fixed hours are the same for everyone and can be searched or kept short; the standing instructions are sent on every call."
+    }
+  ]
+}

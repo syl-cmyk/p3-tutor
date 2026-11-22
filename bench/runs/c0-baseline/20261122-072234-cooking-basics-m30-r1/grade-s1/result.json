@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 18993,
+  "stop_reason": "end_turn",
+  "session_id": "d3825b0e-5af9-490a-81dd-3febf3c98c07",
+  "total_cost_usd": 0.1228309,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 26682,
+    "cache_read_input_tokens": 99209,
+    "output_tokens": 2956,
+    "output_tokens_details": {
+      "thinking_tokens": 85
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11086,
+      "ephemeral_5m_input_tokens": 15596
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 366,
+        "cache_read_input_tokens": 35551,
+        "cache_creation_input_tokens": 1767,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 1767,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2956,
+      "cacheReadInputTokens": 99209,
+      "cacheCreationInputTokens": 26682,
+      "webSearchRequests": 0,
+      "costUSD": 0.1228309,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 85,
+      "cacheCreationEphemeral5mInputTokens": 15596,
+      "cacheCreationEphemeral1hInputTokens": 11086,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 15,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded quiz 0001 and wrote the grades to `grades/0001-s1.json`. You got 1 of 3 correct.\n\n- **q1 (wrong):** You chose a flat hand with the fingers stretched out. That puts your fingertips in the blade's path. The answer is the claw, with the fingertips curled back.\n- **q2 (correct):** The knuckles guide the side of the blade.\n- **q3 (wrong):** The fingertips curl back to keep them out of the blade's path, with the knuckles in front. They don't curl back to stop the knife slipping. Your q2 answer is the other half of this one.\n\nYou know the knuckles guide the blade. What's missing is why the claw is shaped that way: it keeps your fingertips behind your knuckles, out of the blade's way.\n\nNext step: cut a carrot slowly with the claw, then once with your fingers flat. Notice where the blade would hit in each. Then try q1 and q3 again in your own words.\n\nI also added a learning record (`learning-records/0002-claw-grip-purpose-unclear.md`) and a line in `NOTES.md`.",
+  "ttft_ms": 1324,
+  "type": "result",
+  "duration_ms": 19207,
+  "uuid": "ff361c73-af34-47c7-b0c3-82ee78770c1e",
+  "ttft_stream_ms": 872,
+  "time_to_request_ms": 171,
+  "first_content_frame_ms": 872,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2956,
+      "cacheReadInputTokens": 99209,
+      "cacheCreationInputTokens": 26682,
+      "webSearchRequests": 0,
+      "costUSD": 0.1228309,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 85,
+      "cacheCreationEphemeral5mInputTokens": 15596,
+      "cacheCreationEphemeral1hInputTokens": 11086,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: pipeline hazards</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1rem; font-family: Charter, Georgia, serif; line-height: 1.5; background: #fffdf8; color: #1f1d1a; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    code { background: #f3efe6; padding: 0.1em 0.3em; border-radius: 4px; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } code { background: #23211e; } }
+  </style>
+</head>
+<body>
+  <h1>Pipeline hazards</h1>
+  <p>From <a href="../lessons/0001-why-a-pipeline-stalls.html">lesson 1</a>. Five stages: IF, ID, EX, MEM, WB.</p>
+  <table>
+    <tr><th>Hazard</th><th>Waiting for</th><th>Cost in the lesson's pipeline</th></tr>
+    <tr><td>Structural</td><td>hardware another instruction is using</td><td>1 cycle per conflict (Figure 1)</td></tr>
+    <tr><td>Data</td><td>a register value not yet written</td><td>2 cycles if neighbours and no forwarding; 0 with forwarding; 1 for load-use</td></tr>
+    <tr><td>Control</td><td>the next address after a branch</td><td>2 cycles per branch when stalling</td></tr>
+  </table>
+  <h2>Formulas</h2>
+  <ul>
+    <li>Total cycles = stages + instructions &minus; 1 + stall cycles</li>
+    <li>CPI = 1 + (fraction of instructions that stall &times; stall cycles each)</li>
+  </ul>
+  <h2>Diagnose</h2>
+  <p>Ask: what is this instruction waiting for? A resource, a value, or the next address.</p>
+</body>
+</html>

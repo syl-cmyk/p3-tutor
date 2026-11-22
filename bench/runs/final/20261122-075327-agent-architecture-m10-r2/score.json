@@ -1,0 +1,164 @@
+{
+  "run_id": "20261122-075327-agent-architecture-m10-r2",
+  "scored_at": "2026-11-22T08:04:42Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O3",
+      "requested_minutes": 10.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-context-and-memory.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 10.0,
+      "declared_objective": "O3",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 2044,
+      "est_minutes": 13.63,
+      "length_ratio": 1.363,
+      "length_ok": true,
+      "links": [
+        {
+          "url": "https://anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/contextual-retrieval",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F3.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.4",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.5",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.6",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 4,
+        "notes": "All six facts are stated and accurate, and the token arithmetic checks out. The lesson ties each idea to the learner's makerspace project and defines tokens, compaction and chunks where they first appear. Level fit loses a point because a lot of material (four traces, a decision table and three terms of art) is packed into 10 minutes."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": null,
+    "grade": null,
+    "tutor": null
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 1.363,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": null,
+    "quiz_ambiguous": null,
+    "quiz_wrong_key": null,
+    "grade_verdict_agreement": null,
+    "grade_false_wrong": null,
+    "grade_misconception_hit": null,
+    "tutor_leaks": null,
+    "tutor_behavior_met": null,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 2736340,
+        "tokens_output": 101534,
+        "minutes": 11.07,
+        "subagents": 6,
+        "cost_usd_list": 2.033
+      },
+      "quiz": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "grade": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "tutor": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "total": {
+        "scenarios": 1,
+        "tokens_total": 2736340,
+        "tokens_output": 101534,
+        "minutes": 11.07,
+        "subagents": 6,
+        "cost_usd_list": 2.033
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 11136,
+    "cost_usd_list": 0.049,
+    "calls": 1
+  },
+  "warnings": []
+}

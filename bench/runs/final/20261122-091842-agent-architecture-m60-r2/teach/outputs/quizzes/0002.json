@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your makerspace assistant has a 900-token system prompt and 500 tokens of tool descriptions. A student types a 30-token question. The model asks for one tool, and the 700-token result comes back. The model's request was 50 tokens. How many input tokens does the second model call use?",
+      "options": [
+        {"id": "a", "text": "700 tokens, since only the new tool result is added"},
+        {"id": "b", "text": "730 tokens, since the question and result are new"},
+        {"id": "c", "text": "2,180 tokens, since everything is sent again together"},
+        {"id": "d", "text": "1,430 tokens, since the model's own request is skipped"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A student chats with your assistant on Monday, then comes back on Thursday in a brand-new session. In one sentence, what must your program do on Monday for the assistant to know anything about the student on Thursday?"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team can put the 3D-printer manual (8,000 tokens) in the prompt every call, or retrieve 3 pieces of about 300 tokens each. Questions come in all day and the budget is small. Which design is cheaper per request, and why?",
+      "options": [
+        {"id": "a", "text": "Retrieval, because only about 900 tokens are sent instead of 8,000"},
+        {"id": "b", "text": "Full prompt, because the model then needs no search step at all"},
+        {"id": "c", "text": "Retrieval, because pieces never count toward the window limit"},
+        {"id": "d", "text": "Full prompt, because a larger window makes extra tokens free"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A call has 2,000 tokens of rules and tools, a 40-token question, and a 3,000-token manual chapter returned by a tool. The model has already used the chapter. Your program replaces it with a 20-token stub before the next call, which adds no other tokens. How many input tokens does that next call use?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your notes file says a student's laser training is not done, dated three weeks ago, and the student asks to book the laser cutter. In one sentence, what should the assistant do before booking, and why?"
+    }
+  ]
+}

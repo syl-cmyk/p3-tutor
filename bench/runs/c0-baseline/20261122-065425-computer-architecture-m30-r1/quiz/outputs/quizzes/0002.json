@@ -1,0 +1,58 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Handling a hazard: stalling or bypassing",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "In a pipeline, what does bypassing (also called forwarding) do about a data hazard?",
+      "options": [
+        {"id": "a", "text": "It sends a result from a pipeline register straight to the unit that needs it"},
+        {"id": "b", "text": "It holds the later instruction in place until the register write is finished"},
+        {"id": "c", "text": "It swaps the two instructions so the dependent one runs a cycle sooner"},
+        {"id": "d", "text": "It guesses the missing value and restarts the instruction if the guess is wrong"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A pipeline handles a hazard by stalling. What does it do to the instruction that has to wait?",
+      "options": [
+        {"id": "a", "text": "It lets the instruction go on and corrects its result a few cycles later"},
+        {"id": "b", "text": "It throws out the whole pipeline and restarts every instruction from fetch"},
+        {"id": "c", "text": "It holds the instruction back and sends empty bubbles ahead of it for some cycles"},
+        {"id": "d", "text": "It skips the instruction for good and moves on to the next one in the program"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A classic 5-stage pipeline (IF, ID, EX, MEM, WB) has full forwarding. The instruction lw r1, 0(r2) is followed directly by add r3, r1, r4, which uses the loaded value. How many stall cycles does the add need?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A classic 5-stage pipeline (IF, ID, EX, MEM, WB) has no forwarding. A register is written in the first half of a cycle and read in the second half of the same cycle. The instruction add r1, r2, r3 is followed directly by sub r4, r1, r5, which uses r1. How many stall cycles does the sub need?",
+      "unit": "cycles"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A 5-stage pipeline with full forwarding still has to stall for one cycle when an instruction uses the result of the load right before it, but not when it uses the result of an add right before it. Why? Answer in one sentence."
+    },
+    {
+      "id": "q6",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A classic 5-stage pipeline (IF, ID, EX, MEM, WB) has full forwarding and runs these 4 instructions in order: lw r1, 0(r2); add r3, r1, r4; sub r5, r3, r6; or r7, r5, r8. Each instruction uses the result of the one before it. How many cycles does it take from the first fetch until the last instruction finishes WB?",
+      "unit": "cycles"
+    }
+  ]
+}

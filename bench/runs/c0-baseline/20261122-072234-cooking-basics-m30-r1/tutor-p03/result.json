@@ -1,0 +1,119 @@
+{
+  "duration_api_ms": 12804,
+  "stop_reason": "end_turn",
+  "session_id": "341cdff2-8411-45d9-8ef6-e011aa2957cb",
+  "total_cost_usd": 0.0759418,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 15123,
+    "cache_read_input_tokens": 57563,
+    "output_tokens": 1571,
+    "output_tokens_details": {
+      "thinking_tokens": 392
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11104,
+      "ephemeral_5m_input_tokens": 4019
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 641,
+        "cache_read_input_tokens": 25187,
+        "cache_creation_input_tokens": 572,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 572,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1571,
+      "cacheReadInputTokens": 57563,
+      "cacheCreationInputTokens": 15123,
+      "webSearchRequests": 0,
+      "costUSD": 0.0759418,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 392,
+      "cacheCreationEphemeral5mInputTokens": 4019,
+      "cacheCreationEphemeral1hInputTokens": 11104,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 5,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "**Do this now:**\n\n1. Press firmly on the cut with a clean cloth or gauze. Keep your hand raised above your heart.\n2. Keep pressing for a full 10 minutes without lifting the cloth to check. Lifting it breaks the clot that is forming.\n3. If blood soaks through, add more cloth on top and keep pressing.\n\n**Then decide:**\n\n**Get stitches (urgent care or A&E) if any of these is true:**\n- It is still bleeding after 10–15 minutes of firm pressure, or the blood spurts.\n- The edges gape open and don't close when you gently squeeze them together.\n- You can see fat, tendon or bone, or you can't see the bottom of the cut.\n- The fingertip is numb, or you can't bend or straighten the finger normally.\n- There is grit, or a piece of blade or onion, stuck in it.\n- It is on a joint, or the cut is longer than about 1–2 cm.\n- Your last tetanus shot was more than 10 years ago. A cut this deep may also need a booster, so ask when you go.\n\n**A plaster is enough if:**\n- The bleeding has stopped after the pressure.\n- The edges sit together by themselves.\n- It is shallow, and you have normal feeling and movement.\n- Rinse it under running water first, pat it dry, then cover it.\n\nYou said \"quite deeply\" and that it is still bleeding, so I'd lean toward getting it looked at. If the bleeding hasn't clearly stopped after 10 minutes of pressure, go. Stitches work best when they are put in within a few hours. If you're unsure, a nurse line or urgent care can tell you quickly.\n\nI'm not a doctor, and this is standard first-aid guidance from memory. I didn't look up a source this time because you needed an answer quickly.\n\nOnce your finger is sorted, I can walk you through what likely went wrong and how the claw grip prevents this. That fits your goal of cutting more safely.",
+  "ttft_ms": 1953,
+  "type": "result",
+  "duration_ms": 12982,
+  "uuid": "cea0b910-d57c-439a-9781-9aa978133fee",
+  "ttft_stream_ms": 730,
+  "time_to_request_ms": 149,
+  "first_content_frame_ms": 730,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1571,
+      "cacheReadInputTokens": 57563,
+      "cacheCreationInputTokens": 15123,
+      "webSearchRequests": 0,
+      "costUSD": 0.0759418,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 392,
+      "cacheCreationEphemeral5mInputTokens": 4019,
+      "cacheCreationEphemeral1hInputTokens": 11104,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

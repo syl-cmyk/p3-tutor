@@ -1,0 +1,25 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "wrong",
+      "misconception": "M2",
+      "feedback": "Wrong. You picked (a), that pipelining makes one instruction faster, and that's a really common mix-up. The right answer is (b): one instruction still takes the same time, but more of them finish in a given time. Say each instruction takes 4 cycles: it still takes 4 cycles in a pipeline, but once the first instruction has gone through all 4 stages, one instruction finishes every cycle."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": null,
+      "feedback": "Wrong. Your 100 counts one cycle per instruction, but it skips the 4 cycles the first instruction needs to go through all 4 stages. After that, the other 99 finish one per cycle: 4 + 99 = 103 cycles (against 400 with no overlap)."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. Several instructions being in progress at once is exactly why the total shrinks. For example, while instruction 1 is in stage 3, instruction 2 is in stage 2 and instruction 3 is in stage 1, so none of them waits for the one before to finish. This is why real processors pipeline: more instructions finish every second."
+    }
+  ],
+  "summary": "You've got the core reason pipelining helps: instructions overlap. The thing to work on is that pipelining raises how many instructions finish in a given time and doesn't speed up a single instruction. Redo q2 by drawing a 4-stage, 5-instruction timeline and counting the cycles (it should come to 8), then check it against 4 + (5 - 1)."
+}

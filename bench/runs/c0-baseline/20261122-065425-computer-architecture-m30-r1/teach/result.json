@@ -1,0 +1,174 @@
+{
+  "duration_api_ms": 219065,
+  "stop_reason": "end_turn",
+  "session_id": "f18a3852-4147-4362-a358-13ab11afeb14",
+  "total_cost_usd": 0.6940121999999999,
+  "usage": {
+    "input_tokens": 24,
+    "cache_creation_input_tokens": 70950,
+    "cache_read_input_tokens": 545908,
+    "output_tokens": 31993,
+    "output_tokens_details": {
+      "thinking_tokens": 5555
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 70950,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 920,
+        "cache_read_input_tokens": 77174,
+        "cache_creation_input_tokens": 4412,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4412
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 24,
+      "outputTokens": 31993,
+      "cacheReadInputTokens": 545908,
+      "cacheCreationInputTokens": 70950,
+      "webSearchRequests": 0,
+      "costUSD": 0.6583688,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5555,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 70950,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 42359,
+      "outputTokens": 2815,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0356434,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 400,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01HHaVzDPF3PTdJtK2ajZCtP",
+      "tool_input": {
+        "command": "mkdir -p lessons quizzes keys cheatsheets && python3 - <<'EOF'\ndef fig(fid, title, rows, ncyc):\n    xs=lambda c:130+50*(c-1)\n    o=[f'<svg viewBox=\"0 0 640 {40+34*len(rows)}\" role=\"img\" aria-labelledby=\"{fid}-t\"><title id=\"{fid}-t\">{title}</title>']\n    o.append('<g font-family=\"system-ui, sans-serif\" font-size=\"16\" text-anchor=\"middle\" fill=\"currentColor\">')\n    o.append('<text x=\"60\" y=\"20\" style=\"fill: var(--muted)\">cycle</text>')\n    for c in range(1,ncyc+1):\n        o.append(f'<text x=\"{xs(c)+23}\" y=\"20\" style=\"fill: var(--muted)\">{c}</text>')\n    for r,(name,cells) in enumerate(rows):\n        y=32+34*r\n        o.append(f'<text x=\"8\" y=\"{y+20}\" text-anchor=\"start\">{name}</text>')\n        for c,(t,k) in cells.items():\n            cls={'n':'c','w':'c w','a':'c a'}[k]\n            o.append(f'<rect class=\"{cls}\" x=\"{xs(c)}\" y=\"{y}\" width=\"46\" height=\"28\" rx=\"4\"/><text x=\"{xs(c)+23}\" y=\"{y+20}\">{t}</text>')\n    o.append('</g></svg>')\n    return '\\n'.join(o)\ndef std(start,**kw):\n    d={}\n    for i,s in enumerate(['IF','ID','EX','MEM','WB']): d[start+i]=(s,'n')\n    return d\nf1=fig('fig1','Structural hazard: the fourth instruction cannot be fetched in cycle 4 because the load is using memory',[\n ('lw r1,0(r2)',std(1)|{4:('MEM','a')}),('add r3,r4,r5',std(2)),('sub r6,r7,r8',std(3)),\n ('or r9,r10,r11',{4:('–','w')}|{5+i:(s,'n') for i,s in enumerate(['IF','ID','EX','MEM','WB'])})],9)\nf2=fig('fig2','Data hazard: sub waits two cycles in ID for the value that add writes in cycle 5',[\n ('add r1,r2,r3',std(1)|{5:('WB','a')}),\n ('sub r4,r1,r5',{2:('IF','n'),3:('ID','w'),4:('ID','w'),5:('ID','a'),6:('EX','n'),7:('MEM','n'),8:('WB','n')})],8)\nf3=fig('fig3','Control hazard: two instructions fetched after the branch are thrown away, and the real next instruction is fetched in cycle 4',[\n ('beq r1,r2,T',std(1)|{3:('EX','a')}),\n ('wrong path 1',{2:('IF','w'),3:('ID','w')}),('wrong path 2',{3:('IF','w')}),\n ('target T',{4+i:(s,'n') for i,s in enumerate(['IF','ID','EX','MEM','WB'])})],8)\nopen('/tmp/figs.py','w').write(repr((f1,f2,f3)))\nopen('/tmp/f1.svg','w').write(f1);open('/tmp/f2.svg','w').write(f2);open('/tmp/f3.svg','w').write(f3)\nEOF\nls /tmp/*.svg"
+      }
+    },
+    {
+      "tool_name": "Write",
+      "tool_use_id": "toolu_01VkXXV78cmsANoy6cai2ABK",
+      "tool_input": {
+        "file_path": "/tmp/tutor-gen/figs.py",
+        "content": "def xs(c):\n    return 130 + 50 * (c - 1)\n\n\ndef fig(fid, title, rows, ncyc):\n    o = []\n    o.append('<svg viewBox=\"0 0 640 %d\" role=\"img\" aria-labelledby=\"%s-t\"><title id=\"%s-t\">%s</title>' % (40 + 34 * len(rows), fid, fid, title))\n    o.append('<g font-family=\"system-ui, sans-serif\" font-size=\"16\" text-anchor=\"middle\" fill=\"currentColor\">')\n    o.append('<text x=\"60\" y=\"20\" style=\"fill: var(--muted)\">cycle</text>')\n    for c in range(1, ncyc + 1):\n        o.append('<text x=\"%d\" y=\"20\" style=\"fill: var(--muted)\">%d</text>' % (xs(c) + 23, c))\n    for r, (name, cells) in enumerate(rows):\n        y = 32 + 34 * r\n        o.append('<text x=\"8\" y=\"%d\" text-anchor=\"start\">%s</text>' % (y + 20, name))\n        for c in sorted(cells):\n            t, k = cells[c]\n            cls = {'n': 'c', 'w': 'c w', 'a': 'c a'}[k]\n            o.append('<rect class=\"%s\" x=\"%d\" y=\"%d\" width=\"46\" height=\"28\" rx=\"4\"/><text x=\"%d\" y=\"%d\">%s</text>' % (cls, xs(c), y, xs(c) + 23, y + 20, t))\n    o.append('</g></svg>')\n    return '\\n'.join(o)\n\n\ndef std(start, special=None):\n    d = {}\n    for i, s in enumerate(['IF', 'ID', 'EX', 'MEM', 'WB']):\n        d[start + i] = (s, 'n')\n    if special:\n        d.update(special)\n    return d\n\n\nf1 = fig('fig1', 'Structural hazard: the fourth instruction cannot be fetched in cycle 4 because the load is using memory', [\n    ('lw r1,0(r2)', std(1, {4: ('MEM', 'a')})),\n    ('add r3,r4,r5', std(2)),\n    ('sub r6,r7,r8', std(3)),\n    ('or r9,r10,r11', std(5, {4: ('–', 'w')})),\n], 9)\nf2 = fig('fig2', 'Data hazard: sub waits two cycles in ID for the value that add writes in cycle 5', [\n    ('add r1,r2,r3', std(1, {5: ('WB', 'a')})),\n    ('sub r4,r1,r5', {2: ('IF', 'n'), 3: ('ID', 'w'), 4: ('ID', 'w'), 5: ('ID', 'a'), 6: ('EX', 'n'), 7: ('MEM', 'n'), 8: ('WB', 'n')}),\n], 8)\nf3 = fig('fig3', 'Control hazard: two instructions fetched after the branch are thrown away, and the real next instruction is fetched in cycle 4', [\n    ('beq r1,r2,T', std(1, {3: ('EX', 'a')})),\n    ('wrong path 1', {2: ('IF', 'w'), 3: ('ID', 'w')}),\n    ('wrong path 2', {3: ('IF', 'w')}),\n    ('target T', std(4)),\n], 8)\n"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_019f1xaBonqJ8Qp4RsZjZvuX",
+      "tool_input": {
+        "command": "python3 -I -c \"\nimport re\nt=open('lessons/0001-why-a-pipeline-stalls.html').read()\nt=re.sub(r'<(script|style).*?</\\1>','',t,flags=re.S)\nt=re.sub(r'<[^>]+>',' ',t)\nprint(len(t.split()))\""
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 29,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The 30-minute lesson on objective O2 is written, with a quiz and answer key ready. I couldn't run a word count (the shell command needed approval). By my estimate the lesson is roughly 3,300 words, inside the 2,700–6,750 range that fits 30 minutes, but I haven't confirmed it.\n\n**Lesson:** `lessons/0001-why-a-pipeline-stalls.html`\n- **Win:** from a short run of instructions, name the hazard behind each stall and count the cycles it costs.\n- **Examples first, as your preferences ask:** the three hazards come in through a car wash, a kitchen with one oven, and a hidden road sign.\n- **Contents:** three pipeline diagrams, five instant-feedback checks, a worked example, and a faded practice problem. The faded one has a data hazard and a taken branch, 12 cycles in total (the solution is behind a \"Show a solution\" button).\n- **Your mission:** a section on why a loop full of branches runs slower, using CPI = 1 + (branch fraction × penalty). It also leaves a pointer toward the question of whether more pipeline stages are worth it.\n- **Misconceptions addressed:** \"every stall is a data hazard\" and \"pipelining makes each instruction faster.\"\n- **Conventions:** it uses a 5-stage pipeline, with the register file written in the first half of a cycle and read in the second. So a dependent neighbouring instruction costs 2 stalls without forwarding, and a taken branch costs 2.\n- **Sources:** it cites university lecture notes found by search (Utah is the primary source). I read the search summaries, not the full PDFs, and I didn't open the Hennessy & Patterson textbook.\n- **Community link:** the Computer Science Stack Exchange link is the site root, since I didn't see a specific thread.\n\n**Quiz 0002** (`quizzes/0002.json`, key in `keys/0002.json`): 5 items, none repeating the lesson's practice questions. Ask me for it when you want to take it.\n\n**Other files:**\n- `RESOURCES.md` lists the sources.\n- `cheatsheets/pipeline-hazards.html` is a one-page reference.\n- `NOTES.md` has the new working notes. I added M3 for \"every stall is a data hazard\" (M2 already existed in key 0001).\n\n**Next:** how pipelines handle hazards (forwarding, load-use stalls, branch prediction). Does a 5-stage pipeline with this register-file timing match what your course uses? If not, tell me and I'll adjust the stall counts.\n\nAsk me anything about the lesson in the chat.",
+  "ttft_ms": 1313,
+  "type": "result",
+  "duration_ms": 210437,
+  "uuid": "204f1adf-6a50-4858-9661-a2f685d36a76",
+  "ttft_stream_ms": 867,
+  "time_to_request_ms": 177,
+  "first_content_frame_ms": 867,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 24,
+      "outputTokens": 31993,
+      "cacheReadInputTokens": 545908,
+      "cacheCreationInputTokens": 70950,
+      "webSearchRequests": 0,
+      "costUSD": 0.6583688,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5555,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 70950,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 42359,
+      "outputTokens": 2815,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0356434,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 400,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

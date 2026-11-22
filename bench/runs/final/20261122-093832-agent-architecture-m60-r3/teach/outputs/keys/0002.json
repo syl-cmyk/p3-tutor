@@ -1,0 +1,36 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model keeps nothing between calls, so the program re-sends everything: the original input, the model's own reply and the tool result. Picking a or d shows the idea that the model remembers earlier steps on its own; c forgets that the reply is part of the history."
+    },
+    {
+      "id": "q2",
+      "answer": 1590,
+      "tolerance": 0,
+      "rationale": "Call 2 input = 1,000 + 50 + 300 = 1,350. Call 3 input = 1,350 + 40 + 200 = 1,590. An answer of 240 or 200 counts only the newest pieces, as if earlier tokens were not re-sent."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Retrieval fetches only the few chunks that answer the question, so each call carries a small amount of text. Pasting 2 million tokens (a) repeats that cost in every call, and a summary (b) loses the detail the student needs."
+    },
+    {
+      "id": "q4",
+      "answer": "Each session starts with an empty window; the program must save the preferences (a note) and load them into the next session.",
+      "accepted": [
+        "the window is wiped between sessions; save a note and read it back",
+        "nothing is kept between sessions unless the program stores it and loads it",
+        "the model has no memory of the last session; the program has to save the info to a file and load it next time"
+      ],
+      "rationale": "The window holds only this session's text. Memory is a file or record outside the window that the program writes and reads back. An answer saying the model learned or remembered by itself shows that misconception."
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "A fact that can change, such as training status, belongs in the system that owns it, so look it up. A note can be stale (a), deleting it does not check anything (b), and the student's word is not the record (c)."
+    }
+  ]
+}
